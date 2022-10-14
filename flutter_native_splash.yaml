@@ -1,0 +1,9 @@
+flutter_native_splash:
+  color: "#165DFF"
+  fullscreen: true
+#  branding_mode: top
+#  branding: assets/ios.png
+
+#info_plist_files:
+#  - 'ios/Runner/Info-Debug.plist'
+#  - 'ios/Runner/Info-Release.plist'

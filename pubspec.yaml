@@ -51,6 +51,8 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   flutter_local_notifications: ^12.0.1+1
   custom_navigation_bar: ^0.8.2
+  flutter_launcher_icons_maker: ^0.10.2
+  flutter_native_splash: ^2.2.10+1
 
 dev_dependencies:
   flutter_test:
@@ -107,3 +109,9 @@ flutter:
 
 flutter_intl:
   enabled: true
+flutter_icons:
+  android: true
+  ios: true
+  macos: true
+  windows: true
+  image_path: "assets/appicon/ios.png"
