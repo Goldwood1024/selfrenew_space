@@ -1,8 +1,7 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 void main() {
-  // handleError(() => runApp(const ManagerProvider(child: MaterialApp(home: MobileHome(),))));
-  handleError(() => runApp(MaterialApp(home: MobileHome(),)));
+  handleError(() => runApp(const ManagerProvider(child: MainApp())));
 }
 
 // 主页配置
@@ -20,7 +19,9 @@ class _MainAppState extends State<MainApp> {
   }
 
   Size _getDesignSize() {
-    return PlatformUtil.isIOS() ? const Size(375, 812) : const Size(360, 720);
+    return PlatformUtil.isDesktop()
+        ? const Size(800, 600)
+        : (PlatformUtil.isIOS() ? const Size(375, 812) : const Size(360, 720));
   }
 
   @override

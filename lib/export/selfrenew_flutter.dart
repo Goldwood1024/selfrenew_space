@@ -12,6 +12,7 @@ export 'package:go_router/go_router.dart';
 export 'package:logger/logger.dart';
 export 'package:provider/provider.dart';
 export 'package:selfrenew_space/generated/l10n.dart';
+export 'package:selfrenew_space/page/desktop/desktop_home.dart';
 export 'package:selfrenew_space/page/mobile/background/scaffold_gradient_background.dart';
 export 'package:selfrenew_space/page/mobile/mobile_home.dart';
 export 'package:selfrenew_space/page/skeleton.dart';

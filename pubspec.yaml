@@ -53,6 +53,8 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   flutter_launcher_icons_maker: ^0.10.2
   flutter_native_splash: ^2.2.10+1
+  easy_sidemenu: ^0.4.0
+  side_sheet: ^1.0.3
 
 dev_dependencies:
   flutter_test:
