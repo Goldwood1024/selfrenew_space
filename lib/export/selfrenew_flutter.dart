@@ -24,3 +24,6 @@ export 'package:selfrenew_space/util/handle_error_utils.dart';
 export 'package:selfrenew_space/util/platform.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:statusbarz/statusbarz.dart';
+export 'package:selfrenew_space/theme/hex_color.dart';
+export 'package:flex_color_scheme/flex_color_scheme.dart';
+export 'package:selfrenew_space/theme/theme_mode.dart';

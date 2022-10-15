@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/setting/mobile_setting.dart';
 
 class MobileHome extends StatefulWidget {
   const MobileHome({Key? key}) : super(key: key);
@@ -33,25 +33,7 @@ class _MobileHomeState extends State<MobileHome>
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
-        children: [
-          Scaffold(
-            appBar: AppBar(),
-            body: Container(
-              child: TextButton(
-                onPressed: () {
-                  showCupertinoModalBottomSheet(
-                    expand: true,
-                    context: context,
-                    builder: (_) {
-                      return Container();
-                    },
-                  );
-                },
-                child: Text('23123123'),
-              ),
-            ),
-          )
-        ],
+        children: [MobileSetting()],
       ),
       bottomNavigationBar: CustomNavigationBar(
         // iconSize: ScreenHelper.sp(SizeHelper.gapDp28),
