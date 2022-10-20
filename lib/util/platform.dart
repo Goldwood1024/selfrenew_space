@@ -1,6 +1,6 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class PlatformUtil {
+class PLUtil {
   static bool isPortrait(BuildContext context) {
     return MediaQuery.of(context).orientation == Orientation.portrait;
   }

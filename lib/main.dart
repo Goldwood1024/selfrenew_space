@@ -19,9 +19,9 @@ class _MainAppState extends State<MainApp> {
   }
 
   Size _getDesignSize() {
-    return PlatformUtil.isDesktop()
+    return PLUtil.isDesktop()
         ? const Size(800, 600)
-        : (PlatformUtil.isIOS() ? const Size(375, 812) : const Size(360, 720));
+        : (PLUtil.isIOS() ? const Size(375, 812) : const Size(360, 720));
   }
 
   @override

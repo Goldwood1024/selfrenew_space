@@ -31,7 +31,7 @@ flutter pub run flutter_native_splash:remove
 1. 日常任务、待办
 2. 习惯打卡
 3. 专注
-4. 饮食
+4. 饮食(饮食成分表)
 5. 运动
 6. 睡眠
 7. 记录追踪

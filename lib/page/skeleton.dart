@@ -15,6 +15,6 @@ class _SkeletonState extends State<Skeleton> {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformUtil.isDesktop() ? const DesktopHome() : const MobileHome();
+    return PLUtil.isDesktop() ? const DesktopHome() : const MobileHome();
   }
 }
