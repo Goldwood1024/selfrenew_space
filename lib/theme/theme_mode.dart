@@ -16,11 +16,11 @@ class AppThemeMode {
       appBarOpacity: 1,
       bottomAppBarElevation: 0,
       error: HexColor('#F53F3F'),
-      subThemesData: FlexSubThemesData(
+      subThemesData: const FlexSubThemesData(
         defaultRadius: 8.0,
-        dialogElevation: 2.0,
+        dialogElevation: 0.0,
         appBarCenterTitle: true,
-        navigationBarHeight: 80.0,
+        navigationBarHeight: 180.0,
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(

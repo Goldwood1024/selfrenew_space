@@ -1,7 +1,11 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  ManagerInitialization.runAppBefore();
   handleError(() => runApp(const ManagerProvider(child: MainApp())));
+  ManagerInitialization.runAppAfter();
 }
 
 // 主页配置
