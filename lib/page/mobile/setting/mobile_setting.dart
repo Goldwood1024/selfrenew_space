@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MobileSetting extends StatefulWidget {
   const MobileSetting({super.key});
@@ -10,12 +11,15 @@ class MobileSetting extends StatefulWidget {
 class _MobileSettingState extends State<MobileSetting> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        CupertinoSliverNavigationBar(
-          largeTitle: Text('设置'),
-        ),
-      ],
+    return CupertinoPageScaffold(
+      backgroundColor: Colors.blue,
+      child: CustomScrollView(
+        slivers: [
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('设置'),
+          ),
+        ],
+      ),
     );
   }
 }
