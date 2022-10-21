@@ -1,5 +1,4 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/setting/theme.dart';
 
 class Routers {
   static const String root = "/";
@@ -11,6 +10,7 @@ class Routers {
   static const String habitStatistics = "/habitStatistics";
   static const String focusTimer = "/focusTimer";
   static const String themeSetting = "/themeSetting";
+  static const String notification = "/notification";
 
   static GoRouter router = GoRouter(
     observers: [
@@ -34,6 +34,12 @@ class Routers {
         path: themeSetting,
         builder: (BuildContext context, GoRouterState state) {
           return const ThemeSetting();
+        },
+      ),
+      GoRoute(
+        path: notification,
+        builder: (BuildContext context, GoRouterState state) {
+          return const NotificationSetting();
         },
       ),
     ],

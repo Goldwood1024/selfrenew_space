@@ -28,6 +28,8 @@ export 'package:selfrenew_space/page/desktop/desktop_home.dart';
 export 'package:selfrenew_space/page/mobile/background/scaffold_gradient_background.dart';
 export 'package:selfrenew_space/page/mobile/mobile_home.dart';
 export 'package:selfrenew_space/page/mobile/setting/about.dart';
+export 'package:selfrenew_space/page/mobile/setting/notification.dart';
+export 'package:selfrenew_space/page/mobile/setting/theme.dart';
 export 'package:selfrenew_space/page/skeleton.dart';
 export 'package:selfrenew_space/routers/router.dart';
 export 'package:selfrenew_space/state/manager_provider.dart';

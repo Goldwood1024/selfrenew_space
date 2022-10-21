@@ -46,6 +46,9 @@ class _MobileSettingState extends State<MobileSetting> {
                 color: HexColor('330E85'),
               ),
               title: '通知',
+              onPressed: () {
+                Routers.go(Routers.notification);
+              },
             ),
             SimpleTile(
               leading: Icon(

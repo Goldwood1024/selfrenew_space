@@ -62,6 +62,7 @@ dependencies:
   open_store: ^0.3.1
   url_launcher: ^6.1.6
   mailto: ^2.0.0
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
