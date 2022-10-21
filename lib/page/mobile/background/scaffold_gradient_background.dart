@@ -386,8 +386,8 @@ class ScaffoldGradientBackground extends StatelessWidget {
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               colors: [
-                CupertinoColors.destructiveRed,
-                CupertinoColors.secondarySystemBackground,
+                CupertinoColors.systemGroupedBackground,
+                CupertinoColors.systemGroupedBackground,
               ],
             ),
       ),

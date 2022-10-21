@@ -17,16 +17,16 @@ class SimpleTile extends StatefulWidget {
 
   const SimpleTile({
     super.key,
+    required this.title,
     this.height = 52.0,
-    this.radius = 24.0,
+    this.radius = 8.0,
     this.bottomRadius = false,
     this.topRadius = false,
     this.showArrow = true,
-    this.showDivider = false,
+    this.showDivider = true,
     this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
-    required this.title,
     this.subTitle,
     this.onPressed,
   });
