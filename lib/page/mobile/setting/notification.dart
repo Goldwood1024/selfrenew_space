@@ -38,7 +38,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
         ),
         leadingWidth: SPHelper.gapDp80,
         title: Text(
-          '关于',
+          '通知',
           style: TextStyle(
             fontSize: SPHelper.fontSp20,
             color: Theme.of(context).textTheme.displayLarge?.color,
@@ -63,7 +63,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
                 Icons.vibration,
                 size: SPHelper.settingIconSize,
               ),
-              title: '触觉反馈',
+              title: '震动',
               bottomRadius: true,
               showDivider: false,
               showArrow: false,
