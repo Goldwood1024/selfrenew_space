@@ -59,17 +59,10 @@ class _MobileSettingState extends State<MobileSetting> {
             SPHelper.getHeightBox(SPHelper.gapDp12),
             const SimpleTile(
               leading: Icon(
-                CupertinoIcons.bubble_left_bubble_right,
+                Icons.mail_outline,
                 size: SPHelper.settingIconSize,
               ),
               title: '意见反馈',
-              trailing: Text(
-                '邮件',
-                style: TextStyle(
-                  fontSize: SPHelper.fontSp16,
-                  color: CupertinoColors.systemGrey,
-                ),
-              ),
               topRadius: true,
             ),
             const SimpleTile(

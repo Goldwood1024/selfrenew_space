@@ -51,8 +51,8 @@ class _MobileHomeState extends State<MobileHome>
               selectedIcon: const Icon(Icons.water_drop),
               title: const Text('计划')),
           CustomNavigationBarItem(
-              icon: const Icon(CupertinoIcons.gear),
-              selectedIcon: const Icon(CupertinoIcons.gear_solid),
+              icon: const Icon(CupertinoIcons.shield),
+              selectedIcon: const Icon(CupertinoIcons.shield_fill),
               title: const Text('设置')),
         ],
         currentIndex: _currentIndex,
