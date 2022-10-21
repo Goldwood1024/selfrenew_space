@@ -1,3 +1,4 @@
+import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
@@ -8,14 +9,76 @@ class Habit extends StatefulWidget {
   State<StatefulWidget> createState() => _HabitState();
 }
 
-class _HabitState extends State<Habit> {
+class _HabitState extends State<Habit> with TickerProviderStateMixin {
+  late Animation<double> _animation;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 260),
+    );
+
+    final curvedAnimation =
+        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      floatingActionButton: Container(
-        width: 50,
-        height: 50,
-        color: Colors.blue,
+      floatingActionButton: FloatingActionBubble(
+        items: [
+          Bubble(
+            title: "消灭坏习惯",
+            iconColor: Theme.of(context).primaryColor,
+            bubbleColor: Colors.white,
+            icon: Icons.home,
+            titleStyle: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          Bubble(
+            title: "创建好习惯",
+            iconColor: Theme.of(context).primaryColor,
+            bubbleColor: Colors.white,
+            icon: Icons.home,
+            titleStyle: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+        ],
+        onPress: () {
+          // SmartDialog.show(
+          //   onDismiss: () {
+          //     _animationController.isCompleted
+          //         ? _animationController.reverse()
+          //         : _animationController.forward();
+          //   },
+          //   builder: (_) {
+          //     return Container();
+          //   },
+          // );
+
+          _animationController.isCompleted
+              ? _animationController.reverse()
+              : _animationController.forward();
+        },
+        iconColor: Colors.blue,
+        iconData: Icons.add,
+        backGroundColor: Colors.white,
+        animation: _animation,
       ),
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,

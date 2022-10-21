@@ -64,6 +64,7 @@ dependencies:
   mailto: ^2.0.0
   flutter_switch: ^0.3.2
   flutter_svg: ^1.1.5
+  floating_action_bubble: ^1.1.4
 
 dev_dependencies:
   flutter_test:
