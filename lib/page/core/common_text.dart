@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class AppBarText extends StatelessWidget {
@@ -14,7 +13,8 @@ class AppBarText extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        fontSize: SPHelper.fontSp20,
+        fontSize: SPHelper.fontSp18,
+        fontWeight: FontWeight.w500,
         color: Theme.of(context).textTheme.displayLarge?.color,
       ),
     );

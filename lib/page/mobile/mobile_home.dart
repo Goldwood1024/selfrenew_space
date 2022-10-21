@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/setting/mobile_setting.dart';
 
 class MobileHome extends StatefulWidget {
   const MobileHome({Key? key}) : super(key: key);
@@ -34,6 +33,7 @@ class _MobileHomeState extends State<MobileHome>
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: const [
+          MobileAction(),
           MobileSetting(),
         ],
       ),
@@ -47,9 +47,13 @@ class _MobileHomeState extends State<MobileHome>
         borderRadius: Radius.circular(SPHelper.smallRadius()),
         items: [
           CustomNavigationBarItem(
-            icon: const Icon(CupertinoIcons.gear),
-            selectedIcon: const Icon(CupertinoIcons.gear_solid),
-          ),
+              icon: const Icon(Icons.water_drop),
+              selectedIcon: const Icon(Icons.water_drop),
+              title: const Text('计划')),
+          CustomNavigationBarItem(
+              icon: const Icon(CupertinoIcons.gear),
+              selectedIcon: const Icon(CupertinoIcons.gear_solid),
+              title: const Text('设置')),
         ],
         currentIndex: _currentIndex,
         onTap: (index) {
