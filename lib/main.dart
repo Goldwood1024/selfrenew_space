@@ -1,7 +1,11 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  ManagerInitialization.runAppBefore();
   handleError(() => runApp(const ManagerProvider(child: MainApp())));
+  ManagerInitialization.runAppAfter();
 }
 
 // 主页配置
@@ -35,8 +39,8 @@ class _MainAppState extends State<MainApp> {
             builder: FlutterSmartDialog.init(),
             debugShowCheckedModeBanner: false,
             showPerformanceOverlay: false,
-            // theme: LightTheme.theme(),
-            // darkTheme: DarkTheme.theme(),
+            theme: AppThemeMode.theme(),
+            darkTheme: AppThemeMode.darkTheme(),
             themeMode: ThemeMode.system,
             // 国际化
             supportedLocales: S.delegate.supportedLocales,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/setting/mobile_setting.dart';
 
 class MobileHome extends StatefulWidget {
   const MobileHome({Key? key}) : super(key: key);
@@ -32,51 +33,7 @@ class _MobileHomeState extends State<MobileHome>
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
-        children: [
-          Scaffold(
-            appBar: AppBar(),
-            backgroundColor: CupertinoColors.systemGroupedBackground,
-            body: Container(
-              margin: EdgeInsets.all(8),
-              child: ListView(
-                children: [
-                  SimpleTile(
-                    backgroundColor: Colors.white,
-                    topRadius: true,
-                    bottomRadius: false,
-                    radius: 8,
-                    showDivider: true,
-                    leading: Icon(
-                      Icons.access_time_filled_sharp,
-                      size: 26,
-                    ),
-                    title: '设置',
-                    subTitle: Text(
-                      'dd',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                    trailing: Text(
-                      '11',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  SimpleTile(
-                    backgroundColor: Colors.white,
-                    topRadius: false,
-                    bottomRadius: true,
-                    radius: 8,
-                    // leading: Text('设置'),
-                    title: '22',
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
+        children: [MobileSetting()],
       ),
       bottomNavigationBar: CustomNavigationBar(
         // iconSize: ScreenHelper.sp(SizeHelper.gapDp28),
