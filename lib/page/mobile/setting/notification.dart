@@ -67,7 +67,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
                         SimpleTile(
                           title: '钢琴',
                           showArrow: false,
-                          trailing: Icon(Icons.check),
+                          trailing: Icon(Icons.check_circle_rounded),
                         ),
                         SimpleTile(
                           title: '钢琴',
