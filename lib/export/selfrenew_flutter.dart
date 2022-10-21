@@ -29,6 +29,7 @@ export 'package:selfrenew_space/page/core/common_text.dart';
 export 'package:selfrenew_space/page/core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page/desktop/desktop_home.dart';
 export 'package:selfrenew_space/page/mobile/action/mobile_action.dart';
+export 'package:selfrenew_space/page/mobile/action/mobile_card.dart';
 export 'package:selfrenew_space/page/mobile/background/scaffold_gradient_background.dart';
 export 'package:selfrenew_space/page/mobile/dialog/show_dialog.dart';
 export 'package:selfrenew_space/page/mobile/mobile_home.dart';

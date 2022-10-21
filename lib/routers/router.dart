@@ -1,4 +1,5 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/action/module/habit.dart';
 
 class Routers {
   static const String root = "/";
@@ -11,6 +12,7 @@ class Routers {
   static const String focusTimer = "/focusTimer";
   static const String themeSetting = "/themeSetting";
   static const String notification = "/notification";
+  static const String habit = "/habit";
 
   static GoRouter router = GoRouter(
     observers: [
@@ -40,6 +42,12 @@ class Routers {
         path: notification,
         builder: (BuildContext context, GoRouterState state) {
           return const NotificationSetting();
+        },
+      ),
+      GoRoute(
+        path: habit,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Habit();
         },
       ),
     ],

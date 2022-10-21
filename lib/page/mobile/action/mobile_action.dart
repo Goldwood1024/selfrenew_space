@@ -22,7 +22,18 @@ class _MobileActionState extends State<MobileAction> {
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
         child: ListView(
-          children: [],
+          children: [
+            SPHelper.getDefaultHeightBox(),
+            MobileCard(
+              child: Container(),
+            ),
+            MobileCard(
+              child: Container(),
+            ),
+            MobileCard(
+              child: Container(),
+            ),
+          ],
         ),
       ),
     );

@@ -40,6 +40,45 @@ class BackBtn extends StatelessWidget {
   }
 }
 
+class GoBtn extends StatelessWidget {
+  final String? title;
+  final VoidCallback? onPressed;
+
+  const GoBtn({
+    super.key,
+    this.title,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          title == null
+              ? Container()
+              : Text(
+                  title!,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+          Icon(
+            CupertinoIcons.forward,
+            size: 22,
+            color: Theme.of(context).primaryColor,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ConfirmBtn extends StatelessWidget {
   final String? title;
   final VoidCallback? onPressed;
