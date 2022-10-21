@@ -103,6 +103,7 @@ class _SimpleTileState extends State<SimpleTile> {
                         ),
                         widget.showArrow
                             ? Container(
+                                alignment: Alignment.center,
                                 height: widget.height,
                                 padding: const EdgeInsets.fromLTRB(
                                   0,

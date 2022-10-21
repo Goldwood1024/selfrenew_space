@@ -23,6 +23,12 @@ class Routers {
           return const Skeleton();
         },
       ),
+      GoRoute(
+        path: about,
+        builder: (BuildContext context, GoRouterState state) {
+          return const About();
+        },
+      ),
     ],
   );
 

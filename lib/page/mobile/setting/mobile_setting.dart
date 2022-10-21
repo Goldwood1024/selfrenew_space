@@ -14,14 +14,13 @@ class _MobileSettingState extends State<MobileSetting> {
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
-        title: const Text(
+        title: Text(
           '设置',
           style: TextStyle(
             fontSize: SPHelper.fontSp20,
-            color: Colors.black,
+            color: Theme.of(context).textTheme.displayLarge?.color,
           ),
         ),
-        backgroundColor: Colors.transparent,
       ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
@@ -73,19 +72,29 @@ class _MobileSettingState extends State<MobileSetting> {
             ),
             const SimpleTile(
               leading: Icon(
+                CupertinoIcons.star_circle_fill,
+                size: SPHelper.settingIconSize,
+              ),
+              title: '评分',
+            ),
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.info,
                 size: SPHelper.settingIconSize,
               ),
               title: '关于',
               bottomRadius: true,
               showDivider: false,
-              trailing: Text(
+              trailing: const Text(
                 '1.0.0',
                 style: TextStyle(
                   fontSize: SPHelper.fontSp16,
                   color: CupertinoColors.systemGrey,
                 ),
               ),
+              onPressed: () {
+                Routers.go(Routers.about);
+              },
             ),
           ],
         ),

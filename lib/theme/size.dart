@@ -7,6 +7,7 @@ class SPHelper {
   // 按钮圆角
   static const double btnRadiusSize = 12.0;
   static const double btnIconSize = 24.0;
+  static const double backIconSize = 28.0;
   static const double btnSettingIconSize = 28.0;
   static const double btnFontSize = 16.0;
   static const double btnHeightSize = 42.0;
@@ -68,6 +69,7 @@ class SPHelper {
   static const double gapDp62 = 62;
   static const double gapDp64 = 64;
   static const double gapDp68 = 68;
+  static const double gapDp80 = 80;
   static const double gapDp120 = 120.0;
   static const double gapDp100 = 100.0;
   static const double gapDp124 = 124.0;
@@ -92,6 +94,10 @@ class SPHelper {
   // 竖直间隔
   static Widget getHeightBox(double value) {
     return SizedBox(height: height(value));
+  }
+
+  static Widget getDefaultHeightBox() {
+    return SizedBox(height: height(12));
   }
 
   static double get divider => height(2);

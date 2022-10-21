@@ -33,19 +33,22 @@ class _MobileHomeState extends State<MobileHome>
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
-        children: [MobileSetting()],
+        children: const [
+          MobileSetting(),
+        ],
       ),
       bottomNavigationBar: CustomNavigationBar(
-        // iconSize: ScreenHelper.sp(SizeHelper.gapDp28),
+        iconSize: SPHelper.gapDp28,
         elevation: 0.0,
         scaleCurve: Curves.linear,
         selectedColor: Theme.of(context).primaryColor,
         strokeColor: Colors.transparent,
         backgroundColor: Colors.white,
-        // borderRadius: Radius.circular(ScreenHelper.bigRadius()),
+        borderRadius: Radius.circular(SPHelper.smallRadius()),
         items: [
           CustomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: const Icon(CupertinoIcons.gear),
+            selectedIcon: const Icon(CupertinoIcons.gear_solid),
           ),
         ],
         currentIndex: _currentIndex,
