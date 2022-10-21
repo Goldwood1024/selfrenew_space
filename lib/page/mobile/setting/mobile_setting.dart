@@ -14,12 +14,8 @@ class _MobileSettingState extends State<MobileSetting> {
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
-        title: Text(
-          '设置',
-          style: TextStyle(
-            fontSize: SPHelper.fontSp20,
-            color: Theme.of(context).textTheme.displayLarge?.color,
-          ),
+        title: const AppBarText(
+          title: '设置',
         ),
       ),
       body: Padding(

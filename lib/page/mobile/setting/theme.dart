@@ -36,12 +36,8 @@ class _ThemeSettingState extends State<ThemeSetting> {
             title: '设置',
           ),
           leadingWidth: 80,
-          title: Text(
-            '主题',
-            style: TextStyle(
-              fontSize: SPHelper.fontSp20,
-              color: Theme.of(context).textTheme.displayLarge?.color,
-            ),
+          title: const AppBarText(
+            title: '主题',
           ),
         ),
         body: Padding(

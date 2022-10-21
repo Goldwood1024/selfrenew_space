@@ -28,12 +28,8 @@ class _AboutState extends State<About> {
           },
         ),
         leadingWidth: SPHelper.gapDp80,
-        title: Text(
-          '关于',
-          style: TextStyle(
-            fontSize: SPHelper.fontSp20,
-            color: Theme.of(context).textTheme.displayLarge?.color,
-          ),
+        title: const AppBarText(
+          title: '关于',
         ),
       ),
       body: Padding(

@@ -36,12 +36,8 @@ class _NotificationSettingState extends State<NotificationSetting> {
           },
         ),
         leadingWidth: SPHelper.gapDp80,
-        title: Text(
-          '通知',
-          style: TextStyle(
-            fontSize: SPHelper.fontSp20,
-            color: Theme.of(context).textTheme.displayLarge?.color,
-          ),
+        title: const AppBarText(
+          title: '通知',
         ),
       ),
       body: Padding(
