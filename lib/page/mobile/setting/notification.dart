@@ -59,7 +59,39 @@ class _NotificationSettingState extends State<NotificationSetting> {
               onPressed: () {
                 BottomDialog.showValueSelect(
                   context,
-                  Container(),
+                  Padding(
+                    padding: SPHelper.pagePaddingHorizontal,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: const [
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                        ),
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                          trailing: Icon(Icons.check),
+                        ),
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                        ),
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                        ),
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                        ),
+                        SimpleTile(
+                          title: '钢琴',
+                          showArrow: false,
+                        ),
+                      ],
+                    ),
+                  ),
                   "",
                 );
               },

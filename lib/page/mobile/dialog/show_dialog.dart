@@ -11,6 +11,7 @@ class BottomDialog {
       builder: (_) {
         return Container(
           margin: SPHelper.pagePadding,
+          alignment: Alignment.topCenter,
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
@@ -36,7 +37,7 @@ class BottomDialog {
                 margin: SPHelper.pagePaddingVertical,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: const [
                     CancelBtn(
                       title: '取消',
                     ),
