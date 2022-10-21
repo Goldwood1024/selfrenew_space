@@ -32,8 +32,11 @@ class _ThemeSettingState extends State<ThemeSetting> {
         backgroundColor: CupertinoColors.systemGroupedBackground,
         appBar: AppBar(
           toolbarHeight: SPHelper.appBarHeight(),
-          leading: const BackBtn(
+          leading: BackBtn(
             title: '设置',
+            onPressed: () {
+              Routers.pop();
+            },
           ),
           leadingWidth: 80,
           title: const AppBarText(
