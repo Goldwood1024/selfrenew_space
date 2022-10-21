@@ -71,54 +71,60 @@ class _SimpleTileState extends State<SimpleTile> {
                     ),
               Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    widget.title,
-                                    style: const TextStyle(
-                                      fontSize: 16,
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      widget.title,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  child: widget.subTitle,
-                                )
-                              ],
+                                  Container(
+                                    child: widget.subTitle,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
-                          child: widget.trailing ?? Container(),
-                        ),
-                        widget.showArrow
-                            ? Container(
-                                alignment: Alignment.center,
-                                height: widget.height,
-                                padding: const EdgeInsets.fromLTRB(
-                                  0,
-                                  0,
-                                  12,
-                                  0,
-                                ),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios_sharp,
-                                  size: 18,
-                                  color: CupertinoColors.systemGrey4,
-                                ),
-                              )
-                            : Container(),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                            child: widget.trailing ?? Container(),
+                          ),
+                          widget.showArrow
+                              ? Container(
+                                  alignment: Alignment.center,
+                                  height: widget.height,
+                                  padding: const EdgeInsets.fromLTRB(
+                                    0,
+                                    0,
+                                    12,
+                                    0,
+                                  ),
+                                  child: const Icon(
+                                    Icons.arrow_forward_ios_sharp,
+                                    size: 18,
+                                    color: CupertinoColors.systemGrey4,
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      ),
                     ),
                     widget.showDivider
                         ? const Divider(

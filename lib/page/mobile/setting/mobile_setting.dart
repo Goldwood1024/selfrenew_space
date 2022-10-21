@@ -35,6 +35,9 @@ class _MobileSettingState extends State<MobileSetting> {
               ),
               title: '主题',
               topRadius: true,
+              onPressed: () {
+                Routers.go(Routers.themeSetting);
+              },
             ),
             SimpleTile(
               leading: Icon(
