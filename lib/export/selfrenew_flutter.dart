@@ -24,3 +24,5 @@ export 'package:selfrenew_space/util/handle_error_utils.dart';
 export 'package:selfrenew_space/util/platform.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:statusbarz/statusbarz.dart';
+
+export 'package:selfrenew_space/page/core/tile/simple_tile.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class MobileHome extends StatefulWidget {
@@ -36,18 +35,44 @@ class _MobileHomeState extends State<MobileHome>
         children: [
           Scaffold(
             appBar: AppBar(),
+            backgroundColor: CupertinoColors.systemGroupedBackground,
             body: Container(
-              child: TextButton(
-                onPressed: () {
-                  showCupertinoModalBottomSheet(
-                    expand: true,
-                    context: context,
-                    builder: (_) {
-                      return Container();
-                    },
-                  );
-                },
-                child: Text('23123123'),
+              margin: EdgeInsets.all(8),
+              child: ListView(
+                children: [
+                  SimpleTile(
+                    backgroundColor: Colors.white,
+                    topRadius: true,
+                    bottomRadius: false,
+                    radius: 8,
+                    showDivider: true,
+                    leading: Icon(
+                      Icons.access_time_filled_sharp,
+                      size: 26,
+                    ),
+                    title: '设置',
+                    subTitle: Text(
+                      'dd',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                    trailing: Text(
+                      '11',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  SimpleTile(
+                    backgroundColor: Colors.white,
+                    topRadius: false,
+                    bottomRadius: true,
+                    radius: 8,
+                    // leading: Text('设置'),
+                    title: '22',
+                  ),
+                ],
               ),
             ),
           )

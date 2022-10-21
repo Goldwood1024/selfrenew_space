@@ -55,6 +55,7 @@ dependencies:
   flutter_native_splash: ^2.2.10+1
   easy_sidemenu: ^0.4.0
   side_sheet: ^1.0.3
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
