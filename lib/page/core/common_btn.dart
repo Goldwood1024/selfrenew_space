@@ -39,3 +39,73 @@ class BackBtn extends StatelessWidget {
     );
   }
 }
+
+class ConfirmBtn extends StatelessWidget {
+  final String? title;
+  final VoidCallback? onPressed;
+
+  const ConfirmBtn({
+    super.key,
+    this.title,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 140,
+        height: 40,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(SPHelper.mediumRadius()),
+        ),
+        child: Text(
+          title!,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CancelBtn extends StatelessWidget {
+  final String? title;
+  final VoidCallback? onPressed;
+
+  const CancelBtn({
+    super.key,
+    this.title,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 140,
+        height: 40,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: CupertinoColors.opaqueSeparator,
+          borderRadius: BorderRadius.circular(SPHelper.mediumRadius()),
+        ),
+        child: Text(
+          title!,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}

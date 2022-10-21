@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class NotificationSetting extends StatefulWidget {
@@ -50,13 +49,20 @@ class _NotificationSettingState extends State<NotificationSetting> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            const SimpleTile(
-              leading: Icon(
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.bell,
                 size: SPHelper.settingIconSize,
               ),
               topRadius: true,
               title: '完成提示音',
+              onPressed: () {
+                BottomDialog.showValueSelect(
+                  context,
+                  Container(),
+                  "",
+                );
+              },
             ),
             SimpleTile(
               leading: const Icon(

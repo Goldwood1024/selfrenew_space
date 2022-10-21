@@ -116,6 +116,12 @@ class SPHelper {
     );
   }
 
+  static EdgeInsetsGeometry get pagePaddingVertical {
+    return EdgeInsets.symmetric(
+      vertical: pageVerticalPadding(),
+    );
+  }
+
   /// 页面水平内边距
   static pageHorizontalPadding() => width(12);
 
