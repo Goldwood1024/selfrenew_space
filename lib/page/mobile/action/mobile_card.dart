@@ -23,8 +23,9 @@ class _MobileCardState extends State<MobileCard> {
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Text(
                   '习惯',
                   style: TextStyle(
                     fontSize: 20,
@@ -33,6 +34,9 @@ class _MobileCardState extends State<MobileCard> {
                 ),
                 GoBtn(
                   title: '更多',
+                  onPressed: () {
+                    Routers.go(Routers.habit);
+                  },
                 ),
               ],
             ),
@@ -40,9 +44,8 @@ class _MobileCardState extends State<MobileCard> {
           Container(
             margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              // color: Colors.white,
             ),
-            height: 200,
             child: widget.child,
           ),
         ],

@@ -25,13 +25,75 @@ class _MobileActionState extends State<MobileAction> {
           children: [
             SPHelper.getDefaultHeightBox(),
             MobileCard(
-              child: Container(),
+              child: Container(
+                child: Column(
+                  children: [
+                    HabitTile(
+                      topRadius: true,
+                      title: '冥想',
+                      leading: Icon(Icons.access_time_filled),
+                      trailing: Icon(
+                        Icons.check_circle,
+                        size: 28,
+                      ),
+                    ),
+                    HabitTile(
+                      title: '刷牙',
+                      leading: Icon(Icons.accessible_forward_outlined),
+                      trailing: Icon(
+                        Icons.radio_button_unchecked_rounded,
+                        size: 28,
+                      ),
+                    ),
+                    HabitTile(
+                      title: '俯卧歘',
+                      leading: Icon(Icons.accessible_forward_outlined),
+                      trailing: Icon(
+                        Icons.radio_button_unchecked_rounded,
+                        size: 28,
+                      ),
+                    ),
+                    HabitTile(
+                      title: '喝水',
+                      leading: Icon(Icons.hail),
+                      bottomRadius: true,
+                      trailing: Icon(
+                        Icons.radio_button_unchecked_rounded,
+                        size: 28,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             MobileCard(
-              child: Container(),
-            ),
-            MobileCard(
-              child: Container(),
+              child: Container(
+                child: Column(
+                  children: [
+                    FocusTile(
+                      title: '专注一下',
+                      trailing: Icon(
+                        CupertinoIcons.largecircle_fill_circle,
+                        size: 28,
+                      ),
+                    ),
+                    FocusTile(
+                      title: '读书',
+                      trailing: Icon(
+                        CupertinoIcons.largecircle_fill_circle,
+                        size: 28,
+                      ),
+                    ),
+                    FocusTile(
+                      title: '做题',
+                      trailing: Icon(
+                        CupertinoIcons.largecircle_fill_circle,
+                        size: 28,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
