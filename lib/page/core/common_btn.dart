@@ -29,7 +29,7 @@ class BackBtn extends StatelessWidget {
               : Text(
                   title!,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: SPHelper.sp(SPHelper.gapDp18),
                     fontWeight: FontWeight.w500,
                     color: Theme.of(context).primaryColor,
                   ),
