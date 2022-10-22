@@ -1,19 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class MobileCard extends StatefulWidget {
+class MobileModule extends StatefulWidget {
   final Widget child;
+  final VoidCallback? onPressed;
 
-  const MobileCard({
+  const MobileModule({
     super.key,
     required this.child,
+    required this.onPressed,
   });
 
   @override
-  State<StatefulWidget> createState() => _MobileCardState();
+  State<StatefulWidget> createState() => _MobileModuleState();
 }
 
-class _MobileCardState extends State<MobileCard> {
+class _MobileModuleState extends State<MobileModule> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,9 +36,7 @@ class _MobileCardState extends State<MobileCard> {
                 ),
                 GoBtn(
                   title: '更多',
-                  onPressed: () {
-                    Routers.go(Routers.habit);
-                  },
+                  onPressed: widget.onPressed,
                 ),
               ],
             ),
@@ -44,8 +44,8 @@ class _MobileCardState extends State<MobileCard> {
           Container(
             margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             decoration: const BoxDecoration(
-              // color: Colors.white,
-            ),
+                // color: Colors.white,
+                ),
             child: widget.child,
           ),
         ],

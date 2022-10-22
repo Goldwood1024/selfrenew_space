@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class Habit extends StatefulWidget {
-  const Habit({super.key});
+class FocusHome extends StatefulWidget {
+  const FocusHome({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HabitState();
+  State<StatefulWidget> createState() => _FocusHomeState();
 }
 
-class _HabitState extends State<Habit> with TickerProviderStateMixin {
+class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
 
@@ -45,6 +45,7 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
             ),
             onPress: () {
               _animationController.reverse();
+              Routers.go(Routers.habitSelect);
             },
           ),
           Bubble(
@@ -74,7 +75,7 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
         title: const AppBarText(
-          title: '习惯',
+          title: '专注',
         ),
         actions: [],
       ),

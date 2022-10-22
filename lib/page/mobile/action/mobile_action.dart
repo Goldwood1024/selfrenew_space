@@ -24,7 +24,10 @@ class _MobileActionState extends State<MobileAction> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            MobileCard(
+            MobileModule(
+              onPressed: () {
+                Routers.go(Routers.habit);
+              },
               child: Container(
                 child: Column(
                   children: const [
@@ -66,7 +69,10 @@ class _MobileActionState extends State<MobileAction> {
                 ),
               ),
             ),
-            MobileCard(
+            MobileModule(
+              onPressed: () {
+                Routers.go(Routers.focusHome);
+              },
               child: Container(
                 child: Column(
                   children: const [
