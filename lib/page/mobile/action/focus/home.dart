@@ -35,24 +35,37 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionBubble(
         items: [
           Bubble(
-            title: "消灭坏习惯",
+            title: "番茄钟",
             iconColor: Theme.of(context).primaryColor,
             bubbleColor: Colors.white,
-            icon: CupertinoIcons.nosign,
+            icon: Icons.timer,
             titleStyle: TextStyle(
               fontSize: 16,
               color: Theme.of(context).primaryColor,
             ),
             onPress: () {
               _animationController.reverse();
-              Routers.go(Routers.habitSelect);
+              Routers.go(Routers.focusForm);
             },
           ),
           Bubble(
-            title: "创建好习惯",
+            title: "正计时",
             iconColor: Theme.of(context).primaryColor,
             bubbleColor: Colors.white,
             icon: CupertinoIcons.loop,
+            titleStyle: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPress: () {
+              _animationController.reverse();
+            },
+          ),
+          Bubble(
+            title: "倒计时",
+            iconColor: Theme.of(context).primaryColor,
+            bubbleColor: Colors.white,
+            icon: CupertinoIcons.timer,
             titleStyle: TextStyle(
               fontSize: 16,
               color: Theme.of(context).primaryColor,
@@ -91,7 +104,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
                   Row(
                     children: [
                       const Icon(
-                        Icons.access_time,
+                        Icons.loop,
                         size: 16,
                         color: CupertinoColors.systemGrey2,
                       ),
@@ -123,210 +136,6 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
                 ],
               ),
               topRadius: true,
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
-              ),
-            ),
-            HabitTile(
-              title: '八段锦',
-              subTitle: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
-              ),
-            ),
-            HabitTile(
-              title: '八段锦',
-              subTitle: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
-              ),
-            ),
-            HabitTile(
-              title: '八段锦',
-              subTitle: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
               bottomRadius: true,
               leading: const Icon(
                 Icons.access_time_filled,
@@ -335,26 +144,8 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
               trailing: Row(
                 children: const [
                   Icon(
-                    Icons.check_circle,
+                    Icons.pause_circle_outline,
                   ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
                 ],
               ),
             ),

@@ -1,8 +1,8 @@
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/form/focus_form_card.dart';
-import 'package:selfrenew_space/page/mobile/action/form/focus_form_tile.dart';
+import 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
+import 'package:selfrenew_space/page/mobile/action/focus/focus_form_tile.dart';
 
 class HabitForm extends StatefulWidget {
   const HabitForm({super.key});

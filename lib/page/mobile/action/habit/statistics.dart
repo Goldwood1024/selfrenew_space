@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/form/focus_form_card.dart';
+import 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
 
 import 'statistic_crad.dart';
 
