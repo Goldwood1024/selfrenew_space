@@ -12,14 +12,12 @@ class AppThemeMode {
       useMaterial3ErrorColors: true,
       appBarElevation: 0,
       appBarStyle: FlexAppBarStyle.background,
-      appBarOpacity: 1,
+      appBarOpacity: 0,
       bottomAppBarElevation: 0,
       error: HexColor('#F53F3F'),
       subThemesData: const FlexSubThemesData(
-        defaultRadius: 8.0,
+        defaultRadius: 12.0,
         dialogElevation: 0.0,
-        appBarCenterTitle: true,
-        navigationBarHeight: 180.0,
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
