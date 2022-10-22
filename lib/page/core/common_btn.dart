@@ -68,11 +68,11 @@ class GoBtn extends StatelessWidget {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-          Icon(
-            CupertinoIcons.forward,
-            size: 22,
-            color: Theme.of(context).primaryColor,
-          ),
+          // Icon(
+          //   CupertinoIcons.forward,
+          //   size: 22,
+          //   color: Theme.of(context).primaryColor,
+          // ),
         ],
       ),
     );

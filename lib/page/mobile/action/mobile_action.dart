@@ -26,87 +26,79 @@ class _MobileActionState extends State<MobileAction> {
           children: [
             SPHelper.getDefaultHeightBox(),
             MobileModule(
+              title: '习惯',
               onPressed: () {
                 Routers.go(Routers.habit);
               },
-              child: Container(
-                child: Column(
-                  children: const [
-                    HabitTile(
-                      topRadius: true,
-                      title: '冥想',
-                      leading: Icon(Icons.access_time_filled),
-                      trailing: Icon(
-                        Icons.check_circle,
-                        size: 28,
-                      ),
+              child: Column(
+                children: const [
+                  HabitTile(
+                    topRadius: true,
+                    title: '冥想',
+                    leading: Icon(Icons.access_time_filled),
+                    trailing: Icon(
+                      Icons.check_circle,
+                      size: 28,
                     ),
-                    HabitTile(
-                      title: '刷牙',
-                      leading: Icon(Icons.accessible_forward_outlined),
-                      trailing: Icon(
-                        Icons.radio_button_unchecked_rounded,
-                        size: 28,
-                      ),
+                  ),
+                  HabitTile(
+                    title: '刷牙',
+                    leading: Icon(Icons.accessible_forward_outlined),
+                    trailing: Icon(
+                      Icons.radio_button_unchecked_rounded,
+                      size: 28,
                     ),
-                    HabitTile(
-                      title: '俯卧歘',
-                      leading: Icon(Icons.accessible_forward_outlined),
-                      trailing: Icon(
-                        Icons.radio_button_unchecked_rounded,
-                        size: 28,
-                      ),
+                  ),
+                  HabitTile(
+                    title: '俯卧歘',
+                    leading: Icon(Icons.accessible_forward_outlined),
+                    trailing: Icon(
+                      Icons.radio_button_unchecked_rounded,
+                      size: 28,
                     ),
-                    HabitTile(
-                      title: '喝水',
-                      leading: Icon(Icons.hail),
-                      bottomRadius: true,
-                      trailing: Icon(
-                        Icons.radio_button_unchecked_rounded,
-                        size: 28,
-                      ),
-                    ),
-                  ],
-                ),
+                    bottomRadius: true,
+                  ),
+                ],
               ),
             ),
             MobileModule(
+              title: '专注',
               onPressed: () {
                 Routers.go(Routers.focusHome);
               },
-              child: Container(
-                child: Column(
-                  children: [
-                    FocusTile(
-                      title: '专注一下',
-                      trailing: GestureDetector(
-                        onTap: () {
-                          SmartDialog.show(builder: (_) {
-                            return const FocusTimer();
-                          });
-                        },
-                        child: const Icon(
-                          CupertinoIcons.largecircle_fill_circle,
-                          size: 28,
-                        ),
-                      ),
-                    ),
-                    const FocusTile(
-                      title: '读书',
-                      trailing: Icon(
+              child: Column(
+                children: [
+                  FocusTile(
+                    topRadius: true,
+                    title: '专注一下',
+                    trailing: GestureDetector(
+                      onTap: () {
+                        SmartDialog.show(builder: (_) {
+                          return const FocusTimer();
+                        });
+                      },
+                      child: const Icon(
                         CupertinoIcons.largecircle_fill_circle,
                         size: 28,
                       ),
                     ),
-                    const FocusTile(
-                      title: '做题',
-                      trailing: Icon(
-                        CupertinoIcons.largecircle_fill_circle,
-                        size: 28,
-                      ),
+                  ),
+                  const FocusTile(
+                    title: '读书',
+                    trailing: Icon(
+                      CupertinoIcons.largecircle_fill_circle,
+                      size: 28,
                     ),
-                  ],
-                ),
+                  ),
+                  const FocusTile(
+                    bottomRadius: true,
+                    title: '做题',
+                    trailing: Icon(
+                      CupertinoIcons.largecircle_fill_circle,
+                      size: 28,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

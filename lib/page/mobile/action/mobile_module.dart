@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class MobileModule extends StatefulWidget {
+  final String title;
   final Widget child;
   final VoidCallback? onPressed;
 
   const MobileModule({
     super.key,
+    required this.title,
     required this.child,
     required this.onPressed,
   });
@@ -19,27 +21,32 @@ class _MobileModuleState extends State<MobileModule> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+      margin: EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp32), 0, 0),
       child: Column(
         children: [
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const Text(
-                  '习惯',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.fontSp24),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              GestureDetector(
+                onTap: widget.onPressed,
+                child: Text(
+                  '显示更多',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: SPHelper.sp(SPHelper.fontSp16),
                     fontWeight: FontWeight.w500,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
-                GoBtn(
-                  title: '更多',
-                  onPressed: widget.onPressed,
-                ),
-              ],
-            ),
+              )
+            ],
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),

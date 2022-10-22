@@ -17,7 +17,7 @@ class HabitTile extends StatefulWidget {
     super.key,
     required this.title,
     this.height = 52.0,
-    this.radius = 8.0,
+    this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
     this.backgroundColor = Colors.white,
@@ -59,11 +59,17 @@ class _HabitTileState extends State<HabitTile> {
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               widget.leading == null
                   ? Container()
                   : Container(
-                      padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      padding: EdgeInsets.fromLTRB(
+                          SPHelper.width(SPHelper.gapDp20),
+                          SPHelper.width(SPHelper.gapDp12),
+                          0,
+                          0),
+                      alignment: Alignment.center,
                       child: widget.leading,
                     ),
               Expanded(
@@ -72,7 +78,11 @@ class _HabitTileState extends State<HabitTile> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
+                      padding: EdgeInsets.fromLTRB(
+                          SPHelper.width(SPHelper.gapDp12),
+                          SPHelper.width(SPHelper.gapDp12),
+                          0,
+                          0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -82,21 +92,22 @@ class _HabitTileState extends State<HabitTile> {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 widget.title,
-                                style: const TextStyle(
-                                  fontSize: 16,
+                                style: TextStyle(
+                                  fontSize: SPHelper.sp(SPHelper.fontSp18),
                                 ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                            padding: EdgeInsets.fromLTRB(
+                                0, 0, SPHelper.width(SPHelper.gapDp20), 0),
                             child: widget.trailing ?? Container(),
                           ),
                         ],
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Routers.go(Routers.habitStatistics);
                       },
                       child: Padding(

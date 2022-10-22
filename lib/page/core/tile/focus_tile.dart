@@ -17,7 +17,7 @@ class FocusTile extends StatefulWidget {
     super.key,
     required this.title,
     this.height = 52.0,
-    this.radius = 8.0,
+    this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
     this.backgroundColor = Colors.white,
@@ -62,7 +62,12 @@ class _FocusTileState extends State<FocusTile> {
               widget.leading == null
                   ? Container()
                   : Container(
-                      padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(
+                          SPHelper.width(SPHelper.gapDp20),
+                          SPHelper.width(SPHelper.gapDp12),
+                          0,
+                          0),
+                      alignment: Alignment.center,
                       child: widget.leading,
                     ),
               Expanded(
@@ -77,7 +82,8 @@ class _FocusTileState extends State<FocusTile> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                              padding: EdgeInsets.fromLTRB(
+                                  SPHelper.width(SPHelper.gapDp12), 0, 0, 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,8 +92,10 @@ class _FocusTileState extends State<FocusTile> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       widget.title,
-                                      style: const TextStyle(
-                                        fontSize: 16,
+                                      style: TextStyle(
+                                        fontSize: SPHelper.sp(
+                                          SPHelper.fontSp18,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -99,7 +107,8 @@ class _FocusTileState extends State<FocusTile> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                            padding: EdgeInsets.fromLTRB(
+                                0, 0, SPHelper.width(SPHelper.gapDp20), 0),
                             child: widget.trailing ?? Container(),
                           ),
                         ],
