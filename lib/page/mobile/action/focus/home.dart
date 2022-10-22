@@ -90,6 +90,13 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         title: const AppBarText(
           title: '专注',
         ),
+        leadingWidth: SPHelper.leadingWidth,
+        leading: BackBtn(
+          title: '概览',
+          onPressed: () {
+            Routers.pop();
+          },
+        ),
         actions: [],
       ),
       body: Padding(

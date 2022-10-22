@@ -19,7 +19,7 @@ class SimpleTile extends StatefulWidget {
     super.key,
     required this.title,
     this.height = 52.0,
-    this.radius = 8.0,
+    this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
     this.showArrow = true,

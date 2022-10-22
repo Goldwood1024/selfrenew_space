@@ -77,6 +77,13 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         title: const AppBarText(
           title: '习惯',
         ),
+        leadingWidth: SPHelper.leadingWidth,
+        leading: BackBtn(
+          title: '概览',
+          onPressed: () {
+            Routers.pop();
+          },
+        ),
         actions: [],
       ),
       body: Padding(

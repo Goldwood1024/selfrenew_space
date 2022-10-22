@@ -13,6 +13,7 @@ class SPHelper {
   static const double btnHeightSize = 42.0;
   static const double btnSmallSize = 62.0;
   static const double btnCircularSize = 80.0;
+  static const double leadingWidth = 80.0;
 
   // 专注番茄大小
   static const double tomatoItemSize = 12.0;
