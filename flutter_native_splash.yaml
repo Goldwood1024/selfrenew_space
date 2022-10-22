@@ -1,6 +1,6 @@
 flutter_native_splash:
   color: "#165DFF"
-  fullscreen: true
+  fullscreen: false
 #  branding_mode: top
 #  branding: assets/ios.png
 
