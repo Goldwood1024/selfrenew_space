@@ -44,7 +44,7 @@ class _MobileHomeState extends State<MobileHome>
         selectedColor: Theme.of(context).primaryColor,
         strokeColor: Colors.transparent,
         backgroundColor: Colors.white,
-        borderRadius: Radius.circular(SPHelper.smallRadius()),
+        borderRadius: const Radius.circular(0),
         items: [
           CustomNavigationBarItem(
               icon: const Icon(Icons.water_drop),

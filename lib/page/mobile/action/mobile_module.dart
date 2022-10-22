@@ -49,10 +49,13 @@ class _MobileModuleState extends State<MobileModule> {
             ],
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            decoration: const BoxDecoration(
-                // color: Colors.white,
-                ),
+            margin: EdgeInsets.fromLTRB(
+              0,
+              SPHelper.height(SPHelper.gapDp20),
+              0,
+              0,
+            ),
+            decoration: const BoxDecoration(),
             child: widget.child,
           ),
         ],
