@@ -62,17 +62,6 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
           ),
         ],
         onPress: () {
-          // SmartDialog.show(
-          //   onDismiss: () {
-          //     _animationController.isCompleted
-          //         ? _animationController.reverse()
-          //         : _animationController.forward();
-          //   },
-          //   builder: (_) {
-          //     return Container();
-          //   },
-          // );
-
           _animationController.isCompleted
               ? _animationController.reverse()
               : _animationController.forward();

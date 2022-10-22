@@ -17,7 +17,7 @@ class _MobileActionState extends State<MobileAction> {
         title: const AppBarText(
           title: '行动',
         ),
-        actions: [],
+        actions: const [],
       ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
@@ -27,7 +27,7 @@ class _MobileActionState extends State<MobileAction> {
             MobileCard(
               child: Container(
                 child: Column(
-                  children: [
+                  children: const [
                     HabitTile(
                       topRadius: true,
                       title: '冥想',
@@ -69,7 +69,7 @@ class _MobileActionState extends State<MobileAction> {
             MobileCard(
               child: Container(
                 child: Column(
-                  children: [
+                  children: const [
                     FocusTile(
                       title: '专注一下',
                       trailing: Icon(

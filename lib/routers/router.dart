@@ -1,5 +1,4 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/module/habit.dart';
 
 class Routers {
   static const String root = "/";
@@ -48,6 +47,12 @@ class Routers {
         path: habit,
         builder: (BuildContext context, GoRouterState state) {
           return const Habit();
+        },
+      ),
+      GoRoute(
+        path: habitStatistics,
+        builder: (BuildContext context, GoRouterState state) {
+          return const HabitStatistics();
         },
       ),
     ],

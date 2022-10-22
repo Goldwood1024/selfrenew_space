@@ -95,10 +95,15 @@ class _HabitTileState extends State<HabitTile> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 0, 0, 12),
-                      child: Container(
-                        child: widget.subTitle,
+                    GestureDetector(
+                      onTap: (){
+                        Routers.go(Routers.habitStatistics);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 12),
+                        child: Container(
+                          child: widget.subTitle,
+                        ),
                       ),
                     )
                   ],

@@ -64,6 +64,9 @@ dependencies:
   mailto: ^2.0.0
   flutter_switch: ^0.3.2
   flutter_svg: ^1.1.5
+  readmore: ^2.2.0
+  fl_chart: ^0.55.2
+  auto_size_text_field: ^2.1.0
 
 dev_dependencies:
   flutter_test:
