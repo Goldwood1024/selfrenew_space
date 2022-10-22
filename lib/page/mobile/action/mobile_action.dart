@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/action/focus/timer.dart';
 
 class MobileAction extends StatefulWidget {
   const MobileAction({super.key});
@@ -75,22 +76,29 @@ class _MobileActionState extends State<MobileAction> {
               },
               child: Container(
                 child: Column(
-                  children: const [
+                  children: [
                     FocusTile(
                       title: '专注一下',
-                      trailing: Icon(
-                        CupertinoIcons.largecircle_fill_circle,
-                        size: 28,
+                      trailing: GestureDetector(
+                        onTap: () {
+                          SmartDialog.show(builder: (_) {
+                            return const FocusTimer();
+                          });
+                        },
+                        child: const Icon(
+                          CupertinoIcons.largecircle_fill_circle,
+                          size: 28,
+                        ),
                       ),
                     ),
-                    FocusTile(
+                    const FocusTile(
                       title: '读书',
                       trailing: Icon(
                         CupertinoIcons.largecircle_fill_circle,
                         size: 28,
                       ),
                     ),
-                    FocusTile(
+                    const FocusTile(
                       title: '做题',
                       trailing: Icon(
                         CupertinoIcons.largecircle_fill_circle,

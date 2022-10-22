@@ -19,7 +19,6 @@ export 'package:flutter_switch/flutter_switch.dart';
 export 'package:flutter_vibrate/flutter_vibrate.dart';
 export 'package:go_router/go_router.dart';
 export 'package:logger/logger.dart';
-export 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 export 'package:open_store/open_store.dart';
 export 'package:provider/provider.dart';
 export 'package:readmore/readmore.dart';

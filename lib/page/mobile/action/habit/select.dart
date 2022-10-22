@@ -48,11 +48,11 @@ class _HabitSelectState extends State<HabitSelect> {
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialWithModalsPageRoute(
-                        builder: (context) => const HabitForm(),
-                      ),
-                    );
+                    // Navigator.of(context).push(
+                    //   MaterialWithModalsPageRoute(
+                    //     builder: (context) => const HabitForm(),
+                    //   ),
+                    // );
                   },
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(
