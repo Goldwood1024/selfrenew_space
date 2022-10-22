@@ -26,6 +26,7 @@ export 'package:selfrenew_space/notifications/os_notifications.dart';
 export 'package:selfrenew_space/notifications/sound.dart';
 export 'package:selfrenew_space/page/core/common_btn.dart';
 export 'package:selfrenew_space/page/core/common_text.dart';
+export 'package:selfrenew_space/page/core/floating_action_bubble.dart';
 export 'package:selfrenew_space/page/core/tile/focus_tile.dart';
 export 'package:selfrenew_space/page/core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page/core/tile/simple_tile.dart';

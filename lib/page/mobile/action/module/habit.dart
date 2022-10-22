@@ -1,4 +1,3 @@
-import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
@@ -17,12 +16,15 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 260),
+      duration: const Duration(milliseconds: 300),
     );
 
-    final curvedAnimation =
-        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
-    _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        curve: Curves.easeInOut,
+        parent: _animationController,
+      ),
+    );
 
     super.initState();
   }
@@ -36,7 +38,7 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
             title: "消灭坏习惯",
             iconColor: Theme.of(context).primaryColor,
             bubbleColor: Colors.white,
-            icon: Icons.home,
+            icon: CupertinoIcons.nosign,
             titleStyle: TextStyle(
               fontSize: 16,
               color: Theme.of(context).primaryColor,
@@ -49,7 +51,7 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
             title: "创建好习惯",
             iconColor: Theme.of(context).primaryColor,
             bubbleColor: Colors.white,
-            icon: Icons.home,
+            icon: CupertinoIcons.loop,
             titleStyle: TextStyle(
               fontSize: 16,
               color: Theme.of(context).primaryColor,
@@ -75,9 +77,9 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
               ? _animationController.reverse()
               : _animationController.forward();
         },
-        iconColor: Colors.blue,
+        iconColor: Colors.white,
         iconData: Icons.add,
-        backGroundColor: Colors.white,
+        backGroundColor: Theme.of(context).primaryColor,
         animation: _animation,
       ),
       appBar: AppBar(
@@ -115,7 +117,7 @@ class _HabitState extends State<Habit> with TickerProviderStateMixin {
                   Row(
                     children: [
                       const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
+                        CupertinoIcons.bell,
                         size: 16,
                         color: CupertinoColors.systemGrey2,
                       ),
