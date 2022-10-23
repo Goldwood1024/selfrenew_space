@@ -36,12 +36,12 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         items: [
           Bubble(
             title: "番茄钟",
-            iconColor: Theme.of(context).primaryColor,
-            bubbleColor: Colors.white,
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor,
             icon: Icons.timer,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 16,
-              color: Theme.of(context).primaryColor,
+              color: Colors.white,
             ),
             onPress: () {
               _animationController.reverse();
@@ -50,12 +50,12 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
           ),
           Bubble(
             title: "正计时",
-            iconColor: Theme.of(context).primaryColor,
-            bubbleColor: Colors.white,
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.loop,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 16,
-              color: Theme.of(context).primaryColor,
+              color: Colors.white,
             ),
             onPress: () {
               _animationController.reverse();
@@ -63,12 +63,12 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
           ),
           Bubble(
             title: "倒计时",
-            iconColor: Theme.of(context).primaryColor,
-            bubbleColor: Colors.white,
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.timer,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 16,
-              color: Theme.of(context).primaryColor,
+              color: Colors.white,
             ),
             onPress: () {
               _animationController.reverse();
