@@ -36,12 +36,12 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         items: [
           Bubble(
             title: "消灭坏习惯",
-            iconColor: Theme.of(context).primaryColor,
-            bubbleColor: Colors.white,
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor.withOpacity(0.9),
             icon: CupertinoIcons.nosign,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 16,
-              color: Theme.of(context).primaryColor,
+              color: Colors.white,
             ),
             onPress: () {
               _animationController.reverse();
@@ -50,12 +50,12 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           ),
           Bubble(
             title: "创建好习惯",
-            iconColor: Theme.of(context).primaryColor,
-            bubbleColor: Colors.white,
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor.withOpacity(0.9),
             icon: CupertinoIcons.loop,
-            titleStyle: TextStyle(
+            titleStyle: const TextStyle(
               fontSize: 16,
-              color: Theme.of(context).primaryColor,
+              color: Colors.white,
             ),
             onPress: () {
               _animationController.reverse();

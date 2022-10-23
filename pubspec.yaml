@@ -63,6 +63,8 @@ dependencies:
   readmore: ^2.2.0
   fl_chart: ^0.55.2
   auto_size_text_field: ^2.1.0
+  popover: ^0.2.6+3
+  widget_mask: ^1.0.0+0
   flutter_layout_grid: ^2.0.1
   smart_grid_view_nls: ^0.2.2
 
