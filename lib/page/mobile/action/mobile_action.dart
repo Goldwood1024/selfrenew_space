@@ -1,3 +1,4 @@
+import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
@@ -14,10 +15,13 @@ class _MobileActionState extends State<MobileAction> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      body: NestedScrollView(
+      body: ExtendedNestedScrollView(
+        physics: const BouncingScrollPhysics(),
+        floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             const CupertinoSliverNavigationBar(
+              stretch: true,
               backgroundColor: CupertinoColors.systemGroupedBackground,
               border: Border(
                 bottom: BorderSide(
@@ -25,10 +29,11 @@ class _MobileActionState extends State<MobileAction> {
                   width: 0.0, // 0.0 means one physical pixel
                 ),
               ),
-              leading: SPHelper.empty,
               largeTitle: Text(
                 '概要',
-                style: TextStyle(),
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ),
           ];
@@ -36,8 +41,8 @@ class _MobileActionState extends State<MobileAction> {
         body: Padding(
           padding: SPHelper.pagePaddingHorizontal,
           child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              SPHelper.getDefaultHeightBox(),
               MobileModule(
                 title: '习惯',
                 onPressed: () {

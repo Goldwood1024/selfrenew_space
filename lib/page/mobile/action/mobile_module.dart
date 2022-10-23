@@ -21,7 +21,7 @@ class _MobileModuleState extends State<MobileModule> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp32), 0, 0),
+      // margin: EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp32), 0, 0),
       child: Column(
         children: [
           Row(
