@@ -14,8 +14,7 @@ class HabitForm extends StatefulWidget {
 class _HabitFormState extends State<HabitForm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CupertinoColors.systemGroupedBackground,
+    return ScaffoldGradientBackground(
       appBar: AppBar(
         backgroundColor: CupertinoColors.white,
         title: Text(
@@ -77,6 +76,9 @@ class _HabitFormState extends State<HabitForm> {
                               ),
                             ),
                             GestureDetector(
+                              onTap: (){
+                                Routers.go(Routers.habitIcons);
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                                 child: Column(
@@ -95,9 +97,9 @@ class _HabitFormState extends State<HabitForm> {
                                           SPHelper.smallRadius(),
                                         ),
                                       ),
-                                      child: SvgPicture.asset(
-                                        'assets/icons/chunvzuo.svg',
-                                      ),
+                                      // child: SvgPicture.asset(
+                                      //   'assets/icons/chunvzuo.svg',
+                                      // ),
                                     ),
                                     const Text(
                                       '图标库',

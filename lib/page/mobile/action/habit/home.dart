@@ -37,7 +37,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           Bubble(
             title: "消灭坏习惯",
             iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor.withOpacity(0.9),
+            bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.nosign,
             titleStyle: const TextStyle(
               fontSize: 16,
@@ -51,7 +51,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           Bubble(
             title: "创建好习惯",
             iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor.withOpacity(0.9),
+            bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.loop,
             titleStyle: const TextStyle(
               fontSize: 16,
