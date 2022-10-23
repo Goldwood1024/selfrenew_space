@@ -30,7 +30,7 @@ class _MobileActionState extends State<MobileAction> {
                 ),
               ),
               leading: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+                padding: EdgeInsets.fromLTRB(2, 12, 0, 0),
                 child: Text(
                   '周五',
                   style: TextStyle(

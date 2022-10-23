@@ -125,13 +125,13 @@ class SPHelper {
   }
 
   /// 页面水平内边距
-  static pageHorizontalPadding() => width(12);
+  static pageHorizontalPadding() => width(14);
 
   /// 页面垂直内边距
   static pageVerticalPadding() => width(12);
 
   ///列表item水平内边距
-  static listHorizontalPadding() => width(12);
+  static listHorizontalPadding() => width(14);
 
   ///列表item垂直内边距
   static listVerticalPadding() => width(8);
