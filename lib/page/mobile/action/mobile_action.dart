@@ -20,19 +20,35 @@ class _MobileActionState extends State<MobileAction> {
         floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
-            const CupertinoSliverNavigationBar(
+            CupertinoSliverNavigationBar(
               stretch: true,
               backgroundColor: CupertinoColors.systemGroupedBackground,
-              border: Border(
+              border: const Border(
                 bottom: BorderSide(
                   color: Colors.transparent,
                   width: 0.0, // 0.0 means one physical pixel
                 ),
               ),
-              largeTitle: Text(
+              leading: const Padding(
+                padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+                child: Text(
+                  '周五',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              largeTitle: const Text(
                 '概要',
                 style: TextStyle(
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.more_horiz,
                 ),
               ),
             ),
