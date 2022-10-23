@@ -92,6 +92,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/voice/bells.mp3
+    ## 图标
+    - assets/icons/浴盆.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

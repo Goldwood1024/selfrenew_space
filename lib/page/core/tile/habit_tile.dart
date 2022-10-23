@@ -66,7 +66,7 @@ class _HabitTileState extends State<HabitTile> {
                   : Container(
                       padding: EdgeInsets.fromLTRB(
                           SPHelper.width(SPHelper.gapDp20),
-                          SPHelper.width(SPHelper.gapDp12),
+                          SPHelper.width(SPHelper.gapDp14),
                           0,
                           0),
                       alignment: Alignment.center,

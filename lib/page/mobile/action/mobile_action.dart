@@ -30,7 +30,7 @@ class _MobileActionState extends State<MobileAction> {
                 ),
               ),
               leading: const Padding(
-                padding: EdgeInsets.fromLTRB(2, 12, 0, 0),
+                padding: EdgeInsets.fromLTRB(2, 10, 0, 0),
                 child: Text(
                   '周五',
                   style: TextStyle(
@@ -60,38 +60,45 @@ class _MobileActionState extends State<MobileAction> {
             padding: EdgeInsets.zero,
             children: [
               MobileModule(
-                title: '习惯',
+                title: '日常习惯',
                 onPressed: () {
                   Routers.go(Routers.habit);
                 },
                 child: Column(
-                  children: const [
+                  children: [
                     HabitTile(
                       topRadius: true,
+                      bottomRadius: true,
                       title: '冥想',
-                      leading: Icon(Icons.access_time_filled),
+                      leading: Container(
+                        child: SvgPicture.asset(
+                          'assets/icons/浴盆.svg',
+                          width: 24,
+                          height: 24,
+                        ),
+                      ),
                       trailing: Icon(
                         Icons.check_circle,
                         size: 28,
                       ),
                     ),
-                    HabitTile(
-                      title: '刷牙',
-                      leading: Icon(Icons.accessible_forward_outlined),
-                      trailing: Icon(
-                        Icons.radio_button_unchecked_rounded,
-                        size: 28,
-                      ),
-                    ),
-                    HabitTile(
-                      title: '俯卧歘',
-                      leading: Icon(Icons.accessible_forward_outlined),
-                      trailing: Icon(
-                        Icons.radio_button_unchecked_rounded,
-                        size: 28,
-                      ),
-                      bottomRadius: true,
-                    ),
+                    // HabitTile(
+                    //   title: '刷牙',
+                    //   leading: Icon(Icons.accessible_forward_outlined),
+                    //   trailing: Icon(
+                    //     Icons.radio_button_unchecked_rounded,
+                    //     size: 28,
+                    //   ),
+                    // ),
+                    // HabitTile(
+                    //   title: '俯卧歘',
+                    //   leading: Icon(Icons.accessible_forward_outlined),
+                    //   trailing: Icon(
+                    //     Icons.radio_button_unchecked_rounded,
+                    //     size: 28,
+                    //   ),
+                    //   bottomRadius: true,
+                    // ),
                   ],
                 ),
               ),
