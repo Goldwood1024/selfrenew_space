@@ -9,19 +9,14 @@ class FocusForm extends StatefulWidget {
   State<StatefulWidget> createState() => _FocusFormState();
 }
 
-class _FocusFormState extends State<FocusForm>
-    with SingleTickerProviderStateMixin {
-  late bool selected;
-
+class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    selected = false;
   }
 
   @override
   void dispose() {
-    selected = false;
     super.dispose();
   }
 
@@ -31,8 +26,12 @@ class _FocusFormState extends State<FocusForm>
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
         title: const AppBarText(
+          title: '添加',
+        ),
+        leading: const BackBtn(
           title: '专注',
         ),
+        leadingWidth: 80,
         actions: [],
       ),
       body: Padding(
