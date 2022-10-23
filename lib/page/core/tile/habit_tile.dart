@@ -38,7 +38,6 @@ class _HabitTileState extends State<HabitTile> {
       onTap: widget.onPressed,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        // height: widget.height,
         child: Container(
           decoration: BoxDecoration(
             color: widget.backgroundColor,
@@ -66,7 +65,7 @@ class _HabitTileState extends State<HabitTile> {
                   : Container(
                       padding: EdgeInsets.fromLTRB(
                           SPHelper.width(SPHelper.gapDp20),
-                          SPHelper.width(SPHelper.gapDp14),
+                          SPHelper.width(SPHelper.gapDp16),
                           0,
                           0),
                       alignment: Alignment.center,

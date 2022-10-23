@@ -73,32 +73,15 @@ class _MobileActionState extends State<MobileAction> {
                       leading: Container(
                         child: SvgPicture.asset(
                           'assets/icons/浴盆.svg',
-                          width: 24,
-                          height: 24,
+                          width: 20,
+                          height: 20,
                         ),
                       ),
-                      trailing: Icon(
+                      trailing: const Icon(
                         Icons.check_circle,
                         size: 28,
                       ),
                     ),
-                    // HabitTile(
-                    //   title: '刷牙',
-                    //   leading: Icon(Icons.accessible_forward_outlined),
-                    //   trailing: Icon(
-                    //     Icons.radio_button_unchecked_rounded,
-                    //     size: 28,
-                    //   ),
-                    // ),
-                    // HabitTile(
-                    //   title: '俯卧歘',
-                    //   leading: Icon(Icons.accessible_forward_outlined),
-                    //   trailing: Icon(
-                    //     Icons.radio_button_unchecked_rounded,
-                    //     size: 28,
-                    //   ),
-                    //   bottomRadius: true,
-                    // ),
                   ],
                 ),
               ),
@@ -112,6 +95,13 @@ class _MobileActionState extends State<MobileAction> {
                     FocusTile(
                       topRadius: true,
                       title: '专注一下',
+                      leading: Container(
+                        child: SvgPicture.asset(
+                          'assets/icons/浴盆.svg',
+                          width: 20,
+                          height: 20,
+                        ),
+                      ),
                       trailing: GestureDetector(
                         onTap: () {
                           SmartDialog.show(builder: (_) {

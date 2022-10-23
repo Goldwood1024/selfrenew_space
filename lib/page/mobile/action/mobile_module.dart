@@ -51,7 +51,7 @@ class _MobileModuleState extends State<MobileModule> {
           Container(
             margin: EdgeInsets.fromLTRB(
               0,
-              SPHelper.height(SPHelper.gapDp12),
+              SPHelper.height(SPHelper.gapDp16),
               0,
               0,
             ),

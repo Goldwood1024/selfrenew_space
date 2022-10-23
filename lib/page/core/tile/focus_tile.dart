@@ -64,7 +64,7 @@ class _FocusTileState extends State<FocusTile> {
                   : Container(
                       padding: EdgeInsets.fromLTRB(
                           SPHelper.width(SPHelper.gapDp20),
-                          SPHelper.width(SPHelper.gapDp12),
+                          0,
                           0,
                           0),
                       alignment: Alignment.center,

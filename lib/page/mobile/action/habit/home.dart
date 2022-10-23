@@ -365,6 +365,86 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 ],
               ),
             ),
+            SPHelper.getHeightBox(36),
+            const Text(
+              '已放弃',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: CupertinoColors.systemGrey,
+              ),
+            ),
+            SPHelper.getHeightBox(18),
+            HabitTile(
+              title: '八段锦',
+              subTitle: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.access_time,
+                        size: 16,
+                        color: CupertinoColors.systemGrey2,
+                      ),
+                      SPHelper.getWidthBox(8),
+                      const Text(
+                        '每天',
+                        style: TextStyle(
+                          color: CupertinoColors.systemGrey2,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        CupertinoIcons.arrow_2_circlepath,
+                        size: 16,
+                        color: CupertinoColors.systemGrey2,
+                      ),
+                      SPHelper.getWidthBox(8),
+                      const Text(
+                        '08:00',
+                        style: TextStyle(
+                          color: CupertinoColors.systemGrey2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              bottomRadius: true,
+              topRadius: true,
+              leading: const Icon(
+                Icons.access_time_filled,
+                size: 28,
+              ),
+              trailing: Row(
+                children: const [
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  ),
+                  Icon(
+                    Icons.check_circle,
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
