@@ -17,15 +17,30 @@ class _HabitFormState extends State<HabitForm> {
     return Scaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       appBar: AppBar(
-          backgroundColor: CupertinoColors.white,
-          title: Text(
-            '333',
-            style: TextStyle(
-              color: Theme.of(context).textTheme.displayLarge?.color,
-              fontSize: 18,
-            ),
+        backgroundColor: CupertinoColors.white,
+        title: Text(
+          '添加习惯',
+          style: TextStyle(
+            color: Theme.of(context).textTheme.displayLarge?.color,
+            fontSize: 18,
           ),
-          actions: []),
+        ),
+        leading: const BackBtn(
+          title: '习惯库',
+        ),
+        leadingWidth: 98,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              '保存',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          )
+        ],
+      ),
       body: Scaffold(
         backgroundColor: CupertinoColors.systemGroupedBackground,
         body: GestureDetector(
@@ -168,90 +183,6 @@ class _HabitFormState extends State<HabitForm> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(0, 12, 0, 32),
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.fromLTRB(
-                              20,
-                              0,
-                              20,
-                              0,
-                            ),
-                            width: 80,
-                            height: SPHelper.height(52),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                SPHelper.smallRadius(),
-                              ),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  Icons.arrow_back,
-                                  size: 28,
-                                  color: CupertinoColors.white,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(child: Container()),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            padding: const EdgeInsets.fromLTRB(
-                              20,
-                              0,
-                              20,
-                              0,
-                            ),
-                            width: 180,
-                            height: SPHelper.height(52),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(
-                                SPHelper.smallRadius(),
-                              ),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  '保存',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: CupertinoColors.white,
-                                  ),
-                                ),
-                                // Icon(
-                                //   Icons.arrow_forward_outlined,
-                                //   size: 28,
-                                //   color: CupertinoColors.white,
-                                // )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
               ],
             ),
           ),

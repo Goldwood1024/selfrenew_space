@@ -1,6 +1,7 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 import 'package:selfrenew_space/page/mobile/action/focus/form.dart';
 import 'package:selfrenew_space/page/mobile/action/focus/home.dart';
+import 'package:selfrenew_space/page/mobile/action/habit/form.dart';
 import 'package:selfrenew_space/page/mobile/action/habit/select.dart';
 
 class Routers {
@@ -15,6 +16,7 @@ class Routers {
   static const String themeSetting = "/themeSetting";
   static const String notification = "/notification";
   static const String habit = "/habit";
+  static const String habitForm = "/habitForm";
   static const String habitSelect = "/habitSelect";
   static const String focusHome = "/focusHome";
   static const String focusForm = "/FocusForm";
@@ -65,6 +67,12 @@ class Routers {
         path: habitSelect,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitSelect();
+        },
+      ),
+      GoRoute(
+        path: habitForm,
+        builder: (BuildContext context, GoRouterState state) {
+          return const HabitForm();
         },
       ),
       GoRoute(

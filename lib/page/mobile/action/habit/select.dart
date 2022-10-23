@@ -96,7 +96,9 @@ class _HabitSelectState extends State<HabitSelect> {
                     margin: const EdgeInsets.fromLTRB(0, 12, 0, 32),
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Routers.go(Routers.habitForm);
+                      },
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(
                           20,
