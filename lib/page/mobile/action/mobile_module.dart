@@ -31,7 +31,7 @@ class _MobileModuleState extends State<MobileModule> {
               Text(
                 widget.title,
                 style: TextStyle(
-                  fontSize: SPHelper.sp(SPHelper.fontSp24),
+                  fontSize: SPHelper.sp(SPHelper.fontSp22),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -51,7 +51,7 @@ class _MobileModuleState extends State<MobileModule> {
           Container(
             margin: EdgeInsets.fromLTRB(
               0,
-              SPHelper.height(SPHelper.gapDp16),
+              SPHelper.height(SPHelper.gapDp14),
               0,
               0,
             ),

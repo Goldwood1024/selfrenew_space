@@ -44,6 +44,7 @@ class SPHelper {
 
   // 过渡大小
   static const double fontSp24 = 24.0;
+  static const double fontSp22 = 22.0;
   static const double fontSp20 = 20.0;
   static const double fontSp17 = 17.0;
 

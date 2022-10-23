@@ -84,7 +84,14 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             Routers.pop();
           },
         ),
-        actions: [],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.settings_suggest,
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
