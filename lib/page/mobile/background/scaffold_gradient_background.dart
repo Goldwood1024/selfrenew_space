@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class ScaffoldGradientBackground extends StatelessWidget {
   /// The gradient that you wanna put as the background color of scaffold
@@ -382,12 +383,13 @@ class ScaffoldGradientBackground extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: gradient ??
-            const LinearGradient(
+             LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               colors: [
-                CupertinoColors.systemGroupedBackground,
-                CupertinoColors.systemGroupedBackground,
+                CupertinoColors.white,
+                // CupertinoColors.systemGroupedBackground,
+                HexColor('#F1F1F1')
               ],
             ),
       ),
