@@ -1,6 +1,7 @@
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import 'focus/timer.dart';
 
@@ -12,6 +13,14 @@ class MobileAction extends StatefulWidget {
 }
 
 class _MobileActionState extends State<MobileAction> {
+  double i = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    i = 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
@@ -75,9 +84,38 @@ class _MobileActionState extends State<MobileAction> {
                           height: 20,
                         ),
                       ),
-                      trailing: const Icon(
-                        Icons.check_circle,
-                        size: 28,
+                      // trailing: const Icon(
+                      //   Icons.check_circle,
+                      //   size: 28,
+                      // ),
+                      trailing: GestureDetector(
+                        onTap: () {},
+                        child: SleekCircularSlider(
+                          appearance: CircularSliderAppearance(
+                            size: 26,
+                            spinnerMode: true,
+                            counterClockwise: true,
+                            animationEnabled: false,
+                            startAngle: 0,
+                            angleRange: 270,
+                            customColors: CustomSliderColors(
+                              dotColor: Colors.transparent,
+                              hideShadow: true,
+                              dynamicGradient: false,
+                            ),
+                            customWidths: CustomSliderWidths(
+                              trackWidth: 3,
+                              progressBarWidth: 3,
+                              handlerSize: 0,
+                            ),
+                          ),
+                          min: 0,
+                          max: 10,
+                          initialValue: 2,
+                          innerWidget: (_) {
+                            return SPHelper.empty;
+                          },
+                        ),
                       ),
                     ),
                   ],
