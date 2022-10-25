@@ -143,29 +143,16 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 size: 28,
               ),
               trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
+                children: List.generate(
+                  7,
+                  (index) => SleekCounter(
+                    min: 0,
+                    max: 10,
+                    sm: true,
+                    value: 11,
+                    fail: false,
                   ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
+                ),
               ),
             ),
             SPHelper.getHeightBox(2),
@@ -214,171 +201,16 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 size: 28,
               ),
               trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
+                children: List.generate(
+                  7,
+                  (index) => SleekCounter(
+                    min: 0,
+                    max: 10,
+                    sm: true,
+                    value: 1,
+                    fail: false,
                   ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
-              ),
-            ),
-            SPHelper.getHeightBox(2),
-            HabitTile(
-              title: '八段锦',
-              topRadius: true,
-              bottomRadius: true,
-              subTitle: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
-              ),
-            ),
-            SPHelper.getHeightBox(2),
-            HabitTile(
-              title: '八段锦',
-              topRadius: true,
-              bottomRadius: true,
-              subTitle: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
+                ),
               ),
             ),
             SPHelper.getHeightBox(36),
