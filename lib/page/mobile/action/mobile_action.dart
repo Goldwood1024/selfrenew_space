@@ -132,7 +132,16 @@ class _MobileActionState extends State<MobileAction> {
                           });
                         },
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            SmartDialog.show(
+                              alignment: Alignment.bottomCenter,
+                              keepSingle: true,
+                              useAnimation: true,
+                              builder: (_) {
+                                return const FocusTimer();
+                              },
+                            );
+                          },
                           behavior: HitTestBehavior.translucent,
                           child: Icon(
                             CupertinoIcons.play_circle_fill,
