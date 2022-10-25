@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
@@ -24,13 +26,13 @@ class AppThemeMode {
           fontSize: 56.0,
           fontWeight: FontWeight.w400,
           color: Color.fromRGBO(28, 37, 32, 1), // 1C2520
-          // fontFeatures: [FontFeature.tabularFigures()],
+          fontFeatures: [FontFeature.tabularFigures()],
         ),
         labelSmall: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16,
           color: Color.fromRGBO(28, 37, 32, 1), // 1C2520
-          // fontFeatures: [FontFeature.tabularFigures()],
+          fontFeatures: [FontFeature.tabularFigures()],
         ),
         displayMedium: TextStyle(),
       ),

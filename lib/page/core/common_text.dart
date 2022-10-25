@@ -14,7 +14,7 @@ class AppBarText extends StatelessWidget {
       title,
       style: TextStyle(
         fontSize: SPHelper.sp(SPHelper.fontSp18),
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: Theme.of(context).textTheme.displayLarge?.color,
       ),
     );

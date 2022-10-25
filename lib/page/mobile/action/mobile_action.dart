@@ -16,26 +16,24 @@ class _MobileActionState extends State<MobileAction> {
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
       body: ExtendedNestedScrollView(
-        physics: const BouncingScrollPhysics(),
-        floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             CupertinoSliverNavigationBar(
               stretch: true,
-              backgroundColor: CupertinoColors.systemGroupedBackground,
               border: const Border(
                 bottom: BorderSide(
                   color: Colors.transparent,
                   width: 0.0, // 0.0 means one physical pixel
                 ),
               ),
-              leading: const Padding(
-                padding: EdgeInsets.fromLTRB(2, 10, 0, 0),
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(18, 10, 0, 0),
                 child: Text(
-                  '周五',
+                  '星期五',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),

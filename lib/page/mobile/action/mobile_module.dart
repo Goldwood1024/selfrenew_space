@@ -21,7 +21,7 @@ class _MobileModuleState extends State<MobileModule> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp18), 0, 0),
+      margin: EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp24), 0, 0),
       child: Column(
         children: [
           Row(
@@ -38,7 +38,7 @@ class _MobileModuleState extends State<MobileModule> {
                 child: Text(
                   widget.title,
                   style: TextStyle(
-                    fontSize: SPHelper.sp(SPHelper.fontSp20),
+                    fontSize: SPHelper.sp(SPHelper.fontSp18),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -59,7 +59,7 @@ class _MobileModuleState extends State<MobileModule> {
           Container(
             margin: EdgeInsets.fromLTRB(
               0,
-              SPHelper.height(SPHelper.gapDp14),
+              SPHelper.height(SPHelper.gapDp12),
               0,
               0,
             ),
