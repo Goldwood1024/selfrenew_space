@@ -91,7 +91,10 @@ class _HabitTileState extends State<HabitTile> {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 widget.title,
+                                // softWrap: true,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
                                   fontSize: SPHelper.sp(SPHelper.fontSp18),
                                 ),
                               ),
@@ -110,7 +113,12 @@ class _HabitTileState extends State<HabitTile> {
                         Routers.go(Routers.habitStatistics);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 12),
+                        padding: EdgeInsets.fromLTRB(
+                          SPHelper.width(SPHelper.gapDp12),
+                          0,
+                          0,
+                          SPHelper.width(SPHelper.gapDp12),
+                        ),
                         child: Container(
                           child: widget.subTitle,
                         ),

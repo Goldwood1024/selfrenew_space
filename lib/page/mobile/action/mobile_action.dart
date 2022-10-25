@@ -28,11 +28,12 @@ class _MobileActionState extends State<MobileAction> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             CupertinoSliverNavigationBar(
-              stretch: true,
+              brightness: Brightness.light,
+              backgroundColor: Colors.transparent,
               border: const Border(
                 bottom: BorderSide(
                   color: Colors.transparent,
-                  width: 0.0, // 0.0 means one physical pixel
+                  width: 0.0,
                 ),
               ),
               leading: Padding(

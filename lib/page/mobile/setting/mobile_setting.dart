@@ -17,11 +17,12 @@ class _MobileSettingState extends State<MobileSetting> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             const CupertinoSliverNavigationBar(
-              stretch: true,
+              brightness: Brightness.light,
+              backgroundColor: Colors.transparent,
               border: Border(
                 bottom: BorderSide(
                   color: Colors.transparent,
-                  width: 0.0, // 0.0 means one physical pixel
+                  width: 0.0,
                 ),
               ),
               largeTitle: Text(

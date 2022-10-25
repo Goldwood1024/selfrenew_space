@@ -87,7 +87,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.settings_suggest,
             ),
           )
@@ -99,37 +99,43 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           children: [
             SPHelper.getDefaultHeightBox(),
             HabitTile(
-              title: '八段锦',
+              title: '八段锦八段锦',
               subTitle: Column(
                 children: [
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.timer,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '每天',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        CupertinoIcons.bell,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.app_badge,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '08:00',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
@@ -157,45 +163,51 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             ),
             SPHelper.getHeightBox(8),
             HabitTile(
-              title: '八段锦',
-              topRadius: true,
-              bottomRadius: true,
+              title: '八段锦八段锦',
               subTitle: Column(
                 children: [
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.timer,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '每天',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.app_badge,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '08:00',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
+              topRadius: true,
+              bottomRadius: true,
               leading: const Icon(
                 Icons.access_time_filled,
                 size: 28,
@@ -203,11 +215,11 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
               trailing: Row(
                 children: List.generate(
                   7,
-                  (index) => SleekCounter(
+                  (index) => const SleekCounter(
                     min: 0,
                     max: 10,
                     sm: true,
-                    value: 1,
+                    value: 7,
                     fail: false,
                   ),
                 ),
@@ -224,45 +236,51 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             ),
             SPHelper.getHeightBox(SPHelper.gapDp12),
             HabitTile(
-              title: '八段锦',
+              title: '八段锦八段锦',
               subTitle: Column(
                 children: [
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.access_time,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.timer,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '每天',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        CupertinoIcons.arrow_2_circlepath,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.app_badge,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '08:00',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              bottomRadius: true,
               topRadius: true,
+              bottomRadius: true,
               leading: const Icon(
                 Icons.access_time_filled,
                 size: 28,
@@ -274,9 +292,9 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                     min: 0,
                     max: 10,
                     sm: true,
-                    value: 1,
-                    abandon: true,
+                    value: 7,
                     fail: false,
+                    abandon: true,
                   ),
                 ),
               ),
