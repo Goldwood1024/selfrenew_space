@@ -28,11 +28,19 @@ class _MobileModuleState extends State<MobileModule> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                widget.title,
-                style: TextStyle(
-                  fontSize: SPHelper.sp(SPHelper.fontSp22),
-                  fontWeight: FontWeight.w500,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                  SPHelper.height(SPHelper.gapDp18),
+                  0,
+                  0,
+                  0,
+                ),
+                child: Text(
+                  widget.title,
+                  style: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.fontSp20),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               GestureDetector(
