@@ -85,7 +85,7 @@ class _MobileActionState extends State<MobileAction> {
                       trailing: const SleekCounter(
                         min: 0,
                         max: 10,
-                        value: 1,
+                        value: 2,
                         fail: false,
                       ),
                     ),
@@ -99,8 +99,8 @@ class _MobileActionState extends State<MobileAction> {
                       ),
                       trailing: const SleekCounter(
                         min: 0,
-                        max: 2,
-                        value: 10,
+                        max: 10,
+                        value: 22,
                         fail: false,
                       ),
                     ),

@@ -89,10 +89,10 @@ class _SleekCounterState extends State<SleekCounter> {
                           ),
                         ),
                         CircularPercentIndicator(
-                          radius: widget.sm ? 12 : 14,
+                          radius: widget.sm ? 12 : 13.4,
                           animation: true,
                           lineWidth: 3,
-                          backgroundWidth: 2,
+                          backgroundWidth: 3,
                           backgroundColor: CupertinoColors.systemGrey4,
                           percent: data,
                           circularStrokeCap: CircularStrokeCap.round,
