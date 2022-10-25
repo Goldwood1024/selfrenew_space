@@ -237,6 +237,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             SPHelper.getHeightBox(SPHelper.gapDp12),
             HabitTile(
               title: '八段锦八段锦',
+              abandon: true,
               subTitle: Column(
                 children: [
                   SPHelper.getHeightBox(SPHelper.gapDp4),

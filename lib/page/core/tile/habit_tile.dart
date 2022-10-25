@@ -12,6 +12,7 @@ class HabitTile extends StatefulWidget {
   final Widget? subTitle;
   final Widget? trailing;
   final VoidCallback? onPressed;
+  final bool abandon;
 
   const HabitTile({
     super.key,
@@ -20,6 +21,7 @@ class HabitTile extends StatefulWidget {
     this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
+    this.abandon = false,
     this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
@@ -94,7 +96,9 @@ class _HabitTileState extends State<HabitTile> {
                                 // softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  decoration: TextDecoration.lineThrough,
+                                  decoration: widget.abandon
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
                                   fontSize: SPHelper.sp(SPHelper.fontSp18),
                                 ),
                               ),
