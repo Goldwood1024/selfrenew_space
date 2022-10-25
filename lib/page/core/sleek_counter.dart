@@ -7,6 +7,7 @@ class SleekCounter extends StatefulWidget {
   final double value;
   final bool fail;
   final bool sm;
+  final bool abandon;
 
   const SleekCounter({
     super.key,
@@ -15,6 +16,7 @@ class SleekCounter extends StatefulWidget {
     this.value = 1,
     this.fail = false,
     this.sm = false,
+    this.abandon = false,
   });
 
   @override
@@ -36,6 +38,10 @@ class _SleekCounterState extends State<SleekCounter> {
         behavior: HitTestBehavior.translucent,
         onTap: () {
           setState(() {
+            if (widget.abandon) {
+              return;
+            }
+
             if (data < 1) {
               data += 0.1;
             }
@@ -66,7 +72,9 @@ class _SleekCounterState extends State<SleekCounter> {
                         child: Icon(
                           CupertinoIcons.checkmark_circle_fill,
                           size: widget.sm ? 26 : 30,
-                          color: Theme.of(context).primaryColor,
+                          color: widget.abandon
+                              ? CupertinoColors.black.withOpacity(0.5)
+                              : Theme.of(context).primaryColor,
                         ),
                       )
                     : Stack(
@@ -88,7 +96,9 @@ class _SleekCounterState extends State<SleekCounter> {
                             backgroundColor: CupertinoColors.systemGrey4,
                             percent: data,
                             circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: Theme.of(context).primaryColor,
+                            progressColor: widget.abandon
+                                ? CupertinoColors.black.withOpacity(0.5)
+                                : Theme.of(context).primaryColor,
                           )
                         ],
                       )),

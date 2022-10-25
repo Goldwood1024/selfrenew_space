@@ -145,7 +145,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
               trailing: Row(
                 children: List.generate(
                   7,
-                  (index) => SleekCounter(
+                  (index) => const SleekCounter(
                     min: 0,
                     max: 10,
                     sm: true,
@@ -155,7 +155,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            SPHelper.getHeightBox(2),
+            SPHelper.getHeightBox(8),
             HabitTile(
               title: '八段锦',
               topRadius: true,
@@ -222,7 +222,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 color: CupertinoColors.systemGrey,
               ),
             ),
-            SPHelper.getHeightBox(18),
+            SPHelper.getHeightBox(SPHelper.gapDp12),
             HabitTile(
               title: '八段锦',
               subTitle: Column(
@@ -268,29 +268,17 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 size: 28,
               ),
               trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.check_circle,
+                children: List.generate(
+                  7,
+                  (index) => const SleekCounter(
+                    min: 0,
+                    max: 10,
+                    sm: true,
+                    value: 1,
+                    abandon: true,
+                    fail: false,
                   ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  ),
-                  Icon(
-                    Icons.check_circle,
-                  )
-                ],
+                ),
               ),
             ),
           ],
