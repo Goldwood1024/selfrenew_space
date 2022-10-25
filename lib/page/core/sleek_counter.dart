@@ -63,14 +63,28 @@ class _SleekCounterState extends State<SleekCounter> {
                       color: Theme.of(context).primaryColor,
                     ),
                   )
-                : CircularPercentIndicator(
-                    radius: 14,
-                    backgroundWidth: 3,
-                    animation: true,
-                    lineWidth: 3,
-                    percent: data,
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: Theme.of(context).primaryColor,
+                : Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      const Text(
+                        '日',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                          color: CupertinoColors.systemGrey4,
+                        ),
+                      ),
+                      CircularPercentIndicator(
+                        radius: 14,
+                        animation: true,
+                        lineWidth: 3,
+                        backgroundWidth: 2,
+                        backgroundColor: CupertinoColors.systemGrey4,
+                        percent: data,
+                        circularStrokeCap: CircularStrokeCap.round,
+                        progressColor: Theme.of(context).primaryColor,
+                      )
+                    ],
                   )),
       ),
     );
