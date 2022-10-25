@@ -1,7 +1,7 @@
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:selfrenew_space/page/core/sleek_counter.dart';
 
 import 'focus/timer.dart';
 
@@ -75,47 +75,32 @@ class _MobileActionState extends State<MobileAction> {
                   children: [
                     HabitTile(
                       topRadius: true,
-                      bottomRadius: true,
-                      title: '冥想',
-                      leading: Container(
-                        child: SvgPicture.asset(
-                          'assets/icons/浴盆.svg',
-                          width: 20,
-                          height: 20,
-                        ),
+                      title: '冥想22333',
+                      leading: SvgPicture.asset(
+                        'assets/icons/浴盆.svg',
+                        width: 24,
+                        height: 24,
                       ),
-                      // trailing: const Icon(
-                      //   Icons.check_circle,
-                      //   size: 28,
-                      // ),
-                      trailing: GestureDetector(
-                        onTap: () {},
-                        child: SleekCircularSlider(
-                          appearance: CircularSliderAppearance(
-                            size: 26,
-                            spinnerMode: true,
-                            counterClockwise: true,
-                            animationEnabled: false,
-                            startAngle: 0,
-                            angleRange: 270,
-                            customColors: CustomSliderColors(
-                              dotColor: Colors.transparent,
-                              hideShadow: true,
-                              dynamicGradient: false,
-                            ),
-                            customWidths: CustomSliderWidths(
-                              trackWidth: 3,
-                              progressBarWidth: 3,
-                              handlerSize: 0,
-                            ),
-                          ),
-                          min: 0,
-                          max: 10,
-                          initialValue: 2,
-                          innerWidget: (_) {
-                            return SPHelper.empty;
-                          },
-                        ),
+                      trailing: const SleekCounter(
+                        min: 0,
+                        max: 10,
+                        value: 10,
+                        fail: false,
+                      ),
+                    ),
+                    HabitTile(
+                      bottomRadius: true,
+                      title: '喝一杯水',
+                      leading: SvgPicture.asset(
+                        'assets/icons/浴盆.svg',
+                        width: 24,
+                        height: 24,
+                      ),
+                      trailing: const SleekCounter(
+                        min: 0,
+                        max: 2,
+                        value: 10,
+                        fail: false,
                       ),
                     ),
                   ],

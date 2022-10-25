@@ -41,6 +41,7 @@ class _HabitSelectState extends State<HabitSelect> {
                     40,
                     (index) => Card(
                       child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
                         onTap: () {
                           Routers.go(Routers.habitForm);
                         },

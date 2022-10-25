@@ -20,6 +20,7 @@ export 'package:flutter_vibrate/flutter_vibrate.dart';
 export 'package:go_router/go_router.dart';
 export 'package:logger/logger.dart';
 export 'package:open_store/open_store.dart';
+export 'package:percent_indicator/percent_indicator.dart';
 export 'package:provider/provider.dart';
 export 'package:readmore/readmore.dart';
 export 'package:selfrenew_space/generated/l10n.dart';
