@@ -116,12 +116,13 @@ class _MobileActionState extends State<MobileAction> {
                   children: [
                     FocusTile(
                       topRadius: true,
+                      bottomRadius: true,
                       title: '专注一下',
                       leading: Container(
                         child: SvgPicture.asset(
                           'assets/icons/浴盆.svg',
-                          width: 20,
-                          height: 20,
+                          width: 24,
+                          height: 24,
                         ),
                       ),
                       trailing: GestureDetector(
@@ -130,25 +131,15 @@ class _MobileActionState extends State<MobileAction> {
                             return const FocusTimer();
                           });
                         },
-                        child: const Icon(
-                          CupertinoIcons.largecircle_fill_circle,
-                          size: 28,
+                        child: GestureDetector(
+                          onTap: () {},
+                          behavior: HitTestBehavior.translucent,
+                          child: Icon(
+                            CupertinoIcons.play_circle_fill,
+                            size: 30,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
-                      ),
-                    ),
-                    const FocusTile(
-                      title: '读书',
-                      trailing: Icon(
-                        CupertinoIcons.largecircle_fill_circle,
-                        size: 28,
-                      ),
-                    ),
-                    const FocusTile(
-                      bottomRadius: true,
-                      title: '做题',
-                      trailing: Icon(
-                        CupertinoIcons.largecircle_fill_circle,
-                        size: 28,
                       ),
                     ),
                   ],
