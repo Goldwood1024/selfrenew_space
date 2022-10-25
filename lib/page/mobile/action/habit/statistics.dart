@@ -88,268 +88,254 @@ class _HabitStatistics extends State<HabitStatistics> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      gradient: LinearGradient(
-        begin: Alignment.bottomLeft,
-        end: Alignment.topRight,
-        colors: [
-          HexColor('EEF2ED'),
-          HexColor('E5EAE8'),
-        ],
-      ),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        toolbarHeight: SPHelper.appBarHeight(),
-        leading: IconButton(
-          splashColor: Colors.transparent,
-          focusColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          onPressed: () {
-            Routers.pop();
-          },
-          icon: const Icon(CupertinoIcons.back),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          toolbarHeight: SPHelper.appBarHeight(),
+          leading: BackBtn(
+            title: '习惯',
+            onPressed: () {
+              Routers.pop();
+            },
+          ),
+          leadingWidth: 80,
+          title: Text(
+            '喝水',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: SPHelper.appBarFontSize,
+              color: Theme.of(context).textTheme.displayLarge?.color,
+            ),
+          ),
+          actions: [],
         ),
-        title: Text(
-          '33',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: SPHelper.appBarFontSize,
-            color: Theme.of(context).textTheme.displayLarge?.color,
-          ),
-        ),
-        actions: [],
-      ),
-      body: ListView(
-        children: [
-          FocusFormCard(
-            title: '健身',
-            fontWeight: FontWeight.w500,
-            child: Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const StatisticCard(
-                        icon: Icons.timelapse_rounded,
-                        iconColor: Color(0xFF17987b),
-                        title: '10000',
-                        description: '专注总时长(分钟)',
-                      ),
-                      SPHelper.getWidthBox(
-                          SPHelper.pageHorizontalPadding()),
-                      const StatisticCard(
-                        icon: Icons.bubble_chart,
-                        iconColor: Color(0xFFea0107),
-                        title: '300',
-                        description: '今日专注(分钟)',
-                      ),
-                    ],
-                  ),
-                  SPHelper.getHeightBox(
-                      SPHelper.pageHorizontalPadding()),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const StatisticCard(
-                        icon: Icons.restart_alt,
-                        iconColor: Colors.blueAccent,
-                        title: '2000',
-                        description: '完成番茄',
-                      ),
-                      SPHelper.getWidthBox(
-                          SPHelper.pageHorizontalPadding()),
-                      const StatisticCard(
-                        icon: Icons.local_fire_department_sharp,
-                        iconColor: Color(0xFFb87d46),
-                        title: '2020.10.01',
-                        description: '首次专注日期',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
-            decoration: BoxDecoration(
-              color: CupertinoColors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: TableCalendar(
-              eventLoader: _eventLoader,
-              availableGestures: AvailableGestures.horizontalSwipe,
-              onDaySelected: _onDaySelected,
-              selectedDayPredicate: (day) => DatetimeUtil.isSameDay(
-                _selectedDay,
-                day,
-              ),
-              focusedDay: _focusedDay,
-              firstDay: DateTime(2020, 01, 01),
-              lastDay: DateTime(2033, 12, 31),
-              locale: 'zh_CN',
-              headerStyle: const HeaderStyle(
-                formatButtonPadding: EdgeInsets.zero,
-                titleCentered: true,
-                titleTextStyle: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                formatButtonVisible: false,
-                formatButtonTextStyle: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: CupertinoColors.black,
-                ),
-                formatButtonDecoration: BoxDecoration(),
-                leftChevronIcon: Icon(
-                  Icons.chevron_left,
-                  size: SPHelper.btnSettingIconSize,
-                ),
-                rightChevronIcon: Icon(
-                  Icons.chevron_right,
-                  size: SPHelper.btnSettingIconSize,
-                ),
-                leftChevronPadding: EdgeInsets.all(8.0),
-                rightChevronPadding: EdgeInsets.all(8.0),
-              ),
-              daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(
-                  fontSize: 12,
-                  color: CupertinoColors.systemGrey2,
-                ),
-                weekendStyle: TextStyle(
-                  fontSize: 12,
-                  color: CupertinoColors.systemGrey2,
-                ),
-              ),
-              calendarStyle: CalendarStyle(
-                markerDecoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  shape: BoxShape.circle,
-                ),
-                markersMaxCount: 1,
-                markerSizeScale: 0.12,
-                markersAnchor: 2,
-                canMarkersOverflow: true,
-                outsideDaysVisible: false,
-                todayDecoration: const BoxDecoration(
-                  color: CupertinoColors.white,
-                  shape: BoxShape.circle,
-                ),
-                selectedDecoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  shape: BoxShape.circle,
-                ),
-                todayTextStyle: TextStyle(
-                  fontSize: SPHelper.calendarFontSize,
-                  fontWeight: FontWeight.w600,
-                  color: Theme.of(context).primaryColor,
-                ),
-                defaultTextStyle: const TextStyle(
-                  fontSize: SPHelper.calendarFontSize,
-                  fontWeight: FontWeight.w600,
-                ),
-                weekendTextStyle: const TextStyle(
-                  fontSize: SPHelper.calendarFontSize,
-                  fontWeight: FontWeight.w600,
-                ),
-                outsideTextStyle: const TextStyle(
-                  color: CupertinoColors.systemGrey3,
-                  fontSize: SPHelper.calendarFontSize,
-                  fontWeight: FontWeight.w600,
-                ),
-                selectedTextStyle: const TextStyle(
-                  fontSize: SPHelper.calendarFontSize,
-                  fontWeight: FontWeight.w600,
-                  color: CupertinoColors.white,
-                ),
-                weekNumberTextStyle: const TextStyle(
-                  fontSize: 12,
-                  color: CupertinoColors.systemGrey3,
-                ),
-              ),
-              onFormatChanged: (format) {
-                if (_calendarFormat != format) {
-                  setState(() {
-                    _calendarFormat = format;
-                  });
-                }
-              },
-              holidayPredicate: (day) {
-                return false;
-              },
-              calendarFormat: _calendarFormat,
-              rowHeight: 48,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-            padding: const EdgeInsets.fromLTRB(12, 12, 0, 12),
-            decoration: BoxDecoration(
-              color: CupertinoColors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              children: List.generate(
-                10,
-                (index) => Container(
-                  alignment: Alignment.centerLeft,
-                  color: Colors.white,
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+        body: Padding(
+          padding: SPHelper.pagePadding,
+          child: ListView(
+            children: [
+              FocusFormCard(
+                title: '健身',
+                fontWeight: FontWeight.w500,
+                child: Container(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            '2020.09.01',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: CupertinoColors.systemGrey,
-                            ),
+                          const StatisticCard(
+                            icon: Icons.timelapse_rounded,
+                            iconColor: Color(0xFF17987b),
+                            title: '10000',
+                            description: '专注总时长(分钟)',
                           ),
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                            child: SvgPicture.asset(
-                              'assets/emoji/emoji_u1f917.svg',
-                              width: 20,
-                              height: 20,
+                          SPHelper.getWidthBox(
+                              SPHelper.pageHorizontalPadding()),
+                          const StatisticCard(
+                            icon: Icons.bubble_chart,
+                            iconColor: Color(0xFFea0107),
+                            title: '300',
+                            description: '今日专注(分钟)',
+                          ),
+                        ],
+                      ),
+                      SPHelper.getHeightBox(SPHelper.pageHorizontalPadding()),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const StatisticCard(
+                            icon: Icons.restart_alt,
+                            iconColor: Colors.blueAccent,
+                            title: '2000',
+                            description: '完成番茄',
+                          ),
+                          SPHelper.getWidthBox(
+                              SPHelper.pageHorizontalPadding()),
+                          const StatisticCard(
+                            icon: Icons.local_fire_department_sharp,
+                            iconColor: Color(0xFFb87d46),
+                            title: '2020.10.01',
+                            description: '首次专注日期',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+                decoration: BoxDecoration(
+                  color: CupertinoColors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: TableCalendar(
+                  eventLoader: _eventLoader,
+                  availableGestures: AvailableGestures.horizontalSwipe,
+                  onDaySelected: _onDaySelected,
+                  selectedDayPredicate: (day) => DatetimeUtil.isSameDay(
+                    _selectedDay,
+                    day,
+                  ),
+                  focusedDay: _focusedDay,
+                  firstDay: DateTime(2020, 01, 01),
+                  lastDay: DateTime(2033, 12, 31),
+                  locale: 'zh_CN',
+                  headerStyle: const HeaderStyle(
+                    formatButtonPadding: EdgeInsets.zero,
+                    titleCentered: true,
+                    titleTextStyle: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    formatButtonVisible: false,
+                    formatButtonTextStyle: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      color: CupertinoColors.black,
+                    ),
+                    formatButtonDecoration: BoxDecoration(),
+                    leftChevronIcon: Icon(
+                      Icons.chevron_left,
+                      size: SPHelper.btnSettingIconSize,
+                    ),
+                    rightChevronIcon: Icon(
+                      Icons.chevron_right,
+                      size: SPHelper.btnSettingIconSize,
+                    ),
+                    leftChevronPadding: EdgeInsets.all(8.0),
+                    rightChevronPadding: EdgeInsets.all(8.0),
+                  ),
+                  daysOfWeekStyle: const DaysOfWeekStyle(
+                    weekdayStyle: TextStyle(
+                      fontSize: 12,
+                      color: CupertinoColors.systemGrey2,
+                    ),
+                    weekendStyle: TextStyle(
+                      fontSize: 12,
+                      color: CupertinoColors.systemGrey2,
+                    ),
+                  ),
+                  calendarStyle: CalendarStyle(
+                    markerDecoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    markersMaxCount: 1,
+                    markerSizeScale: 0.12,
+                    markersAnchor: 2,
+                    canMarkersOverflow: true,
+                    outsideDaysVisible: false,
+                    todayDecoration: const BoxDecoration(
+                      color: CupertinoColors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    selectedDecoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    todayTextStyle: TextStyle(
+                      fontSize: SPHelper.calendarFontSize,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    defaultTextStyle: const TextStyle(
+                      fontSize: SPHelper.calendarFontSize,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    weekendTextStyle: const TextStyle(
+                      fontSize: SPHelper.calendarFontSize,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    outsideTextStyle: const TextStyle(
+                      color: CupertinoColors.systemGrey3,
+                      fontSize: SPHelper.calendarFontSize,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    selectedTextStyle: const TextStyle(
+                      fontSize: SPHelper.calendarFontSize,
+                      fontWeight: FontWeight.w600,
+                      color: CupertinoColors.white,
+                    ),
+                    weekNumberTextStyle: const TextStyle(
+                      fontSize: 12,
+                      color: CupertinoColors.systemGrey3,
+                    ),
+                  ),
+                  onFormatChanged: (format) {
+                    if (_calendarFormat != format) {
+                      setState(() {
+                        _calendarFormat = format;
+                      });
+                    }
+                  },
+                  holidayPredicate: (day) {
+                    return false;
+                  },
+                  calendarFormat: _calendarFormat,
+                  rowHeight: 48,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                padding: const EdgeInsets.fromLTRB(12, 12, 0, 12),
+                decoration: BoxDecoration(
+                  color: CupertinoColors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  children: List.generate(
+                    10,
+                    (index) => Container(
+                      alignment: Alignment.centerLeft,
+                      color: Colors.white,
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                '2020.09.01',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: CupertinoColors.systemGrey,
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                                child: Icon(Icons.smoke_free_outlined),
+                              )
+                            ],
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                            child: ReadMoreText(
+                              '发发发发发奋斗奋斗发的房价低分局哦i阿手打激发i久啊手发的范德萨范德萨发发的范德萨范德萨发发的范德萨范德萨发打发的范德萨范德萨发丰富的辅导费发的发的发生丰富的辅导费发的发的发生',
+                              trimLines: 3,
+                              trimMode: TrimMode.Line,
+                              trimCollapsedText: '更多',
+                              trimExpandedText: '更少',
+                              moreStyle: TextStyle(
+                                fontSize: 14,
+                              ),
+                              lessStyle: TextStyle(
+                                fontSize: 14,
+                              ),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: CupertinoColors.black,
+                              ),
                             ),
                           )
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                        child: ReadMoreText(
-                          '发发发发发奋斗奋斗发的房价低分局哦i阿手打激发i久啊手发的范德萨范德萨发发的范德萨范德萨发发的范德萨范德萨发打发的范德萨范德萨发丰富的辅导费发的发的发生丰富的辅导费发的发的发生',
-                          trimLines: 3,
-                          trimMode: TrimMode.Line,
-                          trimCollapsedText: '更多',
-                          trimExpandedText: '更少',
-                          moreStyle: TextStyle(
-                            fontSize: 14,
-                          ),
-                          lessStyle: TextStyle(
-                            fontSize: 14,
-                          ),
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: CupertinoColors.black,
-                          ),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+              )
+            ],
+          ),
+        ));
   }
 }
 
