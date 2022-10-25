@@ -64,11 +64,11 @@ dependencies:
   fl_chart: ^0.55.2
   auto_size_text_field: ^2.1.0
   popover: ^0.2.7
-  widget_mask: ^1.0.0+0
-  flutter_layout_grid: ^2.0.1
   smart_grid_view_nls: ^0.2.2
   sleek_circular_slider: ^2.0.1
   percent_indicator: ^4.2.2
+  slide_countdown: ^0.3.4
+  action_slider: ^0.6.0
 
 dev_dependencies:
   flutter_test:
