@@ -16,21 +16,21 @@ class _HabitFormState extends State<HabitForm> {
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
       appBar: AppBar(
-        backgroundColor: CupertinoColors.white,
-        title: Text(
-          '添加习惯',
-          style: TextStyle(
-            color: Theme.of(context).textTheme.displayLarge?.color,
-            fontSize: 18,
-          ),
+        title: const AppBarText(
+          title: '添加习惯',
         ),
-        leading: const BackBtn(
+        leading: BackBtn(
           title: '习惯库',
+          onPressed: () {
+            Routers.pop();
+          },
         ),
         leadingWidth: 98,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Routers.go(Routers.habit);
+            },
             child: const Text(
               '保存',
               style: TextStyle(
@@ -76,7 +76,7 @@ class _HabitFormState extends State<HabitForm> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Routers.go(Routers.habitIcons);
                               },
                               child: Padding(

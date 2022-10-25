@@ -19,12 +19,8 @@ class _HabitSelectState extends State<HabitSelect> {
           title: '习惯',
         ),
         leadingWidth: 80,
-        title: Text(
-          '习惯库',
-          style: TextStyle(
-            color: Theme.of(context).textTheme.displayLarge?.color,
-            fontSize: 18,
-          ),
+        title: const AppBarText(
+          title: '习惯库',
         ),
         actions: [],
       ),
@@ -34,51 +30,56 @@ class _HabitSelectState extends State<HabitSelect> {
           padding: EdgeInsets.zero,
           child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 12, 100),
+              Container(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 100),
                 child: SmartGridView(
                   tileWidth: 150,
-                  tileHeight: 150,
+                  tileHeight: 180,
                   mainAxisSpacing: 6,
                   crossAxisSpacing: 6,
                   children: List.generate(
                     40,
                     (index) => Card(
-                      child: GridTile(
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 12, 0),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/浴盆.svg',
-                                      width: 24,
-                                      height: 24,
+                      child: GestureDetector(
+                        onTap: () {
+                          Routers.go(Routers.habitForm);
+                        },
+                        child: GridTile(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          0, 0, 12, 0),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/浴盆.svg',
+                                        width: 24,
+                                        height: 24,
+                                      ),
                                     ),
-                                  ),
-                                  const Text(
-                                    '喝水',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
+                                    const Text(
+                                      '喝水',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const Expanded(child: SPHelper.empty),
-                              const Text(
-                                '没有一个冬天不可逾越，没有一个春天不会来临',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.normal,
+                                  ],
                                 ),
-                              )
-                            ],
+                                const Expanded(child: SPHelper.empty),
+                                const Text(
+                                  '没有一个冬天不可逾越，没有一个春天不会来临',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -93,7 +94,7 @@ class _HabitSelectState extends State<HabitSelect> {
                   width: MediaQuery.of(context).size.width,
                   color: Colors.white,
                   child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 12, 0, 32),
+                    margin: const EdgeInsets.fromLTRB(0, 12, 12, 32),
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
                       onTap: () {
