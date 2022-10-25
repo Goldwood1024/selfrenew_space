@@ -30,7 +30,7 @@ class _MobileModuleState extends State<MobileModule> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                  SPHelper.height(SPHelper.gapDp18),
+                  SPHelper.width(SPHelper.gapDp18),
                   0,
                   0,
                   0,
@@ -43,14 +43,18 @@ class _MobileModuleState extends State<MobileModule> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: widget.onPressed,
-                child: Text(
-                  '全部',
-                  style: TextStyle(
-                    fontSize: SPHelper.sp(SPHelper.fontSp16),
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).primaryColor,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, 0, SPHelper.width(SPHelper.gapDp18), 0),
+                child: GestureDetector(
+                  onTap: widget.onPressed,
+                  child: Text(
+                    '全部',
+                    style: TextStyle(
+                      fontSize: SPHelper.sp(SPHelper.fontSp16),
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
               )
