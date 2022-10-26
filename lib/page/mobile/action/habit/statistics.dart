@@ -39,34 +39,6 @@ class _HabitStatistics extends State<HabitStatistics> {
     return ['', ''];
   }
 
-  static const dataList = [
-    _BarData(Color(0xFFecb206), 4),
-    _BarData(Color(0xFFa8bd1a), 3),
-    _BarData(Color(0xFF17987b), 5),
-    _BarData(Color(0xFF17987b), 5),
-    _BarData(Color(0xFFb87d46), 2),
-    _BarData(Color(0xFFb87d46), 2),
-    _BarData(Color(0xFF295ab5), 2),
-    _BarData(Color(0xFF295ab5), 1),
-    _BarData(Color(0xFFea0107), 3),
-    _BarData(Color(0xFFea0107), 2),
-    _BarData(Color(0xFFea0107), 3),
-    _BarData(Color(0xFFea0107), 2),
-    _BarData(Color(0xFFea0107), 5),
-    _BarData(Color(0xFFea0107), 3),
-    _BarData(Color(0xFFea0107), 2),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 2),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 5),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 4),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 2),
-    _BarData(Color(0xFFea0107), 1),
-    _BarData(Color(0xFFea0107), 0),
-  ];
 
   BarChartGroupData generateBarGroup(
     int x,

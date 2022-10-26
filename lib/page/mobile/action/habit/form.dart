@@ -135,7 +135,6 @@ class _HabitFormState extends State<HabitForm> {
                 ),
               ),
               SimpleTile(
-                bottomRadius: true,
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(
                     context,
@@ -145,6 +144,23 @@ class _HabitFormState extends State<HabitForm> {
                 title: '提醒',
                 trailing: const Text(
                   '每天',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: CupertinoColors.systemGrey,
+                  ),
+                ),
+              ),
+              SimpleTile(
+                bottomRadius: true,
+                onPressed: () {
+                  BottomDialog.showModalBottomSheet(
+                    context,
+                    const StartDate(),
+                  );
+                },
+                title: '开始日期',
+                trailing: const Text(
+                  '1月21',
                   style: TextStyle(
                     fontSize: 16,
                     color: CupertinoColors.systemGrey,
