@@ -74,7 +74,9 @@ class Routers {
       GoRoute(
         path: habitForm,
         builder: (BuildContext context, GoRouterState state) {
-          return const HabitForm();
+          return HabitForm(
+            params: state.params,
+          );
         },
       ),
       GoRoute(
@@ -92,7 +94,9 @@ class Routers {
       GoRoute(
         path: focusForm,
         builder: (BuildContext context, GoRouterState state) {
-          return const FocusForm();
+          return FocusForm(
+            params: state.params,
+          );
         },
       ),
     ],
@@ -100,6 +104,10 @@ class Routers {
 
   static void go(String name) {
     router.push(name);
+  }
+
+  static void go4Params(String name, Map<String, String> params) {
+    router.pushNamed(name, params: params);
   }
 
   static void pop() {

@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class FocusForm extends StatefulWidget {
+  final Map<String, String> params;
+
   const FocusForm({
     super.key,
+    required this.params,
   });
 
   @override

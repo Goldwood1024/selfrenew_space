@@ -59,6 +59,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             ),
             onPress: () {
               _animationController.reverse();
+              Routers.go(Routers.habitSelect);
             },
           ),
         ],

@@ -88,7 +88,12 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                   label: '恢复',
                 )
               : SlidableAction(
-                  onPressed: (_) {},
+                  onPressed: (_) {
+                    Routers.go4Params(
+                      Routers.habitForm,
+                      {'11': '11'},
+                    );
+                  },
                   backgroundColor: Colors.yellow,
                   foregroundColor: Colors.white,
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),

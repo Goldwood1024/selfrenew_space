@@ -15,8 +15,11 @@ class _HabitSelectState extends State<HabitSelect> {
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
-        leading: const BackBtn(
+        leading: BackBtn(
           title: '习惯',
+          onPressed: () {
+            Routers.pop();
+          },
         ),
         leadingWidth: 80,
         title: const AppBarText(
@@ -38,7 +41,7 @@ class _HabitSelectState extends State<HabitSelect> {
                   mainAxisSpacing: 6,
                   crossAxisSpacing: 6,
                   children: List.generate(
-                    40,
+                    8,
                     (index) => Card(
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
