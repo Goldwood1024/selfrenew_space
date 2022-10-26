@@ -38,9 +38,9 @@ class _MobileFuncState extends State<MobileFunc> {
               topRadius: true,
               onPressed: () {},
               showArrow: false,
-              trailing: FlutterSwitch(
+              trailing: CommonSwitch(
                 value: true,
-                onToggle: (bool value) {},
+                func: (bool) {},
               ),
             ),
             SimpleTile(
@@ -48,9 +48,9 @@ class _MobileFuncState extends State<MobileFunc> {
               bottomRadius: true,
               onPressed: () {},
               showArrow: false,
-              trailing: FlutterSwitch(
-                value: false,
-                onToggle: (bool value) {},
+              trailing: CommonSwitch(
+                value: true,
+                func: (bool) {},
               ),
             ),
           ],

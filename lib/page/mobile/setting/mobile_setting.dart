@@ -17,6 +17,7 @@ class _MobileSettingState extends State<MobileSetting> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             const CupertinoSliverNavigationBar(
+              heroTag: Hero(tag: 'MobileSetting', child: SPHelper.empty),
               brightness: Brightness.light,
               backgroundColor: Colors.transparent,
               border: Border(

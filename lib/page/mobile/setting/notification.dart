@@ -101,18 +101,9 @@ class _NotificationSettingState extends State<NotificationSetting> {
               bottomRadius: true,
               showDivider: false,
               showArrow: false,
-              trailing: FlutterSwitch(
-                value: select,
-                width: 52,
-                height: 28,
-                toggleSize: 25,
-                padding: 2,
-                activeColor: Theme.of(context).primaryColor,
-                onToggle: (bool value) {
-                  setState(() {
-                    select = value;
-                  });
-                },
+              trailing: CommonSwitch(
+                value: true,
+                func: (bool) {},
               ),
             ),
           ],
