@@ -14,27 +14,17 @@ class _HabitIconsState extends State<HabitIcons> {
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
       appBar: AppBar(
-        backgroundColor: CupertinoColors.white,
-        title: Text(
-          '习惯图标',
-          style: TextStyle(
-            color: Theme.of(context).textTheme.displayLarge?.color,
-            fontSize: 18,
-          ),
-        ),
-        leading: const BackBtn(
-          title: '添加习惯',
+        automaticallyImplyLeading: false,
+        title: const AppBarText(
+          title: '习惯图标',
         ),
         leadingWidth: 120,
         actions: [
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              '确定',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+          ActionBtn(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            title: '确定',
           )
         ],
       ),

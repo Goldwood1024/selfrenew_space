@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 import 'package:selfrenew_space/page/mobile/action/habit/form_bottom.dart';
+import 'package:selfrenew_space/page/mobile/action/habit/icons.dart';
 
 class HabitForm extends StatefulWidget {
   final Map<String, String> params;
@@ -68,7 +69,10 @@ class _HabitFormState extends State<HabitForm> {
                     GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        Routers.go(Routers.habitIcons);
+                        BottomDialog.showModalBottomSheet(
+                          context,
+                          const HabitIcons(),
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
