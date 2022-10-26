@@ -69,7 +69,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                   backgroundColor: const Color(0xFF0392CF),
                   foregroundColor: Colors.white,
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
-                  icon: Icons.delete_rounded,
+                  icon: Icons.pause_circle_filled_outlined,
                   label: '放弃',
                 )
               ],
@@ -84,7 +84,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                   backgroundColor: const Color(0xFF0392CF),
                   foregroundColor: Colors.white,
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
-                  icon: Icons.delete_rounded,
+                  icon: CupertinoIcons.arrowshape_turn_up_left_fill,
                   label: '恢复',
                 )
               : SlidableAction(
