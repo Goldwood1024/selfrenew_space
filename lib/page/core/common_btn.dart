@@ -40,6 +40,37 @@ class BackBtn extends StatelessWidget {
   }
 }
 
+class ActionBtn extends StatelessWidget {
+  final String? title;
+  final VoidCallback? onPressed;
+
+  const ActionBtn({
+    super.key,
+    this.title,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 14, 14, 0),
+        child: title == null
+            ? Container()
+            : Text(
+                title!,
+                style: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.gapDp18),
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+      ),
+    );
+  }
+}
+
 class GoBtn extends StatelessWidget {
   final String? title;
   final VoidCallback? onPressed;
