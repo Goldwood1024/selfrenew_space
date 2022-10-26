@@ -90,8 +90,10 @@ class _SimpleTileState extends State<SimpleTile> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       widget.title,
-                                      style: const TextStyle(
-                                        fontSize: 16,
+                                      style: TextStyle(
+                                        fontSize: SPHelper.sp(
+                                          SPHelper.fontSp18,
+                                        ),
                                       ),
                                     ),
                                   ),
