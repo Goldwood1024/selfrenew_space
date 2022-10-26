@@ -38,6 +38,7 @@ export 'package:selfrenew_space/page/core/floating_action_bubble.dart';
 export 'package:selfrenew_space/page/core/sleek_counter.dart';
 export 'package:selfrenew_space/page/core/sleek_counter.dart';
 export 'package:selfrenew_space/page/core/tile/focus_tile.dart';
+export 'package:selfrenew_space/page/core/tile/habit_home_tile.dart';
 export 'package:selfrenew_space/page/core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page/core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page/desktop/desktop_home.dart';

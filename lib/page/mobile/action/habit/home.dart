@@ -98,7 +98,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            HabitTile(
+            HabitHomeTile(
               title: '八段锦八段锦',
               subTitle: Column(
                 children: [
@@ -162,7 +162,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
               ),
             ),
             SPHelper.getHeightBox(8),
-            HabitTile(
+            HabitHomeTile(
               title: '八段锦八段锦',
               subTitle: Column(
                 children: [
@@ -235,7 +235,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
               ),
             ),
             SPHelper.getHeightBox(SPHelper.gapDp12),
-            HabitTile(
+            HabitHomeTile(
               title: '八段锦八段锦',
               abandon: true,
               subTitle: Column(
