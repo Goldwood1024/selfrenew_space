@@ -2,6 +2,7 @@ export 'dart:async';
 export 'dart:io';
 
 export 'package:audioplayers/audioplayers.dart';
+export 'package:auto_size_text_field/auto_size_text_field.dart';
 export 'package:common_utils/common_utils.dart';
 export 'package:custom_navigation_bar/custom_navigation_bar.dart';
 export 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
@@ -40,6 +41,8 @@ export 'package:selfrenew_space/page/core/tile/focus_tile.dart';
 export 'package:selfrenew_space/page/core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page/core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page/desktop/desktop_home.dart';
+export 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
+export 'package:selfrenew_space/page/mobile/action/focus/focus_form_tile.dart';
 export 'package:selfrenew_space/page/mobile/action/focus/timer.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/home.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/statistics.dart';
