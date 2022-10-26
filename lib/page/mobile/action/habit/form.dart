@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/action/habit/form_bottom.dart';
 
 class HabitForm extends StatefulWidget {
   final Map<String, String> params;
@@ -55,9 +56,13 @@ class _HabitFormState extends State<HabitForm> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: AutoSizeTextField(
-                        maxLength: 10,
+                      child: TextFormField(
+                        style: const TextStyle(fontSize: 17),
+                        maxLength: 12,
                         controller: TextEditingController(),
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                        ),
                       ),
                     ),
                     GestureDetector(
@@ -66,26 +71,26 @@ class _HabitFormState extends State<HabitForm> {
                         Routers.go(Routers.habitIcons);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width: 56,
-                              height: 56,
+                              width: 48,
+                              height: 48,
                               margin: const EdgeInsets.fromLTRB(0, 0, 0, 4),
                               decoration: BoxDecoration(
                                 color: CupertinoColors.systemGroupedBackground,
                                 borderRadius: BorderRadius.circular(
-                                  SPHelper.smallRadius(),
+                                  SPHelper.smallRadius() / 2,
                                 ),
                               ),
                             ),
                             const Text(
                               '图标库',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ],
@@ -97,20 +102,54 @@ class _HabitFormState extends State<HabitForm> {
               ),
               SPHelper.getDefaultHeightBox(),
               SimpleTile(
-                onPressed: () {},
+                topRadius: true,
+                onPressed: () {
+                  BottomDialog.showModalBottomSheet(
+                    context,
+                    const Repeat(),
+                  );
+                },
                 title: '重复',
+                trailing: const Text(
+                  '每天',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: CupertinoColors.systemGrey,
+                  ),
+                ),
               ),
               SimpleTile(
-                onPressed: () {},
+                onPressed: () {
+                  BottomDialog.showModalBottomSheet(
+                    context,
+                    const Target(),
+                  );
+                },
                 title: '目标',
+                trailing: const Text(
+                  '每天',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: CupertinoColors.systemGrey,
+                  ),
+                ),
               ),
               SimpleTile(
-                onPressed: () {},
-                title: '时间',
-              ),
-              SimpleTile(
-                onPressed: () {},
+                bottomRadius: true,
+                onPressed: () {
+                  BottomDialog.showModalBottomSheet(
+                    context,
+                    const Remind(),
+                  );
+                },
                 title: '提醒',
+                trailing: const Text(
+                  '每天',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: CupertinoColors.systemGrey,
+                  ),
+                ),
               ),
               SPHelper.getDefaultHeightBox(),
               FocusFormCard(
@@ -118,20 +157,14 @@ class _HabitFormState extends State<HabitForm> {
                 fontWeight: FontWeight.normal,
                 child: Column(
                   children: [
-                    AutoSizeTextField(
+                    TextFormField(
                       maxLength: 80,
                       minLines: 2,
                       maxLines: 5,
                       controller: TextEditingController(),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          gapPadding: 0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 0,
-                          ),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
+                      style: const TextStyle(fontSize: 17),
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
                       ),
                     ),
                   ],
