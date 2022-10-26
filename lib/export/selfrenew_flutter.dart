@@ -39,6 +39,7 @@ export 'package:selfrenew_space/page/core/tile/focus_tile.dart';
 export 'package:selfrenew_space/page/core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page/core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page/desktop/desktop_home.dart';
+export 'package:selfrenew_space/page/mobile/action/focus/timer.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/home.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/statistics.dart';
 export 'package:selfrenew_space/page/mobile/action/mobile_action.dart';

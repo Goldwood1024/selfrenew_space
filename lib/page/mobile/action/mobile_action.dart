@@ -42,17 +42,17 @@ class _MobileActionState extends State<MobileAction> {
                   width: 0.0,
                 ),
               ),
-              leading: Padding(
-                padding: const EdgeInsets.fromLTRB(18, 10, 0, 0),
-                child: Text(
-                  '星期五',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
+              // leading: Padding(
+              //   padding: const EdgeInsets.fromLTRB(18, 10, 0, 0),
+              //   child: Text(
+              //     '星期五',
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.normal,
+              //       color: Theme.of(context).primaryColor,
+              //     ),
+              //   ),
+              // ),
               largeTitle: const Text(
                 '概要',
                 style: TextStyle(

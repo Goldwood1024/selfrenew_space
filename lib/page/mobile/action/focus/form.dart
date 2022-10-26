@@ -28,8 +28,11 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         title: const AppBarText(
           title: '添加',
         ),
-        leading: const BackBtn(
+        leading: BackBtn(
           title: '专注',
+          onPressed: () {
+            Routers.pop();
+          },
         ),
         leadingWidth: 80,
         actions: [],

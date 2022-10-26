@@ -110,32 +110,36 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
                 children: [
                   Row(
                     children: [
-                      const Icon(
-                        Icons.loop,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.timer,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '每天',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
                   ),
+                  SPHelper.getHeightBox(SPHelper.gapDp4),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(
-                        CupertinoIcons.bell,
-                        size: 16,
+                      Icon(
+                        CupertinoIcons.app_badge,
+                        size: SPHelper.sp(SPHelper.fontSp18),
                         color: CupertinoColors.systemGrey2,
                       ),
-                      SPHelper.getWidthBox(8),
-                      const Text(
+                      SPHelper.getWidthBox(SPHelper.gapDp8),
+                      Text(
                         '08:00',
                         style: TextStyle(
                           color: CupertinoColors.systemGrey2,
+                          fontSize: SPHelper.sp(SPHelper.fontSp15),
                         ),
                       ),
                     ],
@@ -149,9 +153,24 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
                 size: 28,
               ),
               trailing: Row(
-                children: const [
-                  Icon(
-                    Icons.pause_circle_outline,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      SmartDialog.show(
+                        alignment: Alignment.bottomCenter,
+                        keepSingle: true,
+                        useAnimation: true,
+                        builder: (_) {
+                          return const FocusTimer();
+                        },
+                      );
+                    },
+                    behavior: HitTestBehavior.translucent,
+                    child: Icon(
+                      CupertinoIcons.play_circle_fill,
+                      size: 30,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ],
               ),
