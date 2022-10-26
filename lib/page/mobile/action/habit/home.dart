@@ -85,11 +85,31 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           },
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
+          ActionIconBtn(
             icon: const Icon(
-              Icons.settings_suggest,
+              CupertinoIcons.slider_horizontal_3,
             ),
+            onPressed: () {
+              BottomDialog.showModalBottomSheet(
+                context,
+                ScaffoldGradientBackground(
+                  appBar: AppBar(
+                    automaticallyImplyLeading: false,
+                    title: const AppBarText(
+                      title: '设置',
+                    ),
+                    actions: [
+                      ActionBtn(
+                        title: '确定',
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
           )
         ],
       ),

@@ -71,6 +71,29 @@ class ActionBtn extends StatelessWidget {
   }
 }
 
+class ActionIconBtn extends StatelessWidget {
+  final Icon? icon;
+  final VoidCallback? onPressed;
+
+  const ActionIconBtn({
+    super.key,
+    this.icon,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
+        child: icon,
+      ),
+    );
+  }
+}
+
 class GoBtn extends StatelessWidget {
   final String? title;
   final VoidCallback? onPressed;
