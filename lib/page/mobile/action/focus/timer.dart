@@ -34,11 +34,35 @@ class _FocusTimerState extends State<FocusTimer>
       appBar: AppBar(
         toolbarHeight: SPHelper.appBarHeight(),
         centerTitle: true,
-        title: const Icon(
-          CupertinoIcons.loop,
-          size: 30,
+        title: Stack(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  CupertinoIcons.loop,
+                  size: 32,
+                ),
+                SPHelper.getWidthBox(12),
+                Text(
+                  '同意方法',
+                  style: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.fontSp18),
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).textTheme.displayLarge?.color,
+                  ),
+                ),
+              ],
+            ),
+            // Positioned(
+            //   right: 12,
+            //   child: const Icon(
+            //     CupertinoIcons.loop,
+            //     size: 32,
+            //   ),
+            // )
+          ],
         ),
-        actions: [],
       ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
@@ -46,29 +70,21 @@ class _FocusTimerState extends State<FocusTimer>
           alignment: Alignment.center,
           children: [
             Positioned(
-              top: 0,
-              child: Align(
-                child: Text(
-                  '同意方法',
-                  style: TextStyle(
-                    fontSize: SPHelper.sp(SPHelper.fontSp18),
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).textTheme.displayLarge?.color,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               top: MediaQuery.of(context).size.height / 5,
               child: SlideCountdown(
+                padding: EdgeInsets.zero,
+                countUp: false,
+                infinityCountUp: false,
                 separatorType: SeparatorType.symbol,
-                slideDirection: SlideDirection.up,
+                slideDirection: SlideDirection.down,
                 decoration: const BoxDecoration(),
-                duration: const Duration(minutes: 25),
+                duration: const Duration(minutes: 24),
+                slideAnimationDuration: const Duration(milliseconds: 500),
                 textStyle: TextStyle(
-                  fontSize: 56,
+                  fontSize: 72,
                   color: Theme.of(context).textTheme.displayLarge?.color,
                 ),
+                onDone: () {},
               ),
             ),
             Positioned(
@@ -88,20 +104,28 @@ class _FocusTimerState extends State<FocusTimer>
                     color: Colors.white,
                   ),
                   boxShadow: [],
-                  backgroundColor: CupertinoColors.systemGrey4,
+                  backgroundColor: CupertinoColors.systemFill,
+                  loadingIcon: const SizedBox(
+                    width: 24.0,
+                    height: 24.0,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 3.0,
+                      color: Colors.white,
+                    ),
+                  ),
                   child: const Text(
                     '滑动放弃',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: CupertinoColors.systemGrey2,
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                   action: (controller) async {
                     controller.loading();
-                    await Future.delayed(const Duration(milliseconds: 500));
+                    await Future.delayed(const Duration(milliseconds: 300));
                     controller.success();
-                    await Future.delayed(const Duration(seconds: 2));
+                    await Future.delayed(const Duration(milliseconds: 1300));
                     SmartDialog.dismiss();
                   },
                 ),
