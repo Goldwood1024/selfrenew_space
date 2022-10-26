@@ -118,27 +118,27 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       SPHelper.getHeightBox(
                         SPHelper.pageVerticalPadding(),
                       ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '重复',
-                        tail: '每天',
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(SPHelper.smallRadius()),
-                          topRight: Radius.circular(SPHelper.smallRadius()),
-                        ),
-                      ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '目标',
-                        tail: '每天',
-                        borderRadius: BorderRadius.zero,
-                      ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '场景',
-                        tail: '每天',
-                        borderRadius: BorderRadius.zero,
-                      ),
+                      // FocusFormTile(
+                      //   onTap: () {},
+                      //   title: '重复',
+                      //   tail: '每天',
+                      //   borderRadius: BorderRadius.only(
+                      //     topLeft: Radius.circular(SPHelper.smallRadius()),
+                      //     topRight: Radius.circular(SPHelper.smallRadius()),
+                      //   ),
+                      // ),
+                      // FocusFormTile(
+                      //   onTap: () {},
+                      //   title: '目标',
+                      //   tail: '每天',
+                      //   borderRadius: BorderRadius.zero,
+                      // ),
+                      // FocusFormTile(
+                      //   onTap: () {},
+                      //   title: '场景',
+                      //   tail: '每天',
+                      //   borderRadius: BorderRadius.zero,
+                      // ),
                       // FocusFormTile(
                       //   onTap: () {
                       //     SmartDialog.show(

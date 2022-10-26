@@ -29,166 +29,115 @@ class _HabitFormState extends State<HabitForm> {
         ),
         leadingWidth: 98,
         actions: [
-          TextButton(
+          ActionBtn(
             onPressed: () {
               Routers.go(Routers.habit);
             },
-            child: const Text(
-              '保存',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            title: '保存',
           )
         ],
       ),
-      body: Scaffold(
-        backgroundColor: CupertinoColors.systemGroupedBackground,
-        body: GestureDetector(
+      body: Padding(
+        padding: SPHelper.pagePaddingHorizontal,
+        child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {
-            // 收起键盘
             FocusScope.of(context).requestFocus(FocusNode());
           },
-          child: Padding(
-            padding: SPHelper.pagePadding,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      FocusFormCard(
-                        title: '名称',
-                        fontWeight: FontWeight.w500,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: AutoSizeTextField(
-                                maxLength: 10,
-                                controller: TextEditingController(),
-                                decoration: const InputDecoration(
-                                  counterText: '',
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Routers.go(Routers.habitIcons);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 56,
-                                      height: 56,
-                                      margin:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 4),
-                                      decoration: BoxDecoration(
-                                        color: CupertinoColors
-                                            .systemGroupedBackground,
-                                        borderRadius: BorderRadius.circular(
-                                          SPHelper.smallRadius(),
-                                        ),
-                                      ),
-                                      // child: SvgPicture.asset(
-                                      //   'assets/icons/chunvzuo.svg',
-                                      // ),
-                                    ),
-                                    const Text(
-                                      '图标库',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+          child: ListView(
+            children: [
+              SPHelper.getDefaultHeightBox(),
+              FocusFormCard(
+                title: '名称',
+                fontWeight: FontWeight.normal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: AutoSizeTextField(
+                        maxLength: 10,
+                        controller: TextEditingController(),
                       ),
-                      SPHelper.getHeightBox(
-                        SPHelper.pageVerticalPadding(),
-                      ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '重复',
-                        tail: '每天',
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(SPHelper.smallRadius()),
-                          topRight: Radius.circular(SPHelper.smallRadius()),
-                        ),
-                      ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '目标',
-                        tail: '每天',
-                        borderRadius: BorderRadius.zero,
-                      ),
-                      FocusFormTile(
-                        onTap: () {},
-                        title: '场景',
-                        tail: '每天',
-                        borderRadius: BorderRadius.zero,
-                      ),
-                      // FocusFormTile(
-                      //   onTap: () {
-                      //     SmartDialog.show(
-                      //       alignment: Alignment.bottomCenter,
-                      //       builder: (_) {
-                      //         return BottomDialog(
-                      //           title: '选择提示音',
-                      //           height: 500,
-                      //           child: Container(),
-                      //         );
-                      //       },
-                      //     );
-                      //   },
-                      //   title: '提醒',
-                      //   tail: '叮',
-                      //   borderRadius: BorderRadius.only(
-                      //     bottomLeft:
-                      //         Radius.circular(SPHelper.smallRadius()),
-                      //     bottomRight:
-                      //         Radius.circular(SPHelper.smallRadius()),
-                      //   ),
-                      // ),
-                      SPHelper.getHeightBox(
-                        SPHelper.pageVerticalPadding(),
-                      ),
-                      FocusFormCard(
-                        title: '鼓励语',
-                        fontWeight: FontWeight.w500,
+                    ),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        Routers.go(Routers.habitIcons);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            AutoSizeTextField(
-                              maxLength: 80,
-                              minLines: 2,
-                              maxLines: 5,
-                              controller: TextEditingController(),
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
+                            Container(
+                              width: 56,
+                              height: 56,
+                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                              decoration: BoxDecoration(
+                                color: CupertinoColors.systemGroupedBackground,
+                                borderRadius: BorderRadius.circular(
+                                  SPHelper.smallRadius(),
                                 ),
+                              ),
+                            ),
+                            const Text(
+                              '图标库',
+                              style: TextStyle(
+                                fontSize: 12,
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-              ],
-            ),
+              ),
+              SPHelper.getDefaultHeightBox(),
+              SimpleTile(
+                onPressed: () {},
+                title: '重复',
+              ),
+              SimpleTile(
+                onPressed: () {},
+                title: '目标',
+              ),
+              SimpleTile(
+                onPressed: () {},
+                title: '时间',
+              ),
+              SimpleTile(
+                onPressed: () {},
+                title: '提醒',
+              ),
+              SPHelper.getDefaultHeightBox(),
+              FocusFormCard(
+                title: '鼓励语',
+                fontWeight: FontWeight.normal,
+                child: Column(
+                  children: [
+                    AutoSizeTextField(
+                      maxLength: 80,
+                      minLines: 2,
+                      maxLines: 5,
+                      controller: TextEditingController(),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          gapPadding: 0,
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 0,
+                          ),
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

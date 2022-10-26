@@ -11,7 +11,7 @@ class FocusFormCard extends StatefulWidget {
     required this.title,
     required this.child,
     required this.fontWeight,
-    this.fontSize = SPHelper.fontSp16,
+    this.fontSize = SPHelper.fontSp18,
   });
 
   @override

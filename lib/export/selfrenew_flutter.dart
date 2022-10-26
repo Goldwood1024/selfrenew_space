@@ -45,8 +45,6 @@ export 'package:selfrenew_space/page/core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page/desktop/desktop_home.dart';
 export 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
 export 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
-export 'package:selfrenew_space/page/mobile/action/focus/focus_form_tile.dart';
-export 'package:selfrenew_space/page/mobile/action/focus/focus_form_tile.dart';
 export 'package:selfrenew_space/page/mobile/action/focus/timer.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/home.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/statistics.dart';
