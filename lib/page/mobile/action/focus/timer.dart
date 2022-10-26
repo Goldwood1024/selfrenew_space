@@ -14,18 +14,23 @@ class FocusTimer extends StatefulWidget {
 
 class _FocusTimerState extends State<FocusTimer>
     with SingleTickerProviderStateMixin {
-  late bool selected;
+  late Duration time;
+  late bool showText;
 
   @override
   void initState() {
     super.initState();
-    selected = false;
+    showText = false;
   }
 
   @override
   void dispose() {
-    selected = false;
+    showText = false;
     super.dispose();
+  }
+
+  String getTime() {
+    return '${time.inMinutes}:${time.inSeconds % 60}';
   }
 
   @override
@@ -71,21 +76,35 @@ class _FocusTimerState extends State<FocusTimer>
           children: [
             Positioned(
               top: MediaQuery.of(context).size.height / 5,
-              child: SlideCountdown(
-                padding: EdgeInsets.zero,
-                countUp: false,
-                infinityCountUp: false,
-                separatorType: SeparatorType.symbol,
-                slideDirection: SlideDirection.down,
-                decoration: const BoxDecoration(),
-                duration: const Duration(minutes: 24),
-                slideAnimationDuration: const Duration(milliseconds: 500),
-                textStyle: TextStyle(
-                  fontSize: 72,
-                  color: Theme.of(context).textTheme.displayLarge?.color,
-                ),
-                onDone: () {},
-              ),
+              child: showText
+                  ? Text(
+                      getTime(),
+                      style: TextStyle(
+                        fontSize: 72,
+                        color: Theme.of(context).textTheme.displayLarge?.color,
+                      ),
+                    )
+                  : SlideCountdown(
+                      padding: EdgeInsets.zero,
+                      countUp: false,
+                      infinityCountUp: false,
+                      curve: Curves.linear,
+                      separatorType: SeparatorType.symbol,
+                      slideDirection: SlideDirection.down,
+                      decoration: const BoxDecoration(),
+                      duration: const Duration(minutes: 24),
+                      slideAnimationDuration: const Duration(milliseconds: 500),
+                      textStyle: TextStyle(
+                        fontSize: 72,
+                        color: Theme.of(context).textTheme.displayLarge?.color,
+                      ),
+                      onDone: () {},
+                      onChanged: (_) {
+                        setState(() {
+                          time = _;
+                        });
+                      },
+                    ),
             ),
             Positioned(
               bottom: 140,
@@ -123,6 +142,9 @@ class _FocusTimerState extends State<FocusTimer>
                   ),
                   action: (controller) async {
                     controller.loading();
+                    setState(() {
+                      showText = true;
+                    });
                     await Future.delayed(const Duration(milliseconds: 300));
                     controller.success();
                     await Future.delayed(const Duration(milliseconds: 1300));
