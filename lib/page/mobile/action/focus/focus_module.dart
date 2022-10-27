@@ -1,34 +1,30 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class HabitModule extends StatefulWidget {
-  const HabitModule({super.key});
+class FocusModule extends StatefulWidget {
+  const FocusModule({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HabitModuleState();
+  State<StatefulWidget> createState() => _FocusModuleState();
 }
 
-class _HabitModuleState extends State<HabitModule> {
+class _FocusModuleState extends State<FocusModule> {
   final show = true;
 
   List<String> tags = [];
   List<String> options = [
-    '喝水',
-    '反省自己',
-    '早睡',
     '阅读',
-    '锻炼身体',
-    '吃水果',
+    '深度工作',
+    '冥想',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: MobileModule(
-        title: '习惯',
+        title: '专注',
         onPressed: () {
-          Routers.go(Routers.habit);
+          Routers.go(Routers.focusHome);
         },
         child: show
             ? Container(
@@ -40,7 +36,7 @@ class _HabitModuleState extends State<HabitModule> {
                     const Padding(
                       padding: EdgeInsets.zero,
                       child: Text(
-                        '养成这些习惯，让生活变得有意义',
+                        '用专注和活力来激励自己',
                         style: TextStyle(
                           fontSize: 16,
                           color: CupertinoColors.systemGrey,
@@ -49,10 +45,10 @@ class _HabitModuleState extends State<HabitModule> {
                     ),
                     SPHelper.getHeightBox(14),
                     ChipsChoice.single(
-                      padding: EdgeInsets.zero,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       value: tags,
+                      padding: EdgeInsets.zero,
                       spacing: 14,
                       runSpacing: 14,
                       choiceStyle: C2ChipStyle(
@@ -80,34 +76,41 @@ class _HabitModuleState extends State<HabitModule> {
               )
             : Column(
                 children: [
-                  HabitTile(
+                  FocusTile(
                     topRadius: true,
-                    title: '冥想22333',
-                    leading: SvgPicture.asset(
-                      'assets/icons/浴盆.svg',
-                      width: 24,
-                      height: 24,
-                    ),
-                    trailing: const SleekCounter(
-                      min: 0,
-                      max: 10,
-                      value: 2,
-                      fail: false,
-                    ),
-                  ),
-                  HabitTile(
                     bottomRadius: true,
-                    title: '喝一杯水',
-                    leading: SvgPicture.asset(
-                      'assets/icons/浴盆.svg',
-                      width: 24,
-                      height: 24,
+                    title: '专注一下',
+                    leading: Container(
+                      child: SvgPicture.asset(
+                        'assets/icons/浴盆.svg',
+                        width: 24,
+                        height: 24,
+                      ),
                     ),
-                    trailing: const SleekCounter(
-                      min: 0,
-                      max: 10,
-                      value: 22,
-                      fail: false,
+                    trailing: GestureDetector(
+                      onTap: () {
+                        SmartDialog.show(builder: (_) {
+                          return const FocusTimer();
+                        });
+                      },
+                      child: GestureDetector(
+                        onTap: () {
+                          SmartDialog.show(
+                            alignment: Alignment.bottomCenter,
+                            keepSingle: true,
+                            useAnimation: true,
+                            builder: (_) {
+                              return const FocusTimer();
+                            },
+                          );
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: Icon(
+                          CupertinoIcons.play_circle_fill,
+                          size: 30,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
                     ),
                   ),
                 ],

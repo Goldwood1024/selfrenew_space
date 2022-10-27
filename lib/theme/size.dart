@@ -49,6 +49,7 @@ class SPHelper {
   static const double fontSp17 = 17.0;
   static const double fontSp15 = 15.0;
 
+  static const double gapDp2 = 2;
   static const double gapDp4 = 4;
   static const double gapDp5 = 5;
   static const double gapDp8 = 8;
@@ -128,7 +129,7 @@ class SPHelper {
   }
 
   /// 页面水平内边距
-  static pageHorizontalPadding() => width(14);
+  static pageHorizontalPadding() => width(16);
 
   /// 页面垂直内边距
   static pageVerticalPadding() => width(12);
