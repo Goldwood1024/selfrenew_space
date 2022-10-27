@@ -49,7 +49,7 @@ export 'package:selfrenew_space/page/mobile/action/focus/timer.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/home.dart';
 export 'package:selfrenew_space/page/mobile/action/habit/statistics.dart';
 export 'package:selfrenew_space/page/mobile/action/mobile_action.dart';
-export 'package:selfrenew_space/page/mobile/action/mobile_func.dart';
+export 'package:selfrenew_space/page/mobile/action/mobile_action_bottom.dart';
 export 'package:selfrenew_space/page/mobile/action/mobile_module.dart';
 export 'package:selfrenew_space/page/mobile/background/scaffold_gradient_background.dart';
 export 'package:selfrenew_space/page/mobile/dialog/show_dialog.dart';

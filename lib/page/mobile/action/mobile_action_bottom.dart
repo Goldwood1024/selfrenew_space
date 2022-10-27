@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class MobileFunc extends StatefulWidget {
-  const MobileFunc({
-    super.key,
-  });
+class MobileActionBottom extends StatefulWidget {
+  const MobileActionBottom({super.key});
 
   @override
-  State<StatefulWidget> createState() => _MobileFuncState();
+  State<StatefulWidget> createState() => _MobileActionBottomState();
 }
 
-class _MobileFuncState extends State<MobileFunc> {
+class _MobileActionBottomState extends State<MobileActionBottom> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
