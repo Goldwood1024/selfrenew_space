@@ -50,7 +50,7 @@ class _FocusFormCardState extends State<FocusFormCard>
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(
-              SPHelper.pageHorizontalPadding(),
+              14,
               SPHelper.pageVerticalPadding(),
               0,
               0,

@@ -66,7 +66,7 @@ class _SimpleTileState extends State<SimpleTile> {
               widget.leading == null
                   ? Container()
                   : Container(
-                      padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
                       child: widget.leading,
                     ),
               Expanded(
@@ -81,7 +81,7 @@ class _SimpleTileState extends State<SimpleTile> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,

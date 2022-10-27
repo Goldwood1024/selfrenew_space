@@ -57,12 +57,14 @@ class _HabitFormState extends State<HabitForm> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: TextFormField(
+                      child: AutoSizeTextField(
                         style: const TextStyle(fontSize: 17),
                         maxLength: 12,
                         controller: TextEditingController(),
                         decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                          ),
                         ),
                       ),
                     ),
@@ -81,11 +83,11 @@ class _HabitFormState extends State<HabitForm> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width: 48,
-                              height: 48,
-                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                              width: 58,
+                              height: 64,
+                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
                               decoration: BoxDecoration(
-                                color: CupertinoColors.systemGroupedBackground,
+                                color: CupertinoColors.quaternarySystemFill,
                                 borderRadius: BorderRadius.circular(
                                   SPHelper.smallRadius() / 2,
                                 ),
@@ -94,7 +96,8 @@ class _HabitFormState extends State<HabitForm> {
                             const Text(
                               '图标库',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 12,
+                                color: CupertinoColors.systemGrey,
                               ),
                             ),
                           ],
@@ -184,7 +187,9 @@ class _HabitFormState extends State<HabitForm> {
                       controller: TextEditingController(),
                       style: const TextStyle(fontSize: 17),
                       decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
                   ],
