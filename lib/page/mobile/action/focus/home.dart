@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/core/tile/focus_home_tile.dart';
 
 class FocusHome extends StatefulWidget {
   const FocusHome({super.key});
@@ -39,10 +40,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
             icon: Icons.timer,
-            titleStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
               Routers.go(Routers.focusForm);
@@ -53,10 +51,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.loop,
-            titleStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
             },
@@ -66,10 +61,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.timer,
-            titleStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
             },
@@ -104,7 +96,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            HabitTile(
+            FocusHomeTile(
               title: '八段锦',
               subTitle: Column(
                 children: [
