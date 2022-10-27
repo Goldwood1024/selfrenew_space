@@ -220,7 +220,7 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
               children: [
                 Align(
                   child: SvgPicture.asset(
-                    'assets/icons/habit_empty.svg',
+                    'assets/icons/habit.svg',
                     height: 200,
                   ),
                 ),
