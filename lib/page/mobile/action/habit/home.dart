@@ -303,7 +303,7 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: expand ? 20 : 5,
+            itemCount: expand ? 20 : 0,
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: HabitHomeTile(
@@ -443,73 +443,72 @@ class _AbandonState extends State<Abandon> {
             ],
           ),
           SPHelper.getHeightBox(SPHelper.gapDp12),
-          Column(
-            children: List.generate(
-              expand ? 10 : 0,
-              (index) => Container(
-                margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                child: HabitHomeTile(
-                  title: '八段锦八段锦',
-                  abandon: true,
-                  subTitle: Column(
-                    children: [
-                      SPHelper.getHeightBox(SPHelper.gapDp4),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            CupertinoIcons.timer,
-                            size: SPHelper.sp(SPHelper.fontSp18),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: expand ? 10 : 0,
+            itemBuilder: (_, index) => Container(
+              margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+              child: HabitHomeTile(
+                title: '八段锦八段锦',
+                abandon: true,
+                subTitle: Column(
+                  children: [
+                    SPHelper.getHeightBox(SPHelper.gapDp4),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          CupertinoIcons.timer,
+                          size: SPHelper.sp(SPHelper.fontSp18),
+                          color: CupertinoColors.systemGrey2,
+                        ),
+                        SPHelper.getWidthBox(SPHelper.gapDp8),
+                        Text(
+                          '每天',
+                          style: TextStyle(
                             color: CupertinoColors.systemGrey2,
+                            fontSize: SPHelper.sp(SPHelper.fontSp15),
                           ),
-                          SPHelper.getWidthBox(SPHelper.gapDp8),
-                          Text(
-                            '每天',
-                            style: TextStyle(
-                              color: CupertinoColors.systemGrey2,
-                              fontSize: SPHelper.sp(SPHelper.fontSp15),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SPHelper.getHeightBox(SPHelper.gapDp4),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            CupertinoIcons.app_badge,
-                            size: SPHelper.sp(SPHelper.fontSp18),
+                        ),
+                      ],
+                    ),
+                    SPHelper.getHeightBox(SPHelper.gapDp4),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          CupertinoIcons.app_badge,
+                          size: SPHelper.sp(SPHelper.fontSp18),
+                          color: CupertinoColors.systemGrey2,
+                        ),
+                        SPHelper.getWidthBox(SPHelper.gapDp8),
+                        Text(
+                          '08:00',
+                          style: TextStyle(
                             color: CupertinoColors.systemGrey2,
+                            fontSize: SPHelper.sp(SPHelper.fontSp15),
                           ),
-                          SPHelper.getWidthBox(SPHelper.gapDp8),
-                          Text(
-                            '08:00',
-                            style: TextStyle(
-                              color: CupertinoColors.systemGrey2,
-                              fontSize: SPHelper.sp(SPHelper.fontSp15),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  topRadius: true,
-                  bottomRadius: true,
-                  leading: const Icon(
-                    Icons.access_time_filled,
-                    size: 28,
-                  ),
-                  trailing: Row(
-                    children: List.generate(
-                      7,
-                      (index) => const SleekCounter(
-                        min: 0,
-                        max: 10,
-                        sm: true,
-                        value: 7,
-                        fail: false,
-                        abandon: true,
-                      ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                topRadius: true,
+                bottomRadius: true,
+                leading: const Icon(
+                  Icons.access_time_filled,
+                  size: 28,
+                ),
+                trailing: Row(
+                  children: List.generate(
+                    7,
+                    (index) => const SleekCounter(
+                      min: 0,
+                      max: 10,
+                      sm: true,
+                      value: 7,
+                      fail: false,
+                      abandon: true,
                     ),
                   ),
                 ),
