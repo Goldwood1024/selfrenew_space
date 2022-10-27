@@ -227,7 +227,7 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                   ),
                 ),
                 Text(
-                  '没有习惯，快添加习惯吧',
+                  '还没有习惯，快添加习惯吧',
                   style: TextStyleMode.tipTextStyle(context),
                 )
               ],
