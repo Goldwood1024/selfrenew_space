@@ -36,14 +36,11 @@ class _HabitModuleState extends State<HabitModule> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SPHelper.getHeightBox(16),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.zero,
                       child: Text(
                         '养成这些习惯，让生活变得有意义',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: CupertinoColors.systemGrey,
-                        ),
+                        style: TextStyleMode.tipTextStyle(context),
                       ),
                     ),
                     SPHelper.getHeightBox(14),

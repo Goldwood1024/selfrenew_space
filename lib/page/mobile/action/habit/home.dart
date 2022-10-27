@@ -131,84 +131,106 @@ class Underway extends StatefulWidget {
 }
 
 class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
+  late bool show;
+
   @override
   void initState() {
     super.initState();
+
+    show = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
-        10,
-        (index) => Padding(
-          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-          child: HabitHomeTile(
-            title: '八段锦八段锦',
-            subTitle: Column(
-              children: [
-                SPHelper.getHeightBox(SPHelper.gapDp4),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.timer,
-                      size: SPHelper.sp(SPHelper.fontSp18),
-                      color: CupertinoColors.systemGrey2,
-                    ),
-                    SPHelper.getWidthBox(SPHelper.gapDp8),
-                    Text(
-                      '每天',
-                      style: TextStyle(
-                        color: CupertinoColors.systemGrey2,
-                        fontSize: SPHelper.sp(SPHelper.fontSp15),
+    return show
+        ? Column(
+            children: List.generate(
+              10,
+              (index) => Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: HabitHomeTile(
+                  title: '八段锦八段锦',
+                  subTitle: Column(
+                    children: [
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.timer,
+                            size: SPHelper.sp(SPHelper.fontSp18),
+                            color: CupertinoColors.systemGrey2,
+                          ),
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '每天',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.app_badge,
+                            size: SPHelper.sp(SPHelper.fontSp18),
+                            color: CupertinoColors.systemGrey2,
+                          ),
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '08:00',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  topRadius: true,
+                  bottomRadius: true,
+                  leading: const Icon(
+                    Icons.access_time_filled,
+                    size: 28,
+                  ),
+                  trailing: Row(
+                    children: List.generate(
+                      7,
+                      (index) => const SleekCounter(
+                        min: 0,
+                        max: 10,
+                        sm: true,
+                        value: 11,
+                        fail: false,
                       ),
                     ),
-                  ],
-                ),
-                SPHelper.getHeightBox(SPHelper.gapDp4),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      CupertinoIcons.app_badge,
-                      size: SPHelper.sp(SPHelper.fontSp18),
-                      color: CupertinoColors.systemGrey2,
-                    ),
-                    SPHelper.getWidthBox(SPHelper.gapDp8),
-                    Text(
-                      '08:00',
-                      style: TextStyle(
-                        color: CupertinoColors.systemGrey2,
-                        fontSize: SPHelper.sp(SPHelper.fontSp15),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            topRadius: true,
-            bottomRadius: true,
-            leading: const Icon(
-              Icons.access_time_filled,
-              size: 28,
-            ),
-            trailing: Row(
-              children: List.generate(
-                7,
-                (index) => const SleekCounter(
-                  min: 0,
-                  max: 10,
-                  sm: true,
-                  value: 11,
-                  fail: false,
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          )
+        : Container(
+            alignment: Alignment.topCenter,
+            child: Column(
+              children: [
+                Align(
+                  child: SvgPicture.asset(
+                    'assets/icons/habit_empty.svg',
+                    height: 200,
+                  ),
+                ),
+                Text(
+                  '没有习惯，快添加习惯吧',
+                  style: TextStyleMode.tipTextStyle(context),
+                )
+              ],
+            ),
+          );
   }
 }
 

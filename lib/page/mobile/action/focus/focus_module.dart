@@ -33,14 +33,11 @@ class _FocusModuleState extends State<FocusModule> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SPHelper.getHeightBox(16),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.zero,
                       child: Text(
                         '用专注和活力来激励自己',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: CupertinoColors.systemGrey,
-                        ),
+                        style: TextStyleMode.tipTextStyle(context),
                       ),
                     ),
                     SPHelper.getHeightBox(14),

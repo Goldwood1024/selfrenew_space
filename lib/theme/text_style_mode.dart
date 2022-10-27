@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
 class TextStyleMode {
@@ -13,6 +14,13 @@ class TextStyleMode {
     return TextStyle(
       fontSize: SPHelper.sp(SPHelper.fontSp16),
       color: Colors.white,
+    );
+  }
+
+  static TextStyle tipTextStyle(BuildContext context) {
+    return TextStyle(
+      fontSize: SPHelper.sp(SPHelper.fontSp16),
+      color: CupertinoColors.systemGrey,
     );
   }
 }
