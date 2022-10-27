@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/focus/focus_form_card.dart';
+import 'package:selfrenew_space/page/core/form_card.dart';
 
 class HabitIcons extends StatefulWidget {
   const HabitIcons({super.key});
@@ -32,8 +32,9 @@ class _HabitIconsState extends State<HabitIcons> {
         padding: SPHelper.pagePadding,
         child: ListView(
           children: [
-            FocusFormCard(
+            FormCard(
               title: '颜色',
+              titleTrailing: SPHelper.empty,
               fontWeight: FontWeight.w500,
               child: SizedBox(
                 height: 120,
@@ -55,8 +56,9 @@ class _HabitIconsState extends State<HabitIcons> {
               ),
             ),
             SPHelper.getDefaultHeightBox(),
-            FocusFormCard(
+            FormCard(
               title: '图标',
+              titleTrailing: SPHelper.empty,
               fontWeight: FontWeight.w500,
               child: SizedBox(
                 height: 220,

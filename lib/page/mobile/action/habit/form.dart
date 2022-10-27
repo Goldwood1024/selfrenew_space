@@ -49,8 +49,9 @@ class _HabitFormState extends State<HabitForm> {
           child: ListView(
             children: [
               SPHelper.getDefaultHeightBox(),
-              FocusFormCard(
+              FormCard(
                 title: '名称',
+                titleTrailing: SPHelper.empty,
                 fontWeight: FontWeight.normal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -61,9 +62,10 @@ class _HabitFormState extends State<HabitForm> {
                         style: const TextStyle(fontSize: 17),
                         maxLength: 12,
                         controller: TextEditingController(),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                       ),
@@ -97,7 +99,7 @@ class _HabitFormState extends State<HabitForm> {
                               '图标库',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: CupertinoColors.systemGrey,
+                                color: Colors.black54,
                               ),
                             ),
                           ],
@@ -137,7 +139,7 @@ class _HabitFormState extends State<HabitForm> {
                   '每天',
                   style: TextStyle(
                     fontSize: 16,
-                    color: CupertinoColors.systemGrey,
+                    color: Colors.black54,
                   ),
                 ),
               ),
@@ -153,7 +155,7 @@ class _HabitFormState extends State<HabitForm> {
                   '每天',
                   style: TextStyle(
                     fontSize: 16,
-                    color: CupertinoColors.systemGrey,
+                    color: Colors.black54,
                   ),
                 ),
               ),
@@ -170,13 +172,27 @@ class _HabitFormState extends State<HabitForm> {
                   '1月21',
                   style: TextStyle(
                     fontSize: 16,
-                    color: CupertinoColors.systemGrey,
+                    color: Colors.black54,
                   ),
                 ),
               ),
               SPHelper.getDefaultHeightBox(),
-              FocusFormCard(
+              FormCard(
                 title: '鼓励语',
+                titleTrailing: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {},
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    margin: const EdgeInsets.fromLTRB(0, 0, 7, 0),
+                    child: Icon(
+                      Icons.refresh,
+                      size: 28,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                ),
                 fontWeight: FontWeight.normal,
                 child: Column(
                   children: [
@@ -186,9 +202,10 @@ class _HabitFormState extends State<HabitForm> {
                       maxLines: 5,
                       controller: TextEditingController(),
                       style: const TextStyle(fontSize: 17),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),

@@ -1,36 +1,34 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 
-class FocusFormCard extends StatefulWidget {
+class FormCard extends StatefulWidget {
   final String title;
   final Widget child;
+  final Widget titleTrailing;
   final FontWeight fontWeight;
   final double fontSize;
 
-  const FocusFormCard({
+  const FormCard({
     super.key,
     required this.title,
+    required this.titleTrailing,
     required this.child,
     required this.fontWeight,
     this.fontSize = SPHelper.fontSp18,
   });
 
   @override
-  State<StatefulWidget> createState() => _FocusFormCardState();
+  State<StatefulWidget> createState() => _FormCardState();
 }
 
-class _FocusFormCardState extends State<FocusFormCard>
+class _FormCardState extends State<FormCard>
     with SingleTickerProviderStateMixin {
-  late bool selected;
-
   @override
   void initState() {
     super.initState();
-    selected = false;
   }
 
   @override
   void dispose() {
-    selected = false;
     super.dispose();
   }
 
@@ -56,6 +54,7 @@ class _FocusFormCardState extends State<FocusFormCard>
               0,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   widget.title,
@@ -63,7 +62,11 @@ class _FocusFormCardState extends State<FocusFormCard>
                     fontSize: SPHelper.sp(widget.fontSize),
                     fontWeight: widget.fontWeight,
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
+                  child: widget.titleTrailing,
+                ),
               ],
             ),
           ),

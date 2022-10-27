@@ -57,8 +57,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      FocusFormCard(
+                      FormCard(
                         title: '名称',
+                        titleTrailing: SPHelper.empty,
                         fontWeight: FontWeight.w500,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -164,8 +165,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       SPHelper.getHeightBox(
                         SPHelper.pageVerticalPadding(),
                       ),
-                      FocusFormCard(
+                      FormCard(
                         title: '鼓励语',
+                        titleTrailing: SPHelper.empty,
                         fontWeight: FontWeight.w500,
                         child: Column(
                           children: [
