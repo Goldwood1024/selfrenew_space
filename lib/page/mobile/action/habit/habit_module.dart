@@ -15,11 +15,10 @@ class _HabitModuleState extends State<HabitModule> {
   List<String> tags = [];
   List<String> options = [
     '喝水',
-    '反省自己',
-    '早睡',
-    '阅读',
     '锻炼身体',
+    '早睡',
     '吃水果',
+    '阅读',
   ];
 
   @override
@@ -55,14 +54,13 @@ class _HabitModuleState extends State<HabitModule> {
                       value: tags,
                       spacing: 14,
                       runSpacing: 14,
-                      choiceStyle: C2ChipStyle(
+                      choiceStyle: const C2ChipStyle(
                         height: 46,
                         backgroundColor: Colors.white,
                         backgroundOpacity: 1,
                         foregroundStyle: TextStyle(
                           fontSize: 16,
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.6),
+                          color: CupertinoColors.systemGrey,
                         ),
                       ),
                       wrapped: true,
@@ -73,6 +71,8 @@ class _HabitModuleState extends State<HabitModule> {
                         source: options,
                         value: (i, v) => v,
                         label: (i, v) => v,
+                        avatarImage: (i, v) =>
+                            const AssetImage('assets/icons/用药.png'),
                       ),
                     )
                   ],

@@ -51,15 +51,20 @@ class _FocusModuleState extends State<FocusModule> {
                       padding: EdgeInsets.zero,
                       spacing: 14,
                       runSpacing: 14,
-                      choiceStyle: C2ChipStyle(
+                      choiceStyle: const C2ChipStyle(
                         height: 46,
                         backgroundColor: Colors.white,
                         backgroundOpacity: 1,
                         foregroundStyle: TextStyle(
                           fontSize: 16,
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.6),
+                          color: CupertinoColors.systemGrey,
                         ),
+                        avatarBackgroundColor: Colors.white,
+                        avatarForegroundColor: Colors.white,
+                        avatarSize: Size(24, 23),
+                        iconColor: Colors.white,
+                        borderColor: Colors.white,
+                        checkmarkColor: Colors.white,
                       ),
                       wrapped: true,
                       onChanged: (_) {
@@ -69,6 +74,8 @@ class _FocusModuleState extends State<FocusModule> {
                         source: options,
                         value: (i, v) => v,
                         label: (i, v) => v,
+                        avatarImage: (i, v) =>
+                            const AssetImage('assets/icons/用药.png'),
                       ),
                     )
                   ],
