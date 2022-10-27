@@ -56,28 +56,32 @@ class _HabitSelectState extends State<HabitSelect> {
                               Row(
                                 children: [
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      0,
+                                      0,
+                                      12,
+                                      0,
+                                    ),
                                     child: SvgPicture.asset(
                                       'assets/icons/浴盆.svg',
-                                      width: 24,
-                                      height: 24,
+                                      width: SPHelper.width(24),
+                                      height: SPHelper.height(24),
                                     ),
                                   ),
-                                  const Text(
+                                  Text(
                                     '喝水',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 16,
+                                      fontSize: SPHelper.sp(SPHelper.fontSp16),
                                     ),
                                   ),
                                 ],
                               ),
                               const Expanded(child: SPHelper.empty),
-                              const Text(
+                              Text(
                                 '没有一个冬天不可逾越，没有一个春天不会来临',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: SPHelper.sp(SPHelper.fontSp14),
                                   fontWeight: FontWeight.normal,
                                 ),
                               )
@@ -93,7 +97,7 @@ class _HabitSelectState extends State<HabitSelect> {
             Positioned(
               bottom: 0,
               child: Container(
-                height: 100,
+                height: SPHelper.height(100),
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Container(
@@ -110,7 +114,7 @@ class _HabitSelectState extends State<HabitSelect> {
                         20,
                         0,
                       ),
-                      width: 180,
+                      width: SPHelper.width(180),
                       height: SPHelper.height(52),
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
@@ -121,17 +125,17 @@ class _HabitSelectState extends State<HabitSelect> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             '自定义习惯',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: SPHelper.sp(SPHelper.fontSp18),
                               color: CupertinoColors.white,
                             ),
                           ),
                           Icon(
                             Icons.arrow_forward_outlined,
-                            size: 28,
+                            size: SPHelper.sp(SPHelper.fontSp24),
                             color: CupertinoColors.white,
                           )
                         ],
