@@ -8,4 +8,11 @@ class TextStyleMode {
       color: Theme.of(context).primaryColor,
     );
   }
+
+  static TextStyle floatBubbleTextStyle(BuildContext context) {
+    return TextStyle(
+      fontSize: SPHelper.sp(SPHelper.fontSp16),
+      color: Colors.white,
+    );
+  }
 }

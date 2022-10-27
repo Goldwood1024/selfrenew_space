@@ -39,10 +39,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.nosign,
-            titleStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
               Routers.go(Routers.habitSelect);
@@ -53,10 +50,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
             icon: CupertinoIcons.loop,
-            titleStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
               Routers.go(Routers.habitSelect);
@@ -80,7 +74,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         ),
         leadingWidth: SPHelper.leadingWidth,
         leading: BackBtn(
-          title: '概览',
+          title: '计划',
           onPressed: () {
             Routers.pop();
           },
@@ -119,210 +113,238 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            HabitHomeTile(
-              title: '八段锦八段锦',
-              subTitle: Column(
-                children: [
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.timer,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.app_badge,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              topRadius: true,
-              bottomRadius: true,
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: List.generate(
-                  7,
-                  (index) => const SleekCounter(
-                    min: 0,
-                    max: 10,
-                    sm: true,
-                    value: 11,
-                    fail: false,
-                  ),
-                ),
-              ),
-            ),
-            SPHelper.getHeightBox(8),
-            HabitHomeTile(
-              title: '八段锦八段锦',
-              subTitle: Column(
-                children: [
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.timer,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.app_badge,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              topRadius: true,
-              bottomRadius: true,
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: List.generate(
-                  7,
-                  (index) => const SleekCounter(
-                    min: 0,
-                    max: 10,
-                    sm: true,
-                    value: 7,
-                    fail: false,
-                  ),
-                ),
-              ),
-            ),
+            Underway(),
             SPHelper.getHeightBox(36),
-            Text(
-              '已放弃',
-              style: TextStyle(
-                fontSize: SPHelper.sp(SPHelper.fontSp16),
-                fontWeight: FontWeight.w600,
-                color: CupertinoColors.systemGrey,
-              ),
-            ),
-            SPHelper.getHeightBox(SPHelper.gapDp12),
-            HabitHomeTile(
-              title: '八段锦八段锦',
-              abandon: true,
-              subTitle: Column(
-                children: [
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.timer,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '每天',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SPHelper.getHeightBox(SPHelper.gapDp4),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.app_badge,
-                        size: SPHelper.sp(SPHelper.fontSp18),
-                        color: CupertinoColors.systemGrey2,
-                      ),
-                      SPHelper.getWidthBox(SPHelper.gapDp8),
-                      Text(
-                        '08:00',
-                        style: TextStyle(
-                          color: CupertinoColors.systemGrey2,
-                          fontSize: SPHelper.sp(SPHelper.fontSp15),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              topRadius: true,
-              bottomRadius: true,
-              leading: const Icon(
-                Icons.access_time_filled,
-                size: 28,
-              ),
-              trailing: Row(
-                children: List.generate(
-                  7,
-                  (index) => const SleekCounter(
-                    min: 0,
-                    max: 10,
-                    sm: true,
-                    value: 7,
-                    fail: false,
-                    abandon: true,
+            Abandon()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Underway extends StatefulWidget {
+  const Underway({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _UnderwayState();
+}
+
+class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: HabitHomeTile(
+        title: '八段锦八段锦',
+        subTitle: Column(
+          children: [
+            SPHelper.getHeightBox(SPHelper.gapDp4),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  CupertinoIcons.timer,
+                  size: SPHelper.sp(SPHelper.fontSp18),
+                  color: CupertinoColors.systemGrey2,
+                ),
+                SPHelper.getWidthBox(SPHelper.gapDp8),
+                Text(
+                  '每天',
+                  style: TextStyle(
+                    color: CupertinoColors.systemGrey2,
+                    fontSize: SPHelper.sp(SPHelper.fontSp15),
                   ),
                 ),
-              ),
+              ],
+            ),
+            SPHelper.getHeightBox(SPHelper.gapDp4),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  CupertinoIcons.app_badge,
+                  size: SPHelper.sp(SPHelper.fontSp18),
+                  color: CupertinoColors.systemGrey2,
+                ),
+                SPHelper.getWidthBox(SPHelper.gapDp8),
+                Text(
+                  '08:00',
+                  style: TextStyle(
+                    color: CupertinoColors.systemGrey2,
+                    fontSize: SPHelper.sp(SPHelper.fontSp15),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
+        topRadius: true,
+        bottomRadius: true,
+        leading: const Icon(
+          Icons.access_time_filled,
+          size: 28,
+        ),
+        trailing: Row(
+          children: List.generate(
+            7,
+            (index) => const SleekCounter(
+              min: 0,
+              max: 10,
+              sm: true,
+              value: 11,
+              fail: false,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Abandon extends StatefulWidget {
+  const Abandon({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _AbandonState();
+}
+
+class _AbandonState extends State<Abandon> {
+  late bool expand;
+
+  @override
+  void initState() {
+    super.initState();
+    expand = false;
+  }
+
+  @override
+  void dispose() {
+    expand = false;
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '已放弃',
+                style: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.fontSp16),
+                  fontWeight: FontWeight.w600,
+                  color: CupertinoColors.systemGrey,
+                ),
+              ),
+              GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () {
+                  setState(() {
+                    expand = !expand;
+                  });
+                },
+                child: Container(
+                  width: 40,
+                  height: 20,
+                  alignment: Alignment.centerRight,
+                  child: expand
+                      ? Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 28,
+                          color: Theme.of(context).primaryColor,
+                        )
+                      : Icon(
+                          Icons.keyboard_arrow_right,
+                          size: 28,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                ),
+              )
+            ],
+          ),
+          SPHelper.getHeightBox(SPHelper.gapDp12),
+          Column(
+            children: List.generate(
+              expand ? 10 : 0,
+              (index) => Container(
+                margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: HabitHomeTile(
+                  title: '八段锦八段锦',
+                  abandon: true,
+                  subTitle: Column(
+                    children: [
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.timer,
+                            size: SPHelper.sp(SPHelper.fontSp18),
+                            color: CupertinoColors.systemGrey2,
+                          ),
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '每天',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.app_badge,
+                            size: SPHelper.sp(SPHelper.fontSp18),
+                            color: CupertinoColors.systemGrey2,
+                          ),
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '08:00',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  topRadius: true,
+                  bottomRadius: true,
+                  leading: const Icon(
+                    Icons.access_time_filled,
+                    size: 28,
+                  ),
+                  trailing: Row(
+                    children: List.generate(
+                      7,
+                      (index) => const SleekCounter(
+                        min: 0,
+                        max: 10,
+                        sm: true,
+                        value: 7,
+                        fail: false,
+                        abandon: true,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
