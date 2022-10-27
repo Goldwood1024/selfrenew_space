@@ -20,12 +20,6 @@ class _MobileSettingState extends State<MobileSetting> {
               heroTag: Hero(tag: 'MobileSetting', child: SPHelper.empty),
               brightness: Brightness.light,
               backgroundColor: Colors.transparent,
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.transparent,
-                  width: 0.0,
-                ),
-              ),
               largeTitle: Text(
                 '设置',
                 style: TextStyle(
