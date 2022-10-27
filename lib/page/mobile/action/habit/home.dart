@@ -446,6 +446,7 @@ class _AbandonState extends State<Abandon> {
           ListView.builder(
             shrinkWrap: true,
             itemCount: expand ? 10 : 0,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: HabitHomeTile(
