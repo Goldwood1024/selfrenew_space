@@ -64,6 +64,7 @@ export 'package:selfrenew_space/state/manager_provider.dart';
 export 'package:selfrenew_space/state/mobile_bottom_bar_provider.dart';
 export 'package:selfrenew_space/theme/hex_color.dart';
 export 'package:selfrenew_space/theme/size.dart';
+export 'package:selfrenew_space/theme/text_style_mode.dart';
 export 'package:selfrenew_space/theme/theme_mode.dart';
 export 'package:selfrenew_space/util/datetime_util.dart';
 export 'package:selfrenew_space/util/handle_error_utils.dart';

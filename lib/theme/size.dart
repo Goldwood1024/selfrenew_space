@@ -156,6 +156,10 @@ class SPHelper {
     return value.w;
   }
 
+  static zero() {
+    return 0.w;
+  }
+
   /// 圆角
   static radius(double value) {
     return value.r;

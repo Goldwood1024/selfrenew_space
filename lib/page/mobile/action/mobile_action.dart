@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page/mobile/action/habit/habit_module.dart';
 
 class MobileAction extends StatefulWidget {
   const MobileAction({super.key});
@@ -61,17 +62,13 @@ class _MobileActionState extends State<MobileAction> {
                   ? Padding(
                       padding: EdgeInsets.fromLTRB(
                         SPHelper.width(SPHelper.gapDp18),
-                        SPHelper.width(SPHelper.gapDp12),
-                        0,
-                        0,
+                        SPHelper.width(SPHelper.gapDp10),
+                        SPHelper.zero(),
+                        SPHelper.zero(),
                       ),
                       child: Text(
                         DatetimeUtil.weekday(context),
-                        style: TextStyle(
-                          fontSize: SPHelper.sp(SPHelper.fontSp18),
-                          fontWeight: FontWeight.normal,
-                          color: Theme.of(context).primaryColor,
-                        ),
+                        style: TextStyleMode.leadingTextStyle(context),
                       ),
                     )
                   : Container(),
@@ -100,46 +97,7 @@ class _MobileActionState extends State<MobileAction> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              MobileModule(
-                title: '日常习惯',
-                onPressed: () {
-                  Routers.go(Routers.habit);
-                },
-                child: Column(
-                  children: [
-                    HabitTile(
-                      topRadius: true,
-                      title: '冥想22333',
-                      leading: SvgPicture.asset(
-                        'assets/icons/浴盆.svg',
-                        width: 24,
-                        height: 24,
-                      ),
-                      trailing: const SleekCounter(
-                        min: 0,
-                        max: 10,
-                        value: 2,
-                        fail: false,
-                      ),
-                    ),
-                    HabitTile(
-                      bottomRadius: true,
-                      title: '喝一杯水',
-                      leading: SvgPicture.asset(
-                        'assets/icons/浴盆.svg',
-                        width: 24,
-                        height: 24,
-                      ),
-                      trailing: const SleekCounter(
-                        min: 0,
-                        max: 10,
-                        value: 22,
-                        fail: false,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              HabitModule(),
               MobileModule(
                 title: '专注',
                 onPressed: () {

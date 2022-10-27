@@ -40,6 +40,7 @@ class _HabitTileState extends State<HabitTile> {
       onTap: widget.onPressed,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
+        height: widget.height,
         child: Container(
           decoration: BoxDecoration(
             color: widget.backgroundColor,
