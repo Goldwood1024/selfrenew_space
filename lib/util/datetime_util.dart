@@ -26,4 +26,8 @@ class DatetimeUtil {
     int minute = end.minute - start.minute;
     return hour * 60 + minute.abs();
   }
+
+  static String weekday(BuildContext context) {
+    return DateUtil.getWeekday(DateTime.now(), languageCode: 'zh');
+  }
 }

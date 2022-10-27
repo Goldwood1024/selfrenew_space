@@ -8,8 +8,7 @@ class AppThemeMode {
     return FlexThemeData.light(
       primary: HexColor('#165DFF'),
       secondary: HexColor('#0E42D2'),
-      scaffoldBackground: CupertinoColors.systemBackground,
-      background: CupertinoColors.systemGrey6,
+      scaffoldBackground: CupertinoColors.systemGroupedBackground,
       useMaterial3: true,
       useMaterial3ErrorColors: true,
       appBarElevation: 0,

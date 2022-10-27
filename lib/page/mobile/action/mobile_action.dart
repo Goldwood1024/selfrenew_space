@@ -9,19 +9,35 @@ class MobileAction extends StatefulWidget {
 }
 
 class _MobileActionState extends State<MobileAction> {
-  double i = 0;
-  late CustomPopupMenuController controller;
+  late ScrollController _nestedScrollController;
+  late bool showWeek;
 
   @override
   void initState() {
     super.initState();
-    i = 0;
-    controller = CustomPopupMenuController();
+
+    _nestedScrollController = ScrollController();
+
+    // 显示星期
+    showWeek = false;
+    _nestedScrollController.addListener(() {
+      if (!showWeek && _nestedScrollController.offset > SPHelper.gapDp42) {
+        setState(() {
+          showWeek = true;
+        });
+      }
+
+      if (_nestedScrollController.offset <= SPHelper.gapDp42) {
+        setState(() {
+          showWeek = false;
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _nestedScrollController.dispose();
     super.dispose();
   }
 
@@ -29,6 +45,7 @@ class _MobileActionState extends State<MobileAction> {
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
       body: ExtendedNestedScrollView(
+        controller: _nestedScrollController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             CupertinoSliverNavigationBar(
@@ -40,91 +57,30 @@ class _MobileActionState extends State<MobileAction> {
                   width: 0.0,
                 ),
               ),
-              // leading: Padding(
-              //   padding: const EdgeInsets.fromLTRB(18, 10, 0, 0),
-              //   child: Text(
-              //     '星期五',
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       fontWeight: FontWeight.normal,
-              //       color: Theme.of(context).primaryColor,
-              //     ),
-              //   ),
-              // ),
+              leading: showWeek
+                  ? Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        SPHelper.width(SPHelper.gapDp18),
+                        SPHelper.width(SPHelper.gapDp12),
+                        0,
+                        0,
+                      ),
+                      child: Text(
+                        DatetimeUtil.weekday(context),
+                        style: TextStyle(
+                          fontSize: SPHelper.sp(SPHelper.fontSp18),
+                          fontWeight: FontWeight.normal,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    )
+                  : Container(),
               largeTitle: const Text(
                 '概要',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              // trailing: CustomPopupMenu(
-              //   controller: controller,
-              //   arrowColor: Colors.white,
-              //   showArrow: false,
-              //   verticalMargin: 0,
-              //   horizontalMargin: 14,
-              //   menuBuilder: () => ClipRRect(
-              //     borderRadius: BorderRadius.circular(8),
-              //     child: Container(
-              //       color: Colors.white,
-              //       child: IntrinsicWidth(
-              //         stepWidth: 200,
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.center,
-              //           mainAxisAlignment: MainAxisAlignment.center,
-              //           children: [
-              //             GestureDetector(
-              //               behavior: HitTestBehavior.translucent,
-              //               onTap: () {
-              //                 controller.hideMenu();
-              //                 BottomDialog.showModalBottomSheet(
-              //                   context,
-              //                   MobileFunc(),
-              //                 );
-              //               },
-              //               child: Container(
-              //                 height: 46,
-              //                 color: Colors.white,
-              //                 alignment: Alignment.center,
-              //                 child: Row(
-              //                   crossAxisAlignment: CrossAxisAlignment.center,
-              //                   mainAxisAlignment:
-              //                       MainAxisAlignment.spaceAround,
-              //                   children: const [
-              //                     Icon(CupertinoIcons.layers_alt),
-              //                     Text(
-              //                       '功能模块',
-              //                       style: TextStyle(
-              //                         fontSize: 16,
-              //                       ),
-              //                     ),
-              //                   ],
-              //                 ),
-              //               ),
-              //             ),
-              //             const Divider(),
-              //             GestureDetector(
-              //               behavior: HitTestBehavior.translucent,
-              //               onTap: () {
-              //                 print("onTap");
-              //               },
-              //               child: Container(
-              //                 height: 46,
-              //                 color: Colors.white,
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              //   pressType: PressType.singleClick,
-              //   child: Container(
-              //     child: const Icon(
-              //       Icons.more_horiz,
-              //     ),
-              //   ),
-              // ),
               trailing: ActionIconBtn(
                 icon: const Icon(
                   Icons.more_horiz_sharp,
@@ -132,7 +88,7 @@ class _MobileActionState extends State<MobileAction> {
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(
                     context,
-                    MobileActionBottom(),
+                    const MobileActionBottom(),
                   );
                 },
               ),
