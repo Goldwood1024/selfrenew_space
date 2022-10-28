@@ -42,3 +42,23 @@ class _CommonSwitchState extends State<CommonSwitch> {
     );
   }
 }
+
+class SvgLoader extends StatelessWidget {
+  final String path;
+  final double size;
+
+  const SvgLoader({
+    super.key,
+    required this.path,
+    this.size = 24,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      path,
+      width: size,
+      height: size,
+    );
+  }
+}

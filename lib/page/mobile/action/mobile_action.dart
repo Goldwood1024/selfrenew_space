@@ -10,7 +10,7 @@ class MobileAction extends StatefulWidget {
 
 class _MobileActionState extends State<MobileAction> {
   late ScrollController _nestedScrollController;
-  late bool showWeek;
+  late bool _showWeek;
 
   @override
   void initState() {
@@ -19,17 +19,17 @@ class _MobileActionState extends State<MobileAction> {
     _nestedScrollController = ScrollController();
 
     // 显示星期
-    showWeek = false;
+    _showWeek = false;
     _nestedScrollController.addListener(() {
-      if (!showWeek && _nestedScrollController.offset > SPHelper.gapDp42) {
+      if (!_showWeek && _nestedScrollController.offset > SPHelper.gapDp42) {
         setState(() {
-          showWeek = true;
+          _showWeek = true;
         });
       }
 
       if (_nestedScrollController.offset <= SPHelper.gapDp42) {
         setState(() {
-          showWeek = false;
+          _showWeek = false;
         });
       }
     });
@@ -51,13 +51,7 @@ class _MobileActionState extends State<MobileAction> {
             CupertinoSliverNavigationBar(
               brightness: Brightness.light,
               backgroundColor: Colors.transparent,
-              // border: const Border(
-              //   bottom: BorderSide(
-              //     color: Colors.transparent,
-              //     width: 0.0,
-              //   ),
-              // ),
-              leading: showWeek
+              leading: _showWeek
                   ? Padding(
                       padding: EdgeInsets.fromLTRB(
                         SPHelper.width(SPHelper.gapDp2),
