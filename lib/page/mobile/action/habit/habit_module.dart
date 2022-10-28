@@ -103,23 +103,19 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
     return Container(
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 10,
+        itemCount: 1,
         padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return HabitTile(
             title: '喝一杯水',
             topRadius: index == 0,
-            bottomRadius: index == 9,
-            leading: SvgPicture.asset(
-              'assets/icons/浴盆.svg',
-              width: 24,
-              height: 24,
-            ),
+            bottomRadius: index == 0,
+            leading: 'assets/icons/浴盆.svg',
             trailing: const SleekCounter(
               min: 0,
-              max: 10,
-              value: 22,
+              max: 4,
+              value: 1,
               fail: false,
             ),
           );

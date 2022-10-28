@@ -29,7 +29,7 @@ class _SleekCounterState extends State<SleekCounter> {
   @override
   void initState() {
     super.initState();
-    data = widget.value / 10;
+    data = widget.value;
   }
 
   @override
