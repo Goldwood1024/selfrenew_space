@@ -80,6 +80,7 @@ flutter:
     ## 图标
     - 'assets/icons/浴盆.svg'
     - 'assets/icons/用药.png'
+    - 'assets/icons/算盘.png'
     - 'assets/icons/habit.svg'
     - 'assets/icons/focus.svg'
 

@@ -12,10 +12,9 @@ class _FocusModuleState extends State<FocusModule> {
   final show = true;
 
   List<String> tags = [];
-  List<String> options = [
-    '阅读',
-    '深度工作',
-    '冥想',
+  List<TipChip> options = [
+    TipChip('2', '喝水喝水喝水', 'assets/icons/算盘.png'),
+    TipChip('1', '吃啥', 'assets/icons/用药.png'),
   ];
 
   @override
@@ -42,37 +41,46 @@ class _FocusModuleState extends State<FocusModule> {
                     ),
                     SPHelper.getHeightBox(14),
                     ChipsChoice.single(
+                      padding: EdgeInsets.zero,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       value: tags,
-                      padding: EdgeInsets.zero,
-                      spacing: 14,
-                      runSpacing: 14,
-                      choiceStyle: const C2ChipStyle(
-                        height: 46,
+                      spacing: SPHelper.width(SPHelper.gapDp14),
+                      runSpacing: SPHelper.width(SPHelper.gapDp14),
+                      choiceStyle: C2ChipStyle(
+                        height: SPHelper.height(SPHelper.gapDp48),
                         backgroundColor: Colors.white,
                         backgroundOpacity: 1,
+                        overlayColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: EdgeInsets.fromLTRB(
+                            SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
+                        foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
                         foregroundStyle: TextStyle(
-                          fontSize: 16,
+                          fontSize: SPHelper.sp(SPHelper.fontSp18),
                           color: CupertinoColors.systemGrey,
+                          fontWeight: FontWeight.w500,
                         ),
-                        avatarBackgroundColor: Colors.white,
-                        avatarForegroundColor: Colors.white,
-                        avatarSize: Size(24, 23),
-                        iconColor: Colors.white,
-                        borderColor: Colors.white,
-                        checkmarkColor: Colors.white,
                       ),
+                      placeholder: '无',
                       wrapped: true,
                       onChanged: (_) {
                         print(_);
                       },
-                      choiceItems: C2Choice.listFrom<String, String>(
+                      choiceLeadingBuilder: (item, v) {
+                        return SizedBox(
+                          width: SPHelper.width(SPHelper.gapDp24),
+                          height: SPHelper.height(SPHelper.gapDp24),
+                          child: Image(
+                            image: item.avatarImage!,
+                          ),
+                        );
+                      },
+                      choiceItems: C2Choice.listFrom<String, TipChip>(
                         source: options,
-                        value: (i, v) => v,
-                        label: (i, v) => v,
-                        avatarImage: (i, v) =>
-                            const AssetImage('assets/icons/用药.png'),
+                        value: (i, v) => v.value,
+                        label: (i, v) => v.title,
+                        avatarImage: (i, v) => AssetImage(v.image),
                       ),
                     )
                   ],
