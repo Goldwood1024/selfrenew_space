@@ -129,3 +129,44 @@ class _ChipEmptyState extends State<ChipEmpty> {
     );
   }
 }
+
+class AccentColor extends StatefulWidget {
+  final Color color;
+  final bool selected;
+
+  const AccentColor({
+    super.key,
+    required this.color,
+    required this.selected,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _AccentColorState();
+}
+
+class _AccentColorState extends State<AccentColor> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        color: widget.color,
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Align(
+        child: SizedBox(
+          child: Container(
+            width: 14,
+            height: 14,
+            decoration: BoxDecoration(
+              color: widget.selected ? Colors.white : widget.color,
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
