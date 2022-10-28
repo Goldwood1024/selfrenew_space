@@ -1,4 +1,3 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 import 'package:selfrenew_space/model/tip_chip.dart';
@@ -75,50 +74,12 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
               style: TextStyleMode.tipTextStyle(context),
             ),
           ),
-          SPHelper.getHeightBox(SPHelper.gapDp20),
-          ChipsChoice.single(
-            padding: EdgeInsets.zero,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            value: tags,
-            spacing: SPHelper.width(SPHelper.gapDp14),
-            runSpacing: SPHelper.width(SPHelper.gapDp14),
-            choiceStyle: C2ChipStyle(
-              height: SPHelper.height(SPHelper.gapDp48),
-              backgroundColor: Colors.white,
-              backgroundOpacity: 1,
-              overlayColor: Colors.transparent,
-              shadowColor: Colors.transparent,
-              padding: EdgeInsets.fromLTRB(
-                  SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
-              foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
-              foregroundStyle: TextStyle(
-                fontSize: SPHelper.sp(SPHelper.fontSp18),
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            placeholder: '无',
-            wrapped: true,
-            onChanged: (_) {
+          ChipEmpty(
+            options: options,
+            onPressed: (_) {
               print(_);
             },
-            choiceLeadingBuilder: (item, v) {
-              return SizedBox(
-                width: SPHelper.width(SPHelper.gapDp24),
-                height: SPHelper.height(SPHelper.gapDp24),
-                child: Image(
-                  image: item.avatarImage!,
-                ),
-              );
-            },
-            choiceItems: C2Choice.listFrom<String, TipChip>(
-              source: options,
-              value: (i, v) => v.value,
-              label: (i, v) => v.title,
-              avatarImage: (i, v) => AssetImage(v.image),
-            ),
-          ),
-          SPHelper.getHeightBox(SPHelper.gapDp20),
+          )
         ],
       ),
     );

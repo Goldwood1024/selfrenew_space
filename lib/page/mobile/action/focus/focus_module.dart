@@ -11,16 +11,10 @@ class FocusModule extends StatefulWidget {
 class _FocusModuleState extends State<FocusModule> {
   late bool show = true;
 
-  List<String> tags = [];
-  List<TipChip> options = [
-    TipChip('2', '喝水喝水喝水', 'assets/icons/算盘.png'),
-    TipChip('1', '吃啥', 'assets/icons/用药.png'),
-  ];
-
   @override
   void initState() {
     super.initState();
-    show = false;
+    show = true;
   }
 
   @override
@@ -47,10 +41,10 @@ class FocusActionEmpty extends StatefulWidget {
 class _FocusActionEmptyState extends State<FocusActionEmpty> {
   List<String> tags = [];
   List<TipChip> options = [
-    TipChip('1', '吃啥', 'assets/icons/出差.png'),
-    TipChip('3', '喝水水', 'assets/icons/算盘.png'),
     TipChip('5', '喝水水喝水', 'assets/icons/算盘.png'),
     TipChip('4', '喝水喝水', 'assets/icons/算盘.png'),
+    TipChip('1', '吃啥', 'assets/icons/出差.png'),
+    TipChip('3', '喝水水', 'assets/icons/算盘.png'),
   ];
 
   @override
@@ -73,50 +67,12 @@ class _FocusActionEmptyState extends State<FocusActionEmpty> {
               style: TextStyleMode.tipTextStyle(context),
             ),
           ),
-          SPHelper.getHeightBox(SPHelper.gapDp20),
-          ChipsChoice.single(
-            padding: EdgeInsets.zero,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            value: tags,
-            spacing: SPHelper.width(SPHelper.gapDp14),
-            runSpacing: SPHelper.width(SPHelper.gapDp14),
-            choiceStyle: C2ChipStyle(
-              height: SPHelper.height(SPHelper.gapDp48),
-              backgroundColor: Colors.white,
-              backgroundOpacity: 1,
-              overlayColor: Colors.transparent,
-              shadowColor: Colors.transparent,
-              padding: EdgeInsets.fromLTRB(
-                  SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
-              foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
-              foregroundStyle: TextStyle(
-                fontSize: SPHelper.sp(SPHelper.fontSp18),
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            placeholder: '无',
-            wrapped: true,
-            onChanged: (_) {
+          ChipEmpty(
+            options: options,
+            onPressed: (_) {
               print(_);
             },
-            choiceLeadingBuilder: (item, v) {
-              return SizedBox(
-                width: SPHelper.width(SPHelper.gapDp24),
-                height: SPHelper.height(SPHelper.gapDp24),
-                child: Image(
-                  image: item.avatarImage!,
-                ),
-              );
-            },
-            choiceItems: C2Choice.listFrom<String, TipChip>(
-              source: options,
-              value: (i, v) => v.value,
-              label: (i, v) => v.title,
-              avatarImage: (i, v) => AssetImage(v.image),
-            ),
-          ),
-          SPHelper.getHeightBox(SPHelper.gapDp20),
+          )
         ],
       ),
     );
