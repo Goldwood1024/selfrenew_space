@@ -70,7 +70,7 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
           Padding(
             padding: EdgeInsets.zero,
             child: Text(
-              '养成这些习惯，让生活变得有意义',
+              '养成这些习惯，让生活变得有意义。',
               style: TextStyleMode.tipTextStyle(context),
             ),
           ),
