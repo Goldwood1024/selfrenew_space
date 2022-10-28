@@ -94,7 +94,6 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
               foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
               foregroundStyle: TextStyle(
                 fontSize: SPHelper.sp(SPHelper.fontSp18),
-                color: CupertinoColors.systemGrey,
                 fontWeight: FontWeight.w500,
               ),
             ),
