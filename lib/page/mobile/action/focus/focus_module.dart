@@ -39,7 +39,7 @@ class _FocusModuleState extends State<FocusModule> {
                         style: TextStyleMode.tipTextStyle(context),
                       ),
                     ),
-                    SPHelper.getHeightBox(14),
+                    SPHelper.getHeightBox(SPHelper.gapDp20),
                     ChipsChoice.single(
                       padding: EdgeInsets.zero,
                       crossAxisAlignment: CrossAxisAlignment.start,
