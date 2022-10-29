@@ -67,6 +67,8 @@ dependencies:
   simple_text_field: ^2.1.0
   extended_tabs: ^4.0.1
   chips_choice: ^3.0.0
+  statsfl: ^2.3.0
+  lifecycle: ^0.6.0
 
 dev_dependencies:
   flutter_test:

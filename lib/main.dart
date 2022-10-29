@@ -1,10 +1,25 @@
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:statsfl/statsfl.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   ManagerInitialization.runAppBefore();
-  handleError(() => runApp(const ManagerProvider(child: MainApp())));
+
+  handleError(
+    () => runApp(
+      ManagerProvider(
+        child: StatsFl(
+          isEnabled: true,
+          width: 300,
+          height: 120,
+          align: Alignment.center,
+          child: const MainApp(),
+        ),
+      ),
+    ),
+  );
+
   ManagerInitialization.runAppAfter();
 }
 
@@ -38,7 +53,6 @@ class _MainAppState extends State<MainApp> {
           child: MaterialApp.router(
             builder: FlutterSmartDialog.init(),
             debugShowCheckedModeBanner: false,
-            showPerformanceOverlay: false,
             theme: AppThemeMode.theme(),
             darkTheme: AppThemeMode.darkTheme(),
             themeMode: ThemeMode.system,
