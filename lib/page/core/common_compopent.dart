@@ -149,8 +149,8 @@ class _AccentColorState extends State<AccentColor> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
-      width: 40,
-      height: 40,
+      width: 32,
+      height: 32,
       decoration: BoxDecoration(
         color: widget.color,
         borderRadius: BorderRadius.circular(100),
@@ -158,8 +158,8 @@ class _AccentColorState extends State<AccentColor> {
       child: Align(
         child: SizedBox(
           child: Container(
-            width: 14,
-            height: 14,
+            width: 12,
+            height: 12,
             decoration: BoxDecoration(
               color: widget.selected ? Colors.white : widget.color,
               borderRadius: BorderRadius.circular(20),

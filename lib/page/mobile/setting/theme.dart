@@ -76,6 +76,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
               trailing: Icon(
                 CupertinoIcons.check_mark_circled,
                 color: Theme.of(context).primaryColor,
+                size: 28,
               ),
             ),
             SPHelper.getDefaultHeightBox(),
@@ -83,29 +84,19 @@ class _ThemeSettingState extends State<ThemeSetting> {
               title: '强调色',
               titleTrailing: SPHelper.empty,
               fontWeight: FontWeight.normal,
-              child: Row(
-                children: const [
-                  AccentColor(
-                    selected: false,
-                    color: Colors.blueAccent,
-                  ),
-                  AccentColor(
-                    selected: false,
-                    color: Colors.purple,
-                  ),
-                  AccentColor(
-                    selected: true,
-                    color: Colors.pinkAccent,
-                  ),
-                  AccentColor(
-                    selected: false,
-                    color: Colors.green,
-                  ),
-                  AccentColor(
-                    selected: false,
-                    color: Colors.amberAccent,
-                  ),
-                ],
+              child: SizedBox(
+                height: 32,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: colors.length,
+                  itemBuilder: (_, i) {
+                    return AccentColor(
+                      selected: true,
+                      color: HexColor(colors[i]),
+                    );
+                  },
+                ),
               ),
             ),
           ],
