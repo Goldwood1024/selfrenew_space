@@ -1,3 +1,4 @@
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:selfrenew_space/export/selfrenew_flutter.dart';
 import 'package:statsfl/statsfl.dart';
 
@@ -45,31 +46,47 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      // 设计稿大小
-      designSize: _getDesignSize(),
-      builder: (BuildContext context, Widget? child) {
-        return StatusbarzCapturer(
-          child: MaterialApp.router(
-            builder: FlutterSmartDialog.init(),
-            debugShowCheckedModeBanner: false,
-            theme: AppThemeMode.theme(),
-            darkTheme: AppThemeMode.darkTheme(),
-            themeMode: ThemeMode.system,
-            // 国际化
-            supportedLocales: S.delegate.supportedLocales,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              S.delegate
-            ],
-            routerConfig: Routers.router,
-            restorationScopeId: 'MainApp',
-          ),
-        );
-      },
-    );
+    return PLUtil.isDesktop()
+        ? ScreenUtilInit(
+            // 设计稿大小
+            designSize: _getDesignSize(),
+            builder: (BuildContext context, Widget? child) {
+              return FluentApp(
+                debugShowCheckedModeBanner: false,
+                initialRoute: '/',
+                routes: {
+                  '/': (_) {
+                    return const DesktopHome();
+                  },
+                },
+              );
+            },
+          )
+        : ScreenUtilInit(
+            // 设计稿大小
+            designSize: _getDesignSize(),
+            builder: (BuildContext context, Widget? child) {
+              return StatusbarzCapturer(
+                child: MaterialApp.router(
+                  builder: FlutterSmartDialog.init(),
+                  debugShowCheckedModeBanner: false,
+                  theme: AppThemeMode.theme(),
+                  darkTheme: AppThemeMode.darkTheme(),
+                  themeMode: ThemeMode.system,
+                  // 国际化
+                  supportedLocales: S.delegate.supportedLocales,
+                  localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    S.delegate
+                  ],
+                  routerConfig: Routers.router,
+                  restorationScopeId: 'MainApp',
+                ),
+              );
+            },
+          );
   }
 
   @override

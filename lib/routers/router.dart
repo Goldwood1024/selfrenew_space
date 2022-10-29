@@ -32,7 +32,7 @@ class Routers {
       GoRoute(
         path: root,
         builder: (BuildContext context, GoRouterState state) {
-          return const Skeleton();
+          return const MobileHome();
         },
       ),
       GoRoute(
