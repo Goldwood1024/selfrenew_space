@@ -1,7 +1,7 @@
 export 'dart:async';
 export 'dart:io';
 
-export 'package:audioplayers/audioplayers.dart';
+// export 'package:audioplayers/audioplayers.dart';
 export 'package:auto_size_text_field/auto_size_text_field.dart';
 export 'package:auto_size_text_field/auto_size_text_field.dart';
 export 'package:chips_choice/chips_choice.dart';
