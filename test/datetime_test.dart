@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 void main() {
   testWidgets('DatetimeUtil test', (WidgetTester tester) async {

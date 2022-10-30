@@ -1,4 +1,4 @@
-import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Notifications {
   static show(int id, String? title, String? body, String? payload) async {

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class TextStyleMode {
   static TextStyle leadingTextStyle(BuildContext context) {

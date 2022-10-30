@@ -1,5 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:selfrenew_space/export/selfrenew_flutter.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/page-desktop/desktop_home.dart';
+import 'package:selfrenew_space/page-mobile/routers/router.dart';
 import 'package:statsfl/statsfl.dart';
 
 void main() {
