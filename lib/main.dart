@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/page-desktop/desktop_home.dart';
 import 'package:selfrenew_space/page-mobile/routers/router.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:statsfl/statsfl.dart';
 
 void main() {
@@ -13,7 +13,7 @@ void main() {
     () => runApp(
       ManagerProvider(
         child: StatsFl(
-          isEnabled: true,
+          isEnabled: false,
           width: 300,
           height: 120,
           align: Alignment.center,
@@ -41,9 +41,7 @@ class _MainAppState extends State<MainApp> {
   }
 
   Size _getDesignSize() {
-    return PLUtil.isDesktop()
-        ? const Size(800, 600)
-        : (PLUtil.isIOS() ? const Size(375, 812) : const Size(360, 720));
+    return PLUtil.isIOS() ? const Size(375, 812) : const Size(360, 720);
   }
 
   @override
@@ -51,7 +49,7 @@ class _MainAppState extends State<MainApp> {
     return PLUtil.isDesktop()
         ? ScreenUtilInit(
             // 设计稿大小
-            designSize: _getDesignSize(),
+            designSize: const Size(1200, 800),
             builder: (BuildContext context, Widget? child) {
               return FluentApp(
                 debugShowCheckedModeBanner: false,
