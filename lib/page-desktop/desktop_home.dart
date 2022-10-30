@@ -47,6 +47,9 @@ class _DesktopHomeState extends State<DesktopHome>
           setState(() => index = i);
         },
         selected: index,
+        size: const NavigationPaneSize(
+          openMaxWidth: 240,
+        ),
         items: [
           PaneItem(
             icon: const Icon(FluentIcons.home),
