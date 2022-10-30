@@ -1,10 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/core/form_card.dart';
 
-import 'statistic_crad.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitStatistics extends StatefulWidget {
   const HabitStatistics({super.key});
@@ -38,7 +36,6 @@ class _HabitStatistics extends State<HabitStatistics> {
   List _eventLoader(DateTime day) {
     return ['', ''];
   }
-
 
   BarChartGroupData generateBarGroup(
     int x,

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/habit/form_bottom.dart';
-import 'package:selfrenew_space/page/mobile/action/habit/icons.dart';
 
 class HabitForm extends StatefulWidget {
   final Map<String, String> params;

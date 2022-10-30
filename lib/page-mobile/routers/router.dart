@@ -1,9 +1,4 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/mobile/action/focus/form.dart';
-import 'package:selfrenew_space/page/mobile/action/focus/home.dart';
-import 'package:selfrenew_space/page/mobile/action/habit/form.dart';
-import 'package:selfrenew_space/page/mobile/action/habit/icons.dart';
-import 'package:selfrenew_space/page/mobile/action/habit/select.dart';
 
 class Routers {
   static const String root = "/";

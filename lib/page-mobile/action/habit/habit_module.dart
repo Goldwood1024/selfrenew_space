@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/model/tip_chip.dart';
 
 class HabitModule extends StatefulWidget {
   const HabitModule({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/page/core/tile/focus_home_tile.dart';
 
 class FocusHome extends StatefulWidget {
   const FocusHome({super.key});

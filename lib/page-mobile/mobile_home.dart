@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/page-mobile/background/scaffold_gradient_background.dart';
+
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class MobileHome extends StatefulWidget {

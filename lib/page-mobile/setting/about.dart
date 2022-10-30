@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class About extends StatefulWidget {
@@ -37,16 +38,16 @@ class _AboutState extends State<About> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            SimpleTile(
-              leading: const Icon(
+            const SimpleTile(
+              leading: Icon(
                 CupertinoIcons.home,
                 size: SPHelper.settingIconSize,
               ),
               topRadius: true,
               title: '官方网站',
             ),
-            SimpleTile(
-              leading: const Icon(
+            const SimpleTile(
+              leading: Icon(
                 CupertinoIcons.arrow_counterclockwise,
                 size: SPHelper.settingIconSize,
               ),
