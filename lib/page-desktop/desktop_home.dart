@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:window_manager/window_manager.dart';
 
 class DesktopHome extends StatefulWidget {
   const DesktopHome({Key? key}) : super(key: key);

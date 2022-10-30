@@ -82,3 +82,4 @@ export 'package:selfrenew_space/util/platform.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:statusbarz/statusbarz.dart';
 export 'package:table_calendar/table_calendar.dart';
+export 'package:window_manager/window_manager.dart';
