@@ -37,13 +37,16 @@ class _AboutState extends State<About> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            const SimpleTile(
-              leading: Icon(
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.home,
                 size: SPHelper.settingIconSize,
               ),
               topRadius: true,
               title: '官方网站',
+              onPressed: () {
+                AppStoreUtil.openWebsite();
+              },
             ),
             SimpleTile(
               leading: const Icon(

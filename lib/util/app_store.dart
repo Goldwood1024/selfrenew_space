@@ -7,4 +7,11 @@ class AppStoreUtil {
       appStoreIdMacOS: ConstPool.iosAppId,
     );
   }
+
+  static openWebsite() async {
+    await launchUrlString(
+      'https://selfrenew.space',
+      mode: LaunchMode.externalApplication,
+    );
+  }
 }
