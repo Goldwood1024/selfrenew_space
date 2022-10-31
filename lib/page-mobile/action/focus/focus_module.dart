@@ -19,15 +19,18 @@ class _FocusModuleState extends State<FocusModule> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: MobileModule(
-        title: '专注',
-        onPressed: () {
-          Routers.go(Routers.focusHome);
-        },
-        child: show ? const FocusActionEmpty() : const FocusActionDataList(),
-      ),
-    );
+    AppSettingProvider appSettingProvider = Provider.of(context);
+
+    return appSettingProvider.getModule('focus')
+        ? MobileModule(
+            title: '专注',
+            onPressed: () {
+              Routers.go(Routers.focusHome);
+            },
+            child:
+                show ? const FocusActionEmpty() : const FocusActionDataList(),
+          )
+        : SPHelper.empty;
   }
 }
 

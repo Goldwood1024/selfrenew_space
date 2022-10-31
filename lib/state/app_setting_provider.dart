@@ -6,6 +6,7 @@ class AppSettingProvider extends ChangeNotifier {
   late bool init = false;
   late String accentColor = '';
   late ThemeMode themeMode = ThemeMode.system;
+  late List<String> modules = [];
 
   String getAccentColor() {
     return accentColor == '' ? '#165DFF' : accentColor;
@@ -20,6 +21,21 @@ class AppSettingProvider extends ChangeNotifier {
 
   ThemeMode getThemeMode() {
     return themeMode;
+  }
+
+  bool getModule(String moduleName) {
+    return modules.any((element) => element == moduleName);
+  }
+
+  Future<void> updateModule(String moduleName, bool remove) async {
+    if (remove) {
+      modules.remove(moduleName);
+    } else {
+      modules.add(moduleName);
+    }
+    
+    await appSettingRepository.update('modules', modules.join(','));
+    notifyListeners();
   }
 
   Future<void> updateThemeMode(String theme) async {
@@ -42,6 +58,10 @@ class AppSettingProvider extends ChangeNotifier {
 
     Map<String, Object?> mm = await appSettingRepository.query();
     accentColor = '${mm['accentColor']}';
+
+    String modulesData = '${mm['modules']}';
+    modules.clear();
+    modules.addAll(modulesData.split(RegExp(',')));
 
     String theme = '${mm['theme']}';
     if (theme == 'light') {

@@ -9,12 +9,13 @@ create table if not exists $tableName
         PRIMARY KEY AUTOINCREMENT,
     theme       TEXT NOT NULL,
     accentColor TEXT NOT NULL
+    modules     TEXT NOT NULL
 );
   ''';
 
   static String defaultValues = '''
-insert into $tableName(theme, accentColor)
-VALUES ('light', '#165DFF');
+insert into $tableName(theme, accentColor, modules)
+VALUES ('light', '#165DFF', 'habit,focus');
   ''';
 
   static String delete = '''

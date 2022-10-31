@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitModule extends StatefulWidget {
-  const HabitModule({super.key});
+  const HabitModule({
+    super.key,
+  });
 
   @override
   State<StatefulWidget> createState() => _HabitModuleState();
@@ -22,7 +24,8 @@ class _HabitModuleState extends State<HabitModule> {
 
   @override
   Widget build(BuildContext context) {
-    return _showModule
+    AppSettingProvider appSettingProvider = Provider.of(context);
+    return appSettingProvider.getModule('habit')
         ? MobileModule(
             title: '习惯',
             onPressed: () {
