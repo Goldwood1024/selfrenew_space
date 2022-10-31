@@ -133,11 +133,13 @@ class _ChipEmptyState extends State<ChipEmpty> {
 class AccentColor extends StatefulWidget {
   final Color color;
   final bool selected;
+  final Function(bool) onChange;
 
   const AccentColor({
     super.key,
     required this.color,
     required this.selected,
+    required this.onChange,
   });
 
   @override

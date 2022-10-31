@@ -103,7 +103,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 trailing: const Text(
                   '1.0.0',
                   style: TextStyle(
-                    fontSize: SPHelper.fontSp16,
+                    fontSize: SPHelper.fontSp18,
                     color: CupertinoColors.systemGrey,
                   ),
                 ),

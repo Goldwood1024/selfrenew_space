@@ -11,13 +11,13 @@ class ThemeSetting extends StatefulWidget {
 class _ThemeSettingState extends State<ThemeSetting> {
   late bool systemThemes;
   static var colors = [
+    "#165DFF",
     "#303C7B",
     "#144E5A",
     "#FFA54F",
     "#CC0033",
     "#8B8B7A",
     "#458B00",
-    "#4169E1",
   ];
 
   @override
@@ -74,9 +74,9 @@ class _ThemeSettingState extends State<ThemeSetting> {
               title: '深色',
               showArrow: false,
               trailing: Icon(
-                CupertinoIcons.check_mark_circled,
+                CupertinoIcons.check_mark,
                 color: Theme.of(context).primaryColor,
-                size: 28,
+                size: SPHelper.sp(SPHelper.gapDp24),
               ),
             ),
             SPHelper.getDefaultHeightBox(),
@@ -92,7 +92,8 @@ class _ThemeSettingState extends State<ThemeSetting> {
                   itemCount: colors.length,
                   itemBuilder: (_, i) {
                     return AccentColor(
-                      selected: true,
+                      onChange: (_) {},
+                      selected: false,
                       color: HexColor(colors[i]),
                     );
                   },
