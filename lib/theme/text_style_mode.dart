@@ -12,7 +12,7 @@ class TextStyleMode {
 
   static TextStyle floatBubbleTextStyle(BuildContext context) {
     return TextStyle(
-      fontSize: SPHelper.sp(SPHelper.fontSp16),
+      fontSize: SPHelper.sp(SPHelper.fontSp18),
       color: Colors.white,
     );
   }

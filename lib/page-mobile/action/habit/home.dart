@@ -82,32 +82,32 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           },
         ),
         actions: [
-          ActionIconBtn(
-            icon: const Icon(
-              CupertinoIcons.slider_horizontal_3,
-            ),
-            onPressed: () {
-              BottomDialog.showModalBottomSheet(
-                context,
-                ScaffoldGradientBackground(
-                  appBar: AppBar(
-                    automaticallyImplyLeading: false,
-                    title: const AppBarText(
-                      title: '设置',
-                    ),
-                    actions: [
-                      ActionBtn(
-                        title: '确定',
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          )
+          // ActionIconBtn(
+          //   icon: const Icon(
+          //     CupertinoIcons.slider_horizontal_3,
+          //   ),
+          //   onPressed: () {
+          //     BottomDialog.showModalBottomSheet(
+          //       context,
+          //       ScaffoldGradientBackground(
+          //         appBar: AppBar(
+          //           automaticallyImplyLeading: false,
+          //           title: const AppBarText(
+          //             title: '设置',
+          //           ),
+          //           actions: [
+          //             ActionBtn(
+          //               title: '确定',
+          //               onPressed: () {
+          //                 Navigator.pop(context);
+          //               },
+          //             )
+          //           ],
+          //         ),
+          //       ),
+          //     );
+          //   },
+          // )
         ],
       ),
       body: Padding(
@@ -116,10 +116,10 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           children: [
             SPHelper.getDefaultHeightBox(),
             const Underway(),
-            // SPHelper.getHeightBox(36),
-            // const Completed(),
-            // SPHelper.getHeightBox(36),
-            // const Abandon()
+            SPHelper.getHeightBox(36),
+            const Completed(),
+            SPHelper.getHeightBox(36),
+            const Abandon()
           ],
         ),
       ),
@@ -154,7 +154,7 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
               HabitUnderway data = list[index];
               return Padding(
                 padding: EdgeInsets.fromLTRB(
-                    0, SPHelper.height(SPHelper.gapDp4), 0, 0),
+                    0, SPHelper.height(SPHelper.gapDp8), 0, 0),
                 child: HabitHomeTile(
                   key: LabeledGlobalKey(data.id),
                   title: data.title,
@@ -307,12 +307,11 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: expand ? 20 : 0,
+            itemCount: expand ? 2 : 0,
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: HabitHomeTile(
                 title: '八段锦八段锦',
-                abandon: true,
                 subTitle: Column(
                   children: [
                     SPHelper.getHeightBox(SPHelper.gapDp4),
@@ -449,7 +448,7 @@ class _AbandonState extends State<Abandon> {
           SPHelper.getHeightBox(SPHelper.gapDp12),
           ListView.builder(
             shrinkWrap: true,
-            itemCount: expand ? 10 : 0,
+            itemCount: expand ? 1 : 0,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
