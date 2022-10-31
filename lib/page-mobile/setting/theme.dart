@@ -101,7 +101,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
               titleTrailing: SPHelper.empty,
               fontWeight: FontWeight.normal,
               child: SizedBox(
-                height: 32,
+                height: SPHelper.height(SPHelper.gapDp32),
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,

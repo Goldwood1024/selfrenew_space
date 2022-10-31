@@ -215,8 +215,8 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                     size: SPHelper.sp(SPHelper.gapDp28),
                   ),
                   trailing: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: List.generate(
                       data.sleeks.length,
                       (idx) => SleekCounter(

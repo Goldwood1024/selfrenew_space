@@ -92,6 +92,8 @@ flutter:
     - 'assets/icons/用药.png'
     - 'assets/icons/算盘.png'
     - 'assets/icons/出差.png'
+    - 'assets/icons/check.svg'
+    - 'assets/icons/delete.svg'
     - 'assets/icons/habit.svg'
     - 'assets/icons/focus.svg'
 

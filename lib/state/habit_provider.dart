@@ -29,7 +29,7 @@ class HabitProvider extends ChangeNotifier {
         SleekCount(1, 2, 2, false, 3),
         SleekCount(1, 6, 5, false, 4),
         SleekCount(1, 7, 2, false, 5),
-        SleekCount(1, 7, 2, false, 6),
+        SleekCount(1, 7, 2, true, 6),
         SleekCount(1, 7, 2, false, 7),
       ],
     ));
@@ -42,7 +42,15 @@ class HabitProvider extends ChangeNotifier {
       [
         Notice('2', '19:90'),
       ],
-      [],
+      [
+        SleekCount(1, 5, 2, true, 1),
+        SleekCount(1, 2, 1, false, 2),
+        SleekCount(1, 2, 2, false, 3),
+        SleekCount(1, 6, 2, false, 4),
+        SleekCount(1, 7, 4, false, 5),
+        SleekCount(1, 7, 0, true, 6),
+        SleekCount(1, 7, 5, false, 7),
+      ],
     ));
     return list;
   }

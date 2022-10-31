@@ -159,24 +159,25 @@ class _AccentColorState extends State<AccentColor> {
         widget.onChange(widget.color);
       },
       child: Container(
-        margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
-        width: 32,
-        height: 32,
+        margin: EdgeInsets.fromLTRB(0, 0, SPHelper.width(SPHelper.gapDp12), 0),
+        width: SPHelper.width(SPHelper.gapDp32),
+        height: SPHelper.height(SPHelper.gapDp32),
         decoration: BoxDecoration(
           color: HexColor(widget.color),
           borderRadius: BorderRadius.circular(100),
         ),
         child: Align(
-          child: SizedBox(
-            child: Container(
-              width: 12,
-              height: 12,
-              decoration: BoxDecoration(
-                color: widget.selected ? Colors.white : HexColor(widget.color),
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
+          child: widget.selected
+              ? Container(
+                  width: SPHelper.width(SPHelper.gapDp24),
+                  height: SPHelper.height(SPHelper.gapDp24),
+                  alignment: Alignment.center,
+                  child: SvgPicture.asset(
+                    'assets/icons/check.svg',
+                    color: Colors.white,
+                  ),
+                )
+              : SPHelper.empty,
         ),
       ),
     );
@@ -194,10 +195,14 @@ class ThemeModeCheck extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return selected
-        ? Icon(
-            CupertinoIcons.check_mark,
-            color: Theme.of(context).primaryColor,
-            size: SPHelper.sp(SPHelper.gapDp24),
+        ? Container(
+            alignment: Alignment.center,
+            child: SvgPicture.asset(
+              'assets/icons/check.svg',
+              color: Theme.of(context).primaryColor,
+              width: SPHelper.width(SPHelper.gapDp28),
+              height: SPHelper.height(SPHelper.gapDp28),
+            ),
           )
         : SPHelper.empty;
   }
