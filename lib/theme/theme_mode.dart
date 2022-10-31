@@ -8,7 +8,7 @@ class AppThemeMode {
     AppSettingProvider provider = Provider.of(context);
     return FlexThemeData.light(
       primary: HexColor(provider.getAccentColor()),
-      secondary: HexColor('#0E42D2'),
+      scaffoldBackground: CupertinoColors.systemGroupedBackground,
       useMaterial3: true,
       useMaterial3ErrorColors: true,
       appBarElevation: 0,
@@ -43,6 +43,7 @@ class AppThemeMode {
 
     return FlexThemeData.dark(
       primary: HexColor(provider.getAccentColor()),
+      // scaffoldBackground: CupertinoColors.secondarySystemBackground,
       appBarElevation: 0,
       appBarStyle: FlexAppBarStyle.background,
       appBarOpacity: 0,
@@ -57,7 +58,7 @@ class AppThemeMode {
         labelSmall: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16,
-          color: Color.fromRGBO(28, 37, 32, 1), // 1C2520
+          color: Colors.white,
           // fontFeatures: [FontFeature.tabularFigures()],
         ),
         displayMedium: TextStyle(),

@@ -17,14 +17,15 @@ class _MobileSettingState extends State<MobileSetting> {
       body: ExtendedNestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
-            const CupertinoSliverNavigationBar(
-              heroTag: Hero(tag: 'MobileSetting', child: SPHelper.empty),
+            CupertinoSliverNavigationBar(
+              heroTag: const Hero(tag: 'MobileSetting', child: SPHelper.empty),
               brightness: Brightness.light,
               backgroundColor: Colors.transparent,
               largeTitle: Text(
                 '设置',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
+                  color: Theme.of(context).textTheme.labelSmall?.color,
                 ),
               ),
             ),

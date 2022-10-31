@@ -65,10 +65,11 @@ class _MobileActionState extends State<MobileAction> {
                       ),
                     )
                   : SPHelper.empty,
-              largeTitle: const Text(
+              largeTitle: Text(
                 '今日',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
+                  color: Theme.of(context).textTheme.labelSmall?.color,
                 ),
               ),
               trailing: ActionIconBtn(
