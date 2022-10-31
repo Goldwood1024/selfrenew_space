@@ -91,7 +91,7 @@ class _ChipEmptyState extends State<ChipEmpty> {
           runSpacing: SPHelper.width(SPHelper.gapDp14),
           choiceStyle: C2ChipStyle(
             height: SPHelper.height(SPHelper.gapDp48),
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).backgroundColor,
             backgroundOpacity: 1,
             overlayColor: Colors.transparent,
             shadowColor: Colors.transparent,
@@ -101,6 +101,7 @@ class _ChipEmptyState extends State<ChipEmpty> {
             foregroundStyle: TextStyle(
               fontSize: SPHelper.sp(SPHelper.fontSp18),
               fontWeight: FontWeight.w500,
+              color: Theme.of(context).textTheme.labelSmall?.color,
             ),
           ),
           placeholder: '无',
