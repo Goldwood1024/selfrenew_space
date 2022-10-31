@@ -1,6 +1,7 @@
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/util/mail_util.dart';
 
 class MobileSetting extends StatefulWidget {
   const MobileSetting({super.key});
@@ -69,13 +70,17 @@ class _MobileSettingState extends State<MobileSetting> {
                 showDivider: false,
               ),
               SPHelper.getHeightBox(SPHelper.gapDp12),
-              const SimpleTile(
-                leading: Icon(
+              SimpleTile(
+                leading: const Icon(
                   Icons.mail_outline,
                   size: SPHelper.settingIconSize,
                 ),
                 title: '意见反馈',
                 topRadius: true,
+                onPressed: () {
+                  /// 发送邮件
+                  MailUtil.sendFeedBack2Developers(context);
+                },
               ),
               const SimpleTile(
                 leading: Icon(
