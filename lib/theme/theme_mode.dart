@@ -4,9 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class AppThemeMode {
-  static ThemeData theme() {
+  static ThemeData theme(BuildContext context) {
+    AppSettingProvider provider = Provider.of(context);
     return FlexThemeData.light(
-      primary: HexColor('#165DFF'),
+      primary: HexColor('#${provider.getAccentColor()}'),
       secondary: HexColor('#0E42D2'),
       scaffoldBackground: CupertinoColors.systemGroupedBackground,
       useMaterial3: true,

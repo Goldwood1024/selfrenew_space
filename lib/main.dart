@@ -4,10 +4,10 @@ import 'package:selfrenew_space/page-mobile/routers/router.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:statsfl/statsfl.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
-  ManagerInitialization.runAppBefore();
+  await ManagerInitialization.before();
 
   handleError(
     () => runApp(
@@ -23,7 +23,7 @@ void main() {
     ),
   );
 
-  ManagerInitialization.runAppAfter();
+  ManagerInitialization.after();
 }
 
 // 主页配置
@@ -66,11 +66,13 @@ class _MainAppState extends State<MainApp> {
             // 设计稿大小
             designSize: _getDesignSize(),
             builder: (BuildContext context, Widget? child) {
+              Provider.of<AppSettingProvider>(context, listen: false).read();
+
               return StatusbarzCapturer(
                 child: MaterialApp.router(
                   builder: FlutterSmartDialog.init(),
                   debugShowCheckedModeBanner: false,
-                  theme: AppThemeMode.theme(),
+                  theme: AppThemeMode.theme(context),
                   darkTheme: AppThemeMode.darkTheme(),
                   themeMode: ThemeMode.system,
                   // 国际化

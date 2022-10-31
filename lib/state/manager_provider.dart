@@ -1,6 +1,5 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
-
 class ManagerProvider extends StatefulWidget {
   final Widget child;
 
@@ -25,6 +24,9 @@ class _ManagerProviderState extends State<ManagerProvider> {
       providers: [
         ChangeNotifierProvider(
           create: (_) => MobileBottomBarProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AppSettingProvider(),
         ),
       ],
       child: widget.child,
