@@ -52,22 +52,34 @@ class _ThemeSettingState extends State<ThemeSetting> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            const SimpleTile(
-              leading: Icon(
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.dial,
                 size: SPHelper.settingIconSize,
               ),
               topRadius: true,
               title: '跟随系统',
               showArrow: false,
+              onPressed: () {
+                appSettingProviderUpdate.updateThemeMode(ThemeMode.system.name);
+              },
+              trailing: ThemeModeCheck(
+                selected: ThemeMode.system == appSettingProvider.getThemeMode(),
+              ),
             ),
-            const SimpleTile(
-              leading: Icon(
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.sun_dust,
                 size: SPHelper.settingIconSize,
               ),
               title: '浅色',
               showArrow: false,
+              onPressed: () {
+                appSettingProviderUpdate.updateThemeMode(ThemeMode.light.name);
+              },
+              trailing: ThemeModeCheck(
+                selected: ThemeMode.light == appSettingProvider.getThemeMode(),
+              ),
             ),
             SimpleTile(
               leading: const Icon(
@@ -77,10 +89,11 @@ class _ThemeSettingState extends State<ThemeSetting> {
               bottomRadius: true,
               title: '深色',
               showArrow: false,
-              trailing: Icon(
-                CupertinoIcons.check_mark,
-                color: Theme.of(context).primaryColor,
-                size: SPHelper.sp(SPHelper.gapDp24),
+              onPressed: () {
+                appSettingProviderUpdate.updateThemeMode(ThemeMode.dark.name);
+              },
+              trailing: ThemeModeCheck(
+                selected: ThemeMode.dark == appSettingProvider.getThemeMode(),
               ),
             ),
             SPHelper.getDefaultHeightBox(),

@@ -39,9 +39,11 @@ class AppThemeMode {
     );
   }
 
-  static ThemeData darkTheme() {
+  static ThemeData darkTheme(BuildContext context) {
+    AppSettingProvider provider = Provider.of(context);
+
     return FlexThemeData.dark(
-      primary: HexColor('#165DFF'),
+      primary: HexColor(provider.getAccentColor()),
       scaffoldBackground: CupertinoColors.white,
       background: CupertinoColors.systemGrey6,
       appBarElevation: 0,

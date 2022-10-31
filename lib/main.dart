@@ -73,8 +73,9 @@ class _MainAppState extends State<MainApp> {
                   builder: FlutterSmartDialog.init(),
                   debugShowCheckedModeBanner: false,
                   theme: AppThemeMode.theme(context),
-                  darkTheme: AppThemeMode.darkTheme(),
-                  themeMode: ThemeMode.system,
+                  darkTheme: AppThemeMode.darkTheme(context),
+                  themeMode:
+                      Provider.of<AppSettingProvider>(context).getThemeMode(),
                   // 国际化
                   supportedLocales: S.delegate.supportedLocales,
                   localizationsDelegates: const [

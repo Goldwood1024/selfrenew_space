@@ -177,3 +177,23 @@ class _AccentColorState extends State<AccentColor> {
     );
   }
 }
+
+class ThemeModeCheck extends StatelessWidget {
+  final bool selected;
+
+  const ThemeModeCheck({
+    super.key,
+    required this.selected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return selected
+        ? Icon(
+            CupertinoIcons.check_mark,
+            color: Theme.of(context).primaryColor,
+            size: SPHelper.sp(SPHelper.gapDp24),
+          )
+        : SPHelper.empty;
+  }
+}
