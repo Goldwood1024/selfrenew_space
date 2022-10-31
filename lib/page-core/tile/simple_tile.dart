@@ -8,7 +8,8 @@ class SimpleTile extends StatefulWidget {
   final bool topRadius;
   final bool showArrow;
   final bool showDivider;
-  final Color backgroundColor;
+
+  // final Color backgroundColor;
   final Widget? leading;
   final String title;
   final Widget? subTitle;
@@ -24,7 +25,7 @@ class SimpleTile extends StatefulWidget {
     this.topRadius = false,
     this.showArrow = true,
     this.showDivider = true,
-    this.backgroundColor = Colors.white,
+    // this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
     this.subTitle,
@@ -45,7 +46,7 @@ class _SimpleTileState extends State<SimpleTile> {
         height: widget.height + 1,
         child: Container(
           decoration: BoxDecoration(
-            color: widget.backgroundColor,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.only(
               topLeft: widget.topRadius
                   ? Radius.circular(widget.radius)
@@ -129,8 +130,8 @@ class _SimpleTileState extends State<SimpleTile> {
                       ),
                     ),
                     widget.showDivider
-                        ? const Divider(
-                            color: CupertinoColors.systemGrey6,
+                        ? Divider(
+                            color: Theme.of(context).backgroundColor,
                             height: 1,
                           )
                         : Container()

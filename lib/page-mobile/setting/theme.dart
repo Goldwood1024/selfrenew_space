@@ -32,8 +32,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
     AppSettingProvider appSettingProviderUpdate =
         Provider.of(context, listen: false);
 
-    return Scaffold(
-      backgroundColor: CupertinoColors.systemGroupedBackground,
+    return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.appBarHeight(),
         leading: BackBtn(

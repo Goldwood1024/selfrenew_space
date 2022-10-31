@@ -36,7 +36,7 @@ class _FormCardState extends State<FormCard>
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.circular(
           SPHelper.smallRadius(),
         ),
