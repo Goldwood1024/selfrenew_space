@@ -87,7 +87,7 @@ class ActionIconBtn extends StatelessWidget {
       behavior: HitTestBehavior.translucent,
       onTap: onPressed,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
+        padding: EdgeInsets.zero,
         child: icon,
       ),
     );
