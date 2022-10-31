@@ -3,11 +3,13 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class CommonSwitch extends StatefulWidget {
   final bool value;
+  final bool canSwitch;
   final Function(bool) func;
 
   const CommonSwitch({
     super.key,
     this.value = false,
+    this.canSwitch = true,
     required this.func,
   });
 
@@ -34,10 +36,12 @@ class _CommonSwitchState extends State<CommonSwitch> {
       padding: 2,
       activeColor: Theme.of(context).primaryColor,
       onToggle: (bool value) {
-        setState(() {
-          _value = value;
-          widget.func(_value);
-        });
+        if (widget.canSwitch) {
+          setState(() {
+            _value = value;
+            widget.func(_value);
+          });
+        }
       },
     );
   }

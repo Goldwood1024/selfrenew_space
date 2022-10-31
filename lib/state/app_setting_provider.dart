@@ -27,6 +27,11 @@ class AppSettingProvider extends ChangeNotifier {
     return modules.any((element) => element == moduleName);
   }
 
+  bool moduleOnlyOne() {
+    print(modules);
+    return modules.length > 1;
+  }
+
   Future<void> updateModule(String moduleName, bool remove) async {
     if (remove) {
       modules.removeWhere((element) => element == moduleName);
