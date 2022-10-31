@@ -7,7 +7,7 @@ class AppThemeMode {
   static ThemeData theme(BuildContext context) {
     AppSettingProvider provider = Provider.of(context);
     return FlexThemeData.light(
-      primary: HexColor('#${provider.getAccentColor()}'),
+      primary: HexColor(provider.getAccentColor()),
       secondary: HexColor('#0E42D2'),
       scaffoldBackground: CupertinoColors.systemGroupedBackground,
       useMaterial3: true,

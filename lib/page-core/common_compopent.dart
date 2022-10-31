@@ -131,9 +131,9 @@ class _ChipEmptyState extends State<ChipEmpty> {
 }
 
 class AccentColor extends StatefulWidget {
-  final Color color;
+  final String color;
   final bool selected;
-  final Function(bool) onChange;
+  final Function(String) onChange;
 
   const AccentColor({
     super.key,
@@ -149,22 +149,27 @@ class AccentColor extends StatefulWidget {
 class _AccentColorState extends State<AccentColor> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        color: widget.color,
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: Align(
-        child: SizedBox(
-          child: Container(
-            width: 12,
-            height: 12,
-            decoration: BoxDecoration(
-              color: widget.selected ? Colors.white : widget.color,
-              borderRadius: BorderRadius.circular(20),
+    return GestureDetector(
+      onTap: () {
+        widget.onChange(widget.color);
+      },
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+        width: 32,
+        height: 32,
+        decoration: BoxDecoration(
+          color: HexColor(widget.color),
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: Align(
+          child: SizedBox(
+            child: Container(
+              width: 12,
+              height: 12,
+              decoration: BoxDecoration(
+                color: widget.selected ? Colors.white : HexColor(widget.color),
+                borderRadius: BorderRadius.circular(20),
+              ),
             ),
           ),
         ),

@@ -14,7 +14,7 @@ create table if not exists $tableName
 
   static String defaultValues = '''
 insert into $tableName(theme, accentColor)
-VALUES ('light', '165DFF');
+VALUES ('light', '#165DFF');
   ''';
 
   static String delete = '''
@@ -35,5 +35,10 @@ select * from $tableName limit 1
     List<Map<String, Object?>> list =
         await SqliteProxy.database.rawQuery(selectAll);
     return list.first;
+  }
+
+  Future<void> update(String col, String value) async {
+    String sql = 'update $tableName set $col=\'$value\'';
+    await SqliteProxy.database.rawUpdate(sql);
   }
 }

@@ -28,6 +28,10 @@ class _ThemeSettingState extends State<ThemeSetting> {
 
   @override
   Widget build(BuildContext context) {
+    AppSettingProvider appSettingProvider = Provider.of(context);
+    AppSettingProvider appSettingProviderUpdate =
+        Provider.of(context, listen: false);
+
     return Scaffold(
       backgroundColor: CupertinoColors.systemGroupedBackground,
       appBar: AppBar(
@@ -92,9 +96,12 @@ class _ThemeSettingState extends State<ThemeSetting> {
                   itemCount: colors.length,
                   itemBuilder: (_, i) {
                     return AccentColor(
-                      onChange: (_) {},
-                      selected: false,
-                      color: HexColor(colors[i]),
+                      onChange: (color) {
+                        appSettingProviderUpdate.updateAccentColor(color);
+                      },
+                      selected:
+                          colors[i] == appSettingProvider.getAccentColor(),
+                      color: colors[i],
                     );
                   },
                 ),
