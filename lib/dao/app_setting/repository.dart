@@ -8,7 +8,7 @@ create table if not exists $tableName
     id          INTEGER
         PRIMARY KEY AUTOINCREMENT,
     theme       TEXT NOT NULL,
-    accentColor TEXT NOT NULL
+    accentColor TEXT NOT NULL,
     modules     TEXT NOT NULL
 );
   ''';

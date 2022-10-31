@@ -25,7 +25,7 @@ class _HabitModuleState extends State<HabitModule> {
   @override
   Widget build(BuildContext context) {
     AppSettingProvider appSettingProvider = Provider.of(context);
-    return appSettingProvider.getModule('habit')
+    return appSettingProvider.hasModule('habit')
         ? MobileModule(
             title: '习惯',
             onPressed: () {

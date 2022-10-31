@@ -23,17 +23,17 @@ class AppSettingProvider extends ChangeNotifier {
     return themeMode;
   }
 
-  bool getModule(String moduleName) {
+  bool hasModule(String moduleName) {
     return modules.any((element) => element == moduleName);
   }
 
   Future<void> updateModule(String moduleName, bool remove) async {
     if (remove) {
-      modules.remove(moduleName);
+      modules.removeWhere((element) => element == moduleName);
     } else {
       modules.add(moduleName);
     }
-    
+
     await appSettingRepository.update('modules', modules.join(','));
     notifyListeners();
   }

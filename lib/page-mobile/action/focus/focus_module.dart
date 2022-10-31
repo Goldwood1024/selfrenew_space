@@ -21,7 +21,7 @@ class _FocusModuleState extends State<FocusModule> {
   Widget build(BuildContext context) {
     AppSettingProvider appSettingProvider = Provider.of(context);
 
-    return appSettingProvider.getModule('focus')
+    return appSettingProvider.hasModule('focus')
         ? MobileModule(
             title: '专注',
             onPressed: () {

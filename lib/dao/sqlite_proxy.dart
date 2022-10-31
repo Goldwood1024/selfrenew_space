@@ -17,8 +17,8 @@ class SqliteProxy {
     database = await openDatabase(
       path,
       version: 1,
-      onCreate: (Database db, int version) {
-        appSettingRepository.createTableAndDefaultValue(db);
+      onCreate: (Database db, int version) async {
+        await appSettingRepository.createTableAndDefaultValue(db);
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) {},
       onOpen: (Database db) {

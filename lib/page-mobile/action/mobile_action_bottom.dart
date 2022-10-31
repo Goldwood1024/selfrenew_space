@@ -11,6 +11,10 @@ class MobileActionBottom extends StatefulWidget {
 class _MobileActionBottomState extends State<MobileActionBottom> {
   @override
   Widget build(BuildContext context) {
+    AppSettingProvider appSettingProviderUpdate =
+        Provider.of(context, listen: false);
+    AppSettingProvider appSettingProvider = Provider.of(context);
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -37,8 +41,10 @@ class _MobileActionBottomState extends State<MobileActionBottom> {
               onPressed: () {},
               showArrow: false,
               trailing: CommonSwitch(
-                value: true,
-                func: (bool) {},
+                value: appSettingProvider.hasModule('habit'),
+                func: (value) {
+                  appSettingProviderUpdate.updateModule('habit', !value);
+                },
               ),
             ),
             SimpleTile(
@@ -47,8 +53,10 @@ class _MobileActionBottomState extends State<MobileActionBottom> {
               onPressed: () {},
               showArrow: false,
               trailing: CommonSwitch(
-                value: true,
-                func: (bool) {},
+                value: appSettingProvider.hasModule('focus'),
+                func: (value) {
+                  appSettingProviderUpdate.updateModule('focus', !value);
+                },
               ),
             ),
           ],
