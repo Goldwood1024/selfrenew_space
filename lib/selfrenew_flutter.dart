@@ -73,6 +73,7 @@ export 'package:selfrenew_space/page-mobile/setting/mobile_setting.dart';
 export 'package:selfrenew_space/page-mobile/setting/notification.dart';
 export 'package:selfrenew_space/page-mobile/setting/theme.dart';
 export 'package:selfrenew_space/state/app_setting_provider.dart';
+export 'package:selfrenew_space/state/habit_provider.dart';
 export 'package:selfrenew_space/state/manager_provider.dart';
 export 'package:selfrenew_space/state/mobile_bottom_bar_provider.dart';
 export 'package:selfrenew_space/theme/hex_color.dart';

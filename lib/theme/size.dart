@@ -61,7 +61,9 @@ class SPHelper {
   static const double gapDp18 = 18;
   static const double gapDp20 = 20;
   static const double gapDp24 = 24;
+  static const double gapDp26 = 26;
   static const double gapDp28 = 28;
+  static const double gapDp30 = 30;
   static const double gapDp32 = 32;
   static const double gapDp38 = 38;
   static const double gapDp40 = 40;

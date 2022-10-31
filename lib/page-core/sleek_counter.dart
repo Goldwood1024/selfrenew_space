@@ -8,6 +8,7 @@ class SleekCounter extends StatefulWidget {
   final bool fail;
   final bool sm;
   final bool abandon;
+  final int day;
 
   const SleekCounter({
     super.key,
@@ -17,6 +18,7 @@ class SleekCounter extends StatefulWidget {
     this.fail = false,
     this.sm = false,
     this.abandon = false,
+    this.day = 1,
   });
 
   @override
@@ -24,12 +26,12 @@ class SleekCounter extends StatefulWidget {
 }
 
 class _SleekCounterState extends State<SleekCounter> {
-  double data = 0.0;
+  double value = 0.0;
 
   @override
   void initState() {
     super.initState();
-    data = widget.value;
+    value = widget.value;
   }
 
   @override
@@ -42,12 +44,8 @@ class _SleekCounterState extends State<SleekCounter> {
             return;
           }
 
-          if (data < 1) {
-            data += 0.1;
-          }
-
-          if (data >= 1) {
-            data = 1;
+          if (value++ / widget.max >= 1) {
+            value = widget.max;
           }
         });
       },
@@ -58,20 +56,32 @@ class _SleekCounterState extends State<SleekCounter> {
               : EdgeInsets.zero,
           child: widget.fail
               ? SizedBox(
-                  width: widget.sm ? 24 : 28,
-                  height: widget.sm ? 24 : 28,
+                  width: widget.sm
+                      ? SPHelper.width(SPHelper.fontSp24)
+                      : SPHelper.width(SPHelper.gapDp28),
+                  height: widget.sm
+                      ? SPHelper.width(SPHelper.fontSp24)
+                      : SPHelper.width(SPHelper.gapDp28),
                   child: Icon(
                     CupertinoIcons.clear_circled_solid,
-                    size: widget.sm ? 26 : 30,
+                    size: widget.sm
+                        ? SPHelper.width(SPHelper.gapDp26)
+                        : SPHelper.width(SPHelper.gapDp30),
                   ),
                 )
-              : (widget.value ~/ widget.max >= 1
+              : (value == widget.max
                   ? SizedBox(
-                      width: widget.sm ? 24 : 28,
-                      height: widget.sm ? 24 : 28,
+                      width: widget.sm
+                          ? SPHelper.width(SPHelper.fontSp24)
+                          : SPHelper.width(SPHelper.gapDp28),
+                      height: widget.sm
+                          ? SPHelper.width(SPHelper.fontSp24)
+                          : SPHelper.width(SPHelper.gapDp28),
                       child: Icon(
                         CupertinoIcons.checkmark_circle_fill,
-                        size: widget.sm ? 26 : 30,
+                        size: widget.sm
+                            ? SPHelper.width(SPHelper.gapDp28)
+                            : SPHelper.width(SPHelper.gapDp30),
                         color: widget.abandon
                             ? CupertinoColors.black.withOpacity(0.5)
                             : Theme.of(context).primaryColor,
@@ -80,11 +90,11 @@ class _SleekCounterState extends State<SleekCounter> {
                   : Stack(
                       alignment: Alignment.center,
                       children: [
-                        const Text(
-                          '2',
+                        Text(
+                          widget.day.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 13,
+                            fontSize: SPHelper.sp(SPHelper.fontSp12),
                             color: CupertinoColors.systemGrey4,
                           ),
                         ),
@@ -94,7 +104,7 @@ class _SleekCounterState extends State<SleekCounter> {
                           lineWidth: 3,
                           backgroundWidth: 3,
                           backgroundColor: CupertinoColors.systemGrey4,
-                          percent: data,
+                          percent: value / widget.max,
                           circularStrokeCap: CircularStrokeCap.round,
                           progressColor: widget.abandon
                               ? CupertinoColors.black.withOpacity(0.5)

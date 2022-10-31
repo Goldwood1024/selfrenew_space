@@ -28,6 +28,9 @@ class _ManagerProviderState extends State<ManagerProvider> {
         ChangeNotifierProvider(
           create: (_) => AppSettingProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => HabitProvider(),
+        ),
       ],
       child: widget.child,
     );

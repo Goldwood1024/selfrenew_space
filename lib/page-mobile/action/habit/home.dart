@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/state/habit_provider.dart';
 
 class HabitHome extends StatefulWidget {
   const HabitHome({super.key});
@@ -113,11 +115,11 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            Underway(),
-            SPHelper.getHeightBox(36),
-            Completed(),
-            SPHelper.getHeightBox(36),
-            Abandon()
+            const Underway(),
+            // SPHelper.getHeightBox(36),
+            // const Completed(),
+            // SPHelper.getHeightBox(36),
+            // const Abandon()
           ],
         ),
       ),
@@ -133,25 +135,29 @@ class Underway extends StatefulWidget {
 }
 
 class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
-  late bool show;
-
   @override
   void initState() {
     super.initState();
-
-    show = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    return show
-        ? Column(
-            children: List.generate(
-              100,
-              (index) => Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+    HabitProvider habitProvider = Provider.of(context);
+
+    List<HabitUnderway> list = habitProvider.getHabitUnderway();
+
+    return habitProvider.hasUnderway()
+        ? ListView.builder(
+            shrinkWrap: true,
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              HabitUnderway data = list[index];
+              return Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, SPHelper.height(SPHelper.gapDp4), 0, 0),
                 child: HabitHomeTile(
-                  title: '八段锦八段锦',
+                  key: LabeledGlobalKey(data.id),
+                  title: data.title,
                   subTitle: Column(
                     children: [
                       SPHelper.getHeightBox(SPHelper.gapDp4),
@@ -165,7 +171,7 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                           ),
                           SPHelper.getWidthBox(SPHelper.gapDp8),
                           Text(
-                            '每天',
+                            data.repeat,
                             style: TextStyle(
                               color: CupertinoColors.systemGrey2,
                               fontSize: SPHelper.sp(SPHelper.fontSp15),
@@ -182,56 +188,54 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                             size: SPHelper.sp(SPHelper.fontSp18),
                             color: CupertinoColors.systemGrey2,
                           ),
-                          SPHelper.getWidthBox(SPHelper.gapDp8),
-                          Text(
-                            '08:00',
-                            style: TextStyle(
-                              color: CupertinoColors.systemGrey2,
-                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                          Row(
+                            children: List.generate(
+                              data.notices.length,
+                              (index) => Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    SPHelper.width(SPHelper.gapDp8), 0, 0, 0),
+                                child: Text(
+                                  data.notices[index].text,
+                                  style: TextStyle(
+                                    color: CupertinoColors.systemGrey2,
+                                    fontSize: SPHelper.sp(SPHelper.fontSp15),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ],
                   ),
                   topRadius: true,
                   bottomRadius: true,
-                  leading: const Icon(
-                    Icons.access_time_filled,
-                    size: 28,
+                  leading: SvgLoader(
+                    path: data.imagePath,
+                    size: SPHelper.sp(SPHelper.gapDp28),
                   ),
                   trailing: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
-                      7,
-                      (index) => const SleekCounter(
-                        min: 0,
-                        max: 10,
+                      data.sleeks.length,
+                      (idx) => SleekCounter(
+                        min: data.sleeks[idx].min,
+                        max: data.sleeks[idx].max,
+                        value: data.sleeks[idx].value,
+                        fail: data.sleeks[idx].fail,
+                        day: data.sleeks[idx].day,
                         sm: true,
-                        value: 11,
-                        fail: false,
                       ),
                     ),
                   ),
                 ),
-              ),
-            ),
+              );
+            },
           )
-        : Container(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                Align(
-                  child: SvgPicture.asset(
-                    'assets/icons/habit.svg',
-                    height: 200,
-                  ),
-                ),
-                Text(
-                  '还没有习惯，快添加习惯吧',
-                  style: TextStyleMode.tipTextStyle(context),
-                )
-              ],
-            ),
+        : const ImageDefaultEmpty(
+            title: '还没有习惯，快添加习惯吧',
+            imagePath: 'assets/icons/habit.svg',
           );
   }
 }

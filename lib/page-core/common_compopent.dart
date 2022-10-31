@@ -202,3 +202,35 @@ class ThemeModeCheck extends StatelessWidget {
         : SPHelper.empty;
   }
 }
+
+class ImageDefaultEmpty extends StatelessWidget {
+  final String imagePath;
+  final String title;
+
+  const ImageDefaultEmpty({
+    super.key,
+    required this.imagePath,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.topCenter,
+      child: Column(
+        children: [
+          Align(
+            child: SvgPicture.asset(
+              imagePath,
+              height: 200,
+            ),
+          ),
+          Text(
+            title,
+            style: TextStyleMode.tipTextStyle(context),
+          )
+        ],
+      ),
+    );
+  }
+}
