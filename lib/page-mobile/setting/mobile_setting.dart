@@ -41,7 +41,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 leading: Icon(
                   CupertinoIcons.slowmo,
                   size: SPHelper.settingIconSize,
-                  color: HexColor('330E85'),
+                  color: Theme.of(context).primaryColor,
                 ),
                 title: '主题',
                 topRadius: true,
@@ -53,7 +53,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 leading: Icon(
                   CupertinoIcons.app_badge,
                   size: SPHelper.settingIconSize,
-                  color: HexColor('330E85'),
+                  color: Theme.of(context).primaryColor,
                 ),
                 title: '通知',
                 onPressed: () {
@@ -64,7 +64,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 leading: Icon(
                   CupertinoIcons.ellipsis,
                   size: SPHelper.settingIconSize,
-                  color: HexColor('330E85'),
+                  color: Theme.of(context).primaryColor,
                 ),
                 title: '更多',
                 bottomRadius: true,
@@ -75,6 +75,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 leading: const Icon(
                   Icons.mail_outline,
                   size: SPHelper.settingIconSize,
+                  color: CupertinoColors.systemYellow,
                 ),
                 title: '意见反馈',
                 topRadius: true,
