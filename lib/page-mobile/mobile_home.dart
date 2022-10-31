@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class MobileHome extends StatefulWidget {
@@ -44,7 +43,7 @@ class _MobileHomeState extends State<MobileHome>
         scaleCurve: Curves.linear,
         selectedColor: Theme.of(context).primaryColor,
         strokeColor: Colors.transparent,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: const Radius.circular(0),
         items: [
           CustomNavigationBarItem(

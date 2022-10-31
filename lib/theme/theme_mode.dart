@@ -9,7 +9,6 @@ class AppThemeMode {
     return FlexThemeData.light(
       primary: HexColor(provider.getAccentColor()),
       secondary: HexColor('#0E42D2'),
-      scaffoldBackground: CupertinoColors.systemGroupedBackground,
       useMaterial3: true,
       useMaterial3ErrorColors: true,
       appBarElevation: 0,
@@ -44,12 +43,10 @@ class AppThemeMode {
 
     return FlexThemeData.dark(
       primary: HexColor(provider.getAccentColor()),
-      scaffoldBackground: CupertinoColors.white,
-      background: CupertinoColors.systemGrey6,
       appBarElevation: 0,
-      useMaterial3: true,
-      useMaterial3ErrorColors: true,
-      appBarBackground: Colors.white,
+      appBarStyle: FlexAppBarStyle.background,
+      appBarOpacity: 0,
+      bottomAppBarElevation: 0,
       textTheme: const TextTheme(
         displayLarge: TextStyle(
           fontSize: 56.0,

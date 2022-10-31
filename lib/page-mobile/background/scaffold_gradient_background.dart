@@ -383,12 +383,12 @@ class ScaffoldGradientBackground extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: gradient ??
-             const LinearGradient(
+            LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               colors: [
-                CupertinoColors.systemGroupedBackground,
-                CupertinoColors.systemGroupedBackground,
+                Theme.of(context).scaffoldBackgroundColor,
+                Theme.of(context).scaffoldBackgroundColor
               ],
             ),
       ),
