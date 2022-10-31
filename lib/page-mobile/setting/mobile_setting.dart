@@ -82,12 +82,15 @@ class _MobileSettingState extends State<MobileSetting> {
                   MailUtil.sendFeedBack2Developers(context);
                 },
               ),
-              const SimpleTile(
-                leading: Icon(
+              SimpleTile(
+                leading: const Icon(
                   CupertinoIcons.star_circle_fill,
                   size: SPHelper.settingIconSize,
                 ),
-                title: '评分',
+                title: '给予好评',
+                onPressed: () {
+                  AppStoreUtil.openAppStore();
+                },
               ),
               SimpleTile(
                 leading: const Icon(

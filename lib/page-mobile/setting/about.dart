@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class About extends StatefulWidget {
@@ -46,14 +45,17 @@ class _AboutState extends State<About> {
               topRadius: true,
               title: '官方网站',
             ),
-            const SimpleTile(
-              leading: Icon(
+            SimpleTile(
+              leading: const Icon(
                 CupertinoIcons.arrow_counterclockwise,
                 size: SPHelper.settingIconSize,
               ),
               title: '检查更新',
               bottomRadius: true,
               showDivider: false,
+              onPressed: () {
+                AppStoreUtil.openAppStore();
+              },
             ),
           ],
         ),

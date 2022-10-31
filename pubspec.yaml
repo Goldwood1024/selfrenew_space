@@ -76,6 +76,7 @@ dependencies:
   timelines: ^0.1.0
   fluent_ui: ^4.0.3
   window_manager: ^0.2.7
+  rating_dialog: ^2.0.4
 
 dev_dependencies:
   flutter_test:
