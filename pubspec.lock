@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  circular_clip_route:
+    dependency: "direct main"
+    description:
+      name: circular_clip_route
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0+3"
   clock:
     dependency: transitive
     description:
@@ -176,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  expandable_page_view:
+    dependency: "direct main"
+    description:
+      name: expandable_page_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.17"
   extended_nested_scroll_view:
     dependency: "direct main"
     description:
@@ -251,6 +265,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_adaptive_scaffold:
+    dependency: "direct main"
+    description:
+      name: flutter_adaptive_scaffold
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.8"
   flutter_launcher_icons_maker:
     dependency: "direct main"
     description:
@@ -754,6 +775,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.2"
+  snapping_sheet:
+    dependency: "direct main"
+    description:
+      name: snapping_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   source_span:
     dependency: transitive
     description:
