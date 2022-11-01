@@ -70,13 +70,11 @@ class SvgLoader extends StatelessWidget {
 class SvgColorLoader extends StatelessWidget {
   final String path;
   final double size;
-  final Color color;
 
   const SvgColorLoader({
     super.key,
     required this.path,
     this.size = 24,
-    this.color = Colors.white,
   });
 
   @override
@@ -85,7 +83,7 @@ class SvgColorLoader extends StatelessWidget {
       path,
       width: size,
       height: size,
-      color: color,
+      color: Theme.of(context).primaryColor,
     );
   }
 }

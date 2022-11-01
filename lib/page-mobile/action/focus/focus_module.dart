@@ -125,7 +125,6 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
               behavior: HitTestBehavior.translucent,
               child: SvgColorLoader(
                 path: 'assets/icons/start.svg',
-                color: Theme.of(context).primaryColor,
                 size: SPHelper.sp(SPHelper.gapDp28),
               ),
             ),
