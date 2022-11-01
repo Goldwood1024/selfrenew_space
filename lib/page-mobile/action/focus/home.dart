@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/state/focus_provider.dart';
 
 class FocusHome extends StatefulWidget {
   const FocusHome({super.key});
@@ -95,7 +96,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            FocusUnderway(),
+            const FocusUnderway(),
           ],
         ),
       ),
@@ -112,23 +113,23 @@ class FocusUnderway extends StatefulWidget {
 
 class _FocusUnderwayState extends State<FocusUnderway>
     with TickerProviderStateMixin {
-  late bool show;
-
   @override
   void initState() {
     super.initState();
-
-    show = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    return show
-        ? Column(
-            children: List.generate(
-              10,
-              (index) => Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+    FocusProvider focusProvider = Provider.of(context);
+
+    return focusProvider.hasUnderway()
+        ? ListView.builder(
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, SPHelper.height(SPHelper.gapDp8), 0, 0),
                 child: FocusHomeTile(
                   title: '八段锦',
                   subTitle: Column(
@@ -200,25 +201,11 @@ class _FocusUnderwayState extends State<FocusUnderway>
                     ],
                   ),
                 ),
-              ),
-            ),
-          )
-        : Container(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                Align(
-                  child: SvgPicture.asset(
-                    'assets/icons/focus.svg',
-                    height: 200,
-                  ),
-                ),
-                Text(
-                  '没有专注，快添加任务吧',
-                  style: TextStyleMode.tipTextStyle(context),
-                )
-              ],
-            ),
+              );
+            })
+        : const ImageDefaultEmpty(
+            title: '没有专注，快添加任务吧',
+            imagePath: 'assets/icons/focus.svg',
           );
   }
 }

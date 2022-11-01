@@ -44,9 +44,10 @@ class _FocusTimerState extends State<FocusTimer>
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   CupertinoIcons.loop,
-                  size: 32,
+                  size: SPHelper.sp(SPHelper.gapDp30),
+                  color: Theme.of(context).textTheme.labelSmall?.color,
                 ),
                 SPHelper.getWidthBox(12),
                 Text(
@@ -54,18 +55,11 @@ class _FocusTimerState extends State<FocusTimer>
                   style: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.fontSp18),
                     fontWeight: FontWeight.w600,
-                    color: Theme.of(context).textTheme.displayLarge?.color,
+                    color: Theme.of(context).textTheme.labelSmall?.color,
                   ),
                 ),
               ],
             ),
-            // Positioned(
-            //   right: 12,
-            //   child: const Icon(
-            //     CupertinoIcons.loop,
-            //     size: 32,
-            //   ),
-            // )
           ],
         ),
       ),
@@ -80,7 +74,7 @@ class _FocusTimerState extends State<FocusTimer>
                   ? Text(
                       getTime(),
                       style: TextStyle(
-                        fontSize: 72,
+                        fontSize: SPHelper.sp(SPHelper.gapDp72),
                         color: Theme.of(context).textTheme.displayLarge?.color,
                       ),
                     )
@@ -95,7 +89,7 @@ class _FocusTimerState extends State<FocusTimer>
                       duration: const Duration(minutes: 24),
                       slideAnimationDuration: const Duration(milliseconds: 500),
                       textStyle: TextStyle(
-                        fontSize: 72,
+                        fontSize: SPHelper.sp(SPHelper.gapDp72),
                         color: Theme.of(context).textTheme.displayLarge?.color,
                       ),
                       onDone: () {},
@@ -112,14 +106,14 @@ class _FocusTimerState extends State<FocusTimer>
                 child: ActionSlider.standard(
                   width: 200.0,
                   height: 52,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.keyboard_arrow_right_rounded,
-                    size: 32,
+                    size: SPHelper.sp(SPHelper.gapDp32),
                     color: Colors.white,
                   ),
-                  successIcon: const Icon(
+                  successIcon: Icon(
                     Icons.check_rounded,
-                    size: 32,
+                    size: SPHelper.sp(SPHelper.gapDp32),
                     color: Colors.white,
                   ),
                   boxShadow: [],
@@ -132,12 +126,12 @@ class _FocusTimerState extends State<FocusTimer>
                       color: Colors.white,
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     '滑动放弃',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: CupertinoColors.systemGrey2,
-                      fontSize: 14,
+                      fontSize: SPHelper.sp(SPHelper.gapDp14),
                     ),
                   ),
                   action: (controller) async {

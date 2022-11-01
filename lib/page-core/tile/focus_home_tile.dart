@@ -7,7 +7,6 @@ class FocusHomeTile extends StatefulWidget {
   final double radius;
   final bool bottomRadius;
   final bool topRadius;
-  final Color backgroundColor;
   final Widget? leading;
   final String title;
   final Widget? subTitle;
@@ -22,7 +21,6 @@ class FocusHomeTile extends StatefulWidget {
     this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
-    this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
     this.subTitle,
@@ -108,7 +106,7 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
           width: MediaQuery.of(context).size.width,
           child: Container(
             decoration: BoxDecoration(
-              color: widget.backgroundColor,
+              color: Theme.of(context).backgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: widget.topRadius
                     ? Radius.circular(widget.radius)
@@ -166,6 +164,10 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none,
                                     fontSize: SPHelper.sp(SPHelper.fontSp18),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .color,
                                   ),
                                 ),
                               ),

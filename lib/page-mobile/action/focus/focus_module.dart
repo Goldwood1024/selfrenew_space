@@ -9,17 +9,15 @@ class FocusModule extends StatefulWidget {
 }
 
 class _FocusModuleState extends State<FocusModule> {
-  late bool show = true;
-
   @override
   void initState() {
     super.initState();
-    show = true;
   }
 
   @override
   Widget build(BuildContext context) {
     AppSettingProvider appSettingProvider = Provider.of(context);
+    FocusProvider focusProvider = Provider.of(context);
 
     return appSettingProvider.hasModule('focus')
         ? MobileModule(
@@ -27,8 +25,9 @@ class _FocusModuleState extends State<FocusModule> {
             onPressed: () {
               Routers.go(Routers.focusHome);
             },
-            child:
-                show ? const FocusActionEmpty() : const FocusActionDataList(),
+            child: focusProvider.hasUnderway()
+                ? const FocusActionDataList()
+                : const FocusActionEmpty(),
           )
         : SPHelper.empty;
   }
@@ -92,46 +91,45 @@ class FocusActionDataList extends StatefulWidget {
 class _FocusActionDataListState extends State<FocusActionDataList> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 1,
-        padding: EdgeInsets.zero,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return FocusTile(
-            topRadius: true,
-            bottomRadius: true,
-            title: '专注一下',
-            leading: 'assets/icons/浴盆.svg',
-            trailing: GestureDetector(
+    FocusProvider focusProvider = Provider.of(context);
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 3,
+      padding: EdgeInsets.zero,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return FocusTile(
+          topRadius: true,
+          bottomRadius: true,
+          title: '专注一下',
+          leading: 'assets/icons/浴盆.svg',
+          trailing: GestureDetector(
+            onTap: () {
+              SmartDialog.show(builder: (_) {
+                return const FocusTimer();
+              });
+            },
+            child: GestureDetector(
               onTap: () {
-                SmartDialog.show(builder: (_) {
-                  return const FocusTimer();
-                });
+                SmartDialog.show(
+                  alignment: Alignment.bottomCenter,
+                  keepSingle: true,
+                  useAnimation: true,
+                  builder: (_) {
+                    return const FocusTimer();
+                  },
+                );
               },
-              child: GestureDetector(
-                onTap: () {
-                  SmartDialog.show(
-                    alignment: Alignment.bottomCenter,
-                    keepSingle: true,
-                    useAnimation: true,
-                    builder: (_) {
-                      return const FocusTimer();
-                    },
-                  );
-                },
-                behavior: HitTestBehavior.translucent,
-                child: Icon(
-                  CupertinoIcons.play_circle_fill,
-                  size: 30,
-                  color: Theme.of(context).primaryColor,
-                ),
+              behavior: HitTestBehavior.translucent,
+              child: Icon(
+                CupertinoIcons.play_circle_fill,
+                size: SPHelper.sp(SPHelper.gapDp30),
+                color: Theme.of(context).primaryColor,
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

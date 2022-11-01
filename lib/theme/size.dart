@@ -80,6 +80,8 @@ class SPHelper {
   static const double gapDp64 = 64;
   static const double gapDp68 = 68;
   static const double gapDp80 = 80;
+  static const double gapDp76 = 76;
+  static const double gapDp72 = 72;
   static const double gapDp120 = 120.0;
   static const double gapDp100 = 100.0;
   static const double gapDp124 = 124.0;

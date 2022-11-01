@@ -6,7 +6,6 @@ class FocusTile extends StatefulWidget {
   final double radius;
   final bool bottomRadius;
   final bool topRadius;
-  final Color backgroundColor;
   final String leading;
   final String title;
   final Widget? subTitle;
@@ -21,7 +20,6 @@ class FocusTile extends StatefulWidget {
     this.radius = 12.0,
     this.bottomRadius = false,
     this.topRadius = false,
-    this.backgroundColor = Colors.white,
     this.trailing,
     this.subTitle,
     this.onPressed,
@@ -41,7 +39,7 @@ class _FocusTileState extends State<FocusTile> {
         height: widget.height,
         child: Container(
           decoration: BoxDecoration(
-            color: widget.backgroundColor,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.only(
               topLeft: widget.topRadius
                   ? Radius.circular(widget.radius)
@@ -77,6 +75,7 @@ class _FocusTileState extends State<FocusTile> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: SPHelper.sp(SPHelper.fontSp18),
+                      color: Theme.of(context).textTheme.labelSmall!.color,
                     ),
                   ),
                 ),
