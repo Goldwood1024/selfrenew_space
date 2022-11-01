@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-desktop/action/habit/home.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class DesktopHome extends StatefulWidget {
@@ -11,11 +12,12 @@ class DesktopHome extends StatefulWidget {
 
 class _DesktopHomeState extends State<DesktopHome>
     with SingleTickerProviderStateMixin {
-  int index = 0;
+  late int menuIndex;
 
   @override
   void initState() {
     super.initState();
+    menuIndex = 0;
   }
 
   @override
@@ -43,47 +45,35 @@ class _DesktopHomeState extends State<DesktopHome>
         ),
       ),
       pane: NavigationPane(
+        displayMode: PaneDisplayMode.open,
         onChanged: (i) {
-          setState(() => index = i);
+          setState(() => menuIndex = i);
         },
-        selected: index,
+        selected: menuIndex,
         size: const NavigationPaneSize(
           openMaxWidth: 240,
         ),
         items: [
           PaneItem(
-            icon: const Icon(FluentIcons.home),
-            title: const Text('Home'),
-            body: MobileAction(),
+            icon: const Icon(Icons.water_drop),
+            title: const Text('习惯'),
+            body: const DesktopHabitHome(),
           ),
           PaneItem(
-            icon: const Icon(FluentIcons.icon_sets_flag),
-            title: const Text('Icons'),
-            body: MobileAction(),
+            icon: const Icon(Icons.water_drop),
+            title: const Text('专注'),
+            body: const DesktopHabitHome(),
           ),
         ],
         footerItems: [
           PaneItemSeparator(),
           PaneItem(
-            icon: const Icon(FluentIcons.settings),
-            title: const Text('Settings'),
+            icon: const Icon(CupertinoIcons.shield),
+            title: const Text('设置'),
             body: Container(),
           ),
         ],
       ),
-    );
-  }
-}
-
-class WindowButtons extends StatelessWidget {
-  const WindowButtons({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 138,
-      height: 50,
-      child: WindowCaption(),
     );
   }
 }

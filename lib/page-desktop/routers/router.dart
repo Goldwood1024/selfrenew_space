@@ -20,9 +20,7 @@ class DesktopRouters {
   static const String habitIcons = "/habitIcons";
 
   static GoRouter router = GoRouter(
-    observers: [
-      FlutterSmartDialog.observer,
-    ],
+    observers: [],
     routes: <GoRoute>[
       GoRoute(
         path: root,

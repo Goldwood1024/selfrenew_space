@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
-class MobileModule extends StatefulWidget {
+class DesktopModule extends StatefulWidget {
   final String title;
   final Widget child;
   final VoidCallback? onPressed;
 
-  const MobileModule({
+  const DesktopModule({
     super.key,
     required this.title,
     required this.child,
@@ -14,10 +14,10 @@ class MobileModule extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => _MobileModuleState();
+  State<StatefulWidget> createState() => _DesktopModuleState();
 }
 
-class _MobileModuleState extends State<MobileModule> {
+class _DesktopModuleState extends State<DesktopModule> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,8 +35,7 @@ class _MobileModuleState extends State<MobileModule> {
                   style: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.fontSp22),
                     fontWeight: FontWeight.w600,
-                    color: Colors.blue,
-                    // color: Theme.of(context).textTheme.labelSmall!.color,
+                    color: Theme.of(context).textTheme.labelSmall!.color,
                   ),
                 ),
               ),
