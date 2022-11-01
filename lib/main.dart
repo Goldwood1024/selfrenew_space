@@ -70,11 +70,9 @@ class _MainAppState extends State<MainApp> {
 
               return StatusbarzCapturer(
                 child: MaterialApp.router(
-                  key: LabeledGlobalKey('MaterialApp.router'),
-                  scaffoldMessengerKey: LabeledGlobalKey('MaterialApp.router'),
                   builder: FlutterSmartDialog.init(),
                   debugShowCheckedModeBanner: false,
-                  theme: AppThemeMode.theme(context),
+                  theme: AppThemeMode.lightTheme(context),
                   darkTheme: AppThemeMode.darkTheme(context),
                   themeMode:
                       Provider.of<AppSettingProvider>(context).getThemeMode(),

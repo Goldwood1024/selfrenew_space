@@ -4,24 +4,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class AppThemeMode {
-  static ThemeData theme(BuildContext context) {
+  static ThemeData lightTheme(BuildContext context) {
     AppSettingProvider provider = Provider.of(context);
-    return FlexThemeData.light(
-      primary: HexColor(provider.getAccentColor()),
-      scaffoldBackground: CupertinoColors.systemGroupedBackground,
-      background: CupertinoColors.systemBackground,
+
+    return ThemeData().copyWith(
+      primaryColor: HexColor(provider.getAccentColor()),
+      scaffoldBackgroundColor: CupertinoColors.systemGroupedBackground,
+      backgroundColor: CupertinoColors.systemBackground,
       useMaterial3: true,
-      useMaterial3ErrorColors: true,
-      appBarElevation: 0,
-      appBarStyle: FlexAppBarStyle.background,
-      appBarOpacity: 0,
-      bottomAppBarElevation: 0,
-      error: HexColor('#F53F3F'),
-      textTheme: const TextTheme(
-        labelSmall: TextStyle(
+      appBarTheme: const AppBarTheme().copyWith(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
+      textTheme: const TextTheme().copyWith(
+        labelSmall: const TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16,
-          color: Color.fromRGBO(28, 37, 32, 1), // 1C2520
+          color: Color.fromRGBO(28, 37, 32, 1),
           fontFeatures: [FontFeature.tabularFigures()],
         ),
       ),
@@ -31,19 +31,21 @@ class AppThemeMode {
   static ThemeData darkTheme(BuildContext context) {
     AppSettingProvider provider = Provider.of(context);
 
-    return FlexThemeData.dark(
-      primary: HexColor(provider.getAccentColor()),
-      background: Colors.black,
-      appBarElevation: 0,
-      appBarStyle: FlexAppBarStyle.background,
-      appBarOpacity: 0,
-      bottomAppBarElevation: 0,
+    return ThemeData().copyWith(
+      primaryColor: HexColor(provider.getAccentColor()),
+      scaffoldBackgroundColor: HexColor('35363A'),
+      backgroundColor: Colors.black,
+      useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        backgroundColor: HexColor('35363A'),
+      ),
       textTheme: const TextTheme(
         labelSmall: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16,
           color: Colors.white,
-          // fontFeatures: [FontFeature.tabularFigures()],
+          fontFeatures: [FontFeature.tabularFigures()],
         ),
       ),
     );
