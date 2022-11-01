@@ -48,8 +48,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
           )
         ],
       ),
-      body: Scaffold(
-        backgroundColor: CupertinoColors.systemGroupedBackground,
+      body: ScaffoldGradientBackground(
         body: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {
