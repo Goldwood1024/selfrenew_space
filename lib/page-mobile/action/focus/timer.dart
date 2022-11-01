@@ -75,7 +75,7 @@ class _FocusTimerState extends State<FocusTimer>
                       getTime(),
                       style: TextStyle(
                         fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.displayLarge?.color,
+                        color: Theme.of(context).textTheme.labelSmall?.color,
                       ),
                     )
                   : SlideCountdown(
@@ -90,7 +90,7 @@ class _FocusTimerState extends State<FocusTimer>
                       slideAnimationDuration: const Duration(milliseconds: 500),
                       textStyle: TextStyle(
                         fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.displayLarge?.color,
+                        color: Theme.of(context).textTheme.labelSmall?.color,
                       ),
                       onDone: () {},
                       onChanged: (_) {
