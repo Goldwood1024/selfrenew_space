@@ -72,10 +72,10 @@ class _MobileSettingState extends State<MobileSetting> {
               ),
               SPHelper.getHeightBox(SPHelper.gapDp12),
               SimpleTile(
-                leading: const Icon(
-                  Icons.mail_outline,
+                leading: Icon(
+                  Icons.mail,
                   size: SPHelper.settingIconSize,
-                  color: CupertinoColors.systemYellow,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
                 title: '意见反馈',
                 topRadius: true,
@@ -86,7 +86,7 @@ class _MobileSettingState extends State<MobileSetting> {
               ),
               SimpleTile(
                 leading: Icon(
-                  CupertinoIcons.star_circle_fill,
+                  CupertinoIcons.star_circle,
                   size: SPHelper.settingIconSize,
                   color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
