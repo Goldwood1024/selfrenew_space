@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:selfrenew_space/page-desktop/desktop_home.dart';
+import 'package:selfrenew_space/page-desktop/routers/router.dart';
 import 'package:selfrenew_space/page-mobile/routers/router.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:statsfl/statsfl.dart';
@@ -17,38 +17,13 @@ Future<void> main() async {
           width: 300,
           height: 120,
           align: Alignment.center,
-          child: const MainApp(),
+          child: PLUtil.isDesktop() ? const DesktopApp() : const MobileApp(),
         ),
       ),
     ),
   );
 
   ManagerInitialization.after();
-}
-
-// 主页配置
-class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return PLUtil.isDesktop() ? const DesktopApp() : const MobileApp();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }
 
 class MobileApp extends StatefulWidget {
@@ -68,7 +43,7 @@ class _MobileAppState extends State<MobileApp> {
     return ScreenUtilInit(
       designSize: _getDesignSize(),
       builder: (BuildContext context, Widget? child) {
-        Provider.of<AppSettingProvider>(context, listen: false).read();
+        Provider.of<AppSettingProvider>(context, listen: false).loadSystem();
 
         return StatusbarzCapturer(
           child: MaterialApp.router(
@@ -105,17 +80,14 @@ class _DesktopAppState extends State<DesktopApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      // 设计稿大小
       designSize: const Size(1200, 800),
       builder: (BuildContext context, Widget? child) {
-        return FluentApp(
+        return FluentApp.router(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          routes: {
-            '/': (_) {
-              return const DesktopHome();
-            },
-          },
+          themeMode: ThemeMode.system,
+          routeInformationParser: DesktopRouters.router.routeInformationParser,
+          routerDelegate: DesktopRouters.router.routerDelegate,
+          color: HexColor('#165DFF'),
         );
       },
     );

@@ -56,7 +56,7 @@ class AppSettingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> read() async {
+  Future<void> loadSystem() async {
     if (init) {
       return;
     }
