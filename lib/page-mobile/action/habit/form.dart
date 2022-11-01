@@ -93,11 +93,15 @@ class _HabitFormState extends State<HabitForm> {
                                 ),
                               ),
                             ),
-                            const Text(
+                            Text(
                               '图标库',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: Colors.black54,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall!
+                                    .color
+                                    ?.withOpacity(0.8),
                               ),
                             ),
                           ],
@@ -117,11 +121,15 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '重复',
-                trailing: const Text(
+                trailing: Text(
                   '每天',
                   style: TextStyle(
                     fontSize: 16,
-                    color: CupertinoColors.systemGrey,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color
+                        ?.withOpacity(0.8),
                   ),
                 ),
               ),
@@ -133,11 +141,15 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '目标',
-                trailing: const Text(
+                trailing: Text(
                   '每天',
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.black54,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color
+                        ?.withOpacity(0.8),
                   ),
                 ),
               ),
@@ -149,11 +161,15 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '提醒',
-                trailing: const Text(
+                trailing: Text(
                   '每天',
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.black54,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color
+                        ?.withOpacity(0.8),
                   ),
                 ),
               ),
@@ -166,11 +182,15 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '开始日期',
-                trailing: const Text(
+                trailing: Text(
                   '1月21',
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.black54,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color
+                        ?.withOpacity(0.8),
                   ),
                 ),
               ),

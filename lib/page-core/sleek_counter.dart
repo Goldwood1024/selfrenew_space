@@ -65,7 +65,7 @@ class _SleekCounterState extends State<SleekCounter> {
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: CupertinoColors.black.withOpacity(0.6),
+                      color: CupertinoColors.systemGrey4,
                       borderRadius: BorderRadius.circular(
                         SPHelper.gapDp120,
                       ),

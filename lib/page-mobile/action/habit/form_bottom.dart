@@ -40,7 +40,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
         ],
         bottom: TabBar(
           controller: tabController,
-          labelColor: Colors.black87,
+          labelColor: Theme.of(context).textTheme.labelSmall!.color,
           physics: const NeverScrollableScrollPhysics(),
           splashFactory: NoSplash.splashFactory,
           labelPadding: EdgeInsets.fromLTRB(

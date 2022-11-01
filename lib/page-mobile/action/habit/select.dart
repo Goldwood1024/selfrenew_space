@@ -42,6 +42,7 @@ class _HabitSelectState extends State<HabitSelect> {
                   8,
                   (index) => Card(
                     elevation: 0,
+                    color: Theme.of(context).backgroundColor,
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
@@ -72,7 +73,7 @@ class _HabitSelectState extends State<HabitSelect> {
                                     '喝水',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: SPHelper.sp(SPHelper.fontSp16),
+                                      fontSize: SPHelper.sp(SPHelper.fontSp18),
                                     ),
                                   ),
                                 ],
@@ -99,7 +100,7 @@ class _HabitSelectState extends State<HabitSelect> {
               child: Container(
                 height: SPHelper.height(100),
                 width: MediaQuery.of(context).size.width,
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor,
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(0, 12, 12, 32),
                   alignment: Alignment.centerRight,

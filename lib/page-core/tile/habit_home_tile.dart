@@ -7,7 +7,6 @@ class HabitHomeTile extends StatefulWidget {
   final double radius;
   final bool bottomRadius;
   final bool topRadius;
-  final Color backgroundColor;
   final Widget? leading;
   final String title;
   final Widget? subTitle;
@@ -23,7 +22,6 @@ class HabitHomeTile extends StatefulWidget {
     this.bottomRadius = false,
     this.topRadius = false,
     this.abandon = false,
-    this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
     this.subTitle,
@@ -108,7 +106,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
           width: MediaQuery.of(context).size.width,
           child: Container(
             decoration: BoxDecoration(
-              color: widget.backgroundColor,
+              color: Theme.of(context).backgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: widget.topRadius
                     ? Radius.circular(widget.radius)
@@ -159,7 +157,6 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   widget.title,
-                                  // softWrap: true,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     decoration: widget.abandon
