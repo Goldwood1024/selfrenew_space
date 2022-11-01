@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/page-desktop/action/habit/home.dart';
+import 'package:selfrenew_space/page-desktop/habit/home.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class DesktopHome extends StatefulWidget {

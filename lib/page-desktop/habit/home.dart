@@ -35,40 +35,41 @@ class _DesktopHabitHomeState extends State<DesktopHabitHome>
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      floatingActionButton: FloatingActionBubble(
-        items: [
-          Bubble(
-            title: "消灭坏习惯",
-            iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor,
-            icon: CupertinoIcons.nosign,
-            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-            onPress: () {
-              _animationController.reverse();
-              Routers.go(Routers.habitSelect);
-            },
-          ),
-          Bubble(
-            title: "创建好习惯",
-            iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor,
-            icon: CupertinoIcons.loop,
-            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-            onPress: () {
-              _animationController.reverse();
-              Routers.go(Routers.habitSelect);
-            },
-          ),
-        ],
-        onPress: () {
-          _animationController.isCompleted
-              ? _animationController.reverse()
-              : _animationController.forward();
-        },
-        iconColor: Colors.white,
-        iconData: Icons.add,
-        backGroundColor: Theme.of(context).primaryColor,
-        animation: _animation,
+      bottomNavigationBar: Padding(
+        padding: SPHelper.pagePadding,
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 56,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.add,
+                    ),
+                    suffix: Icon(Icons.delete),
+                    hintText: '添加习惯',
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+              decoration: BoxDecoration(
+                color: Colors.grey.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              width: 80,
+              height: 56,
+              alignment: Alignment.center,
+              child: const Text('习惯库'),
+            )
+          ],
+        ),
       ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
