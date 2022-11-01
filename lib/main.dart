@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:selfrenew_space/page-desktop/routers/router.dart';
+import 'package:selfrenew_space/page-desktop/desktop_app.dart';
 import 'package:selfrenew_space/page-mobile/routers/router.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:statsfl/statsfl.dart';
@@ -63,31 +63,6 @@ class _MobileAppState extends State<MobileApp> {
             routerConfig: Routers.router,
             restorationScopeId: 'MainApp',
           ),
-        );
-      },
-    );
-  }
-}
-
-class DesktopApp extends StatefulWidget {
-  const DesktopApp({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _DesktopAppState();
-}
-
-class _DesktopAppState extends State<DesktopApp> {
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(1200, 800),
-      builder: (BuildContext context, Widget? child) {
-        return FluentApp.router(
-          debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.system,
-          routeInformationParser: DesktopRouters.router.routeInformationParser,
-          routerDelegate: DesktopRouters.router.routerDelegate,
-          color: HexColor('#165DFF'),
         );
       },
     );

@@ -80,7 +80,6 @@ dependencies:
   expandable_page_view: ^1.0.17
   circular_clip_route: ^0.2.0+3
   snapping_sheet: ^3.1.0
-  flutter_adaptive_scaffold: ^0.0.8
 
 dev_dependencies:
   flutter_test:
