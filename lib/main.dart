@@ -40,60 +40,84 @@ class _MainAppState extends State<MainApp> {
     super.initState();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return PLUtil.isDesktop() ? const DesktopApp() : const MobileApp();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+}
+
+class MobileApp extends StatefulWidget {
+  const MobileApp({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _MobileAppState();
+}
+
+class _MobileAppState extends State<MobileApp> {
   Size _getDesignSize() {
     return PLUtil.isIOS() ? const Size(375, 812) : const Size(360, 720);
   }
 
   @override
   Widget build(BuildContext context) {
-    return PLUtil.isDesktop()
-        ? ScreenUtilInit(
-            // 设计稿大小
-            designSize: const Size(1200, 800),
-            builder: (BuildContext context, Widget? child) {
-              return FluentApp(
-                debugShowCheckedModeBanner: false,
-                initialRoute: '/',
-                routes: {
-                  '/': (_) {
-                    return const DesktopHome();
-                  },
-                },
-              );
-            },
-          )
-        : ScreenUtilInit(
-            // 设计稿大小
-            designSize: _getDesignSize(),
-            builder: (BuildContext context, Widget? child) {
-              Provider.of<AppSettingProvider>(context, listen: false).read();
+    return ScreenUtilInit(
+      designSize: _getDesignSize(),
+      builder: (BuildContext context, Widget? child) {
+        Provider.of<AppSettingProvider>(context, listen: false).read();
 
-              return StatusbarzCapturer(
-                child: MaterialApp.router(
-                  builder: FlutterSmartDialog.init(),
-                  debugShowCheckedModeBanner: false,
-                  theme: AppThemeMode.lightTheme(context),
-                  darkTheme: AppThemeMode.darkTheme(context),
-                  themeMode:
-                      Provider.of<AppSettingProvider>(context).getThemeMode(),
-                  // 国际化
-                  supportedLocales: S.delegate.supportedLocales,
-                  localizationsDelegates: const [
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    S.delegate
-                  ],
-                  routerConfig: Routers.router,
-                  restorationScopeId: 'MainApp',
-                ),
-              );
-            },
-          );
+        return StatusbarzCapturer(
+          child: MaterialApp.router(
+            builder: FlutterSmartDialog.init(),
+            debugShowCheckedModeBanner: false,
+            theme: AppThemeMode.lightTheme(context),
+            darkTheme: AppThemeMode.darkTheme(context),
+            themeMode: Provider.of<AppSettingProvider>(context).getThemeMode(),
+            // 国际化
+            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              S.delegate
+            ],
+            routerConfig: Routers.router,
+            restorationScopeId: 'MainApp',
+          ),
+        );
+      },
+    );
   }
+}
+
+class DesktopApp extends StatefulWidget {
+  const DesktopApp({super.key});
 
   @override
-  void dispose() {
-    super.dispose();
+  State<StatefulWidget> createState() => _DesktopAppState();
+}
+
+class _DesktopAppState extends State<DesktopApp> {
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      // 设计稿大小
+      designSize: const Size(1200, 800),
+      builder: (BuildContext context, Widget? child) {
+        return FluentApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: {
+            '/': (_) {
+              return const DesktopHome();
+            },
+          },
+        );
+      },
+    );
   }
 }
