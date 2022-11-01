@@ -6,7 +6,6 @@ class HabitTile extends StatefulWidget {
   final double radius;
   final bool bottomRadius;
   final bool topRadius;
-  final Color backgroundColor;
   final String leading;
   final String title;
   final Widget? trailing;
@@ -22,7 +21,6 @@ class HabitTile extends StatefulWidget {
     this.bottomRadius = false,
     this.topRadius = false,
     this.abandon = false,
-    this.backgroundColor = Colors.white,
     this.trailing,
     this.onPressed,
   });
@@ -42,7 +40,7 @@ class _HabitTileState extends State<HabitTile> {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: widget.backgroundColor,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.only(
               topLeft: widget.topRadius
                   ? Radius.circular(widget.radius)
@@ -80,6 +78,7 @@ class _HabitTileState extends State<HabitTile> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: SPHelper.sp(SPHelper.fontSp18),
+                      color: Theme.of(context).textTheme.labelSmall!.color,
                     ),
                   ),
                 ),

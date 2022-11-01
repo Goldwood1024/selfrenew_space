@@ -47,7 +47,7 @@ dependencies:
   easy_sidemenu: ^0.4.1
   side_sheet: ^1.0.3
   flex_color_scheme: ^6.0.1
-#  audioplayers: ^1.1.1
+  #  audioplayers: ^1.1.1
   extended_nested_scroll_view: ^5.1.3
   open_store: ^0.3.1
   url_launcher: ^6.1.6
@@ -92,6 +92,7 @@ flutter:
     - 'assets/icons/用药.png'
     - 'assets/icons/算盘.png'
     - 'assets/icons/出差.png'
+    - 'assets/icons/蜡笔.svg'
     - 'assets/icons/check.svg'
     - 'assets/icons/delete.svg'
     - 'assets/icons/habit.svg'

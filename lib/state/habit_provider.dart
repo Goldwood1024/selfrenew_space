@@ -35,9 +35,29 @@ class HabitProvider extends ChangeNotifier {
     ));
 
     list.add(HabitUnderway(
+      '33',
+      'ffff',
+      'assets/icons/浴盆.svg',
+      '每天',
+      [
+        Notice('1', '08:90'),
+        Notice('2', '19:90'),
+      ],
+      [
+        SleekCount(1, 5, 2, false, 1),
+        SleekCount(1, 2, 2, false, 2),
+        SleekCount(1, 2, 2, false, 3),
+        SleekCount(1, 6, 5, false, 4),
+        SleekCount(1, 7, 2, true, 5),
+        SleekCount(1, 7, 4, true, 6),
+        SleekCount(1, 7, 0, false, 7),
+      ],
+    ));
+
+    list.add(HabitUnderway(
       '332',
       '测四',
-      'assets/icons/浴盆.svg',
+      'assets/icons/蜡笔.svg',
       '每天3',
       [
         Notice('2', '19:90'),

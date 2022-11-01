@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitModule extends StatefulWidget {
@@ -25,15 +26,16 @@ class _HabitModuleState extends State<HabitModule> {
   @override
   Widget build(BuildContext context) {
     AppSettingProvider appSettingProvider = Provider.of(context);
+    HabitProvider habitProvider = Provider.of(context);
     return appSettingProvider.hasModule('habit')
         ? MobileModule(
             title: '习惯',
             onPressed: () {
               Routers.go(Routers.habit);
             },
-            child: _isEmpty
-                ? const HabitActionEmpty()
-                : const HabitActionDataList(),
+            child: habitProvider.hasUnderway()
+                ? const HabitActionDataList()
+                : const HabitActionEmpty(),
           )
         : SPHelper.empty;
   }
@@ -98,27 +100,27 @@ class HabitActionDataList extends StatefulWidget {
 class _HabitActionDataListState extends State<HabitActionDataList> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 1,
-        padding: EdgeInsets.zero,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return HabitTile(
-            title: '喝一杯水',
-            topRadius: index == 0,
-            bottomRadius: index == 0,
-            leading: 'assets/icons/浴盆.svg',
-            trailing: const SleekCounter(
-              min: 0,
-              max: 4,
-              value: 1,
-              fail: false,
-            ),
-          );
-        },
-      ),
+    HabitProvider habitProvider = Provider.of(context);
+    List<HabitUnderway> data = habitProvider.getHabitUnderway();
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: data.length,
+      padding: EdgeInsets.zero,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return HabitTile(
+          title: data[index].title,
+          topRadius: index == 0,
+          bottomRadius: index == data.length - 1,
+          leading: data[index].imagePath,
+          trailing: SleekCounter(
+            min: data[index].sleeks[data[index].sleeks.length - 2].min,
+            max: data[index].sleeks[data[index].sleeks.length - 2].max,
+            value: data[index].sleeks[data[index].sleeks.length - 2].value,
+            fail: data[index].sleeks[data[index].sleeks.length - 2].fail,
+          ),
+        );
+      },
     );
   }
 }
