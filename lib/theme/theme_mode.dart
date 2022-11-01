@@ -43,6 +43,7 @@ class AppThemeMode {
       appBarTheme: AppBarTheme(
         elevation: 0,
         backgroundColor: HexColor('35363A'),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       textTheme: const TextTheme(
         labelSmall: TextStyle(

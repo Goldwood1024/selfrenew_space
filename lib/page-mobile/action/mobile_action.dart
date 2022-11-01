@@ -49,7 +49,6 @@ class _MobileActionState extends State<MobileAction> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             CupertinoSliverNavigationBar(
-              brightness: Brightness.light,
               backgroundColor: Colors.transparent,
               leading: _showWeek
                   ? Padding(
