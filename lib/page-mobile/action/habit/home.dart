@@ -275,6 +275,7 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
                 style: TextStyle(
                   fontSize: SPHelper.sp(SPHelper.fontSp16),
                   fontWeight: FontWeight.w600,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
               ),
               GestureDetector(
@@ -417,6 +418,7 @@ class _AbandonState extends State<Abandon> {
                 style: TextStyle(
                   fontSize: SPHelper.sp(SPHelper.fontSp16),
                   fontWeight: FontWeight.w600,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
               ),
               GestureDetector(

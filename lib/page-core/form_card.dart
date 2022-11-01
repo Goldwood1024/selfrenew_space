@@ -48,7 +48,7 @@ class _FormCardState extends State<FormCard>
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(
-              14,
+              SPHelper.width(SPHelper.gapDp14),
               SPHelper.pageVerticalPadding(),
               0,
               0,
@@ -61,6 +61,7 @@ class _FormCardState extends State<FormCard>
                   style: TextStyle(
                     fontSize: SPHelper.sp(widget.fontSize),
                     fontWeight: widget.fontWeight,
+                    color: Theme.of(context).textTheme.labelSmall!.color,
                   ),
                 ),
                 Padding(

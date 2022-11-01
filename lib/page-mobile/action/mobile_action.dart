@@ -73,8 +73,9 @@ class _MobileActionState extends State<MobileAction> {
                 ),
               ),
               trailing: ActionIconBtn(
-                icon: const Icon(
+                icon: Icon(
                   Icons.more_horiz_sharp,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(

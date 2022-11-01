@@ -163,6 +163,10 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none,
                                     fontSize: SPHelper.sp(SPHelper.fontSp18),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .color,
                                   ),
                                 ),
                               ),

@@ -38,9 +38,10 @@ class _AboutState extends State<About> {
           children: [
             SPHelper.getDefaultHeightBox(),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.home,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               topRadius: true,
               title: '官方网站',
@@ -49,9 +50,10 @@ class _AboutState extends State<About> {
               },
             ),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.arrow_counterclockwise,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               title: '检查更新',
               bottomRadius: true,

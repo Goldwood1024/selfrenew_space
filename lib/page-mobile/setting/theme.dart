@@ -52,9 +52,10 @@ class _ThemeSettingState extends State<ThemeSetting> {
           children: [
             SPHelper.getDefaultHeightBox(),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.dial,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               topRadius: true,
               title: '跟随系统',
@@ -67,9 +68,10 @@ class _ThemeSettingState extends State<ThemeSetting> {
               ),
             ),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.sun_dust,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               title: '浅色',
               showArrow: false,
@@ -81,9 +83,10 @@ class _ThemeSettingState extends State<ThemeSetting> {
               ),
             ),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.sun_dust_fill,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               bottomRadius: true,
               title: '深色',

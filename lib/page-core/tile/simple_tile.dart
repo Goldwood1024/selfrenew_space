@@ -25,7 +25,6 @@ class SimpleTile extends StatefulWidget {
     this.topRadius = false,
     this.showArrow = true,
     this.showDivider = true,
-    // this.backgroundColor = Colors.white,
     this.leading,
     this.trailing,
     this.subTitle,
@@ -95,6 +94,7 @@ class _SimpleTileState extends State<SimpleTile> {
                                         fontSize: SPHelper.sp(
                                           SPHelper.fontSp18,
                                         ),
+                                        color: Theme.of(context).textTheme.labelSmall!.color,
                                       ),
                                     ),
                                   ),

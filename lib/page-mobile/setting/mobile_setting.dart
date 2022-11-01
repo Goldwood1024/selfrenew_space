@@ -85,9 +85,10 @@ class _MobileSettingState extends State<MobileSetting> {
                 },
               ),
               SimpleTile(
-                leading: const Icon(
+                leading: Icon(
                   CupertinoIcons.star_circle_fill,
                   size: SPHelper.settingIconSize,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
                 title: '给予好评',
                 onPressed: () {
@@ -95,9 +96,10 @@ class _MobileSettingState extends State<MobileSetting> {
                 },
               ),
               SimpleTile(
-                leading: const Icon(
+                leading: Icon(
                   CupertinoIcons.info,
                   size: SPHelper.settingIconSize,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
                 title: '关于',
                 bottomRadius: true,

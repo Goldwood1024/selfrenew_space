@@ -24,6 +24,10 @@ class AppThemeMode {
           color: Color.fromRGBO(28, 37, 32, 1),
           fontFeatures: [FontFeature.tabularFigures()],
         ),
+        labelLarge: const TextStyle(
+          color: Color.fromRGBO(28, 37, 32, 1),
+          fontFeatures: [FontFeature.tabularFigures()],
+        ),
       ),
     );
   }

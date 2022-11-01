@@ -35,6 +35,7 @@ class _MobileModuleState extends State<MobileModule> {
                   style: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.fontSp22),
                     fontWeight: FontWeight.w600,
+                    color: Theme.of(context).textTheme.labelSmall!.color,
                   ),
                 ),
               ),

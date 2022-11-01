@@ -46,9 +46,10 @@ class _NotificationSettingState extends State<NotificationSetting> {
           children: [
             SPHelper.getDefaultHeightBox(),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 CupertinoIcons.bell,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               topRadius: true,
               title: '完成提示音',
@@ -93,9 +94,10 @@ class _NotificationSettingState extends State<NotificationSetting> {
               },
             ),
             SimpleTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.vibration,
                 size: SPHelper.settingIconSize,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               title: '震动',
               bottomRadius: true,

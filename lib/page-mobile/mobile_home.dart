@@ -47,13 +47,25 @@ class _MobileHomeState extends State<MobileHome>
         borderRadius: const Radius.circular(0),
         items: [
           CustomNavigationBarItem(
-              icon: const Icon(Icons.water_drop),
-              selectedIcon: const Icon(Icons.water_drop),
-              title: const Text('计划')),
+            icon: const Icon(Icons.water_drop),
+            selectedIcon: const Icon(Icons.water_drop),
+            title: Text(
+              '计划',
+              style: TextStyle(
+                color: Theme.of(context).textTheme.labelSmall!.color,
+              ),
+            ),
+          ),
           CustomNavigationBarItem(
-              icon: const Icon(CupertinoIcons.shield),
-              selectedIcon: const Icon(CupertinoIcons.shield_fill),
-              title: const Text('设置')),
+            icon: const Icon(CupertinoIcons.shield),
+            selectedIcon: const Icon(CupertinoIcons.shield_fill),
+            title: Text(
+              '设置',
+              style: TextStyle(
+                color: Theme.of(context).textTheme.labelSmall!.color,
+              ),
+            ),
+          ),
         ],
         currentIndex: _currentIndex,
         onTap: (index) {
