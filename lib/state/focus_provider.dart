@@ -1,5 +1,5 @@
 import 'package:selfrenew_space/dao/habit/repository.dart';
-import 'package:selfrenew_space/model/habit_underway.dart';
+import 'package:selfrenew_space/model/focus_underway.dart';
 import 'package:selfrenew_space/model/notice.dart';
 import 'package:selfrenew_space/model/sleek_count.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -11,10 +11,10 @@ class FocusProvider extends ChangeNotifier {
     return true;
   }
 
-  List<HabitUnderway> getHabitUnderway() {
-    List<HabitUnderway> list = [];
+  List<FocusUnderwayModel> getFocusUnderway() {
+    List<FocusUnderwayModel> list = [];
 
-    list.add(HabitUnderway(
+    list.add(FocusUnderwayModel(
       '33',
       '222',
       'assets/icons/浴盆.svg',
@@ -34,8 +34,8 @@ class FocusProvider extends ChangeNotifier {
       ],
     ));
 
-    list.add(HabitUnderway(
-      '33',
+    list.add(FocusUnderwayModel(
+      '1',
       'ffff',
       'assets/icons/浴盆.svg',
       '每天',
@@ -54,7 +54,7 @@ class FocusProvider extends ChangeNotifier {
       ],
     ));
 
-    list.add(HabitUnderway(
+    list.add(FocusUnderwayModel(
       '332',
       '测四',
       'assets/icons/蜡笔.svg',

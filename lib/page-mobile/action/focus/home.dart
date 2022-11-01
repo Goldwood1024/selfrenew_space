@@ -121,17 +121,18 @@ class _FocusUnderwayState extends State<FocusUnderway>
   @override
   Widget build(BuildContext context) {
     FocusProvider focusProvider = Provider.of(context);
+    List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
 
     return focusProvider.hasUnderway()
         ? ListView.builder(
             shrinkWrap: true,
-            itemCount: 10,
+            itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: EdgeInsets.fromLTRB(
                     0, SPHelper.height(SPHelper.gapDp8), 0, 0),
                 child: FocusHomeTile(
-                  title: '八段锦',
+                  title: data[index].title,
                   subTitle: Column(
                     children: [
                       Row(
@@ -174,9 +175,8 @@ class _FocusUnderwayState extends State<FocusUnderway>
                   ),
                   topRadius: true,
                   bottomRadius: true,
-                  leading: const Icon(
-                    Icons.access_time_filled,
-                    size: 28,
+                  leading: SvgLoader(
+                    path: data[index].imagePath,
                   ),
                   trailing: Row(
                     children: [
@@ -192,10 +192,10 @@ class _FocusUnderwayState extends State<FocusUnderway>
                           );
                         },
                         behavior: HitTestBehavior.translucent,
-                        child: Icon(
-                          CupertinoIcons.play_circle_fill,
-                          size: 30,
+                        child: SvgColorLoader(
+                          path: 'assets/icons/start.svg',
                           color: Theme.of(context).primaryColor,
+                          size: SPHelper.sp(SPHelper.gapDp28),
                         ),
                       ),
                     ],

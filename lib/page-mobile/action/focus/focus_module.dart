@@ -92,17 +92,19 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
   @override
   Widget build(BuildContext context) {
     FocusProvider focusProvider = Provider.of(context);
+    List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
+
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 3,
+      itemCount: data.length,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return FocusTile(
-          topRadius: true,
-          bottomRadius: true,
-          title: '专注一下',
-          leading: 'assets/icons/浴盆.svg',
+          topRadius: index == 0,
+          bottomRadius: index == data.length - 1,
+          title: data[index].title,
+          leading: data[index].imagePath,
           trailing: GestureDetector(
             onTap: () {
               SmartDialog.show(builder: (_) {
@@ -121,10 +123,10 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
                 );
               },
               behavior: HitTestBehavior.translucent,
-              child: Icon(
-                CupertinoIcons.play_circle_fill,
-                size: SPHelper.sp(SPHelper.gapDp30),
+              child: SvgColorLoader(
+                path: 'assets/icons/start.svg',
                 color: Theme.of(context).primaryColor,
+                size: SPHelper.sp(SPHelper.gapDp28),
               ),
             ),
           ),

@@ -67,6 +67,29 @@ class SvgLoader extends StatelessWidget {
   }
 }
 
+class SvgColorLoader extends StatelessWidget {
+  final String path;
+  final double size;
+  final Color color;
+
+  const SvgColorLoader({
+    super.key,
+    required this.path,
+    this.size = 24,
+    this.color = Colors.white,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      path,
+      width: size,
+      height: size,
+      color: color,
+    );
+  }
+}
+
 class ChipEmpty extends StatefulWidget {
   final List<TipChip> options;
   final Function(Object) onPressed;

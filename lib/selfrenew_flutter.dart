@@ -33,6 +33,7 @@ export 'package:selfrenew_space/dao/app_setting/repository.dart';
 export 'package:selfrenew_space/dao/sqlite_proxy.dart';
 export 'package:selfrenew_space/generated/l10n.dart';
 export 'package:selfrenew_space/manager_initialization.dart';
+export 'package:selfrenew_space/model/focus_underway.dart';
 export 'package:selfrenew_space/model/tip_chip.dart';
 export 'package:selfrenew_space/notifications/notifications.dart';
 export 'package:selfrenew_space/notifications/os_notifications.dart';

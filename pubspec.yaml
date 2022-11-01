@@ -93,6 +93,7 @@ flutter:
     - 'assets/icons/算盘.png'
     - 'assets/icons/出差.png'
     - 'assets/icons/蜡笔.svg'
+    - 'assets/icons/start.svg'
     - 'assets/icons/check.svg'
     - 'assets/icons/delete.svg'
     - 'assets/icons/habit.svg'
