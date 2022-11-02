@@ -1,8 +1,9 @@
 flutter_native_splash:
-  color: "#165DFF"
+  color: "#ffffff"
+  color_dark: "#042a49"
   fullscreen: false
-#  branding_mode: top
-#  branding: assets/ios.png
+  image: assets/splash/logo.png
+  branding: assets/splash/branding.png
 
 #info_plist_files:
 #  - 'ios/Runner/Info-Debug.plist'
