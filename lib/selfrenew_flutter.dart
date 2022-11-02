@@ -69,6 +69,7 @@ export 'package:selfrenew_space/page-mobile/background/scaffold_gradient_backgro
 export 'package:selfrenew_space/page-mobile/dialog/show_dialog.dart';
 export 'package:selfrenew_space/page-mobile/mobile_home.dart';
 export 'package:selfrenew_space/page-mobile/routers/router.dart';
+export 'package:selfrenew_space/page-mobile/routers/router.dart';
 export 'package:selfrenew_space/page-mobile/setting/about.dart';
 export 'package:selfrenew_space/page-mobile/setting/mobile_setting.dart';
 export 'package:selfrenew_space/page-mobile/setting/notification.dart';
@@ -89,6 +90,7 @@ export 'package:selfrenew_space/util/logger.dart';
 export 'package:selfrenew_space/util/platform.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:sqflite/sqflite.dart';
+export 'package:statsfl/statsfl.dart';
 export 'package:statusbarz/statusbarz.dart';
 export 'package:table_calendar/table_calendar.dart';
 export 'package:url_launcher/url_launcher.dart';

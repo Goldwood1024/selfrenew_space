@@ -253,13 +253,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
-  fluent_ui:
-    dependency: "direct main"
-    description:
-      name: fluent_ui
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -630,13 +623,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.1.0"
   screen_retriever:
     dependency: transitive
     description:
@@ -644,13 +630,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
-  scroll_pos:
-    dependency: transitive
-    description:
-      name: scroll_pos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   share_plus:
     dependency: "direct main"
     description:

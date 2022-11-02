@@ -74,7 +74,7 @@ dependencies:
   share_plus: ^6.2.0
   glassmorphism_ui: ^0.3.0
   timelines: ^0.1.0
-  fluent_ui: ^4.0.3
+#  fluent_ui: ^4.0.3
   window_manager: ^0.2.7
   rating_dialog: ^2.0.4
   expandable_page_view: ^1.0.17

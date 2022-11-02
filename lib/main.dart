@@ -1,8 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:selfrenew_space/page-desktop/desktop_app.dart';
-import 'package:selfrenew_space/page-mobile/routers/router.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:statsfl/statsfl.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +13,7 @@ Future<void> main() async {
           width: 300,
           height: 120,
           align: Alignment.center,
-          child: PLUtil.isDesktop() ? const DesktopApp() : const MobileApp(),
+          child: const MobileApp(),
         ),
       ),
     ),
