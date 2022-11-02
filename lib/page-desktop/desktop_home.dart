@@ -28,22 +28,7 @@ class _DesktopHomeState extends State<DesktopHome>
   @override
   Widget build(BuildContext context) {
     return NavigationView(
-      appBar: NavigationAppBar(
-        title: () {
-          return const DragToMoveArea(
-            child: Align(
-              alignment: AlignmentDirectional.centerStart,
-            ),
-          );
-        }(),
-        automaticallyImplyLeading: false,
-        actions: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            // WindowButtons(),
-          ],
-        ),
-      ),
+      key: GlobalKey(),
       pane: NavigationPane(
         displayMode: PaneDisplayMode.open,
         onChanged: (i) {
@@ -51,18 +36,21 @@ class _DesktopHomeState extends State<DesktopHome>
         },
         selected: menuIndex,
         size: const NavigationPaneSize(
-          openMaxWidth: 240,
+          openMaxWidth: 270,
         ),
         items: [
+          PaneItemHeader(header: SPHelper.empty),
           PaneItem(
             icon: const Icon(Icons.water_drop),
             title: const Text('习惯'),
             body: const DesktopHabitHome(),
+            tileColor: ButtonState.all(CupertinoColors.white),
           ),
           PaneItem(
             icon: const Icon(Icons.water_drop),
             title: const Text('专注'),
             body: const DesktopHabitHome(),
+            tileColor: ButtonState.all(CupertinoColors.white),
           ),
         ],
         footerItems: [
@@ -71,6 +59,7 @@ class _DesktopHomeState extends State<DesktopHome>
             icon: const Icon(CupertinoIcons.shield),
             title: const Text('设置'),
             body: Container(),
+            tileColor: ButtonState.all(CupertinoColors.white),
           ),
         ],
       ),
