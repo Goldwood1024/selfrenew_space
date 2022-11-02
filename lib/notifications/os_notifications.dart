@@ -37,11 +37,11 @@ class OSNotifications {
   }
 
   static AndroidInitializationSettings _initAndroidInitializationSettings() {
-    return const AndroidInitializationSettings('assets/ios.png');
+    return AndroidInitializationSettings(ConstPool.appLogo);
   }
 
   static LinuxInitializationSettings _linuxInitializationSettings() {
-    return const LinuxInitializationSettings(defaultActionName: 'tomato focus');
+    return const LinuxInitializationSettings(defaultActionName: 'focus');
   }
 
   static InitializationSettings initializationSettings() {

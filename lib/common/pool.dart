@@ -2,7 +2,7 @@ class ConstPool {
   static String iosAppId = "1644467794";
 
   // app 信息
-  static String appLogo = "assets/ios.png";
+  static String appLogo = "assets/appicon/ios.png";
   static String tomatoFocusItem = "assets/tomato_item.svg";
   static String relax = "assets/relax.svg";
   static String norecord = "assets/norecord.svg";
