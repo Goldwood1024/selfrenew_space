@@ -89,6 +89,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - 'assets/appicon/ios.png'
     - 'assets/voice/bells.mp3'
     ## 图标
     - 'assets/icons/浴盆.svg'
