@@ -12,9 +12,9 @@ class _ThemeSettingState extends State<ThemeSetting> {
   late bool systemThemes;
   static var colors = [
     "#165DFF",
+    "#F4AA11",
     "#303C7B",
     "#144E5A",
-    "#FFA54F",
     "#CC0033",
     "#8B8B7A",
     "#458B00",
