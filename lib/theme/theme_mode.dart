@@ -37,12 +37,12 @@ class AppThemeMode {
 
     return ThemeData().copyWith(
       primaryColor: HexColor(provider.getAccentColor()),
-      scaffoldBackgroundColor: HexColor('35363A'),
-      backgroundColor: Colors.black,
+      scaffoldBackgroundColor: HexColor('000000'),
+      backgroundColor: HexColor('1F1F1F'),
       useMaterial3: true,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         elevation: 0,
-        backgroundColor: HexColor('35363A'),
+        backgroundColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       textTheme: const TextTheme(
