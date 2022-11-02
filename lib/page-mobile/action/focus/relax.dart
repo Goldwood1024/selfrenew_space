@@ -86,7 +86,7 @@ class _FocusRelaxState extends State<FocusRelax>
                       separatorType: SeparatorType.symbol,
                       slideDirection: SlideDirection.down,
                       decoration: const BoxDecoration(),
-                      duration: const Duration(minutes: 1),
+                      duration: const Duration(seconds: 5),
                       slideAnimationDuration: const Duration(milliseconds: 500),
                       textStyle: TextStyle(
                         fontSize: SPHelper.sp(SPHelper.gapDp72),

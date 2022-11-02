@@ -87,28 +87,29 @@ class _FocusTimerState extends State<FocusTimer>
                       separatorType: SeparatorType.symbol,
                       slideDirection: SlideDirection.down,
                       decoration: const BoxDecoration(),
-                      duration: const Duration(minutes: 1),
+                      duration: const Duration(seconds: 6),
                       slideAnimationDuration: const Duration(milliseconds: 500),
                       textStyle: TextStyle(
                         fontSize: SPHelper.sp(SPHelper.gapDp72),
                         color: Theme.of(context).textTheme.labelSmall?.color,
                       ),
-                      onDone: () {
-                        SmartDialog.dismiss();
-
-                        SmartDialog.show(
-                          alignment: Alignment.bottomCenter,
-                          keepSingle: true,
-                          useAnimation: true,
-                          builder: (_) {
-                            return const FocusRelax();
-                          },
-                        );
-                      },
                       onChanged: (_) {
                         setState(() {
                           time = _;
                         });
+
+                        if (_.inMilliseconds <= 500) {
+                          SmartDialog.dismiss();
+
+                          SmartDialog.show(
+                            alignment: Alignment.bottomCenter,
+                            keepSingle: true,
+                            useAnimation: true,
+                            builder: (_) {
+                              return const FocusRelax();
+                            },
+                          );
+                        }
                       },
                     ),
             ),
