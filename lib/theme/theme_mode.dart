@@ -45,12 +45,12 @@ class AppThemeMode {
         backgroundColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         labelSmall: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 16,
-          color: Colors.white,
-          fontFeatures: [FontFeature.tabularFigures()],
+          color: HexColor('FFFFFF').withOpacity(0.85),
+          fontFeatures: const [FontFeature.tabularFigures()],
         ),
       ),
     );
