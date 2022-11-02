@@ -87,6 +87,7 @@ class SPHelper {
   static const double gapDp124 = 124.0;
   static const double gapDp132 = 132.0;
   static const double gapDp148 = 148.0;
+  static const double gapDp200 = 200.0;
 
   static const Widget line = Divider();
 

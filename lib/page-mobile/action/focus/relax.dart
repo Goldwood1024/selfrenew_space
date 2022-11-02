@@ -1,19 +1,18 @@
 import 'package:action_slider/action_slider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/page-mobile/action/focus/relax.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
-class FocusTimer extends StatefulWidget {
-  const FocusTimer({
+class FocusRelax extends StatefulWidget {
+  const FocusRelax({
     super.key,
   });
 
   @override
-  State<StatefulWidget> createState() => _FocusTimerState();
+  State<StatefulWidget> createState() => _FocusRelaxState();
 }
 
-class _FocusTimerState extends State<FocusTimer>
+class _FocusRelaxState extends State<FocusRelax>
     with SingleTickerProviderStateMixin {
   late Duration time;
   late bool showText;
@@ -95,15 +94,6 @@ class _FocusTimerState extends State<FocusTimer>
                       ),
                       onDone: () {
                         SmartDialog.dismiss();
-
-                        SmartDialog.show(
-                          alignment: Alignment.bottomCenter,
-                          keepSingle: true,
-                          useAnimation: true,
-                          builder: (_) {
-                            return const FocusRelax();
-                          },
-                        );
                       },
                       onChanged: (_) {
                         setState(() {
@@ -139,7 +129,7 @@ class _FocusTimerState extends State<FocusTimer>
                     ),
                   ),
                   child: Text(
-                    '滑动放弃',
+                    '滑动终止休息',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: CupertinoColors.systemGrey2,
