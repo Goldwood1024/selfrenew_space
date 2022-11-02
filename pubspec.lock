@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  cron:
+    dependency: "direct main"
+    description:
+      name: cron
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0"
   cross_file:
     dependency: transitive
     description:
@@ -831,6 +838,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  style_cron_job:
+    dependency: "direct main"
+    description:
+      name: style_cron_job
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4+2"
   sync_scroll_library:
     dependency: transitive
     description:

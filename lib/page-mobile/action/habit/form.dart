@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -14,6 +15,8 @@ class HabitForm extends StatefulWidget {
 }
 
 class _HabitFormState extends State<HabitForm> {
+  final HabitRepository habitRepository = HabitRepository();
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
@@ -30,7 +33,18 @@ class _HabitFormState extends State<HabitForm> {
         leadingWidth: 98,
         actions: [
           ActionBtn(
-            onPressed: () {
+            onPressed: () async {
+              Map<String, Object?> values = {
+                "title": "title",
+                "icon": "title",
+                "color": "#000000",
+                "startDate": "title",
+                "hearten": "title",
+                "max": 2,
+                "gmtDate": DateUtil.getNowDateMs(),
+              };
+              await habitRepository.insertHabit(values);
+
               Routers.go(Routers.habit);
             },
             title: '保存',

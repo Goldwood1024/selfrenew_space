@@ -12,6 +12,7 @@ class HabitProvider extends ChangeNotifier {
   }
 
   List<HabitUnderway> getHabitUnderway() {
+    habitRepository.query();
     List<HabitUnderway> list = [];
 
     list.add(HabitUnderway(

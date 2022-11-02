@@ -1,22 +1,30 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitRepository {
-  static String tableName = 'habit';
+  static String habitTableName = 'habit';
   static String ddl = '''
-create table if not exists $tableName
+create table if not exists $habitTableName
 (
-    id          INTEGER
+    id        INTEGER
         PRIMARY KEY AUTOINCREMENT,
-    title       TEXT NOT NULL,
+    title     TEXT    NOT NULL,           -- 标题
+    icon      TEXT    NOT NULL,           -- 图标地址
+    color     TEXT    NOT NULL,           -- 颜色
+    isAbandon INTEGER          default 0, -- 是否放弃 1: 已放弃 0: 有效
+    startDate TEXT    NOT NULL,           -- 开始日期
+    hearten   TEXT    NOT NULL,           -- 鼓励语
+    max       INTEGER NOT NULL default 1, -- 最大值
+    min       INTEGER NOT NULL default 0,
+    gmtDate   TEXT    NOT NULL
 );
   ''';
 
   static String delete = '''
-delete from $tableName;
+delete from $habitTableName;
  ''';
 
   static String selectAll = '''
-select * from $tableName
+select * from $habitTableName
  ''';
 
   Future<void> createTableAndDefaultValue(Database database) async {
@@ -28,7 +36,11 @@ select * from $tableName
   }
 
   Future<void> update(String col, String value) async {
-    String sql = 'update $tableName set $col=\'$value\'';
+    String sql = 'update $habitTableName set $col=\'$value\'';
     await SqliteProxy.database.rawUpdate(sql);
+  }
+
+  Future<void> insertHabit(Map<String, Object?> values) async {
+    await SqliteProxy.database.insert(habitTableName, values);
   }
 }

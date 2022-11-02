@@ -67,13 +67,8 @@ class _HabitStatistics extends State<HabitStatistics> {
             },
           ),
           leadingWidth: 80,
-          title: Text(
-            '喝水',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: SPHelper.appBarFontSize,
-              color: Theme.of(context).textTheme.displayLarge?.color,
-            ),
+          title: const AppBarText(
+            title: '习惯',
           ),
           actions: [],
         ),

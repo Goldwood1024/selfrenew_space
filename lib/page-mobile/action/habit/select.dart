@@ -74,6 +74,10 @@ class _HabitSelectState extends State<HabitSelect> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: SPHelper.sp(SPHelper.fontSp18),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .color,
                                     ),
                                   ),
                                 ],
@@ -84,6 +88,10 @@ class _HabitSelectState extends State<HabitSelect> {
                                 style: TextStyle(
                                   fontSize: SPHelper.sp(SPHelper.fontSp14),
                                   fontWeight: FontWeight.normal,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .color,
                                 ),
                               )
                             ],
