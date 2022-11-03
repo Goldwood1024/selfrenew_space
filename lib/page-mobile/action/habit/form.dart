@@ -21,9 +21,12 @@ class _HabitFormState extends State<HabitForm> {
   @override
   void initState() {
     super.initState();
-    String key = widget.params['key'];
-    if (key.isNotEmpty) {
-      textEditingController.text = widget.params['title'];
+
+    if (widget.params.isNotEmpty) {
+      String key = widget.params['key'];
+      if (key.isNotEmpty) {
+        textEditingController.text = widget.params['title'];
+      }
     }
   }
 
