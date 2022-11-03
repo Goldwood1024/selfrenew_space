@@ -1,15 +1,25 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/model/habit_lib.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:smart_grid_view_nls/smart_grid_view_nls.dart';
+import 'package:selfrenew_space/theme/global.dart';
 
-class HabitSelect extends StatefulWidget {
-  const HabitSelect({super.key});
+class HabitLib extends StatefulWidget {
+  const HabitLib({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HabitSelectState();
+  State<StatefulWidget> createState() => _HabitLibState();
 }
 
-class _HabitSelectState extends State<HabitSelect> {
+class _HabitLibState extends State<HabitLib> {
+  late List<HabitLibModel> habits = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    habits = Global.getHabit(true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
@@ -39,7 +49,7 @@ class _HabitSelectState extends State<HabitSelect> {
                 mainAxisSpacing: 6,
                 crossAxisSpacing: 6,
                 children: List.generate(
-                  8,
+                  habits.length,
                   (index) => Card(
                     elevation: 0,
                     color: Theme.of(context).backgroundColor,
@@ -64,13 +74,13 @@ class _HabitSelectState extends State<HabitSelect> {
                                       0,
                                     ),
                                     child: SvgPicture.asset(
-                                      'assets/icons/浴盆.svg',
+                                      habits[index].image,
                                       width: SPHelper.width(24),
                                       height: SPHelper.height(24),
                                     ),
                                   ),
                                   Text(
-                                    '喝水',
+                                    habits[index].title,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: SPHelper.sp(SPHelper.fontSp18),
@@ -84,7 +94,7 @@ class _HabitSelectState extends State<HabitSelect> {
                               ),
                               const Expanded(child: SPHelper.empty),
                               Text(
-                                '没有一个冬天不可逾越，没有一个春天不会来临',
+                                habits[index].hearten,
                                 style: TextStyle(
                                   fontSize: SPHelper.sp(SPHelper.fontSp14),
                                   fontWeight: FontWeight.normal,

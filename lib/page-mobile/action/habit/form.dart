@@ -16,6 +16,7 @@ class HabitForm extends StatefulWidget {
 
 class _HabitFormState extends State<HabitForm> {
   final HabitRepository habitRepository = HabitRepository();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +72,14 @@ class _HabitFormState extends State<HabitForm> {
                   children: [
                     Expanded(
                       child: AutoSizeTextField(
-                        style: const TextStyle(fontSize: 17),
+                        style: TextStyle(
+                          fontSize: SPHelper.sp(
+                            SPHelper.fontSp17,
+                          ),
+                          color: Theme.of(context).textTheme.labelSmall!.color,
+                        ),
                         maxLength: 12,
-                        controller: TextEditingController(),
+                        controller: textEditingController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,

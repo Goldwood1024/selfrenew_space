@@ -65,7 +65,7 @@ class Routers {
       GoRoute(
         path: habitSelect,
         builder: (BuildContext context, GoRouterState state) {
-          return const HabitSelect();
+          return const HabitLib();
         },
       ),
       GoRoute(
