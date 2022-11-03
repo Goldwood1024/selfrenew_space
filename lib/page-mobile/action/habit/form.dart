@@ -23,7 +23,7 @@ class _HabitFormState extends State<HabitForm> {
     super.initState();
     String key = widget.params['key'];
     if (key.isNotEmpty) {
-      textEditingController.text = widget.params['title'];
+      textEditingController.value = widget.params['title'];
     }
   }
 
@@ -45,7 +45,7 @@ class _HabitFormState extends State<HabitForm> {
           ActionBtn(
             onPressed: () async {
               Map<String, Object?> values = {
-                "title": "title",
+                "title": textEditingController.value,
                 "icon": "assets/icons/delete.svg",
                 "color": "#000000",
                 "startDate": "title",
