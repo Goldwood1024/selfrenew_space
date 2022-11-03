@@ -155,7 +155,6 @@ class StartDate extends StatefulWidget {
 }
 
 class _StartDateState extends State<StartDate> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
   late DateTime _focusedDay;
   late DateTime _selectedDay;
 
@@ -204,38 +203,33 @@ class _StartDateState extends State<StartDate> {
           firstDay: DateTime(2020, 01, 01),
           lastDay: DateTime(2033, 12, 31),
           locale: 'zh_CN',
-          headerStyle: const HeaderStyle(
-            formatButtonPadding: EdgeInsets.zero,
-            titleCentered: true,
+          headerStyle: HeaderStyle(
             titleTextStyle: TextStyle(
-              fontSize: 16.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.w600,
+              color: Theme.of(context).textTheme.labelSmall!.color,
             ),
             formatButtonVisible: false,
-            formatButtonTextStyle: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
-              color: CupertinoColors.black,
-            ),
-            formatButtonDecoration: BoxDecoration(),
             leftChevronIcon: Icon(
               Icons.chevron_left,
               size: SPHelper.btnSettingIconSize,
+              color: Theme.of(context).primaryColor,
             ),
             rightChevronIcon: Icon(
               Icons.chevron_right,
               size: SPHelper.btnSettingIconSize,
+              color: Theme.of(context).primaryColor,
             ),
-            leftChevronPadding: EdgeInsets.all(8.0),
-            rightChevronPadding: EdgeInsets.all(8.0),
+            leftChevronPadding: EdgeInsets.zero,
+            rightChevronPadding: EdgeInsets.zero,
           ),
           daysOfWeekStyle: const DaysOfWeekStyle(
             weekdayStyle: TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: CupertinoColors.systemGrey2,
             ),
             weekendStyle: TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: CupertinoColors.systemGrey2,
             ),
           ),
@@ -244,13 +238,8 @@ class _StartDateState extends State<StartDate> {
               color: Theme.of(context).primaryColor,
               shape: BoxShape.circle,
             ),
-            markersMaxCount: 1,
-            markerSizeScale: 0.12,
-            markersAnchor: 2,
-            canMarkersOverflow: true,
-            outsideDaysVisible: false,
-            todayDecoration: const BoxDecoration(
-              color: CupertinoColors.white,
+            todayDecoration: BoxDecoration(
+              color: Theme.of(context).primaryColor.withOpacity(0.2),
               shape: BoxShape.circle,
             ),
             selectedDecoration: BoxDecoration(
@@ -262,13 +251,19 @@ class _StartDateState extends State<StartDate> {
               fontWeight: FontWeight.w600,
               color: Theme.of(context).primaryColor,
             ),
-            defaultTextStyle: const TextStyle(
+            defaultTextStyle: TextStyle(
               fontSize: SPHelper.calendarFontSize,
               fontWeight: FontWeight.w600,
+              color: Theme.of(context).textTheme.labelSmall!.color,
             ),
-            weekendTextStyle: const TextStyle(
+            weekendTextStyle: TextStyle(
               fontSize: SPHelper.calendarFontSize,
               fontWeight: FontWeight.w600,
+              color: Theme.of(context)
+                  .textTheme
+                  .labelSmall!
+                  .color!
+                  .withOpacity(0.2),
             ),
             outsideTextStyle: const TextStyle(
               color: CupertinoColors.systemGrey3,
@@ -285,18 +280,11 @@ class _StartDateState extends State<StartDate> {
               color: CupertinoColors.systemGrey3,
             ),
           ),
-          onFormatChanged: (format) {
-            if (_calendarFormat != format) {
-              setState(() {
-                _calendarFormat = format;
-              });
-            }
-          },
           holidayPredicate: (day) {
             return false;
           },
-          calendarFormat: _calendarFormat,
-          rowHeight: 48,
+          calendarFormat: CalendarFormat.month,
+          rowHeight: 56,
         ),
       ),
     );

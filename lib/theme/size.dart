@@ -21,7 +21,7 @@ class SPHelper {
 
   // 底部导航栏字体大小
   static const double navBarFontSize = 12.0;
-  static const double calendarFontSize = 14.0;
+  static const double calendarFontSize = 16.0;
 
   /// 字体大小
   /// 一级大标题
