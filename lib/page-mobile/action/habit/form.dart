@@ -36,7 +36,7 @@ class _HabitFormState extends State<HabitForm> {
             onPressed: () async {
               Map<String, Object?> values = {
                 "title": "title",
-                "icon": "title",
+                "icon": "assets/icons/delete.svg",
                 "color": "#000000",
                 "startDate": "title",
                 "hearten": "title",

@@ -113,12 +113,12 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
           topRadius: index == 0,
           bottomRadius: index == data.length - 1,
           leading: data[index].imagePath,
-          trailing: SleekCounter(
-            min: data[index].sleeks[data[index].sleeks.length - 2].min,
-            max: data[index].sleeks[data[index].sleeks.length - 2].max,
-            value: data[index].sleeks[data[index].sleeks.length - 2].value,
-            fail: data[index].sleeks[data[index].sleeks.length - 2].fail,
-          ),
+          // trailing: SleekCounter(
+          //   min: data[index].sleeks[data[index].sleeks.length - 2].min,
+          //   max: data[index].sleeks[data[index].sleeks.length - 2].max,
+          //   value: data[index].sleeks[data[index].sleeks.length - 2].value,
+          //   fail: data[index].sleeks[data[index].sleeks.length - 2].fail,
+          // ),
         );
       },
     );

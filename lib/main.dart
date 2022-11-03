@@ -35,12 +35,18 @@ class _MobileAppState extends State<MobileApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<AppSettingProvider>(context, listen: false).loadSystem();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: _getDesignSize(),
       builder: (BuildContext context, Widget? child) {
-        Provider.of<AppSettingProvider>(context, listen: false).loadSystem();
-
         return StatusbarzCapturer(
           child: MaterialApp.router(
             builder: FlutterSmartDialog.init(),

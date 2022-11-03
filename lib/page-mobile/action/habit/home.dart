@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/habit_provider.dart';
@@ -134,18 +135,26 @@ class Underway extends StatefulWidget {
   State<StatefulWidget> createState() => _UnderwayState();
 }
 
-class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
+class _UnderwayState extends State<Underway>
+    with TickerProviderStateMixin, LifecycleAware, LifecycleMixin {
   @override
   void initState() {
     super.initState();
+
+    // 加载数据
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HabitProvider>(context, listen: false).reloadHabitUnderway();
+    });
   }
+
+  @override
+  void onLifecycleEvent(LifecycleEvent event) {}
 
   @override
   Widget build(BuildContext context) {
     HabitProvider habitProvider = Provider.of(context);
 
-    List<HabitUnderway> list = habitProvider.getHabitUnderway();
-
+    final List<HabitUnderway> list = habitProvider.getHabitUnderway();
     return habitProvider.hasUnderway()
         ? ListView.builder(
             shrinkWrap: true,

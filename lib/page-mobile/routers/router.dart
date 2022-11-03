@@ -1,3 +1,4 @@
+import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Routers {
@@ -22,6 +23,7 @@ class Routers {
     observers: [
       Statusbarz.instance.observer,
       FlutterSmartDialog.observer,
+      defaultLifecycleObserver,
     ],
     routes: <GoRoute>[
       GoRoute(
