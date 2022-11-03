@@ -9,6 +9,7 @@ class HabitHomeTile extends StatefulWidget {
   final bool topRadius;
   final Widget? leading;
   final String title;
+  final String id;
   final Widget? subTitle;
   final Widget? trailing;
   final VoidCallback? onPressed;
@@ -16,6 +17,7 @@ class HabitHomeTile extends StatefulWidget {
 
   const HabitHomeTile({
     super.key,
+    required this.id,
     required this.title,
     this.height = 52.0,
     this.radius = 12.0,
@@ -35,6 +37,8 @@ class HabitHomeTile extends StatefulWidget {
 class _HabitHomeTileState extends State<HabitHomeTile> {
   @override
   Widget build(BuildContext context) {
+    HabitProvider habitProviderUpdate = Provider.of(context, listen: false);
+
     return Slidable(
       startActionPane: widget.abandon
           ? ActionPane(
@@ -42,7 +46,9 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
               extentRatio: 0.25,
               children: [
                 SlidableAction(
-                  onPressed: (_) {},
+                  onPressed: (_) {
+                    habitProviderUpdate.delete(widget.id);
+                  },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   icon: Icons.delete_rounded,
@@ -55,7 +61,9 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
               motion: const ScrollMotion(),
               children: [
                 SlidableAction(
-                  onPressed: (_) {},
+                  onPressed: (_) {
+                    habitProviderUpdate.delete(widget.id);
+                  },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   icon: Icons.delete_rounded,

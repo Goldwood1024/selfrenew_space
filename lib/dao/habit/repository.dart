@@ -15,6 +15,7 @@ create table if not exists $habitTableName
     hearten   TEXT    NOT NULL,           -- 鼓励语
     max       INTEGER NOT NULL default 1, -- 最大值
     min       INTEGER NOT NULL default 0,
+    isDeleted INTEGER NOT NULL default 0,
     gmtDate   TEXT    NOT NULL
 );
   ''';
@@ -24,7 +25,7 @@ delete from $habitTableName;
  ''';
 
   static String selectAll = '''
-select * from $habitTableName
+select * from $habitTableName where isDeleted=0
  ''';
 
   Future<void> createTableAndDefaultValue(Database database) async {
@@ -35,8 +36,8 @@ select * from $habitTableName
     return await SqliteProxy.database.rawQuery(selectAll);
   }
 
-  Future<void> update(String col, String value) async {
-    String sql = 'update $habitTableName set $col=\'$value\'';
+  Future<void> update(String col, String value, String id) async {
+    String sql = 'update $habitTableName set $col=\'$value\' where id=$id';
     await SqliteProxy.database.rawUpdate(sql);
   }
 

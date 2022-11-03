@@ -34,4 +34,12 @@ class HabitProvider extends ChangeNotifier {
   List<HabitUnderway> getHabitUnderway() {
     return list;
   }
+
+  void delete(String id) {
+    // 删除数据库
+    SqliteProxy.habitRepository.update('isDeleted', '1', id);
+    list.removeWhere((element) => element.id == id);
+
+    notifyListeners();
+  }
 }

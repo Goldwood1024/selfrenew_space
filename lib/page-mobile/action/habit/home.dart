@@ -171,6 +171,7 @@ class _UnderwayState extends State<Underway>
                 child: HabitHomeTile(
                   key: LabeledGlobalKey(data.id),
                   title: data.title,
+                  id: data.id,
                   subTitle: Column(
                     children: [
                       SPHelper.getHeightBox(SPHelper.gapDp4),
@@ -387,6 +388,7 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                id: '',
               ),
             ),
           ),
@@ -531,6 +533,7 @@ class _AbandonState extends State<Abandon> {
                     ),
                   ),
                 ),
+                id: '',
               ),
             ),
           ),
