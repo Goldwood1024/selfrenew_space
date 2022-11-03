@@ -1,3 +1,5 @@
+import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -142,6 +144,64 @@ class _RemindState extends State<Remind> {
             },
           )
         ],
+      ),
+      body: Padding(
+        padding: SPHelper.pagePaddingHorizontal,
+        child: ListView(
+          children: [
+            SPHelper.getDefaultHeightBox(),
+            SimpleTile(
+              topRadius: true,
+              bottomRadius: true,
+              title: '提醒',
+              showArrow: false,
+              trailing: CommonSwitch(
+                value: true,
+                func: (_) {},
+              ),
+            ),
+            SPHelper.getDefaultHeightBox(),
+            Container(
+              child: Column(
+                children: List.generate(
+                  3,
+                  (index) => SimpleTile(
+                    showDivider: true,
+                    leading: const Icon(Icons.timer),
+                    topRadius: index == 0,
+                    title: '09:20',
+                    showArrow: false,
+                    trailing: GestureDetector(
+                      child: const Icon(
+                        Icons.clear,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SimpleTile(
+              onPressed: () {
+                Navigator.of(context).push(
+                  showPicker(
+                    context: context,
+                    value: TimeOfDay.now(),
+                    onChange: (_) {},
+                    minuteInterval: MinuteInterval.ONE,
+                    is24HrFormat: true,
+                    onChangeDateTime: (DateTime dateTime) {
+                      debugPrint("[debug datetime]:  $dateTime");
+                    },
+                  ),
+                );
+              },
+              bottomRadius: true,
+              title: '新增',
+              leading: Icon(Icons.add),
+              showArrow: false,
+            ),
+          ],
+        ),
       ),
     );
   }

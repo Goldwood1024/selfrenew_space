@@ -94,7 +94,10 @@ class _SimpleTileState extends State<SimpleTile> {
                                         fontSize: SPHelper.sp(
                                           SPHelper.fontSp18,
                                         ),
-                                        color: Theme.of(context).textTheme.labelSmall!.color,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall!
+                                            .color,
                                       ),
                                     ),
                                   ),
@@ -125,16 +128,16 @@ class _SimpleTileState extends State<SimpleTile> {
                                     color: CupertinoColors.systemGrey4,
                                   ),
                                 )
-                              : Container(),
+                              : SPHelper.empty,
                         ],
                       ),
                     ),
                     widget.showDivider
-                        ? Divider(
-                            color: Theme.of(context).backgroundColor,
+                        ? const Divider(
+                            color: CupertinoColors.systemGroupedBackground,
                             height: 1,
                           )
-                        : Container()
+                        : SPHelper.empty
                   ],
                 ),
               ),
