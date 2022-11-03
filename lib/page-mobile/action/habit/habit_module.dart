@@ -12,22 +12,22 @@ class HabitModule extends StatefulWidget {
 }
 
 class _HabitModuleState extends State<HabitModule> {
-  late bool _showModule = false;
-  late bool _isEmpty = false;
-
   @override
   void initState() {
     super.initState();
 
-    _showModule = true;
-    _isEmpty = true;
+    // 加载数据
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HabitProvider>(context, listen: false).reloadHabitUnderway();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     AppSettingProvider appSettingProvider = Provider.of(context);
+
     HabitProvider habitProvider = Provider.of(context);
-    return true
+    return habitProvider.hasUnderway()
         ? MobileModule(
             title: '习惯',
             onPressed: () {
@@ -101,7 +101,7 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
   @override
   Widget build(BuildContext context) {
     HabitProvider habitProvider = Provider.of(context);
-    List<HabitUnderway> data = habitProvider.getHabitUnderway();
+    final List<HabitUnderway> data = habitProvider.getHabitUnderway();
     return ListView.builder(
       shrinkWrap: true,
       itemCount: data.length,
