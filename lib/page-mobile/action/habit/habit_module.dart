@@ -31,7 +31,7 @@ class _HabitModuleState extends State<HabitModule> {
         ? MobileModule(
             title: '习惯',
             onPressed: () {
-              Routers.go(Routers.habit);
+              Routers.push(Routers.habit);
             },
             child: habitProvider.hasUnderway()
                 ? const HabitActionDataList()

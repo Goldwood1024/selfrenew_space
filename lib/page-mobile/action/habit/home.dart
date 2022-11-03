@@ -45,7 +45,9 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.go(Routers.habitSelect);
+              Routers.pushParams(Routers.habitSelect, {
+                "good": true,
+              });
             },
           ),
           Bubble(
@@ -56,7 +58,9 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.go(Routers.habitSelect);
+              Routers.pushParams(Routers.habitSelect, {
+                "good": false,
+              });
             },
           ),
         ],

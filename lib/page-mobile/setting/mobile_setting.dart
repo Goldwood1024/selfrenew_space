@@ -45,7 +45,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 title: '主题',
                 topRadius: true,
                 onPressed: () {
-                  Routers.go(Routers.themeSetting);
+                  Routers.push(Routers.themeSetting);
                 },
               ),
               SimpleTile(
@@ -56,7 +56,7 @@ class _MobileSettingState extends State<MobileSetting> {
                 ),
                 title: '通知',
                 onPressed: () {
-                  Routers.go(Routers.notification);
+                  Routers.push(Routers.notification);
                 },
               ),
               SimpleTile(
@@ -111,7 +111,7 @@ class _MobileSettingState extends State<MobileSetting> {
                   ),
                 ),
                 onPressed: () {
-                  Routers.go(Routers.about);
+                  Routers.push(Routers.about);
                 },
               ),
             ],

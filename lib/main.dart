@@ -29,7 +29,7 @@ class MobileApp extends StatefulWidget {
   State<StatefulWidget> createState() => _MobileAppState();
 }
 
-class _MobileAppState extends State<MobileApp> {
+class _MobileAppState extends State<MobileApp> with WidgetsBindingObserver {
   Size _getDesignSize() {
     return PLUtil.isIOS() ? const Size(375, 812) : const Size(360, 720);
   }
@@ -37,9 +37,21 @@ class _MobileAppState extends State<MobileApp> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<AppSettingProvider>(context, listen: false).loadSystem();
     });
+  }
+
+  /// 生命周期变化时回调
+  //  resumed:应用可见并可响应用户操作
+  //  inactive:用户可见，但不可响应用户操作
+  //  paused:已经暂停了，用户不可见、不可操作
+  //  suspending：应用被挂起，此状态IOS永远不会回调
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
   }
 
   @override

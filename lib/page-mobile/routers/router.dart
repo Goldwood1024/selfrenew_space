@@ -33,56 +33,67 @@ class Routers {
         },
       ),
       GoRoute(
+        name: about,
         path: about,
         builder: (BuildContext context, GoRouterState state) {
           return const About();
         },
       ),
       GoRoute(
+        name: themeSetting,
         path: themeSetting,
         builder: (BuildContext context, GoRouterState state) {
           return const ThemeSetting();
         },
       ),
       GoRoute(
+        name: notification,
         path: notification,
         builder: (BuildContext context, GoRouterState state) {
           return const NotificationSetting();
         },
       ),
       GoRoute(
+        name: habit,
         path: habit,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitHome();
         },
       ),
       GoRoute(
+        name: habitStatistics,
         path: habitStatistics,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitStatistics();
         },
       ),
       GoRoute(
+        name: habitSelect,
         path: habitSelect,
         builder: (BuildContext context, GoRouterState state) {
-          return const HabitLib();
-        },
-      ),
-      GoRoute(
-        path: habitForm,
-        builder: (BuildContext context, GoRouterState state) {
-          return HabitForm(
-            params: state.params,
+          return HabitLib(
+            params: state.queryParams,
           );
         },
       ),
       GoRoute(
+        name: habitForm,
+        path: habitForm,
+        builder: (BuildContext context, GoRouterState state) {
+          return HabitForm(
+            params: state.queryParams,
+          );
+        },
+      ),
+      GoRoute(
+        name: habitIcons,
         path: habitIcons,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitIcons();
         },
       ),
       GoRoute(
+        name: focusHome,
         path: focusHome,
         builder: (BuildContext context, GoRouterState state) {
           return const FocusHome();
@@ -92,19 +103,27 @@ class Routers {
         path: focusForm,
         builder: (BuildContext context, GoRouterState state) {
           return FocusForm(
-            params: state.params,
+            params: state.queryParams,
           );
         },
       ),
     ],
   );
 
-  static void go(String name) {
+  static void push(String name) {
     router.push(name);
   }
 
-  static void go4Params(String name, Map<String, String> params) {
-    router.pushNamed(name, params: params);
+  static void pushParams(String name, Map<String, dynamic> queryParams) {
+    router.pushNamed(name, queryParams: queryParams);
+  }
+
+  static void go(String name) {
+    router.go(name);
+  }
+
+  static void goParams(String name, Map<String, dynamic> queryParams) {
+    router.goNamed(name, queryParams: queryParams);
   }
 
   static void pop() {

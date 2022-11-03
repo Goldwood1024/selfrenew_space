@@ -4,7 +4,12 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/theme/global.dart';
 
 class HabitLib extends StatefulWidget {
-  const HabitLib({super.key});
+  final Map<String, dynamic> params;
+
+  const HabitLib({
+    super.key,
+    required this.params,
+  });
 
   @override
   State<StatefulWidget> createState() => _HabitLibState();
@@ -17,7 +22,7 @@ class _HabitLibState extends State<HabitLib> {
   void initState() {
     super.initState();
 
-    habits = Global.getHabit(true);
+    habits = Global.getHabit(widget.params['good'] as bool);
   }
 
   @override
@@ -56,7 +61,7 @@ class _HabitLibState extends State<HabitLib> {
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        Routers.go(Routers.habitForm);
+                        Routers.push(Routers.habitForm);
                       },
                       child: GridTile(
                         child: Padding(
@@ -124,7 +129,7 @@ class _HabitLibState extends State<HabitLib> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      Routers.go(Routers.habitForm);
+                      Routers.push(Routers.habitForm);
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(

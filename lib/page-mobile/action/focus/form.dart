@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusForm extends StatefulWidget {
-  final Map<String, String> params;
+  final Map<String, dynamic> params;
 
   const FocusForm({
     super.key,
@@ -42,7 +42,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         actions: [
           ActionBtn(
             onPressed: () {
-              Routers.go(Routers.habit);
+              Routers.push(Routers.habit);
             },
             title: '保存',
           )

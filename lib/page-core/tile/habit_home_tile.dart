@@ -87,7 +87,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                 )
               : SlidableAction(
                   onPressed: (_) {
-                    Routers.go4Params(
+                    Routers.pushParams(
                       Routers.habitForm,
                       {'11': '11'},
                     );
@@ -181,7 +181,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Routers.go(Routers.habitStatistics);
+                          Routers.push(Routers.habitStatistics);
                         },
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(

@@ -31,7 +31,7 @@ class _HabitFormState extends State<HabitForm> {
         actions: [
           ActionBtn(
             onPressed: () {
-              Routers.go(Routers.habit);
+              Routers.push(Routers.habit);
             },
             title: '保存',
           )

@@ -43,7 +43,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.go(Routers.focusForm);
+              Routers.push(Routers.focusForm);
             },
           ),
           Bubble(

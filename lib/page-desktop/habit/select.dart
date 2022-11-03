@@ -46,7 +46,7 @@ class _HabitSelectState extends State<HabitSelect> {
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        Routers.go(Routers.habitForm);
+                        Routers.push(Routers.habitForm);
                       },
                       child: GridTile(
                         child: Padding(
@@ -106,7 +106,7 @@ class _HabitSelectState extends State<HabitSelect> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      Routers.go(Routers.habitForm);
+                      Routers.push(Routers.habitForm);
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(

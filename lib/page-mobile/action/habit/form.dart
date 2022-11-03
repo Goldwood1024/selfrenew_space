@@ -3,7 +3,7 @@ import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
-  final Map<String, String> params;
+  final Map<String, dynamic> params;
 
   const HabitForm({
     super.key,
@@ -46,7 +46,7 @@ class _HabitFormState extends State<HabitForm> {
               };
               await habitRepository.insertHabit(values);
 
-              Routers.go(Routers.habit);
+              Routers.push(Routers.habit);
             },
             title: '保存',
           )

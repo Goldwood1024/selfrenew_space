@@ -23,7 +23,7 @@ class _FocusModuleState extends State<FocusModule> {
         ? MobileModule(
             title: '专注',
             onPressed: () {
-              Routers.go(Routers.focusHome);
+              Routers.push(Routers.focusHome);
             },
             child: focusProvider.hasUnderway()
                 ? const FocusActionDataList()
