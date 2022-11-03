@@ -95,10 +95,9 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                 )
               : SlidableAction(
                   onPressed: (_) {
-                    Routers.pushParams(
-                      Routers.habitForm,
-                      {'11': '11'},
-                    );
+                    Routers.pushParams(Routers.habitForm, {
+                      'id': widget.id,
+                    });
                   },
                   backgroundColor: Colors.yellow,
                   foregroundColor: Colors.white,
