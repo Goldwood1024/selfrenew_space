@@ -38,19 +38,6 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionBubble(
         items: [
           Bubble(
-            title: "消灭坏习惯",
-            iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor,
-            icon: CupertinoIcons.nosign,
-            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-            onPress: () {
-              _animationController.reverse();
-              Routers.pushParams(Routers.habitSelect, {
-                "good": true,
-              });
-            },
-          ),
-          Bubble(
             title: "创建好习惯",
             iconColor: Colors.white,
             bubbleColor: Theme.of(context).primaryColor,
@@ -59,7 +46,20 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             onPress: () {
               _animationController.reverse();
               Routers.pushParams(Routers.habitSelect, {
-                "good": false,
+                "good": '1',
+              });
+            },
+          ),
+          Bubble(
+            title: "消灭坏习惯",
+            iconColor: Colors.white,
+            bubbleColor: Theme.of(context).primaryColor,
+            icon: CupertinoIcons.nosign,
+            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+            onPress: () {
+              _animationController.reverse();
+              Routers.pushParams(Routers.habitSelect, {
+                "good": '0',
               });
             },
           ),
@@ -83,7 +83,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         leading: BackBtn(
           title: '计划',
           onPressed: () {
-            Routers.pop();
+            Routers.go(Routers.root);
           },
         ),
         actions: [

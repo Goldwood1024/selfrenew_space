@@ -22,7 +22,7 @@ class _HabitLibState extends State<HabitLib> {
   @override
   void initState() {
     super.initState();
-    good = widget.params['good'] as bool;
+    good = widget.params['good'] == '1' ? true : false;
 
     habits = Global.getHabit(good);
   }
@@ -40,7 +40,7 @@ class _HabitLibState extends State<HabitLib> {
         ),
         leadingWidth: 80,
         title: AppBarText(
-          title: good ? '建立好习惯' : '消灭坏习惯',
+          title: good ? '创建好习惯' : '消灭坏习惯',
         ),
         actions: [],
       ),
@@ -64,7 +64,7 @@ class _HabitLibState extends State<HabitLib> {
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
                         Routers.pushParams(Routers.habitForm, {
-                          "key": habits[index],
+                          "key": habits[index].key,
                           "title": habits[index].title,
                           "image": habits[index].image,
                           "color": habits[index].color,

@@ -27,6 +27,7 @@ class Routers {
     ],
     routes: <GoRoute>[
       GoRoute(
+        name: 'root',
         path: root,
         builder: (BuildContext context, GoRouterState state) {
           return const MobileHome();
@@ -112,18 +113,18 @@ class Routers {
   );
 
   static void push(String name) {
-    router.push(removePrefix(name));
+    pushParams(name, {});
   }
 
-  static void pushParams(String name, Map<String, dynamic> queryParams) {
+  static void pushParams(String name, Map<String, Object> queryParams) {
     router.pushNamed(removePrefix(name), queryParams: queryParams);
   }
 
   static void go(String name) {
-    router.go(removePrefix(name));
+    goParams(name, {});
   }
 
-  static void goParams(String name, Map<String, dynamic> queryParams) {
+  static void goParams(String name, Map<String, Object> queryParams) {
     router.goNamed(removePrefix(name), queryParams: queryParams);
   }
 
@@ -132,6 +133,9 @@ class Routers {
   }
 
   static String removePrefix(String path) {
+    if (path == root) {
+      return 'root';
+    }
     return path.substring(1, path.length);
   }
 }

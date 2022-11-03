@@ -23,7 +23,7 @@ class _HabitFormState extends State<HabitForm> {
     super.initState();
     String key = widget.params['key'];
     if (key.isNotEmpty) {
-      textEditingController.value = widget.params['title'];
+      textEditingController.text = widget.params['title'];
     }
   }
 
@@ -45,7 +45,7 @@ class _HabitFormState extends State<HabitForm> {
           ActionBtn(
             onPressed: () async {
               Map<String, Object?> values = {
-                "title": textEditingController.value,
+                "title": textEditingController.text,
                 "icon": "assets/icons/delete.svg",
                 "color": "#000000",
                 "startDate": "title",
@@ -55,7 +55,7 @@ class _HabitFormState extends State<HabitForm> {
               };
               await habitRepository.insertHabit(values);
 
-              Routers.push(Routers.habit);
+              Routers.go(Routers.habit);
             },
             title: '保存',
           )
