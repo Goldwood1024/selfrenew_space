@@ -19,6 +19,15 @@ class _HabitFormState extends State<HabitForm> {
   TextEditingController textEditingController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    String key = widget.params['key'];
+    if (key.isNotEmpty) {
+      textEditingController.text = widget.params['title'];
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
       appBar: AppBar(
