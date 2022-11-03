@@ -184,6 +184,8 @@ class _RemindState extends State<Remind> {
               onPressed: () {
                 Navigator.of(context).push(
                   showPicker(
+                    iosStylePicker: true,
+                    displayHeader: false,
                     context: context,
                     value: TimeOfDay.now(),
                     onChange: (_) {},
