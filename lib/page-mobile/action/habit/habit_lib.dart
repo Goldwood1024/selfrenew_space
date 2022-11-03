@@ -63,7 +63,13 @@ class _HabitLibState extends State<HabitLib> {
                     child: GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        Routers.push(Routers.habitForm);
+                        Routers.pushParams(Routers.habitForm, {
+                          "key": habits[index],
+                          "title": habits[index].title,
+                          "image": habits[index].image,
+                          "color": habits[index].color,
+                          "hearten": habits[index].hearten,
+                        });
                       },
                       child: GridTile(
                         child: Padding(
