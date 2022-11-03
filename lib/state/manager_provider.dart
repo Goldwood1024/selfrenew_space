@@ -1,5 +1,4 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/state/focus_provider.dart';
 
 class ManagerProvider extends StatefulWidget {
   final Widget child;
@@ -34,6 +33,9 @@ class _ManagerProviderState extends State<ManagerProvider> {
         ),
         ChangeNotifierProvider(
           create: (_) => FocusProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HabitFormProvider(),
         ),
       ],
       child: widget.child,

@@ -115,10 +115,10 @@ class _HabitFormState extends State<HabitForm> {
               SimpleTile(
                 topRadius: true,
                 onPressed: () {
-                  BottomDialog.showModalBottomSheet(
-                    context,
-                    const Repeat(),
-                  );
+                  // BottomDialog.showModalBottomSheet(
+                  //   context,
+                  //   const Repeat(),
+                  // );
                 },
                 title: '重复',
                 trailing: Text(

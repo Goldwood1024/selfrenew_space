@@ -76,6 +76,8 @@ export 'package:selfrenew_space/page-mobile/setting/notification.dart';
 export 'package:selfrenew_space/page-mobile/setting/theme.dart';
 export 'package:selfrenew_space/state/app_setting_provider.dart';
 export 'package:selfrenew_space/state/focus_provider.dart';
+export 'package:selfrenew_space/state/focus_provider.dart';
+export 'package:selfrenew_space/state/habit_form_provider.dart';
 export 'package:selfrenew_space/state/habit_provider.dart';
 export 'package:selfrenew_space/state/manager_provider.dart';
 export 'package:selfrenew_space/state/mobile_bottom_bar_provider.dart';

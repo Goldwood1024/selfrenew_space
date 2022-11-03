@@ -146,33 +146,13 @@ class _HabitFormState extends State<HabitForm> {
               ),
               SPHelper.getDefaultHeightBox(),
               SimpleTile(
-                topRadius: true,
-                onPressed: () {
-                  BottomDialog.showModalBottomSheet(
-                    context,
-                    const Repeat(),
-                  );
-                },
-                title: '重复',
-                trailing: Text(
-                  '每天',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .color
-                        ?.withOpacity(0.8),
-                  ),
-                ),
-              ),
-              SimpleTile(
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(
                     context,
                     const Target(),
                   );
                 },
+                topRadius: true,
                 title: '目标',
                 trailing: Text(
                   '每天',
