@@ -17,12 +17,14 @@ class HabitLib extends StatefulWidget {
 
 class _HabitLibState extends State<HabitLib> {
   late List<HabitLibModel> habits = [];
+  late bool good = false;
 
   @override
   void initState() {
     super.initState();
+    good = widget.params['good'] as bool;
 
-    habits = Global.getHabit(widget.params['good'] as bool);
+    habits = Global.getHabit(good);
   }
 
   @override
@@ -37,8 +39,8 @@ class _HabitLibState extends State<HabitLib> {
           },
         ),
         leadingWidth: 80,
-        title: const AppBarText(
-          title: '好习惯',
+        title: AppBarText(
+          title: good ? '建立好习惯' : '消灭坏习惯',
         ),
         actions: [],
       ),

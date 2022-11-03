@@ -33,42 +33,42 @@ class Routers {
         },
       ),
       GoRoute(
-        name: about,
+        name: removePrefix(about),
         path: about,
         builder: (BuildContext context, GoRouterState state) {
           return const About();
         },
       ),
       GoRoute(
-        name: themeSetting,
+        name: removePrefix(themeSetting),
         path: themeSetting,
         builder: (BuildContext context, GoRouterState state) {
           return const ThemeSetting();
         },
       ),
       GoRoute(
-        name: notification,
+        name: removePrefix(notification),
         path: notification,
         builder: (BuildContext context, GoRouterState state) {
           return const NotificationSetting();
         },
       ),
       GoRoute(
-        name: habit,
+        name: removePrefix(habit),
         path: habit,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitHome();
         },
       ),
       GoRoute(
-        name: habitStatistics,
+        name: removePrefix(habitStatistics),
         path: habitStatistics,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitStatistics();
         },
       ),
       GoRoute(
-        name: habitSelect,
+        name: removePrefix(habitSelect),
         path: habitSelect,
         builder: (BuildContext context, GoRouterState state) {
           return HabitLib(
@@ -77,7 +77,7 @@ class Routers {
         },
       ),
       GoRoute(
-        name: habitForm,
+        name: removePrefix(habitForm),
         path: habitForm,
         builder: (BuildContext context, GoRouterState state) {
           return HabitForm(
@@ -86,20 +86,21 @@ class Routers {
         },
       ),
       GoRoute(
-        name: habitIcons,
+        name: removePrefix(habitIcons),
         path: habitIcons,
         builder: (BuildContext context, GoRouterState state) {
           return const HabitIcons();
         },
       ),
       GoRoute(
-        name: focusHome,
+        name: removePrefix(focusHome),
         path: focusHome,
         builder: (BuildContext context, GoRouterState state) {
           return const FocusHome();
         },
       ),
       GoRoute(
+        name: removePrefix(focusForm),
         path: focusForm,
         builder: (BuildContext context, GoRouterState state) {
           return FocusForm(
@@ -111,22 +112,26 @@ class Routers {
   );
 
   static void push(String name) {
-    router.push(name);
+    router.push(removePrefix(name));
   }
 
   static void pushParams(String name, Map<String, dynamic> queryParams) {
-    router.pushNamed(name, queryParams: queryParams);
+    router.pushNamed(removePrefix(name), queryParams: queryParams);
   }
 
   static void go(String name) {
-    router.go(name);
+    router.go(removePrefix(name));
   }
 
   static void goParams(String name, Map<String, dynamic> queryParams) {
-    router.goNamed(name, queryParams: queryParams);
+    router.goNamed(removePrefix(name), queryParams: queryParams);
   }
 
   static void pop() {
     router.pop();
+  }
+
+  static String removePrefix(String path) {
+    return path.substring(1, path.length);
   }
 }
