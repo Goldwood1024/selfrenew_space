@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-mobile/action/habit/form_bottom.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -93,6 +94,7 @@ class _HabitFormState extends State<HabitForm> {
                         maxLength: 12,
                         controller: textEditingController,
                         decoration: InputDecoration(
+                          counterText: '',
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.circular(8),
@@ -253,6 +255,7 @@ class _HabitFormState extends State<HabitForm> {
                       controller: TextEditingController(),
                       style: const TextStyle(fontSize: 17),
                       decoration: InputDecoration(
+                        counterText: '',
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(8),

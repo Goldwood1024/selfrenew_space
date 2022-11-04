@@ -50,7 +50,6 @@ export 'package:selfrenew_space/page-core/tile/focus_tile.dart';
 export 'package:selfrenew_space/page-core/tile/habit_home_tile.dart';
 export 'package:selfrenew_space/page-core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page-core/tile/simple_tile.dart';
-export 'package:selfrenew_space/page-desktop/habit/form_bottom.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/focus_module.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/form.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/home.dart';

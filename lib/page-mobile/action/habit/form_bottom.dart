@@ -120,63 +120,11 @@ class _TargetState extends State<Target> {
       body: ListView(
         shrinkWrap: true,
         children: [
-          SizedBox(
-            height: 440,
-            child: TabContainer(
-              radius: 0,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  padding: SPHelper.pagePaddingHorizontal,
-                  child: Column(
-                    children: [
-                      SimpleTile(
-                        topRadius: true,
-                        title: '周一',
-                      ),
-                      SimpleTile(
-                        title: '周二',
-                      ),
-                      SimpleTile(
-                        title: '周三',
-                      ),
-                      SimpleTile(
-                        title: '周四',
-                      ),
-                      SimpleTile(
-                        title: '周五',
-                      ),
-                      SimpleTile(
-                        title: '周六',
-                      ),
-                      SimpleTile(
-                        title: '周日',
-                        bottomRadius: true,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: SPHelper.pagePaddingHorizontal,
-                  child: TableCalendar(
-                    focusedDay: DateTime.now(),
-                    firstDay: DateTime.now(),
-                    lastDay: DateTime.now(),
-                  ),
-                ),
-              ],
-              tabs: [
-                '每天',
-                '每月',
-              ],
-            ),
-          ),
           SPHelper.getDefaultHeightBox(),
           Padding(
             padding: SPHelper.pagePaddingHorizontal,
             child: Column(
-              children: [
+              children: const [
                 SimpleTile(
                   topRadius: true,
                   title: '1',
