@@ -1,3 +1,4 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:extended_tabs/extended_tabs.dart';
@@ -126,7 +127,16 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
                 ],
               ),
             ),
-            Container(),
+            Container(
+              child: CalendarDatePicker2(
+                config: CalendarDatePicker2Config(
+                  calendarType: CalendarDatePicker2Type.multi,
+                  lastMonthIcon: SPHelper.empty,
+                  nextMonthIcon: SPHelper.empty,
+                ),
+                initialValue: [],
+              ),
+            ),
             Container(),
           ],
         ),
@@ -310,22 +320,9 @@ class StartDate extends StatefulWidget {
 }
 
 class _StartDateState extends State<StartDate> {
-  late DateTime _focusedDay;
-  late DateTime _selectedDay;
-
-  void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
-    setState(() {
-      _selectedDay = selectedDay;
-      _focusedDay = focusedDay;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
-
-    _focusedDay = DateTime.now();
-    _selectedDay = _focusedDay;
   }
 
   @override
@@ -347,99 +344,28 @@ class _StartDateState extends State<StartDate> {
       ),
       body: Padding(
         padding: EdgeInsets.zero,
-        child: TableCalendar(
-          availableGestures: AvailableGestures.horizontalSwipe,
-          onDaySelected: _onDaySelected,
-          selectedDayPredicate: (day) => DatetimeUtil.isSameDay(
-            _selectedDay,
-            day,
-          ),
-          focusedDay: _focusedDay,
-          firstDay: DateTime(2020, 01, 01),
-          lastDay: DateTime(2033, 12, 31),
-          locale: 'zh_CN',
-          headerStyle: HeaderStyle(
-            titleTextStyle: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w600,
+        child: CalendarDatePicker2(
+          config: CalendarDatePicker2Config(
+            firstDate: DateTime(2020),
+            lastDate: DateTime(2030),
+            dayTextStyle: TextStyle(
+              fontSize: 18,
               color: Theme.of(context).textTheme.labelSmall!.color,
-            ),
-            formatButtonVisible: false,
-            leftChevronIcon: Icon(
-              Icons.chevron_left,
-              size: SPHelper.btnSettingIconSize,
-              color: Theme.of(context).primaryColor,
-            ),
-            rightChevronIcon: Icon(
-              Icons.chevron_right,
-              size: SPHelper.btnSettingIconSize,
-              color: Theme.of(context).primaryColor,
-            ),
-            leftChevronPadding: EdgeInsets.zero,
-            rightChevronPadding: EdgeInsets.zero,
-          ),
-          daysOfWeekStyle: const DaysOfWeekStyle(
-            weekdayStyle: TextStyle(
-              fontSize: 14,
-              color: CupertinoColors.systemGrey2,
-            ),
-            weekendStyle: TextStyle(
-              fontSize: 14,
-              color: CupertinoColors.systemGrey2,
-            ),
-          ),
-          calendarStyle: CalendarStyle(
-            markerDecoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              shape: BoxShape.circle,
-            ),
-            todayDecoration: BoxDecoration(
-              color: Theme.of(context).primaryColor.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            selectedDecoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              shape: BoxShape.circle,
             ),
             todayTextStyle: TextStyle(
-              fontSize: SPHelper.calendarFontSize,
-              fontWeight: FontWeight.w600,
+              fontSize: 18,
               color: Theme.of(context).primaryColor,
             ),
-            defaultTextStyle: TextStyle(
-              fontSize: SPHelper.calendarFontSize,
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).textTheme.labelSmall!.color,
-            ),
-            weekendTextStyle: TextStyle(
-              fontSize: SPHelper.calendarFontSize,
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context)
-                  .textTheme
-                  .labelSmall!
-                  .color!
-                  .withOpacity(0.2),
-            ),
-            outsideTextStyle: const TextStyle(
-              color: CupertinoColors.systemGrey3,
-              fontSize: SPHelper.calendarFontSize,
+            selectedDayTextStyle: const TextStyle(
+              fontSize: 18,
+              color: Colors.white,
               fontWeight: FontWeight.w600,
             ),
-            selectedTextStyle: const TextStyle(
-              fontSize: SPHelper.calendarFontSize,
-              fontWeight: FontWeight.w600,
-              color: CupertinoColors.white,
-            ),
-            weekNumberTextStyle: const TextStyle(
-              fontSize: 12,
-              color: CupertinoColors.systemGrey3,
-            ),
+            selectedDayHighlightColor: Theme.of(context).primaryColor,
+            controlsHeight: 56,
+            calendarType: CalendarDatePicker2Type.single,
           ),
-          holidayPredicate: (day) {
-            return false;
-          },
-          calendarFormat: CalendarFormat.month,
-          rowHeight: 56,
+          initialValue: [],
         ),
       ),
     );

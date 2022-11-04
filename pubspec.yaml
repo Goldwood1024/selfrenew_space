@@ -84,6 +84,8 @@ dependencies:
   style_cron_job: ^1.0.4+2
   day_night_time_picker: ^1.1.3
   tab_container: ^2.0.0
+  calendar_date_picker2: ^0.2.5
+  time_planner: ^0.1.1
 
 dev_dependencies:
   flutter_test:
