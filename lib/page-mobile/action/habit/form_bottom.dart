@@ -3,7 +3,6 @@ import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:tab_container/tab_container.dart';
 
 class Repeat extends StatefulWidget {
   const Repeat({super.key});
@@ -14,6 +13,7 @@ class Repeat extends StatefulWidget {
 
 class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   late TabController tabController;
+  late PageController pageController = PageController();
 
   @override
   void initState() {
@@ -23,6 +23,10 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
       length: 3,
       vsync: this,
     );
+
+    tabController.addListener(() {
+      pageController.jumpToPage(tabController.index);
+    });
   }
 
   @override
@@ -85,6 +89,45 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
               text: '间隔',
               scrollDirection: Axis.vertical,
             ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: SPHelper.pagePadding,
+        child: PageView(
+          controller: pageController,
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  SimpleTile(
+                    topRadius: true,
+                    title: '周一',
+                  ),
+                  SimpleTile(
+                    title: '周二',
+                  ),
+                  SimpleTile(
+                    title: '周三',
+                  ),
+                  SimpleTile(
+                    title: '周四',
+                  ),
+                  SimpleTile(
+                    title: '周五',
+                  ),
+                  SimpleTile(
+                    title: '周六',
+                  ),
+                  SimpleTile(
+                    title: '周日',
+                    bottomRadius: true,
+                  ),
+                ],
+              ),
+            ),
+            Container(),
+            Container(),
           ],
         ),
       ),
