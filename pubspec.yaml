@@ -86,6 +86,9 @@ dependencies:
   tab_container: ^2.0.0
   calendar_date_picker2: ^0.2.5
   time_planner: ^0.1.1
+  # 周 月 天视图
+  calendar_view: ^1.0.0
+  flutter_layout_grid: ^2.0.1
 
 dev_dependencies:
   flutter_test:

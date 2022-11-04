@@ -1,7 +1,4 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:day_night_time_picker/lib/constants.dart';
-import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -15,6 +12,7 @@ class Repeat extends StatefulWidget {
 class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   late TabController tabController;
   late PageController pageController = PageController();
+  late List<DateTime> selectedDates;
 
   @override
   void initState() {
@@ -28,6 +26,8 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
     tabController.addListener(() {
       pageController.jumpToPage(tabController.index);
     });
+
+    selectedDates = [];
   }
 
   @override
@@ -100,7 +100,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
           children: [
             Container(
               child: Column(
-                children: [
+                children: const [
                   SimpleTile(
                     topRadius: true,
                     title: '周一',
@@ -128,13 +128,32 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              child: CalendarDatePicker2(
+              child: MonthViewPicker(
                 config: CalendarDatePicker2Config(
                   calendarType: CalendarDatePicker2Type.multi,
-                  lastMonthIcon: SPHelper.empty,
-                  nextMonthIcon: SPHelper.empty,
+                  dayTextStyle: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).textTheme.labelSmall!.color,
+                  ),
+                  todayTextStyle: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  selectedDayTextStyle: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  selectedDayHighlightColor: Theme.of(context).primaryColor,
+                  controlsHeight: 56,
                 ),
-                initialValue: [],
+                displayedMonth: DateTime(202301),
+                selectedDates: selectedDates,
+                onChanged: (DateTime value) {
+                  setState(() {
+                    selectedDates.add(value);
+                  });
+                },
               ),
             ),
             Container(),
@@ -365,7 +384,7 @@ class _StartDateState extends State<StartDate> {
             controlsHeight: 56,
             calendarType: CalendarDatePicker2Type.single,
           ),
-          initialValue: [],
+          initialValue: const [],
         ),
       ),
     );
