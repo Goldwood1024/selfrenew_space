@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -149,10 +148,30 @@ class _HabitFormState extends State<HabitForm> {
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(
                     context,
-                    const Target(),
+                    const Repeat(),
                   );
                 },
                 topRadius: true,
+                title: '重复',
+                trailing: Text(
+                  '每天',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color
+                        ?.withOpacity(0.8),
+                  ),
+                ),
+              ),
+              SimpleTile(
+                onPressed: () {
+                  BottomDialog.showModalBottomSheet(
+                    context,
+                     const Target(),
+                  );
+                },
                 title: '目标',
                 trailing: Text(
                   '每天',
