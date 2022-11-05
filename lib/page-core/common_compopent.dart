@@ -300,7 +300,7 @@ class _HabitAccentImageState extends State<HabitAccentImage> {
                       height: SPHelper.height(SPHelper.gapDp18),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(.8),
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: SvgPicture.asset(

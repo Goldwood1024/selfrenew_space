@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/theme/global.dart';
 
 class HabitForm extends StatefulWidget {
   final Map<String, dynamic> params;
@@ -16,6 +17,7 @@ class HabitForm extends StatefulWidget {
 class _HabitFormState extends State<HabitForm> {
   final HabitRepository habitRepository = HabitRepository();
   TextEditingController textEditingController = TextEditingController();
+  TextEditingController heartenEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -191,7 +193,11 @@ class _HabitFormState extends State<HabitForm> {
                 title: '鼓励语',
                 titleTrailing: GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      heartenEditingController.text = Global.randomHearten();
+                    });
+                  },
                   child: Container(
                     width: 20,
                     height: 20,
@@ -210,7 +216,7 @@ class _HabitFormState extends State<HabitForm> {
                       maxLength: 80,
                       minLines: 2,
                       maxLines: 5,
-                      controller: TextEditingController(),
+                      controller: heartenEditingController,
                       style: TextStyle(
                         fontSize: SPHelper.sp(
                           SPHelper.fontSp17,
