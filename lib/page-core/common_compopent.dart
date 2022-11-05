@@ -260,3 +260,172 @@ class ImageDefaultEmpty extends StatelessWidget {
     );
   }
 }
+
+class RoundCheckBox extends StatefulWidget {
+  const RoundCheckBox({
+    Key? key,
+    this.isChecked,
+    this.checkedWidget,
+    this.uncheckedWidget,
+    this.checkedColor,
+    this.uncheckedColor,
+    this.disabledColor,
+    this.border,
+    this.borderColor,
+    this.size,
+    this.animationDuration,
+    this.isRound = true,
+    this.canCancel = false,
+    required this.onTap,
+  }) : super(key: key);
+
+  final bool? isChecked;
+  final Widget? checkedWidget;
+  final Widget? uncheckedWidget;
+  final Color? checkedColor;
+  final Color? uncheckedColor;
+  final Color? disabledColor;
+  final Border? border;
+  final Color? borderColor;
+  final double? size;
+  final Function(bool?)? onTap;
+  final Duration? animationDuration;
+  final bool isRound;
+  final bool canCancel;
+
+  @override
+  State<StatefulWidget> createState() => _RoundCheckBoxState();
+}
+
+class _RoundCheckBoxState extends State<RoundCheckBox> {
+  bool? _isChecked;
+  late Duration animationDuration;
+  double? size;
+  Widget? checkedWidget;
+  Widget? uncheckedWidget;
+  Color? checkedColor;
+  Color? uncheckedColor;
+  Color? disabledColor;
+  late Color borderColor;
+
+  @override
+  void initState() {
+    _isChecked = widget.isChecked ?? false;
+    animationDuration =
+        widget.animationDuration ?? const Duration(milliseconds: 500);
+    size = widget.size ?? 40.0;
+    checkedWidget = widget.checkedWidget ??
+        Container(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            'assets/icons/check.svg',
+            color: Colors.white,
+            width: widget.size! - 2,
+            height: widget.size! - 2,
+          ),
+        );
+    checkedColor = widget.checkedColor ?? Colors.green;
+    uncheckedColor = widget.uncheckedColor;
+    borderColor = widget.borderColor ?? Colors.grey;
+    uncheckedWidget = widget.uncheckedWidget ?? const SizedBox.shrink();
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(RoundCheckBox oldWidget) {
+    uncheckedColor =
+        widget.uncheckedColor ?? Theme.of(context).scaffoldBackgroundColor;
+    if (_isChecked != widget.isChecked) {
+      _isChecked = widget.isChecked ?? false;
+    }
+    if (animationDuration != widget.animationDuration) {
+      animationDuration =
+          widget.animationDuration ?? const Duration(milliseconds: 500);
+    }
+    if (size != widget.size) {
+      size = widget.size ?? 40.0;
+    }
+    if (checkedColor != widget.checkedColor) {
+      checkedColor = widget.checkedColor ?? Colors.green;
+    }
+    if (borderColor != widget.borderColor) {
+      borderColor = widget.borderColor ?? Colors.grey;
+    }
+    checkedWidget = widget.checkedWidget ??
+        Container(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            'assets/icons/check.svg',
+            color: Colors.white,
+            width: widget.size! - 2,
+            height: widget.size! - 2,
+          ),
+        );
+    if (uncheckedWidget != widget.uncheckedWidget) {
+      uncheckedWidget = widget.uncheckedWidget ?? const SizedBox.shrink();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.onTap != null
+        ? GestureDetector(
+            onTap: () {
+              if (widget.canCancel) {
+                setState(() => _isChecked = !_isChecked!);
+              } else {
+                // 取消关闭
+                if (_isChecked == false) {
+                  setState(() => _isChecked = true);
+                }
+              }
+
+              widget.onTap!(_isChecked);
+            },
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: AnimatedContainer(
+                duration: animationDuration,
+                height: size,
+                width: size,
+                decoration: BoxDecoration(
+                  color: _isChecked! ? checkedColor : uncheckedColor,
+                  border: widget.border ??
+                      Border.all(
+                        color: borderColor,
+                      ),
+                  borderRadius: borderRadius,
+                ),
+                child: _isChecked! ? checkedWidget : uncheckedWidget,
+              ),
+            ),
+          )
+        : ClipRRect(
+            borderRadius: borderRadius,
+            child: AnimatedContainer(
+              duration: animationDuration,
+              height: size,
+              width: size,
+              decoration: BoxDecoration(
+                color: widget.disabledColor ?? Theme.of(context).disabledColor,
+                border: widget.border ??
+                    Border.all(
+                      color: widget.disabledColor ??
+                          Theme.of(context).disabledColor,
+                    ),
+                borderRadius: borderRadius,
+              ),
+              child: _isChecked! ? checkedWidget : uncheckedWidget,
+            ),
+          );
+  }
+
+  BorderRadius get borderRadius {
+    if (widget.isRound) {
+      return BorderRadius.circular(size! / 2);
+    } else {
+      return BorderRadius.zero;
+    }
+  }
+}

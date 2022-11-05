@@ -164,55 +164,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   }
 }
 
-class Target extends StatefulWidget {
-  const Target({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _TargetState();
-}
-
-class _TargetState extends State<Target> {
-  @override
-  Widget build(BuildContext context) {
-    return ScaffoldGradientBackground(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const AppBarText(
-          title: '目标',
-        ),
-        actions: [
-          ActionBtn(
-            title: '确定',
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          )
-        ],
-      ),
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          SPHelper.getDefaultHeightBox(),
-          Padding(
-            padding: SPHelper.pagePaddingHorizontal,
-            child: Column(
-              children: const [
-                SimpleTile(
-                  topRadius: true,
-                  title: '1',
-                ),
-                SimpleTile(
-                  bottomRadius: true,
-                  title: '1',
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
 
 class Remind extends StatefulWidget {
   const Remind({super.key});

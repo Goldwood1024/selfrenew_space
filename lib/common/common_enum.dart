@@ -1,0 +1,1 @@
+enum TargetEnum { day, count }

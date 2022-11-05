@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-mobile/action/habit/form/target.dart';
 import 'package:selfrenew_space/page-mobile/action/habit/form_bottom.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -171,7 +172,7 @@ class _HabitFormState extends State<HabitForm> {
                 onPressed: () {
                   BottomDialog.showModalBottomSheet(
                     context,
-                     const Target(),
+                    const Target(),
                   );
                 },
                 title: '目标',

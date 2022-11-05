@@ -93,7 +93,7 @@ class _FocusRelaxState extends State<FocusRelax>
                         color: Theme.of(context).textTheme.labelSmall?.color,
                       ),
                       onDone: () {
-                        SmartDialog.dismiss();
+                        // SmartDialog.dismiss();
                       },
                       onChanged: (_) {
                         setState(() {
