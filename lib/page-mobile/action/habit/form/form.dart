@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-mobile/action/habit/form/form_bottom.dart';
 import 'package:selfrenew_space/page-mobile/action/habit/form/target.dart';
-import 'package:selfrenew_space/page-mobile/action/habit/form_bottom.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -94,7 +94,11 @@ class _HabitFormState extends State<HabitForm> {
                         ),
                         maxLength: 12,
                         controller: textEditingController,
+                        cursorColor: Theme.of(context).primaryColor,
+                        cursorWidth: 3,
                         decoration: InputDecoration(
+                          fillColor: Theme.of(context).scaffoldBackgroundColor,
+                          filled: true,
                           counterText: '',
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
@@ -103,46 +107,46 @@ class _HabitFormState extends State<HabitForm> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
-                        BottomDialog.showModalBottomSheet(
-                          context,
-                          const HabitIcons(),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 58,
-                              height: 64,
-                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
-                              decoration: BoxDecoration(
-                                color: CupertinoColors.quaternarySystemFill,
-                                borderRadius: BorderRadius.circular(
-                                  SPHelper.smallRadius() / 2,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              '图标库',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall!
-                                    .color
-                                    ?.withOpacity(0.8),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                    // GestureDetector(
+                    //   behavior: HitTestBehavior.translucent,
+                    //   onTap: () {
+                    //     BottomDialog.showModalBottomSheet(
+                    //       context,
+                    //       const HabitIcons(),
+                    //     );
+                    //   },
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+                    //     child: Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.center,
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: [
+                    //         Container(
+                    //           width: 58,
+                    //           height: 64,
+                    //           margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
+                    //           decoration: BoxDecoration(
+                    //             color: CupertinoColors.quaternarySystemFill,
+                    //             borderRadius: BorderRadius.circular(
+                    //               SPHelper.smallRadius() / 2,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         Text(
+                    //           '图标库',
+                    //           style: TextStyle(
+                    //             fontSize: 12,
+                    //             color: Theme.of(context)
+                    //                 .textTheme
+                    //                 .labelSmall!
+                    //                 .color
+                    //                 ?.withOpacity(0.8),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),
@@ -249,13 +253,22 @@ class _HabitFormState extends State<HabitForm> {
                 fontWeight: FontWeight.normal,
                 child: Column(
                   children: [
-                    TextFormField(
+                    AutoSizeTextField(
                       maxLength: 80,
                       minLines: 2,
                       maxLines: 5,
                       controller: TextEditingController(),
-                      style: const TextStyle(fontSize: 17),
+                      style: TextStyle(
+                        fontSize: SPHelper.sp(
+                          SPHelper.fontSp17,
+                        ),
+                        color: Theme.of(context).textTheme.labelSmall!.color,
+                      ),
+                      cursorColor: Theme.of(context).primaryColor,
+                      cursorWidth: 3,
                       decoration: InputDecoration(
+                        fillColor: Theme.of(context).scaffoldBackgroundColor,
+                        filled: true,
                         counterText: '',
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,

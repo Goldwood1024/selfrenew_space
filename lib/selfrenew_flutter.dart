@@ -59,7 +59,7 @@ export 'package:selfrenew_space/page-mobile/action/focus/focus_module.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/form.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/home.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/timer.dart';
-export 'package:selfrenew_space/page-mobile/action/habit/form.dart';
+export 'package:selfrenew_space/page-mobile/action/habit/form/form.dart';
 export 'package:selfrenew_space/page-mobile/action/habit/habit_lib.dart';
 export 'package:selfrenew_space/page-mobile/action/habit/habit_module.dart';
 export 'package:selfrenew_space/page-mobile/action/habit/home.dart';
