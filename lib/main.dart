@@ -72,7 +72,7 @@ class _MobileAppState extends State<MobileApp> with WidgetsBindingObserver {
               GlobalMaterialLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
-              S.delegate
+              S.delegate,
             ],
             routerConfig: Routers.router,
             restorationScopeId: 'MainApp',

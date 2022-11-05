@@ -1,8 +1,9 @@
 import 'dart:math' as math;
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:flutter/rendering.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+
+import 'month_view_config.dart';
+
 
 class MonthViewPicker extends StatefulWidget {
   const MonthViewPicker({
@@ -14,7 +15,7 @@ class MonthViewPicker extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final CalendarDatePicker2Config config;
+  final MonthViewConfig config;
   final List<DateTime> selectedDates;
   final ValueChanged<DateTime> onChanged;
   final DateTime displayedMonth;
@@ -82,11 +83,6 @@ class MonthViewPickerState extends State<MonthViewPicker> {
         final DateTime dayToBuild = DateTime(year, month, day);
         final bool isSelectedDay = widget.selectedDates.any(
           (d) => DateUtils.isSameDay(d, dayToBuild),
-        );
-
-        final bool isToday = DateUtils.isSameDay(
-          widget.config.currentDate,
-          dayToBuild,
         );
 
         BoxDecoration? decoration;

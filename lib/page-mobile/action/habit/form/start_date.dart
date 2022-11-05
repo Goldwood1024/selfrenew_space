@@ -1,4 +1,4 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:selfrenew_space/plugin/calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class StartDate extends StatefulWidget {
@@ -35,7 +35,9 @@ class _StartDateState extends State<StartDate> {
         padding: EdgeInsets.zero,
         child: CalendarDatePicker2(
           config: TextStyleMode.config(context),
-          initialValue: [],
+          initialValue: [
+            DateTime(2022, 11, 2),
+          ],
         ),
       ),
     );

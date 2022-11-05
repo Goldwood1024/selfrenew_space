@@ -1,5 +1,6 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-core/month_view_config.dart';
+import 'package:selfrenew_space/plugin/calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Repeat extends StatefulWidget {
@@ -129,8 +130,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
             ),
             Container(
               child: MonthViewPicker(
-                config: CalendarDatePicker2Config(
-                  calendarType: CalendarDatePicker2Type.multi,
+                config: MonthViewConfig(
                   dayTextStyle: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).textTheme.labelSmall!.color,
@@ -163,8 +163,6 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
     );
   }
 }
-
-
 
 class Remind extends StatefulWidget {
   const Remind({super.key});
@@ -282,4 +280,3 @@ class _RemindState extends State<Remind> {
     );
   }
 }
-
