@@ -108,6 +108,7 @@ flutter:
     - 'assets/icons/蜡笔.svg'
     - 'assets/icons/喝水.svg'
     - 'assets/icons/读书.svg'
+    - 'assets/icons/健身.svg'
     - 'assets/icons/start.svg'
     - 'assets/icons/check.svg'
     - 'assets/icons/delete.svg'

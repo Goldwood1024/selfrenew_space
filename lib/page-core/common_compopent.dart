@@ -205,6 +205,118 @@ class _AccentColorState extends State<AccentColor> {
   }
 }
 
+class HabitAccentColor extends StatefulWidget {
+  final String color;
+  final bool selected;
+  final Function(String) onChange;
+
+  const HabitAccentColor({
+    super.key,
+    required this.color,
+    required this.selected,
+    required this.onChange,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _HabitAccentColorState();
+}
+
+class _HabitAccentColorState extends State<HabitAccentColor> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        widget.onChange(widget.color);
+      },
+      child: Container(
+        width: SPHelper.width(SPHelper.gapDp32),
+        height: SPHelper.height(SPHelper.gapDp32),
+        decoration: BoxDecoration(
+          color: HexColor(widget.color),
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: Align(
+          child: widget.selected
+              ? Container(
+                  width: SPHelper.width(SPHelper.gapDp24),
+                  height: SPHelper.height(SPHelper.gapDp24),
+                  alignment: Alignment.center,
+                  child: SvgPicture.asset(
+                    'assets/icons/check.svg',
+                    color: Colors.white,
+                  ),
+                )
+              : SPHelper.empty,
+        ),
+      ),
+    );
+  }
+}
+
+class HabitAccentImage extends StatefulWidget {
+  final String image;
+  final bool selected;
+  final Function(String) onChange;
+
+  const HabitAccentImage({
+    super.key,
+    required this.image,
+    required this.selected,
+    required this.onChange,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _HabitAccentImageState();
+}
+
+class _HabitAccentImageState extends State<HabitAccentImage> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        widget.onChange(widget.image);
+      },
+      child: Container(
+        width: SPHelper.width(SPHelper.gapDp32),
+        height: SPHelper.height(SPHelper.gapDp32),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: Stack(
+          children: [
+            Align(
+              child: SvgPicture.asset(
+                widget.image,
+                width: 32,
+                height: 32,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: widget.selected
+                  ? Container(
+                      width: SPHelper.width(SPHelper.gapDp18),
+                      height: SPHelper.height(SPHelper.gapDp18),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor.withOpacity(.8),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/icons/check.svg',
+                        color: Colors.white,
+                      ),
+                    )
+                  : SPHelper.empty,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class ThemeModeCheck extends StatelessWidget {
   final bool selected;
 

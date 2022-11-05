@@ -177,6 +177,10 @@ class SPHelper {
     return 12.r;
   }
 
+  static minRadius() {
+    return 8.r;
+  }
+
   static mediumRadius() {
     return 24.r;
   }

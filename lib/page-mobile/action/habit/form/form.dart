@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/page-mobile/action/habit/form/form_bottom.dart';
-import 'package:selfrenew_space/page-mobile/action/habit/form/target.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -107,46 +105,29 @@ class _HabitFormState extends State<HabitForm> {
                         ),
                       ),
                     ),
-                    // GestureDetector(
-                    //   behavior: HitTestBehavior.translucent,
-                    //   onTap: () {
-                    //     BottomDialog.showModalBottomSheet(
-                    //       context,
-                    //       const HabitIcons(),
-                    //     );
-                    //   },
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-                    //     child: Column(
-                    //       crossAxisAlignment: CrossAxisAlignment.center,
-                    //       mainAxisAlignment: MainAxisAlignment.center,
-                    //       children: [
-                    //         Container(
-                    //           width: 58,
-                    //           height: 64,
-                    //           margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
-                    //           decoration: BoxDecoration(
-                    //             color: CupertinoColors.quaternarySystemFill,
-                    //             borderRadius: BorderRadius.circular(
-                    //               SPHelper.smallRadius() / 2,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         Text(
-                    //           '图标库',
-                    //           style: TextStyle(
-                    //             fontSize: 12,
-                    //             color: Theme.of(context)
-                    //                 .textTheme
-                    //                 .labelSmall!
-                    //                 .color
-                    //                 ?.withOpacity(0.8),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // )
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        BottomDialog.showModalBottomSheet(
+                          context,
+                          const HabitIcons(),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: Container(
+                          width: SPHelper.width(60),
+                          height: SPHelper.height(60),
+                          margin: const EdgeInsets.fromLTRB(12, 0, 0, 7),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: BorderRadius.circular(
+                              SPHelper.minRadius(),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -244,7 +225,9 @@ class _HabitFormState extends State<HabitForm> {
                         counterText: '',
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(
+                            SPHelper.minRadius(),
+                          ),
                         ),
                       ),
                     ),
