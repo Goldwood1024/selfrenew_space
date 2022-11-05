@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/theme/global.dart';
 
 class HabitForm extends StatefulWidget {
   final Map<String, dynamic> params;
@@ -51,10 +50,10 @@ class _HabitFormState extends State<HabitForm> {
             onPressed: () async {
               Map<String, Object?> values = {
                 "title": textEditingController.text,
-                "icon": "assets/icons/delete.svg",
+                "icon": "",
                 "color": "#000000",
-                "startDate": "title",
-                "hearten": "title",
+                "startDate": DateUtil.getNowDateMs(),
+                "hearten": heartenEditingController.text,
                 "max": 2,
                 "gmtDate": DateUtil.getNowDateMs(),
               };
