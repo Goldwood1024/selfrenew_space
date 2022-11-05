@@ -23,4 +23,17 @@ class TextStyleMode {
       color: CupertinoColors.systemGrey,
     );
   }
+
+  static TextStyle trailingTextStyle(BuildContext context){
+    return TextStyle(
+      fontSize: SPHelper.sp(
+        SPHelper.fontSp17,
+      ),
+      color: Theme.of(context)
+          .textTheme
+          .labelSmall!
+          .color
+          ?.withOpacity(0.5),
+    );
+  }
 }

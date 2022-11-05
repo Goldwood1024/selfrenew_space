@@ -162,14 +162,7 @@ class _HabitFormState extends State<HabitForm> {
                 title: '重复',
                 trailing: Text(
                   '每天',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .color
-                        ?.withOpacity(0.8),
-                  ),
+                  style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),
               SimpleTile(
@@ -182,14 +175,7 @@ class _HabitFormState extends State<HabitForm> {
                 title: '目标',
                 trailing: Text(
                   '每天',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .color
-                        ?.withOpacity(0.8),
-                  ),
+                  style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),
               SimpleTile(
@@ -202,14 +188,7 @@ class _HabitFormState extends State<HabitForm> {
                 title: '提醒',
                 trailing: Text(
                   '每天',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .color
-                        ?.withOpacity(0.8),
-                  ),
+                  style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),
               SimpleTile(
@@ -223,14 +202,7 @@ class _HabitFormState extends State<HabitForm> {
                 title: '开始日期',
                 trailing: Text(
                   '1月21',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .color
-                        ?.withOpacity(0.8),
-                  ),
+                  style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),
               SPHelper.getDefaultHeightBox(),
