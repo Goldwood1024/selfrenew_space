@@ -25,14 +25,13 @@ class SqliteProxy {
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) {},
       onOpen: (Database db) {
-        print(db.toString());
       },
     );
 
-    if (database.isOpen) {
-      print(database.path);
-      // await appSettingRepository.createTableAndDefaultValue(database);
-      print(await appSettingRepository.query());
-    }
+    // if (database.isOpen) {
+    //   print(database.path);
+    //   // await appSettingRepository.createTableAndDefaultValue(database);
+    //   print(await appSettingRepository.query());
+    // }
   }
 }
