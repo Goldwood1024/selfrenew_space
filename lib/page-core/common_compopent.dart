@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:wheel_chooser/wheel_chooser.dart';
 
 class CommonSwitch extends StatefulWidget {
   final bool value;
@@ -539,5 +540,58 @@ class _RoundCheckBoxState extends State<RoundCheckBox> {
     } else {
       return BorderRadius.zero;
     }
+  }
+}
+
+class CommonSlider extends StatefulWidget {
+  final int max;
+  final int min;
+  final int step;
+
+  final Function(dynamic) onValueChanged;
+
+  const CommonSlider({
+    super.key,
+    required this.onValueChanged,
+    required this.max,
+    this.min = 1,
+    this.step = 1,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _CommonSliderState();
+}
+
+class _CommonSliderState extends State<CommonSlider> {
+  late double value;
+
+  @override
+  void initState() {
+    super.initState();
+    value = 1;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      height: 80,
+      width: MediaQuery.of(context).size.width,
+      child: WheelChooser.integer(
+        horizontal: true,
+        unSelectTextStyle: TextStyle(
+          color: Theme.of(context).primaryColor.withOpacity(.2),
+        ),
+        selectTextStyle: TextStyle(
+          color: Theme.of(context).primaryColor,
+        ),
+        onValueChanged: (v) {
+          widget.onValueChanged(v);
+        },
+        maxValue: widget.max,
+        minValue: widget.min,
+        step: widget.step,
+      ),
+    );
   }
 }

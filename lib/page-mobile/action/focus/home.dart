@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/focus_provider.dart';
 
@@ -43,7 +44,10 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.push(Routers.focusForm);
+              Routers.pushParams(
+                Routers.focusForm,
+                {"type": FocusType.tomato.name},
+              );
             },
           ),
           Bubble(
@@ -54,6 +58,10 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
+              Routers.pushParams(
+                Routers.focusForm,
+                {"type": FocusType.uptime.name},
+              );
             },
           ),
           Bubble(
@@ -64,6 +72,10 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
+              Routers.pushParams(
+                Routers.focusForm,
+                {"type": FocusType.downtime.name},
+              );
             },
           ),
         ],
