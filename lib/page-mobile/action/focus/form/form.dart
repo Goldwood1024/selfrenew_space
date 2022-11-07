@@ -1,3 +1,4 @@
+import 'package:cupertino_range_slider_improved/cupertino_range_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -184,6 +185,20 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
+                      CupertinoRangeSlider(
+                        minValue: 1,
+                        maxValue: 100,
+                        min: 1.0,
+                        max: 100.0,
+                        onMinChanged: (minVal) {},
+                        onMaxChanged: (maxVal) {},
+                      ),
+                      Slider(
+                        divisions: 1,
+                        value: 10,
+                        max: 100,
+                        onChanged: (_) {},
+                      )
                     ],
                   ),
                 ),

@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  cupertino_range_slider_improved:
+    dependency: "direct main"
+    description:
+      name: cupertino_range_slider_improved
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   custom_navigation_bar:
     dependency: "direct main"
     description:
@@ -281,6 +288,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
+  flexible_slider:
+    dependency: "direct main"
+    description:
+      name: flexible_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -293,13 +307,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.2"
-  flutter_layout_grid:
-    dependency: "direct main"
-    description:
-      name: flutter_layout_grid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -339,7 +346,14 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.13"
+    version: "2.2.14"
+  flutter_onboarding_slider:
+    dependency: "direct main"
+    description:
+      name: flutter_onboarding_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.8"
   flutter_rating_bar:
     dependency: transitive
     description:
@@ -367,7 +381,7 @@ packages:
       name: flutter_smart_dialog
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.6.2+1"
+    version: "4.7.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -637,13 +651,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.4"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.0"
   rating_dialog:
     dependency: "direct main"
     description:
@@ -665,6 +672,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
+  reviews_slider:
+    dependency: "direct main"
+    description:
+      name: reviews_slider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   screen_retriever:
     dependency: transitive
     description:
@@ -768,13 +782,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  sleek_circular_slider:
-    dependency: "direct main"
-    description:
-      name: sleek_circular_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   slide_countdown:
     dependency: "direct main"
     description:
