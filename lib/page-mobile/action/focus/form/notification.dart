@@ -1,4 +1,4 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:selfrenew_space/page-mobile/action/focus/form/sound_select.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -36,6 +36,12 @@ class _NotificationPageState extends State<NotificationPage> {
         child: ListView(
           children: [
             SimpleTile(
+              onPressed: () {
+                BottomDialog.showModalBottomSheet(
+                  context,
+                  const SoundSelect(),
+                );
+              },
               topRadius: true,
               title: '完成提示音',
               trailing: Text(
@@ -44,6 +50,12 @@ class _NotificationPageState extends State<NotificationPage> {
               ),
             ),
             SimpleTile(
+              onPressed: () {
+                BottomDialog.showModalBottomSheet(
+                  context,
+                  const SoundSelect(),
+                );
+              },
               title: '休息提示音',
               trailing: Text(
                 '风琴',
