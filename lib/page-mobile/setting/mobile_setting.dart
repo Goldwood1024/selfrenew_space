@@ -103,12 +103,9 @@ class _MobileSettingState extends State<MobileSetting> {
                 title: '关于',
                 bottomRadius: true,
                 showDivider: false,
-                trailing: const Text(
+                trailing:  Text(
                   '1.0.0',
-                  style: TextStyle(
-                    fontSize: SPHelper.fontSp18,
-                    color: CupertinoColors.systemGrey,
-                  ),
+                  style: TextStyleMode.trailingTextStyle(context),
                 ),
                 onPressed: () {
                   Routers.push(Routers.about);

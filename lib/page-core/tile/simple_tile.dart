@@ -118,7 +118,7 @@ class _SimpleTileState extends State<SimpleTile> {
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 12, 0),
-                                  child: widget.trailing ?? Container(),
+                                  child: widget.trailing ?? SPHelper.empty,
                                 ),
                                 widget.showArrow
                                     ? Container(

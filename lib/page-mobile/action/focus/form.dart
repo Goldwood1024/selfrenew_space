@@ -106,14 +106,23 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SPHelper.getDefaultHeightBox(),
-                      const SimpleTile(
+                      SimpleTile(
                         topRadius: true,
                         title: '重复',
-                      ),
-                      const SimpleTile(
-                        title: '提醒',
+                        trailing: Text(
+                          '每天',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                       SimpleTile(
+                        title: '提醒',
+                        trailing: Text(
+                          '完成',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
+                      ),
+                      SimpleTile(
+                        hide: type == FocusType.tomato.name,
                         title: '目标时长',
                         bottomRadius: type != FocusType.tomato.name,
                       ),
@@ -121,25 +130,45 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         hide: type != FocusType.tomato.name,
                         title: '番茄时长',
                         bottomRadius: true,
+                        trailing: Text(
+                          '25 分钟',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SimpleTile(
                         hide: type != FocusType.tomato.name,
+                        title: '自动休息',
                         topRadius: true,
+                        showArrow: false,
+                        trailing: CommonSwitch(
+                          func: (_) {},
+                        ),
+                      ),
+                      SimpleTile(
+                        hide: type != FocusType.tomato.name,
                         title: '短休息时长',
+                        trailing: Text(
+                          '5 分钟',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                       SimpleTile(
                         hide: type != FocusType.tomato.name,
                         title: '长休息时长',
+                        trailing: Text(
+                          '20 分钟',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                       SimpleTile(
                         hide: type != FocusType.tomato.name,
                         title: '长休息间隔',
-                      ),
-                      SimpleTile(
-                        hide: type != FocusType.tomato.name,
-                        title: '自动休息',
                         bottomRadius: true,
+                        trailing: Text(
+                          '4 个番茄',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                     ],
                   ),
