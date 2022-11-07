@@ -546,6 +546,7 @@ class _RoundCheckBoxState extends State<RoundCheckBox> {
 class CommonSlider extends StatefulWidget {
   final int max;
   final int min;
+  final int initValue;
   final int step;
 
   final Function(dynamic) onValueChanged;
@@ -555,6 +556,7 @@ class CommonSlider extends StatefulWidget {
     required this.onValueChanged,
     required this.max,
     this.min = 1,
+    this.initValue = 1,
     this.step = 1,
   });
 
@@ -591,6 +593,7 @@ class _CommonSliderState extends State<CommonSlider> {
         maxValue: widget.max,
         minValue: widget.min,
         step: widget.step,
+        initValue: widget.initValue,
       ),
     );
   }

@@ -147,6 +147,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         bottomRadius: true,
                         max: 90,
                         min: 5,
+                        initValue: 25,
                         trailing: Text(
                           '25 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
@@ -167,6 +168,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         title: '短休息时长',
                         max: 10,
                         min: 1,
+                        initValue: 5,
                         trailing: Text(
                           '5 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
@@ -175,8 +177,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       SimpleTileSlider(
                         hide: type != FocusType.tomato.name,
                         title: '长休息时长',
-                        max: 25,
+                        max: 50,
                         min: 1,
+                        initValue: 20,
                         trailing: Text(
                           '20 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
@@ -188,6 +191,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         bottomRadius: true,
                         max: 10,
                         min: 1,
+                        initValue: 4,
                         trailing: Text(
                           '4 个番茄',
                           style: TextStyleMode.trailingTextStyle(context),

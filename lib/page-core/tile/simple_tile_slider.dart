@@ -6,6 +6,7 @@ class SimpleTileSlider extends StatefulWidget {
   final double radius;
   final int max;
   final int min;
+  final int initValue;
   final bool bottomRadius;
   final bool topRadius;
   final bool showArrow;
@@ -25,6 +26,7 @@ class SimpleTileSlider extends StatefulWidget {
     this.radius = 12.0,
     this.max = 100,
     this.min = 1,
+    this.initValue = 1,
     this.bottomRadius = false,
     this.topRadius = false,
     this.hide = false,
@@ -203,6 +205,7 @@ class _SimpleTileSliderState extends State<SimpleTileSlider> {
                         },
                         max: widget.max,
                         min: widget.min,
+                        initValue: widget.initValue,
                       ),
                     )
                   : SPHelper.empty,
