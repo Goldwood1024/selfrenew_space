@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
+import 'notification.dart';
+
 class FocusForm extends StatefulWidget {
   final Map<String, dynamic> params;
 
@@ -107,6 +109,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SimpleTile(
+                        onPressed: () {
+                          BottomDialog.showModalBottomSheet(
+                            context,
+                            const Repeat(),
+                          );
+                        },
                         topRadius: true,
                         title: '重复',
                         trailing: Text(
@@ -115,6 +123,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTile(
+                        onPressed: () {
+                          BottomDialog.showModalBottomSheet(
+                            context,
+                            const NotificationPage(),
+                          );
+                        },
                         title: '提醒',
                         trailing: Text(
                           '完成',
