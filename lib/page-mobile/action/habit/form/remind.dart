@@ -45,41 +45,37 @@ class _RemindState extends State<Remind> {
         padding: SPHelper.pagePaddingHorizontal,
         child: ListView(
           children: [
+            // SPHelper.getDefaultHeightBox(),
+            // SimpleTile(
+            //   topRadius: true,
+            //   bottomRadius: true,
+            //   title: '提醒',
+            //   showArrow: false,
+            //   trailing: CommonSwitch(
+            //     value: true,
+            //     func: (_) {},
+            //   ),
+            // ),
             SPHelper.getDefaultHeightBox(),
-            SimpleTile(
-              topRadius: true,
-              bottomRadius: true,
-              title: '提醒',
-              showArrow: false,
-              trailing: CommonSwitch(
-                value: true,
-                func: (_) {},
-              ),
-            ),
-            SPHelper.getDefaultHeightBox(),
-            Container(
-              child: Column(
-                children: List.generate(
-                  list.length,
-                  (index) => SimpleTileTime(
-                    showDivider: true,
-                    showBtn: true,
-                    topRadius: index == 0,
-                    dateTime: list[index],
-                    onValueChanged: (_) {
-                      print(_);
-                      update.removeAddRemindDate(list[index], _);
-                    },
-                    onRemoved: (_) {
-                      update.removeRemindDate(_);
-                    },
-                  ),
+            Column(
+              children: List.generate(
+                list.length,
+                (index) => SimpleTileTime(
+                  showDivider: true,
+                  showBtn: true,
+                  topRadius: index == 0,
+                  dateTime: list[index],
+                  onValueChanged: (_) {
+                    update.removeAddRemindDate(list[index], _);
+                  },
+                  onRemoved: (_) {
+                    update.removeRemindDate(_);
+                  },
                 ),
               ),
             ),
             SimpleTileTime(
               onValueChanged: (_) {
-                print(_);
                 update.updateRemindDates(_);
               },
               dateTime: DateTime.now(),
