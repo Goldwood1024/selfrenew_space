@@ -21,6 +21,7 @@ export 'package:flutter/rendering.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
+export 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 export 'package:flutter_svg/flutter_svg.dart';
