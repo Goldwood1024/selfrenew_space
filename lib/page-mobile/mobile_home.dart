@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:selfrenew_space/page-mobile/onboarding/update.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class MobileHome extends StatefulWidget {
@@ -18,6 +20,14 @@ class _MobileHomeState extends State<MobileHome>
     super.initState();
     _pageController = PageController();
     _currentIndex = 0;
+
+    // 加载数据
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      showCupertinoModalBottomSheet(
+        context: context,
+        builder: (_) => const Update(),
+      );
+    });
   }
 
   @override

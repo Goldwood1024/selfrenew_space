@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/page-mobile/onboarding/boarding_screen.dart';
+import 'package:selfrenew_space/page-mobile/onboarding/update.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Routers {
   static const String root = "/";
   static const String mobileHome = "/mobileHome";
+  static const String update = "/update";
   static const String habitSkeleton = "/habitSkeleton";
   static const String tomatoTime = "/tomatoTime";
   static const String notFound = "/notFound";
@@ -37,17 +39,24 @@ class Routers {
         },
       ),
       GoRoute(
-        name: removePrefix(about),
-        path: about,
-        builder: (BuildContext context, GoRouterState state) {
-          return const About();
-        },
-      ),
-      GoRoute(
         name: removePrefix(mobileHome),
         path: mobileHome,
         builder: (BuildContext context, GoRouterState state) {
           return const MobileHome();
+        },
+      ),
+      GoRoute(
+        name: removePrefix(update),
+        path: update,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Update();
+        },
+      ),
+      GoRoute(
+        name: removePrefix(about),
+        path: about,
+        builder: (BuildContext context, GoRouterState state) {
+          return const About();
         },
       ),
       GoRoute(

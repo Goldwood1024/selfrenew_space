@@ -89,9 +89,10 @@ dependencies:
   calendar_view: ^1.0.0
   reviews_slider: ^2.0.0
   wheel_slider: ^1.0.0
-  concentric_transition: ^1.0.3
   introduction_screen: ^3.0.2
   cupertino_onboarding: ^1.1.1
+
+#  concentric_transition: ^1.0.3
 
 dev_dependencies:
   flutter_test:
