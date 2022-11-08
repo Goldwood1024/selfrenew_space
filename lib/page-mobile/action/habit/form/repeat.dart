@@ -120,28 +120,26 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
         child: PageView(
           controller: pageController,
           children: [
-            Container(
-              child: Column(
-                children: List.generate(
-                  repeatDays.length,
-                  (index) => SimpleTile(
-                    onPressed: () {
-                      setState(() {
-                        repeatDays[index].selected =
-                            !repeatDays[index].selected;
-                      });
+            Column(
+              children: List.generate(
+                repeatDays.length,
+                (index) => SimpleTile(
+                  onPressed: () {
+                    setState(() {
+                      repeatDays[index].selected =
+                          !repeatDays[index].selected;
+                    });
 
-                      // 更新值
-                      update.updateRepeatDay(index, repeatDays[index].selected);
-                    },
-                    topRadius: index == 0,
-                    bottomRadius: index == repeatDays.length - 1,
-                    title: repeatDays[index].day,
-                    showArrow: false,
-                    showDivider: index != repeatDays.length - 1,
-                    trailing: ThemeModeCheck(
-                      selected: repeatDays[index].selected,
-                    ),
+                    // 更新值
+                    update.updateRepeatDay(index, repeatDays[index].selected);
+                  },
+                  topRadius: index == 0,
+                  bottomRadius: index == repeatDays.length - 1,
+                  title: repeatDays[index].day,
+                  showArrow: false,
+                  showDivider: index != repeatDays.length - 1,
+                  trailing: ThemeModeCheck(
+                    selected: repeatDays[index].selected,
                   ),
                 ),
               ),
