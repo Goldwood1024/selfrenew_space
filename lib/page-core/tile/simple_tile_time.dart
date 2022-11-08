@@ -4,8 +4,8 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 class SimpleTileTime extends StatefulWidget {
   final double height;
   final double radius;
-  final bool bottomRadius;
   final bool topRadius;
+  final bool bottomRadius;
   final bool showBtn;
   final DateTime dateTime;
   final bool showDivider;
@@ -20,8 +20,8 @@ class SimpleTileTime extends StatefulWidget {
     this.onRemoved,
     this.height = 52.0,
     this.radius = 12.0,
-    this.bottomRadius = false,
     this.topRadius = false,
+    this.bottomRadius = false,
     this.showBtn = false,
     this.showDivider = true,
     this.onPressed,
@@ -70,16 +70,12 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
                         topRight: widget.topRadius
                             ? Radius.circular(widget.radius)
                             : const Radius.circular(0),
-                        bottomLeft: expand
-                            ? const Radius.circular(0)
-                            : widget.bottomRadius
-                                ? Radius.circular(widget.radius)
-                                : const Radius.circular(0),
-                        bottomRight: expand
-                            ? const Radius.circular(0)
-                            : widget.bottomRadius
-                                ? Radius.circular(widget.radius)
-                                : const Radius.circular(0),
+                        bottomLeft: widget.bottomRadius
+                            ? Radius.circular(widget.radius)
+                            : const Radius.circular(0),
+                        bottomRight: widget.bottomRadius
+                            ? Radius.circular(widget.radius)
+                            : const Radius.circular(0),
                       ),
                     ),
                     child: Row(
@@ -136,8 +132,18 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
                 decoration: BoxDecoration(
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(widget.radius),
-                    bottomRight: Radius.circular(widget.radius),
+                    topLeft: widget.topRadius
+                        ? Radius.circular(widget.radius)
+                        : const Radius.circular(0),
+                    topRight: widget.topRadius
+                        ? Radius.circular(widget.radius)
+                        : const Radius.circular(0),
+                    bottomLeft: widget.bottomRadius
+                        ? Radius.circular(widget.radius)
+                        : const Radius.circular(0),
+                    bottomRight: widget.bottomRadius
+                        ? Radius.circular(widget.radius)
+                        : const Radius.circular(0),
                   ),
                 ),
                 child: Container(
