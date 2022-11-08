@@ -66,6 +66,10 @@ class _RemindState extends State<Remind> {
                     showBtn: true,
                     topRadius: index == 0,
                     dateTime: list[index],
+                    onValueChanged: (_) {
+                      print(_);
+                      update.removeAddRemindDate(list[index], _);
+                    },
                     onRemoved: (_) {
                       update.removeRemindDate(_);
                     },

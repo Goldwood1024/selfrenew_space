@@ -27,6 +27,11 @@ class HabitFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeAddRemindDate(DateTime old, DateTime n) {
+    remindModel.list.removeWhere((element) => element == old);
+    updateRemindDates(n);
+  }
+
   void updateRemindDates(DateTime value) {
     if (remindModel.list.contains(value)) {
       return;
