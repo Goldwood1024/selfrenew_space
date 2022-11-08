@@ -11,7 +11,21 @@ class Remind extends StatefulWidget {
 
 class _RemindState extends State<Remind> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      HabitFormProvider update = Provider.of(context, listen: false);
+      update.query();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    HabitFormProvider update = Provider.of(context, listen: false);
+    HabitFormProvider habitFormProvider = Provider.of(context);
+    List<DateTime> list = habitFormProvider.remindModel.list;
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -46,73 +60,28 @@ class _RemindState extends State<Remind> {
             Container(
               child: Column(
                 children: List.generate(
-                  3,
-                  (index) => SimpleTile(
+                  list.length,
+                  (index) => SimpleTileTime(
                     showDivider: true,
-                    leading: const Icon(Icons.timer_sharp),
+                    showBtn: true,
                     topRadius: index == 0,
-                    title: '09:20',
-                    showArrow: false,
-                    trailing: GestureDetector(
-                      child: const Icon(
-                        Icons.clear,
-                      ),
-                    ),
+                    dateTime: list[index],
+                    onRemoved: (_) {
+                      update.removeRemindDate(_);
+                    },
                   ),
                 ),
               ),
             ),
-            // SimpleTile(
-            //   onPressed: () {
-            //     Navigator.of(context).push(
-            //       showPicker(
-            //         iosStylePicker: true,
-            //         context: context,
-            //         dialogInsetPadding: const EdgeInsets.symmetric(
-            //           horizontal: 14.0,
-            //         ),
-            //         value: TimeOfDay.now(),
-            //         onChange: (_) {},
-            //         minuteInterval: MinuteInterval.ONE,
-            //         is24HrFormat: true,
-            //         okText: '确定',
-            //         okStyle: TextStyle(
-            //           color: Theme.of(context).primaryColor,
-            //           fontWeight: FontWeight.bold,
-            //           fontSize: 18,
-            //         ),
-            //         cancelText: '关闭',
-            //         cancelStyle: const TextStyle(
-            //           color: CupertinoColors.secondaryLabel,
-            //           fontWeight: FontWeight.bold,
-            //           fontSize: 18,
-            //         ),
-            //         buttonStyle: ButtonStyle(
-            //           splashFactory: NoSplash.splashFactory,
-            //           overlayColor:
-            //               MaterialStateProperty.all(Colors.transparent),
-            //         ),
-            //         cancelButtonStyle: ButtonStyle(
-            //           splashFactory: NoSplash.splashFactory,
-            //           overlayColor:
-            //               MaterialStateProperty.all(Colors.transparent),
-            //         ),
-            //         accentColor: Theme.of(context).primaryColor,
-            //         onChangeDateTime: (DateTime dateTime) {
-            //           debugPrint("[debug datetime]:  $dateTime");
-            //         },
-            //       ),
-            //     );
-            //   },
-            //   bottomRadius: true,
-            //   title: '新增',
-            //   leading: Icon(
-            //     Icons.add_circle,
-            //     color: Theme.of(context).primaryColor,
-            //   ),
-            //   showArrow: false,
-            // ),
             SimpleTileTime(
+              onValueChanged: (_) {
+                print(_);
+                update.updateRemindDates(_);
+              },
+              dateTime: DateTime.now(),
+              topRadius: list.isEmpty,
+              showBtn: false,
+              bottomRadius: true,
             )
           ],
         ),
