@@ -87,13 +87,11 @@ dependencies:
   time_planner: ^0.1.1
   # 周 月 天视图
   calendar_view: ^1.0.0
-  flutter_onboarding_slider: ^1.0.8
   reviews_slider: ^2.0.0
-  expandable_slider: ^2.0.0
-  flutter_balloon_slider: ^0.1.1
-  flexible_slider: ^0.0.1
   wheel_slider: ^1.0.0
-  wheel_chooser: ^1.0.0
+  concentric_transition: ^1.0.3
+  introduction_screen: ^3.0.2
+  cupertino_onboarding: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -119,6 +117,9 @@ flutter:
     - 'assets/icons/delete.svg'
     - 'assets/icons/habit.svg'
     - 'assets/icons/focus.svg'
+    - 'assets/splash/img1.jpg'
+    - 'assets/splash/img2.jpg'
+    - 'assets/splash/img3.jpg'
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

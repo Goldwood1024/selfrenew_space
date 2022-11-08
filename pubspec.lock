@@ -120,6 +120,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  concentric_transition:
+    dependency: "direct main"
+    description:
+      name: concentric_transition
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   convert:
     dependency: transitive
     description:
@@ -162,6 +169,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  cupertino_onboarding:
+    dependency: "direct main"
+    description:
+      name: cupertino_onboarding
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   custom_navigation_bar:
     dependency: "direct main"
     description:
@@ -197,6 +211,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
+  dots_indicator:
+    dependency: transitive
+    description:
+      name: dots_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   easy_sidemenu:
     dependency: "direct main"
     description:
@@ -218,13 +239,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.17"
-  expandable_slider:
-    dependency: "direct main"
-    description:
-      name: expandable_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   extended_nested_scroll_view:
     dependency: "direct main"
     description:
@@ -288,25 +302,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
-  flexible_slider:
-    dependency: "direct main"
-    description:
-      name: flexible_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_balloon_slider:
-    dependency: "direct main"
-    description:
-      name: flutter_balloon_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   flutter_launcher_icons_maker:
     dependency: "direct main"
     description:
@@ -354,13 +354,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.14"
-  flutter_onboarding_slider:
-    dependency: "direct main"
-    description:
-      name: flutter_onboarding_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.8"
   flutter_rating_bar:
     dependency: transitive
     description:
@@ -455,6 +448,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+  introduction_screen:
+    dependency: "direct main"
+    description:
+      name: introduction_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   js:
     dependency: transitive
     description:
@@ -1063,7 +1063,7 @@ packages:
     source: hosted
     version: "0.3.3"
   wheel_chooser:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: wheel_chooser
       url: "https://pub.dartlang.org"
