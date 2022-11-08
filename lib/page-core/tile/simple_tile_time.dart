@@ -12,16 +12,12 @@ class SimpleTileTime extends StatefulWidget {
   final bool showArrow;
   final bool showDivider;
   final bool hide;
-  final Widget? leading;
-  final String title;
-  final Widget? subTitle;
   final Widget? trailing;
   final VoidCallback? onPressed;
   final Function(dynamic)? onValueChanged;
 
   const SimpleTileTime({
     super.key,
-    required this.title,
     this.height = 52.0,
     this.radius = 12.0,
     this.max = 100,
@@ -32,9 +28,7 @@ class SimpleTileTime extends StatefulWidget {
     this.hide = false,
     this.showArrow = true,
     this.showDivider = true,
-    this.leading,
     this.trailing,
-    this.subTitle,
     this.onPressed,
     this.onValueChanged,
   });
@@ -58,151 +52,106 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
         ? SPHelper.empty
         : Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    expand = !expand;
-                  });
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: widget.height + 1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
-                      borderRadius: BorderRadius.only(
-                        topLeft: widget.topRadius
-                            ? Radius.circular(widget.radius)
-                            : const Radius.circular(0),
-                        topRight: widget.topRadius
-                            ? Radius.circular(widget.radius)
-                            : const Radius.circular(0),
-                        bottomLeft: expand
-                            ? const Radius.circular(0)
-                            : widget.bottomRadius
-                                ? Radius.circular(widget.radius)
-                                : const Radius.circular(0),
-                        bottomRight: expand
-                            ? const Radius.circular(0)
-                            : widget.bottomRadius
-                                ? Radius.circular(widget.radius)
-                                : const Radius.circular(0),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        widget.leading == null
-                            ? Container()
-                            : Container(
-                                padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-                                child: widget.leading,
-                              ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
+              !expand
+                  ? GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          expand = !expand;
+                        });
+                      },
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: widget.height,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: widget.topRadius
+                                  ? Radius.circular(widget.radius)
+                                  : const Radius.circular(0),
+                              topRight: widget.topRadius
+                                  ? Radius.circular(widget.radius)
+                                  : const Radius.circular(0),
+                              bottomLeft: expand
+                                  ? const Radius.circular(0)
+                                  : widget.bottomRadius
+                                      ? Radius.circular(widget.radius)
+                                      : const Radius.circular(0),
+                              bottomRight: expand
+                                  ? const Radius.circular(0)
+                                  : widget.bottomRadius
+                                      ? Radius.circular(widget.radius)
+                                      : const Radius.circular(0),
+                            ),
+                          ),
+                          child: Row(
                             children: [
-                              Expanded(
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            14, 0, 0, 0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                widget.title,
-                                                style: TextStyle(
-                                                  fontSize: SPHelper.sp(
-                                                    SPHelper.fontSp18,
-                                                  ),
-                                                  color: Theme.of(context)
-                                                      .textTheme
-                                                      .labelSmall!
-                                                      .color,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: widget.subTitle,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 0, 12, 0),
-                                      child: widget.trailing ?? SPHelper.empty,
-                                    ),
-                                    widget.showArrow
-                                        ? Container(
-                                            alignment: Alignment.center,
-                                            height: widget.height,
-                                            padding: const EdgeInsets.fromLTRB(
-                                              0,
-                                              0,
-                                              12,
-                                              0,
-                                            ),
-                                            child: const Icon(
-                                              Icons.arrow_forward_ios_sharp,
-                                              size: 18,
-                                              color:
-                                                  CupertinoColors.systemGrey4,
-                                            ),
-                                          )
-                                        : SPHelper.empty,
-                                  ],
+                              Container(
+                                padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color: Theme.of(context).primaryColor,
                                 ),
                               ),
-                              expand
-                                  ? const Divider(
-                                      color: CupertinoColors
-                                          .systemGroupedBackground,
-                                      height: 1,
-                                    )
-                                  : widget.showDivider
-                                      ? const Divider(
-                                          color: CupertinoColors
-                                              .systemGroupedBackground,
-                                          height: 1,
-                                        )
-                                      : SPHelper.empty
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    '新增',
+                                    style: TextStyle(
+                                      fontSize: SPHelper.sp(
+                                        SPHelper.fontSp18,
+                                      ),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .color,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const Expanded(child: SPHelper.empty),
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                      ),
+                    )
+                  : SPHelper.empty,
               expand
                   ? Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).backgroundColor,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: widget.bottomRadius
-                              ? Radius.circular(widget.radius)
-                              : const Radius.circular(0),
-                          bottomRight: widget.bottomRadius
-                              ? Radius.circular(widget.radius)
-                              : const Radius.circular(0),
+                          bottomLeft: Radius.circular(widget.radius),
+                          bottomRight: Radius.circular(widget.radius),
                         ),
                       ),
                       child: Container(
-                        child: CupertinoTimerPicker(
-                          mode: CupertinoTimerPickerMode.hm,
-                          onTimerDurationChanged: (Duration value) {},
+                        child: Column(
+                          children: [
+                            CupertinoTimerPicker(
+                              mode: CupertinoTimerPickerMode.hm,
+                              onTimerDurationChanged: (Duration value) {},
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ActionBtn(
+                                  title: '关闭',
+                                  onPressed: () {
+                                    setState(() {
+                                      expand = false;
+                                    });
+                                  },
+                                ),
+                                ActionBtn(
+                                  title: '确定',
+                                  onPressed: () {},
+                                )
+                              ],
+                            )
+                          ],
                         ),
                       ),
                     )
