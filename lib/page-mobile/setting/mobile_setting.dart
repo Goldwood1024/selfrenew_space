@@ -19,7 +19,13 @@ class _MobileSettingState extends State<MobileSetting> {
           return [
             CupertinoSliverNavigationBar(
               heroTag: const Hero(tag: 'MobileSetting', child: SPHelper.empty),
-              backgroundColor: Colors.transparent,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              border: const Border(
+                bottom: BorderSide(
+                  color: CupertinoColors.lightBackgroundGray,
+                  width: 0.0,
+                ),
+              ),
               largeTitle: Text(
                 '设置',
                 style: TextStyle(
