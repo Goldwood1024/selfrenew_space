@@ -90,7 +90,13 @@ dependencies:
   reviews_slider: ^2.0.0
   wheel_slider: ^1.0.0
   introduction_screen: ^3.0.2
+  flutter_onboarding_slider: ^1.0.8
   cupertino_onboarding: ^1.1.1
+  pull_down_button: ^0.3.1
+  flutter_cupertino_datetime_picker: ^3.0.0
+  check_app_version: ^1.0.0+1
+  flutter_lazy_listview: ^1.0.1
+  pull_to_refresh: ^2.0.0
 
 #  concentric_transition: ^1.0.3
 
