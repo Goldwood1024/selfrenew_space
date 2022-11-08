@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/page-core/month_view_config.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-
-
 
 class Remind extends StatefulWidget {
   const Remind({super.key});
