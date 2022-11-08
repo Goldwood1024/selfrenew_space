@@ -2,21 +2,22 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitRepository {
   static String habitTableName = 'habit';
+
+  /// 建表语句
   static String ddl = '''
 create table if not exists $habitTableName
 (
-    id        INTEGER
-        PRIMARY KEY AUTOINCREMENT,
+    id        INTEGER PRIMARY KEY AUTOINCREMENT,        -- 主键
     title     TEXT    NOT NULL,           -- 标题
-    icon      TEXT    NOT NULL,           -- 图标地址
-    color     TEXT    NOT NULL,           -- 颜色
+    icons     TEXT    NOT NULL,           -- 图标
+    repeat    TEXT    NOT NULL,           -- 重复
+    target    TEXT    NOT NULL,           --目标
+    remind    TEXT    NOT NULL,           -- 提醒
+    hearten   TEXT    NOT NULL,           -- 鼓励语
     isAbandon INTEGER          default 0, -- 是否放弃 1: 已放弃 0: 有效
     startDate TEXT    NOT NULL,           -- 开始日期
-    hearten   TEXT    NOT NULL,           -- 鼓励语
-    max       INTEGER NOT NULL default 1, -- 最大值
-    min       INTEGER NOT NULL default 0,
-    isDeleted INTEGER NOT NULL default 0,
-    gmtDate   TEXT    NOT NULL
+    isDeleted INTEGER NOT NULL default 0, -- 是否删除 1: 删除
+    gmtDate   TEXT    NOT NULL            -- 创建日期
 );
   ''';
 
@@ -39,6 +40,11 @@ select * from $habitTableName where isDeleted=0
   Future<void> update(String col, String value, String id) async {
     String sql = 'update $habitTableName set $col=\'$value\' where id=$id';
     await SqliteProxy.database.rawUpdate(sql);
+  }
+
+  Future<void> updateById(Map<String, Object?> values, String id) async {
+    // String sql = 'update $habitTableName set $col=\'$value\' where id=$id';
+    await SqliteProxy.database.rawUpdate('sql');
   }
 
   Future<void> insertHabit(Map<String, Object?> values) async {

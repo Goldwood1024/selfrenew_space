@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-mobile/action/habit/form/repeat.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitForm extends StatefulWidget {
@@ -18,10 +19,13 @@ class _HabitFormState extends State<HabitForm> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController heartenEditingController = TextEditingController();
 
+  late bool isEdit;
+
   @override
   void initState() {
     super.initState();
 
+    isEdit = true;
     if (widget.params.isNotEmpty) {
       if (ObjectUtil.isNotEmpty(widget.params['key'])) {
         textEditingController.text = widget.params['title'];
@@ -48,16 +52,30 @@ class _HabitFormState extends State<HabitForm> {
         actions: [
           ActionBtn(
             onPressed: () async {
-              Map<String, Object?> values = {
-                "title": textEditingController.text,
-                "icon": "",
-                "color": "#000000",
-                "startDate": DateUtil.getNowDateMs(),
-                "hearten": heartenEditingController.text,
-                "max": 2,
-                "gmtDate": DateUtil.getNowDateMs(),
-              };
-              await habitRepository.insertHabit(values);
+              if (isEdit) {
+                Map<String, Object?> values = {
+                  "title": textEditingController.text,
+                  "icons": "",
+                  "repeat": "",
+                  "target": DateUtil.getNowDateMs(),
+                  "remind": DateUtil.getNowDateMs(),
+                  "hearten": heartenEditingController.text,
+                  "gmtDate": DateUtil.getNowDateMs(),
+                };
+
+                await habitRepository.updateById(values, '');
+              } else {
+                Map<String, Object?> values = {
+                  "title": textEditingController.text,
+                  "icons": "",
+                  "repeat": "",
+                  "target": DateUtil.getNowDateMs(),
+                  "remind": DateUtil.getNowDateMs(),
+                  "hearten": heartenEditingController.text,
+                  "gmtDate": DateUtil.getNowDateMs(),
+                };
+                await habitRepository.insertHabit(values);
+              }
 
               Routers.go(Routers.habit);
             },

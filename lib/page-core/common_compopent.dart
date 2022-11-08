@@ -385,7 +385,7 @@ class RoundCheckBox extends StatefulWidget {
     this.disabledColor,
     this.border,
     this.borderColor,
-    this.size,
+    this.size = 26,
     this.animationDuration,
     this.isRound = true,
     this.canCancel = false,
@@ -424,8 +424,10 @@ class _RoundCheckBoxState extends State<RoundCheckBox> {
   @override
   void initState() {
     _isChecked = widget.isChecked ?? false;
-    animationDuration =
-        widget.animationDuration ?? const Duration(milliseconds: 500);
+    animationDuration = widget.animationDuration ??
+        const Duration(
+          milliseconds: 500,
+        );
     size = widget.size ?? 40.0;
     checkedWidget = widget.checkedWidget ??
         Container(
