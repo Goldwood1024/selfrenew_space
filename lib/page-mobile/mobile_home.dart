@@ -38,6 +38,9 @@ class _MobileHomeState extends State<MobileHome>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
+
     return ScaffoldGradientBackground(
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),

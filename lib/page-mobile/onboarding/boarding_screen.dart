@@ -21,6 +21,9 @@ class _BoardingScreenState extends State<BoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
+
     return firstOpenApp
         ? OnBoardingSlider(
             finishButtonText: '开始专注',
