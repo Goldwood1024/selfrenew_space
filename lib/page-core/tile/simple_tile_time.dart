@@ -146,37 +146,57 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
                         : const Radius.circular(0),
                   ),
                 ),
-                child: Container(
-                  child: Column(
-                    children: [
-                      CupertinoTimerPicker(
-                        initialTimerDuration: Duration(
-                          seconds: widget.dateTime.second,
-                        ),
-                        mode: CupertinoTimerPickerMode.hm,
-                        onTimerDurationChanged: (Duration value) {
-                          print(value);
-
-                          setState(() {
-                            current = DateTime.fromMillisecondsSinceEpoch(
-                              value.inMilliseconds,
-                            );
-                          });
-                        },
+                child: Column(
+                  children: [
+                    expand ? SPHelper.getDefaultHeightBox() : SPHelper.empty,
+                    CupertinoTimerPicker(
+                      initialTimerDuration: Duration(
+                        seconds: widget.dateTime.second,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  expand = !expand;
-                                });
-                              },
+                      mode: CupertinoTimerPickerMode.hm,
+                      onTimerDurationChanged: (Duration value) {
+                        print(value);
+
+                        setState(() {
+                          current = DateTime.fromMillisecondsSinceEpoch(
+                            value.inMilliseconds,
+                          );
+                        });
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                expand = !expand;
+                              });
+                            },
+                            child: Text(
+                              '关闭',
+                              style: TextStyle(
+                                fontSize: SPHelper.sp(SPHelper.gapDp18),
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () {
+                              widget.onValueChanged!(current);
+
+                              setState(() {
+                                expand = false;
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.centerRight,
                               child: Text(
-                                '关闭',
+                                '确定',
                                 style: TextStyle(
                                   fontSize: SPHelper.sp(SPHelper.gapDp18),
                                   fontWeight: FontWeight.w500,
@@ -184,32 +204,11 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () {
-                                widget.onValueChanged!(current);
-
-                                setState(() {
-                                  expand = false;
-                                });
-                              },
-                              child: Container(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  '确定',
-                                  style: TextStyle(
-                                    fontSize: SPHelper.sp(SPHelper.gapDp18),
-                                    fontWeight: FontWeight.w500,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               )
             : SPHelper.empty,
