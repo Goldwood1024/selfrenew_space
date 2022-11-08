@@ -13,6 +13,10 @@ class DatetimeUtil {
     return '${(duration.inMinutes).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
+  static String getHorTime(DateTime dateTime) {
+    return '${(dateTime.hour).toString().padLeft(2, '0')}:${(dateTime.minute % 60).toString().padLeft(2, '0')}';
+  }
+
   static bool isSameDay(DateTime? a, DateTime? b) {
     if (a == null || b == null) {
       return false;

@@ -39,11 +39,11 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
   void initState() {
     super.initState();
     expand = false;
-    current = DateTime.now();
+    current = widget.dateTime;
   }
 
   String getTimer() {
-    return widget.dateTime.day.toString();
+    return DatetimeUtil.getHorTime(widget.dateTime);
   }
 
   @override
@@ -149,20 +149,19 @@ class _SimpleTileTimeState extends State<SimpleTileTime> {
                 child: Column(
                   children: [
                     expand ? SPHelper.getDefaultHeightBox() : SPHelper.empty,
-                    CupertinoTimerPicker(
-                      initialTimerDuration: Duration(
-                        seconds: widget.dateTime.second,
+                    SizedBox(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: CupertinoDatePicker(
+                        use24hFormat: true,
+                        initialDateTime: widget.dateTime,
+                        mode: CupertinoDatePickerMode.time,
+                        onDateTimeChanged: (DateTime value) {
+                          setState(() {
+                            current = value;
+                          });
+                        },
                       ),
-                      mode: CupertinoTimerPickerMode.hm,
-                      onTimerDurationChanged: (Duration value) {
-                        print(value);
-
-                        setState(() {
-                          current = DateTime.fromMillisecondsSinceEpoch(
-                            value.inMilliseconds,
-                          );
-                        });
-                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
