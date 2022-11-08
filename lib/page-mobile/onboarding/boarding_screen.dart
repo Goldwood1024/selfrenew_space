@@ -34,22 +34,23 @@ class _BoardingScreenState extends State<BoardingScreen> {
             isProgressTap: false,
             isBottomSafeArea: true,
             isTopSafeArea: true,
-            onDone: () {
-              Routers.go(Routers.mobileHome);
-            },
             next: Icon(
               CupertinoIcons.forward,
               color: Theme.of(context).primaryColor,
             ),
             done: Text(
-              '进入',
+              '退出',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).textTheme.labelSmall!.color,
               ),
             ),
-            showSkipButton: true,
+            onDone: () {
+              // TODO 写入文件
+              Routers.go(Routers.mobileHome);
+            },
+            showSkipButton: false,
             skip: const Text(
               '跳过',
               style: TextStyle(
@@ -58,8 +59,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 color: CupertinoColors.secondaryLabel,
               ),
             ),
-            curve: Curves.fastLinearToSlowEaseIn,
-            controlsMargin: const EdgeInsets.all(16),
+            controlsMargin: const EdgeInsets.fromLTRB(0, 0, 0, 30),
             pages: [
               PageViewModel(
                 footer: Container(),
@@ -92,6 +92,31 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 body:
                     "Instead of having to buy an entire share, invest any amount you want.",
                 image: _buildImage('img2.jpg'),
+                decoration: PageDecoration(
+                  footerPadding: EdgeInsets.zero,
+                  bodyAlignment: Alignment.center,
+                  imagePadding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  titleTextStyle: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).textTheme.labelSmall!.color!,
+                  ),
+                  bodyTextStyle: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.normal,
+                    color: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .color!
+                        .withOpacity(.8),
+                  ),
+                ),
+              ),
+              PageViewModel(
+                title: "Fractional shares",
+                body:
+                    "Instead of having to buy an entire share, invest any amount you want.",
+                image: _buildImage('img3.jpg'),
                 decoration: PageDecoration(
                   footerPadding: EdgeInsets.zero,
                   bodyAlignment: Alignment.center,
