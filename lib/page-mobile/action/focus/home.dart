@@ -96,9 +96,9 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         ),
         leadingWidth: SPHelper.leadingWidth,
         leading: BackBtn(
-          title: '概览',
+          title: '计划',
           onPressed: () {
-            Routers.pop();
+            Routers.go(Routers.mobileHome);
           },
         ),
         actions: [],

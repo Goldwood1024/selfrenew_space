@@ -83,7 +83,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         leading: BackBtn(
           title: '计划',
           onPressed: () {
-            Routers.go(Routers.root);
+            Routers.go(Routers.mobileHome);
           },
         ),
         actions: [
