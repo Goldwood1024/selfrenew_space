@@ -9,23 +9,15 @@ class BoardingScreen extends StatefulWidget {
 }
 
 class _BoardingScreenState extends State<BoardingScreen> {
-  late bool firstOpenApp;
   final double width = 400;
+  final Color kDarkBlueColor = const Color(0xFF053149);
+  late bool firstOpenApp;
 
   @override
   void initState() {
     super.initState();
     firstOpenApp = true;
   }
-
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset(
-      'assets/splash/$assetName',
-      width: width,
-    );
-  }
-
-  final Color kDarkBlueColor = const Color(0xFF053149);
 
   @override
   Widget build(BuildContext context) {
