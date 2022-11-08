@@ -92,7 +92,7 @@ dependencies:
   flutter_onboarding_slider: ^1.0.8
   cupertino_onboarding: ^1.1.1
   pull_down_button: ^0.3.1
-  flutter_cupertino_datetime_picker: ^3.0.0
+  flutter_cupertino_date_picker_fork: ^1.0.7
   check_app_version: ^1.0.0+1
   flutter_lazy_listview: ^1.0.1
   pull_to_refresh: ^2.0.0

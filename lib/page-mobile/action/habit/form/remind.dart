@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/page-core/tile/simple_tile_time.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Remind extends StatefulWidget {
@@ -111,6 +112,9 @@ class _RemindState extends State<Remind> {
               ),
               showArrow: false,
             ),
+            SimpleTileTime(
+              title: '11',
+            )
           ],
         ),
       ),
