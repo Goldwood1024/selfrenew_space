@@ -60,7 +60,7 @@ class BottomDialog {
     Widget child,
   ) {
     showCupertinoModalBottomSheet(
-      enableDrag: false,
+      enableDrag: true,
       context: context,
       builder: (_) {
         return child;
