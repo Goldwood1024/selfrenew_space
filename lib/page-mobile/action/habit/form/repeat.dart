@@ -14,8 +14,6 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   late PageController pageController = PageController();
   late List<DateTime> selectedDates;
 
-  List<RepeatDay> repeatDays = [];
-
   @override
   void initState() {
     super.initState();
@@ -32,22 +30,27 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
     selectedDates = [];
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      repeatDays.clear();
-      setState(() {
-        repeatDays.add(RepeatDay(day: '周一', value: '1'));
-        repeatDays.add(RepeatDay(day: '周二', value: '2'));
-        repeatDays.add(RepeatDay(day: '周三', value: '3'));
-        repeatDays.add(RepeatDay(day: '周四', value: '4'));
-        repeatDays.add(RepeatDay(day: '周五', value: '5'));
-        repeatDays.add(RepeatDay(day: '周六', value: '6'));
-        repeatDays.add(RepeatDay(day: '周日', value: '7'));
-      });
+      HabitFormProvider update = Provider.of(context, listen: false);
+      update.query();
+
+      jump(Provider.of(context).getRepeatType());
     });
+  }
+
+  jump(int index) {
+    if (index == tabController.index) {
+      return;
+    }
+
+    pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
     HabitFormProvider habitFormProvider = Provider.of(context);
+    HabitFormProvider update = Provider.of(context, listen: false);
+
+    List<RepeatDay> repeatDays = habitFormProvider.getRepeatDays();
 
     return ScaffoldGradientBackground(
       appBar: AppBar(
@@ -59,6 +62,8 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
           ActionBtn(
             title: '确定',
             onPressed: () {
+              update.updateRepeatType(tabController.index);
+
               Navigator.pop(context);
             },
           )
@@ -125,6 +130,9 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
                         repeatDays[index].selected =
                             !repeatDays[index].selected;
                       });
+
+                      // 更新值
+                      update.updateRepeatDay(index, repeatDays[index].selected);
                     },
                     topRadius: index == 0,
                     bottomRadius: index == repeatDays.length - 1,
@@ -138,33 +146,31 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            Container(
-              child: MonthViewPicker(
-                config: MonthViewConfig(
-                  dayTextStyle: TextStyle(
-                    fontSize: 18,
-                    color: Theme.of(context).textTheme.labelSmall!.color,
-                  ),
-                  todayTextStyle: TextStyle(
-                    fontSize: 18,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  selectedDayTextStyle: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  selectedDayHighlightColor: Theme.of(context).primaryColor,
-                  controlsHeight: 56,
+            MonthViewPicker(
+              config: MonthViewConfig(
+                dayTextStyle: TextStyle(
+                  fontSize: 18,
+                  color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
-                displayedMonth: DateTime(202301),
-                selectedDates: selectedDates,
-                onChanged: (DateTime value) {
-                  setState(() {
-                    selectedDates.add(value);
-                  });
-                },
+                todayTextStyle: TextStyle(
+                  fontSize: 18,
+                  color: Theme.of(context).primaryColor,
+                ),
+                selectedDayTextStyle: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+                selectedDayHighlightColor: Theme.of(context).primaryColor,
+                controlsHeight: 56,
               ),
+              displayedMonth: DateTime(202301),
+              selectedDates: habitFormProvider.getSelectedDates(),
+              onChanged: (DateTime value) {
+                setState(() {
+                  update.updateSelectedDates(value);
+                });
+              },
             ),
             Container(),
           ],
