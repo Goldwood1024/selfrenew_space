@@ -42,8 +42,8 @@ class _BoardingScreenState extends State<BoardingScreen> {
             ),
             controllerColor: Theme.of(context).primaryColor,
             totalPage: 3,
-            headerBackgroundColor: Colors.white,
-            pageBackgroundColor: Colors.white,
+            headerBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            pageBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
             imageHorizontalOffset:
                 MediaQuery.of(context).size.width / 2 - width / 2,
             background: [

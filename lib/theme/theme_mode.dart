@@ -9,7 +9,7 @@ class AppThemeMode {
 
     return ThemeData().copyWith(
       primaryColor: HexColor(provider.getAccentColor()),
-      scaffoldBackgroundColor: CupertinoColors.systemGroupedBackground,
+      scaffoldBackgroundColor: HexColor('#f2f6fe'),
       backgroundColor: CupertinoColors.systemBackground,
       useMaterial3: true,
       appBarTheme: const AppBarTheme().copyWith(
