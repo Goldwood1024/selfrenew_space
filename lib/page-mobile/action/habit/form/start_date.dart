@@ -77,9 +77,9 @@ class _StartDateState extends State<StartDate> {
               size: 28,
               color: Theme.of(context).primaryColor,
             ),
-            titleTextStyle: const TextStyle(
+            titleTextStyle: TextStyle(
               fontSize: 20.0,
-              color: Colors.black,
+              color: Theme.of(context).textTheme.labelSmall!.color,
             ),
           ),
           daysOfWeekStyle: DaysOfWeekStyle(
