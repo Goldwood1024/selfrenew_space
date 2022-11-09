@@ -16,7 +16,7 @@ class HabitHome extends StatefulWidget {
 class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
-  late bool showFloatBtn = false;
+  late bool _showFloatBtn = false;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
     );
 
-    showFloatBtn = true;
+    _showFloatBtn = true;
     super.initState();
   }
 
@@ -46,7 +46,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       floatingActionButton: Visibility(
-        visible: showFloatBtn,
+        visible: _showFloatBtn,
         maintainState: true,
         replacement: SPHelper.empty,
         child: FloatingActionBubble(
@@ -119,15 +119,16 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           topRight: Radius.circular(12.0),
         ),
         onPanelSlide: (_) {
-          if (_ > 0 && showFloatBtn) {
+          if (_ > 0 && _showFloatBtn) {
             setState(() {
-              showFloatBtn = false;
+              _showFloatBtn = false;
+              _animationController.reverse();
             });
           }
         },
         onPanelClosed: () {
           setState(() {
-            showFloatBtn = true;
+            _showFloatBtn = true;
           });
         },
         header: SizedBox(
