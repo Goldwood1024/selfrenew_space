@@ -22,7 +22,7 @@ class _MobileSettingState extends State<MobileSetting> {
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               border: const Border(
                 bottom: BorderSide(
-                  color: CupertinoColors.lightBackgroundGray,
+                  color: Colors.transparent,
                   width: 0.0,
                 ),
               ),

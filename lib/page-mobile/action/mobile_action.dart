@@ -51,7 +51,7 @@ class _MobileActionState extends State<MobileAction> {
             CupertinoSliverNavigationBar(
               border: const Border(
                 bottom: BorderSide(
-                  color: CupertinoColors.lightBackgroundGray,
+                  color: Colors.transparent,
                   width: 0.0,
                 ),
               ),
