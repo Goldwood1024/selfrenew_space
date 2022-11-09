@@ -36,6 +36,8 @@ class _HabitFormState extends State<HabitForm> {
 
   @override
   Widget build(BuildContext context) {
+    HabitFormProvider habitFormProvider = Provider.of(context);
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         title: const AppBarText(
@@ -200,7 +202,7 @@ class _HabitFormState extends State<HabitForm> {
                 },
                 title: '开始日期',
                 trailing: Text(
-                  '1月21',
+                  DatetimeUtil.getDateYMD(habitFormProvider.getStartDateTime()),
                   style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),

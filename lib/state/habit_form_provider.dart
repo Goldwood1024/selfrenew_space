@@ -11,11 +11,21 @@ class HabitFormProvider extends ChangeNotifier {
   late String target;
   late String remind;
   late String hearten;
-  late String startDate;
+  late DateTime startDate = DateTime.parse('2022-11-11');
 
   // 重复
   late RepeatModel repeatModel = RepeatModel();
   late RemindModel remindModel = RemindModel();
+
+  DateTime getStartDateTime() {
+    return startDate;
+  }
+
+  void updateStartDateTime(DateTime _) {
+    startDate = _;
+
+    notifyListeners();
+  }
 
   List<DateTime> getRemindDates() {
     return remindModel.list;

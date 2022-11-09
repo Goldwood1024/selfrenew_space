@@ -17,6 +17,10 @@ class DatetimeUtil {
     return '${(dateTime.hour).toString().padLeft(2, '0')}:${(dateTime.minute % 60).toString().padLeft(2, '0')}';
   }
 
+  static String getDateYMD(DateTime dateTime) {
+    return DateUtil.formatDate(dateTime, format: 'yyyy-MM-dd');
+  }
+
   static bool isSameDay(DateTime? a, DateTime? b) {
     if (a == null || b == null) {
       return false;
