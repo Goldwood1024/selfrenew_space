@@ -17,6 +17,8 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
   late bool _showFloatBtn = false;
+  late TabController tabController;
+  late PageController pageController = PageController();
 
   @override
   void initState() {
@@ -31,6 +33,15 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         parent: _animationController,
       ),
     );
+
+    tabController = TabController(
+      length: 3,
+      vsync: this,
+    );
+
+    tabController.addListener(() {
+      pageController.jumpToPage(tabController.index);
+    });
 
     _showFloatBtn = true;
     super.initState();
@@ -105,7 +116,60 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       body: SlidingUpPanel(
         maxHeight: MediaQuery.of(context).size.height * 0.86,
         panelBuilder: () {
-          return const Completed();
+          return Scaffold(
+            body: PageView(
+              controller: pageController,
+              children: const [
+                Completed(),
+                Abandon(),
+              ],
+            ),
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              toolbarHeight: 20,
+              bottom: TabBar(
+                controller: tabController,
+                labelColor: Theme.of(context).textTheme.labelSmall!.color,
+                physics: const NeverScrollableScrollPhysics(),
+                splashFactory: NoSplash.splashFactory,
+                labelPadding: EdgeInsets.fromLTRB(
+                  0,
+                  0,
+                  0,
+                  SPHelper.width(SPHelper.gapDp10),
+                ),
+                labelStyle: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.fontSp16),
+                  fontWeight: FontWeight.w600,
+                ),
+                unselectedLabelStyle: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.fontSp16),
+                  fontWeight: FontWeight.w500,
+                ),
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Theme.of(context).primaryColor,
+                indicatorPadding: EdgeInsets.fromLTRB(
+                  SPHelper.width(SPHelper.gapDp24),
+                  0,
+                  SPHelper.width(SPHelper.gapDp24),
+                  0,
+                ),
+                tabs: [
+                  ExtendedTab(
+                    size: SPHelper.width(100),
+                    text: '已完成',
+                    scrollDirection: Axis.vertical,
+                  ),
+                  ExtendedTab(
+                    size: SPHelper.width(100),
+                    text: '已放弃',
+                    scrollDirection: Axis.vertical,
+                  ),
+                ],
+              ),
+            ),
+          );
         },
         boxShadow: const <BoxShadow>[
           BoxShadow(
@@ -303,7 +367,7 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    expand = false;
+    expand = true;
   }
 
   @override
@@ -315,52 +379,10 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      appBar: AppBar(
-        toolbarHeight: 20,
-        automaticallyImplyLeading: false,
-      ),
       body: Padding(
         padding: SPHelper.pagePaddingHorizontal,
         child: Column(
           children: [
-            SPHelper.getDefaultHeightBox(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '已完成',
-                  style: TextStyle(
-                    fontSize: SPHelper.sp(SPHelper.fontSp16),
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).textTheme.labelSmall!.color,
-                  ),
-                ),
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    setState(() {
-                      expand = !expand;
-                    });
-                  },
-                  child: Container(
-                    width: 40,
-                    height: 20,
-                    alignment: Alignment.centerRight,
-                    child: expand
-                        ? Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 28,
-                            color: Theme.of(context).primaryColor,
-                          )
-                        : Icon(
-                            Icons.keyboard_arrow_right,
-                            size: 28,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                  ),
-                )
-              ],
-            ),
             SPHelper.getHeightBox(SPHelper.gapDp12),
             ListView.builder(
               shrinkWrap: true,
@@ -455,7 +477,7 @@ class _AbandonState extends State<Abandon> {
   @override
   void initState() {
     super.initState();
-    expand = false;
+    expand = true;
   }
 
   @override
@@ -466,122 +488,88 @@ class _AbandonState extends State<Abandon> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '已放弃',
-                style: TextStyle(
-                  fontSize: SPHelper.sp(SPHelper.fontSp16),
-                  fontWeight: FontWeight.w600,
-                  color: Theme.of(context).textTheme.labelSmall!.color,
-                ),
-              ),
-              GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: () {
-                  setState(() {
-                    expand = !expand;
-                  });
-                },
-                child: Container(
-                  width: 40,
-                  height: 20,
-                  alignment: Alignment.centerRight,
-                  child: expand
-                      ? Icon(
-                          Icons.keyboard_arrow_down,
-                          size: 28,
-                          color: Theme.of(context).primaryColor,
-                        )
-                      : Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 28,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                ),
-              )
-            ],
-          ),
-          SPHelper.getHeightBox(SPHelper.gapDp12),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: expand ? 1 : 0,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) => Container(
-              margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-              child: HabitHomeTile(
-                title: '八段锦八段锦',
-                abandon: true,
-                subTitle: Column(
-                  children: [
-                    SPHelper.getHeightBox(SPHelper.gapDp4),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          CupertinoIcons.timer,
-                          size: SPHelper.sp(SPHelper.fontSp18),
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                        SPHelper.getWidthBox(SPHelper.gapDp8),
-                        Text(
-                          '每天',
-                          style: TextStyle(
+    return ScaffoldGradientBackground(
+      body: Padding(
+        padding: SPHelper.pagePaddingHorizontal,
+        child: Column(
+          children: [
+            SPHelper.getHeightBox(SPHelper.gapDp12),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: expand ? 1 : 0,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (_, index) => Container(
+                margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: HabitHomeTile(
+                  title: '八段锦八段锦',
+                  abandon: true,
+                  subTitle: Column(
+                    children: [
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.timer,
+                            size: SPHelper.sp(SPHelper.fontSp18),
                             color: CupertinoColors.systemGrey2,
-                            fontSize: SPHelper.sp(SPHelper.fontSp15),
                           ),
-                        ),
-                      ],
-                    ),
-                    SPHelper.getHeightBox(SPHelper.gapDp4),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          CupertinoIcons.app_badge,
-                          size: SPHelper.sp(SPHelper.fontSp18),
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                        SPHelper.getWidthBox(SPHelper.gapDp8),
-                        Text(
-                          '08:00',
-                          style: TextStyle(
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '每天',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SPHelper.getHeightBox(SPHelper.gapDp4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.app_badge,
+                            size: SPHelper.sp(SPHelper.fontSp18),
                             color: CupertinoColors.systemGrey2,
-                            fontSize: SPHelper.sp(SPHelper.fontSp15),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                topRadius: true,
-                bottomRadius: true,
-                leading: const Icon(
-                  Icons.access_time_filled,
-                  size: 28,
-                ),
-                trailing: Row(
-                  children: List.generate(
-                    7,
-                    (index) => const SleekCounter(
-                      min: 0,
-                      max: 10,
-                      sm: true,
-                      value: 7,
-                      fail: false,
-                      abandon: true,
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            '08:00',
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  topRadius: true,
+                  bottomRadius: true,
+                  leading: const Icon(
+                    Icons.access_time_filled,
+                    size: 28,
+                  ),
+                  trailing: Row(
+                    children: List.generate(
+                      7,
+                      (index) => const SleekCounter(
+                        min: 0,
+                        max: 10,
+                        sm: true,
+                        value: 7,
+                        fail: false,
+                        abandon: true,
+                      ),
                     ),
                   ),
+                  id: '',
                 ),
-                id: '',
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
