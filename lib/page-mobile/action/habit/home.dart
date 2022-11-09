@@ -15,6 +15,7 @@ class HabitHome extends StatefulWidget {
 class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
+  late bool showFloatBtn = false;
 
   @override
   void initState() {
@@ -30,51 +31,54 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
     );
 
+    showFloatBtn = true;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      floatingActionButton: FloatingActionBubble(
-        items: [
-          Bubble(
-            title: "创建好习惯",
-            iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor,
-            icon: CupertinoIcons.loop,
-            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-            onPress: () {
-              _animationController.reverse();
-              Routers.pushParams(Routers.habitSelect, {
-                "good": '1',
-              });
-            },
-          ),
-          Bubble(
-            title: "消灭坏习惯",
-            iconColor: Colors.white,
-            bubbleColor: Theme.of(context).primaryColor,
-            icon: CupertinoIcons.nosign,
-            titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-            onPress: () {
-              _animationController.reverse();
-              Routers.pushParams(Routers.habitSelect, {
-                "good": '0',
-              });
-            },
-          ),
-        ],
-        onPress: () {
-          _animationController.isCompleted
-              ? _animationController.reverse()
-              : _animationController.forward();
-        },
-        iconColor: Colors.white,
-        iconData: Icons.add,
-        backGroundColor: Theme.of(context).primaryColor,
-        animation: _animation,
-      ),
+      floatingActionButton: showFloatBtn
+          ? FloatingActionBubble(
+              items: [
+                Bubble(
+                  title: "创建好习惯",
+                  iconColor: Colors.white,
+                  bubbleColor: Theme.of(context).primaryColor,
+                  icon: CupertinoIcons.loop,
+                  titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+                  onPress: () {
+                    _animationController.reverse();
+                    Routers.pushParams(Routers.habitSelect, {
+                      "good": '1',
+                    });
+                  },
+                ),
+                Bubble(
+                  title: "消灭坏习惯",
+                  iconColor: Colors.white,
+                  bubbleColor: Theme.of(context).primaryColor,
+                  icon: CupertinoIcons.nosign,
+                  titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+                  onPress: () {
+                    _animationController.reverse();
+                    Routers.pushParams(Routers.habitSelect, {
+                      "good": '0',
+                    });
+                  },
+                ),
+              ],
+              onPress: () {
+                _animationController.isCompleted
+                    ? _animationController.reverse()
+                    : _animationController.forward();
+              },
+              iconColor: Colors.white,
+              iconData: Icons.add,
+              backGroundColor: Theme.of(context).primaryColor,
+              animation: _animation,
+            )
+          : SPHelper.empty,
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
         title: const AppBarText(
@@ -104,34 +108,33 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           topLeft: Radius.circular(12.0),
           topRight: Radius.circular(12.0),
         ),
+        onPanelSlide: (_) {
+          if (_ > 0 && showFloatBtn) {
+            setState(() {
+              showFloatBtn = false;
+            });
+          }
+        },
+        onPanelClosed: () {
+          setState(() {
+            showFloatBtn = true;
+          });
+        },
         header: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ForceDraggableWidget(
-                child: SizedBox(
-                  height: 40,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(
-                        height: 12.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: 60,
-                            height: 6,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
+                  child: Container(
+                    width: 60,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
                   ),
                 ),
               ),
