@@ -126,9 +126,9 @@ flutter:
     - 'assets/icons/delete.svg'
     - 'assets/icons/habit.svg'
     - 'assets/icons/focus.svg'
-    - 'assets/splash/img1.jpg'
-    - 'assets/splash/img2.jpg'
-    - 'assets/splash/img3.jpg'
+    - 'assets/splash/每日专注.svg'
+    - 'assets/splash/每日习惯.svg'
+    - 'assets/splash/图表.svg'
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

@@ -44,40 +44,45 @@ class _BoardingScreenState extends State<BoardingScreen> {
             totalPage: 3,
             headerBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
             pageBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            imageHorizontalOffset:
-                MediaQuery.of(context).size.width / 2 - width / 2,
             background: [
-              Align(
-                child: Image.asset(
-                  'assets/splash/img1.jpg',
-                  width: width,
-                  height: width,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, MediaQuery.of(context).size.height * 0.1, 0, 0),
+                child: SvgPicture.asset(
+                  'assets/splash/每日习惯.svg',
+                  width: MediaQuery.of(context).size.width,
                 ),
               ),
-              Image.asset(
-                'assets/splash/img2.jpg',
-                height: width,
-                width: width,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, MediaQuery.of(context).size.height * 0.1, 0, 0),
+                child: SvgPicture.asset(
+                  'assets/splash/每日专注.svg',
+                  width: MediaQuery.of(context).size.width,
+                ),
               ),
-              Image.asset(
-                'assets/splash/img3.jpg',
-                height: width,
-                width: width,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, MediaQuery.of(context).size.height * 0.1, 0, 0),
+                child: SvgPicture.asset(
+                  'assets/splash/图表.svg',
+                  width: MediaQuery.of(context).size.width,
+                ),
               ),
             ],
             speed: 1,
             pageBodies: const [
               BoardingBodyPage(
-                title: 'On your way...',
+                title: '习惯养成',
+                bodyText: 'Sliding with animation',
+              ),
+              BoardingBodyPage(
+                title: '每日专注',
                 bodyText:
                     'to find the perfect looking Onboarding for your app?',
               ),
               BoardingBodyPage(
-                title: 'You’ve reached your destination.',
-                bodyText: 'Sliding with animation',
-              ),
-              BoardingBodyPage(
-                title: 'Start now!',
+                title: '丰富图表',
                 bodyText:
                     'Where everything is possible and customize your onboarding.',
               ),
@@ -106,7 +111,7 @@ class BoardingBodyPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
+        children: [
           const SizedBox(
             height: 480,
           ),
