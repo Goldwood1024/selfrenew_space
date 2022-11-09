@@ -23,10 +23,13 @@ class _MobileHomeState extends State<MobileHome>
 
     // 加载数据
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      showCupertinoModalBottomSheet(
-        context: context,
-        builder: (_) => const Update(),
-      );
+      Future.delayed(const Duration(seconds: 3), () {
+        // 更新详情
+        showCupertinoModalBottomSheet(
+          context: context,
+          builder: (_) => const Update(),
+        );
+      });
     });
   }
 
