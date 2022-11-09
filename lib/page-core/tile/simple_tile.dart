@@ -141,10 +141,13 @@ class _SimpleTileState extends State<SimpleTile> {
                             ),
                           ),
                           widget.showDivider
-                              ? const Divider(
-                                  color:
-                                      CupertinoColors.systemGroupedBackground,
-                                  height: 1,
+                              ? Divider(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall!
+                                      .color!
+                                      .withOpacity(.1),
+                                  height: .2,
                                 )
                               : SPHelper.empty
                         ],

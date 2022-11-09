@@ -33,7 +33,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
       HabitFormProvider update = Provider.of(context, listen: false);
       update.query();
 
-      jump(Provider.of(context).getRepeatType());
+      // jump(Provider.of(context).getRepeatType());
     });
   }
 

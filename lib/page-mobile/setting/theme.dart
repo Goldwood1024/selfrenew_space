@@ -89,6 +89,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
                 color: Theme.of(context).textTheme.labelSmall!.color,
               ),
               bottomRadius: true,
+              showDivider: false,
               title: '深色',
               showArrow: false,
               onPressed: () {
