@@ -8,17 +8,18 @@ class StartDate extends StatefulWidget {
 }
 
 class _StartDateState extends State<StartDate> {
-  DateTime _selectedDay = DateTime.now();
-
+  late DateTime _selectedDay;
   static final kToday = DateTime.now();
-  final kFirstDay = DateTime(kToday.year, kToday.month - 10, kToday.day);
-  final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
+  final kFirstDay = DateTime(2022, 1, 1);
+  final kLastDay = DateTime(2030, 12, 31);
 
   @override
   void initState() {
     super.initState();
-    _selectedDay = Provider.of<HabitFormProvider>(context, listen: false)
-        .getStartDateTime();
+    _selectedDay = Provider.of<HabitFormProvider>(
+      context,
+      listen: false,
+    ).getStartDateTime();
   }
 
   @override
