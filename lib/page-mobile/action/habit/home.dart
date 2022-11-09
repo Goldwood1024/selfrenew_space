@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
+import 'package:selfrenew_space/page-core/floating_button_custom_location.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/habit_provider.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
@@ -38,47 +39,56 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      floatingActionButton: showFloatBtn
-          ? FloatingActionBubble(
-              items: [
-                Bubble(
-                  title: "创建好习惯",
-                  iconColor: Colors.white,
-                  bubbleColor: Theme.of(context).primaryColor,
-                  icon: CupertinoIcons.loop,
-                  titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-                  onPress: () {
-                    _animationController.reverse();
-                    Routers.pushParams(Routers.habitSelect, {
-                      "good": '1',
-                    });
-                  },
-                ),
-                Bubble(
-                  title: "消灭坏习惯",
-                  iconColor: Colors.white,
-                  bubbleColor: Theme.of(context).primaryColor,
-                  icon: CupertinoIcons.nosign,
-                  titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-                  onPress: () {
-                    _animationController.reverse();
-                    Routers.pushParams(Routers.habitSelect, {
-                      "good": '0',
-                    });
-                  },
-                ),
-              ],
-              onPress: () {
-                _animationController.isCompleted
-                    ? _animationController.reverse()
-                    : _animationController.forward();
-              },
+      floatingActionButtonLocation: FloatingButtonCustomLocation(
+        FloatingActionButtonLocation.endFloat,
+        offsetY: -80,
+        offsetX: -0,
+      ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: Visibility(
+        visible: showFloatBtn,
+        maintainState: true,
+        replacement: SPHelper.empty,
+        child: FloatingActionBubble(
+          items: [
+            Bubble(
+              title: "创建好习惯",
               iconColor: Colors.white,
-              iconData: Icons.add,
-              backGroundColor: Theme.of(context).primaryColor,
-              animation: _animation,
-            )
-          : SPHelper.empty,
+              bubbleColor: Theme.of(context).primaryColor,
+              icon: CupertinoIcons.loop,
+              titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+              onPress: () {
+                _animationController.reverse();
+                Routers.pushParams(Routers.habitSelect, {
+                  "good": '1',
+                });
+              },
+            ),
+            Bubble(
+              title: "消灭坏习惯",
+              iconColor: Colors.white,
+              bubbleColor: Theme.of(context).primaryColor,
+              icon: CupertinoIcons.nosign,
+              titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+              onPress: () {
+                _animationController.reverse();
+                Routers.pushParams(Routers.habitSelect, {
+                  "good": '0',
+                });
+              },
+            ),
+          ],
+          onPress: () {
+            _animationController.isCompleted
+                ? _animationController.reverse()
+                : _animationController.forward();
+          },
+          iconColor: Colors.white,
+          iconData: Icons.add,
+          backGroundColor: Theme.of(context).primaryColor,
+          animation: _animation,
+        ),
+      ),
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
         title: const AppBarText(
