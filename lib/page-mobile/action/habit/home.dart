@@ -158,8 +158,8 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             children: [
               SPHelper.getDefaultHeightBox(),
               const Underway(),
-              SPHelper.getHeightBox(36),
-              const Abandon()
+              // SPHelper.getHeightBox(36),
+              // const Abandon()
             ],
           ),
         ),
