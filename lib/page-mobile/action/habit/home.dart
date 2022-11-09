@@ -35,7 +35,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
     );
 
     tabController = TabController(
-      length: 3,
+      length: 2,
       vsync: this,
     );
 
@@ -126,18 +126,14 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             ),
             appBar: AppBar(
               automaticallyImplyLeading: false,
-              toolbarHeight: 20,
+              toolbarHeight: SPHelper.height(32),
               bottom: TabBar(
                 controller: tabController,
                 labelColor: Theme.of(context).textTheme.labelSmall!.color,
                 physics: const NeverScrollableScrollPhysics(),
                 splashFactory: NoSplash.splashFactory,
                 labelPadding: EdgeInsets.fromLTRB(
-                  0,
-                  0,
-                  0,
-                  SPHelper.width(SPHelper.gapDp10),
-                ),
+                    0, 0, 0, SPHelper.width(SPHelper.gapDp10)),
                 labelStyle: TextStyle(
                   fontSize: SPHelper.sp(SPHelper.fontSp16),
                   fontWeight: FontWeight.w600,
@@ -202,7 +198,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             children: [
               ForceDraggableWidget(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
                   child: Container(
                     width: 60,
                     height: 4,
