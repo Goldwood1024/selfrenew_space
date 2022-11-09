@@ -3,6 +3,7 @@ import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/habit_provider.dart';
+import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
 class HabitHome extends StatefulWidget {
   const HabitHome({super.key});
@@ -86,46 +87,62 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             Routers.go(Routers.mobileHome);
           },
         ),
-        actions: [
-          // ActionIconBtn(
-          //   icon: const Icon(
-          //     CupertinoIcons.slider_horizontal_3,
-          //   ),
-          //   onPressed: () {
-          //     BottomDialog.showModalBottomSheet(
-          //       context,
-          //       ScaffoldGradientBackground(
-          //         appBar: AppBar(
-          //           automaticallyImplyLeading: false,
-          //           title: const AppBarText(
-          //             title: '设置',
-          //           ),
-          //           actions: [
-          //             ActionBtn(
-          //               title: '确定',
-          //               onPressed: () {
-          //                 Navigator.pop(context);
-          //               },
-          //             )
-          //           ],
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // )
-        ],
       ),
-      body: Padding(
-        padding: SPHelper.pagePaddingHorizontal,
-        child: ListView(
-          children: [
-            SPHelper.getDefaultHeightBox(),
-            const Underway(),
-            SPHelper.getHeightBox(36),
-            const Completed(),
-            SPHelper.getHeightBox(36),
-            const Abandon()
-          ],
+      body: SlidingUpPanel(
+        maxHeight: MediaQuery.of(context).size.height * 0.9,
+        panelBuilder: () {
+          return const Completed();
+        },
+        boxShadow: [],
+        disableDraggableOnScrolling: true,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12.0),
+          topRight: Radius.circular(12.0),
+        ),
+        header: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ForceDraggableWidget(
+                child: SizedBox(
+                  height: 40,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            width: 60,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: Padding(
+          padding: SPHelper.pagePaddingHorizontal,
+          child: ListView(
+            children: [
+              SPHelper.getDefaultHeightBox(),
+              const Underway(),
+              SPHelper.getHeightBox(36),
+              const Abandon()
+            ],
+          ),
         ),
       ),
     );
@@ -322,7 +339,7 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: expand ? 2 : 0,
+            itemCount: expand ? 0 : 0,
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
               child: HabitHomeTile(
