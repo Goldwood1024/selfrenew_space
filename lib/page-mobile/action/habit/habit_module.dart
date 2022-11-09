@@ -81,7 +81,12 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
           ChipEmpty(
             options: options,
             onPressed: (_) {
-              print(_);
+              TipChip chip = options
+                  .firstWhere((element) => element.value == _.toString());
+              Routers.pushParams(Routers.habitForm, {
+                "key": chip.value,
+                "title": chip.title,
+              });
             },
           )
         ],

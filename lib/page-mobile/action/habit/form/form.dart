@@ -31,6 +31,10 @@ class _HabitFormState extends State<HabitForm> {
       } else if (ObjectUtil.isNotEmpty(widget.params['id'])) {
         textEditingController.text = '22';
       }
+
+      heartenEditingController.text = Global.randomHearten();
+    } else {
+      heartenEditingController.text = Global.randomHearten();
     }
   }
 
