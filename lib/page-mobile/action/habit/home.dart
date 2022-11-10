@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
+import 'package:selfrenew_space/page-core/custom_segmented.dart';
 import 'package:selfrenew_space/page-core/floating_button_custom_location.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/habit_provider.dart';
@@ -34,14 +35,14 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
     );
 
-    tabController = TabController(
-      length: 2,
-      vsync: this,
-    );
-
-    tabController.addListener(() {
-      pageController.jumpToPage(tabController.index);
-    });
+    // tabController = TabController(
+    //   length: 2,
+    //   vsync: this,
+    // );
+    //
+    // tabController.addListener(() {
+    //   pageController.jumpToPage(tabController.index);
+    // });
 
     _showFloatBtn = true;
     super.initState();
@@ -127,42 +128,27 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               toolbarHeight: SPHelper.height(32),
-              bottom: TabBar(
-                controller: tabController,
-                labelColor: Theme.of(context).textTheme.labelSmall!.color,
-                physics: const NeverScrollableScrollPhysics(),
-                splashFactory: NoSplash.splashFactory,
-                labelPadding: EdgeInsets.fromLTRB(
-                    0, 0, 0, SPHelper.width(SPHelper.gapDp10)),
-                labelStyle: TextStyle(
-                  fontSize: SPHelper.sp(SPHelper.fontSp16),
-                  fontWeight: FontWeight.w600,
-                ),
-                unselectedLabelStyle: TextStyle(
-                  fontSize: SPHelper.sp(SPHelper.fontSp16),
-                  fontWeight: FontWeight.w500,
-                ),
-                overlayColor: MaterialStateProperty.all(Colors.transparent),
-                indicatorSize: TabBarIndicatorSize.label,
-                indicatorColor: Theme.of(context).primaryColor,
-                indicatorPadding: EdgeInsets.fromLTRB(
-                  SPHelper.width(SPHelper.gapDp24),
-                  0,
-                  SPHelper.width(SPHelper.gapDp24),
-                  0,
-                ),
-                tabs: [
-                  ExtendedTab(
-                    size: SPHelper.width(100),
-                    text: '已完成',
-                    scrollDirection: Axis.vertical,
+              bottom: CustomSegment(
+                initialValue: 0,
+                onValueChanged: (int value) {
+                  pageController.jumpToPage(value);
+                },
+                children: const {
+                  0: Text(
+                    '已完成',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
                   ),
-                  ExtendedTab(
-                    size: SPHelper.width(100),
-                    text: '已放弃',
-                    scrollDirection: Axis.vertical,
+                  1: Text(
+                    '已放弃',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
                   ),
-                ],
+                },
               ),
             ),
           );
