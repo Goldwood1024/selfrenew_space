@@ -60,15 +60,16 @@ class _HabitFormState extends State<HabitForm> {
               if (isEdit) {
                 Map<String, Object?> values = {
                   "title": textEditingController.text,
-                  "icons": "",
-                  "repeat": "",
-                  "target": DateUtil.getNowDateMs(),
-                  "remind": DateUtil.getNowDateMs(),
+                  "icons": "1",
+                  "repeat": "1",
+                  "target": '1',
+                  "remind": '1',
+                  "startDate": '1',
                   "hearten": heartenEditingController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };
 
-                await habitRepository.updateById(values, '');
+                await habitRepository.insertHabit(values);
               } else {
                 Map<String, Object?> values = {
                   "title": textEditingController.text,
