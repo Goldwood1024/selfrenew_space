@@ -16,8 +16,8 @@ class FocusProvider extends ChangeNotifier {
 
     list.add(FocusUnderwayModel(
       '33',
-      '222',
-      'assets/icons/浴盆.svg',
+      '番茄钟',
+      'assets/icons/timer.svg',
       '每天',
       [
         Notice('1', '08:90'),
@@ -34,44 +34,6 @@ class FocusProvider extends ChangeNotifier {
       ],
     ));
 
-    list.add(FocusUnderwayModel(
-      '1',
-      'ffff',
-      'assets/icons/浴盆.svg',
-      '每天',
-      [
-        Notice('1', '08:90'),
-        Notice('2', '19:90'),
-      ],
-      [
-        SleekCount(1, 5, 2, false, 1),
-        SleekCount(1, 2, 2, false, 2),
-        SleekCount(1, 2, 2, false, 3),
-        SleekCount(1, 6, 5, false, 4),
-        SleekCount(1, 7, 2, true, 5),
-        SleekCount(1, 7, 4, true, 6),
-        SleekCount(1, 7, 0, false, 7),
-      ],
-    ));
-
-    list.add(FocusUnderwayModel(
-      '332',
-      '测四',
-      'assets/icons/蜡笔.svg',
-      '每天3',
-      [
-        Notice('2', '19:90'),
-      ],
-      [
-        SleekCount(1, 5, 2, true, 1),
-        SleekCount(1, 2, 1, false, 2),
-        SleekCount(1, 2, 2, false, 3),
-        SleekCount(1, 6, 2, false, 4),
-        SleekCount(1, 7, 4, false, 5),
-        SleekCount(1, 7, 7, false, 6),
-        SleekCount(1, 7, 0, false, 7),
-      ],
-    ));
     return list;
   }
 }
