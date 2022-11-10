@@ -4,7 +4,7 @@ import 'package:selfrenew_space/model/sleek_count.dart';
 class HabitUnderway {
   final String id;
   final String title;
-  final String imagePath;
+  final String icons;
   final String repeat;
 
   final List<Notice> notices;
@@ -13,7 +13,7 @@ class HabitUnderway {
   HabitUnderway(
     this.id,
     this.title,
-    this.imagePath,
+    this.icons,
     this.repeat,
     this.notices,
     this.sleeks,

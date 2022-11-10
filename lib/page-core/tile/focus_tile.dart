@@ -60,9 +60,18 @@ class _FocusTileState extends State<FocusTile> {
               Padding(
                 padding: EdgeInsets.fromLTRB(
                     SPHelper.width(SPHelper.gapDp20), 0, 0, 0),
-                child: SvgLoader(
-                  path: widget.leading,
-                  size: SPHelper.sp(SPHelper.fontSp26),
+                child: Container(
+                  padding: const EdgeInsets.all(SPHelper.gapDp6),
+                  height: SPHelper.height(SPHelper.gapDp36),
+                  width: SPHelper.height(SPHelper.gapDp36),
+                  decoration: BoxDecoration(
+                    color: Colors.deepOrangeAccent,
+                    shape: BoxShape.circle,
+                  ),
+                  child: SvgLoader(
+                    path: widget.leading,
+                    size: SPHelper.sp(SPHelper.fontSp26),
+                  ),
                 ),
               ),
               Expanded(

@@ -60,7 +60,7 @@ class _HabitFormState extends State<HabitForm> {
               if (isEdit) {
                 Map<String, Object?> values = {
                   "title": textEditingController.text,
-                  "icons": "1",
+                  "icons": "assets/icons/绘画.svg",
                   "repeat": "1",
                   "target": '1',
                   "remind": '1',
@@ -73,7 +73,7 @@ class _HabitFormState extends State<HabitForm> {
               } else {
                 Map<String, Object?> values = {
                   "title": textEditingController.text,
-                  "icons": "",
+                  "icons": "assets/icons/绘画.svg",
                   "repeat": "",
                   "target": DateUtil.getNowDateMs(),
                   "remind": DateUtil.getNowDateMs(),

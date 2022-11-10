@@ -11,12 +11,14 @@ class HabitProvider extends ChangeNotifier {
 
     List<Map<String, Object?>> data = await habitRepository.query();
 
+    print(data.toString());
+
     for (Map<String, Object?> map in data) {
       list.add(
         HabitUnderway(
           map['id'].toString(),
           map['title'].toString(),
-          map['imagePath'].toString(),
+          map['icons'].toString(),
           map['repeat'].toString(),
           [],
           [],
