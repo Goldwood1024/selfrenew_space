@@ -16,6 +16,14 @@ class HabitFormProvider extends ChangeNotifier {
   // 重复
   late RepeatModel repeatModel = RepeatModel();
   late RemindModel remindModel = RemindModel();
+  late IconModel iconModel = IconModel();
+
+  IconModel getIconModel() {
+    iconModel = IconModel();
+    iconModel.icons = 'assets/icons/绘画.svg';
+    iconModel.color = '#000fff';
+    return iconModel;
+  }
 
   DateTime getStartDateTime() {
     return startDate;
@@ -85,6 +93,10 @@ class HabitFormProvider extends ChangeNotifier {
     repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
 
     remindModel = RemindModel();
+
+    iconModel = IconModel();
+    iconModel.icons = 'assets/icons/绘画.svg';
+    iconModel.color = '#000fff';
 
     notifyListeners();
   }

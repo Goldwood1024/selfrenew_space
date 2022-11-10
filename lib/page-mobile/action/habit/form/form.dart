@@ -60,7 +60,10 @@ class _HabitFormState extends State<HabitForm> {
               if (isEdit) {
                 Map<String, Object?> values = {
                   "title": textEditingController.text,
-                  "icons": "assets/icons/绘画.svg",
+                  "icons": {
+                    "icons": habitFormProvider.getIconModel().icons,
+                    "color": habitFormProvider.getIconModel().color,
+                  },
                   "repeat": "1",
                   "target": '1',
                   "remind": '1',
@@ -141,14 +144,19 @@ class _HabitFormState extends State<HabitForm> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: Container(
-                          width: SPHelper.width(60),
-                          height: SPHelper.height(60),
+                          width: SPHelper.width(56),
+                          height: SPHelper.height(56),
+                          padding: const EdgeInsets.all(14),
                           margin: const EdgeInsets.fromLTRB(12, 0, 0, 7),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(
-                              SPHelper.minRadius(),
+                            color: HexColor(
+                              habitFormProvider.getIconModel().color,
                             ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgLoader(
+                            path: habitFormProvider.getIconModel().icons,
+                            size: SPHelper.sp(SPHelper.fontSp26),
                           ),
                         ),
                       ),

@@ -15,3 +15,8 @@ class RepeatModel {
   late List<RepeatDay> repeatDays = [];
   late List<DateTime> selectedDates = [];
 }
+
+class IconModel {
+  late String icons;
+  late String color;
+}

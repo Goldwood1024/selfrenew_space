@@ -117,7 +117,7 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
           title: data[index].title,
           topRadius: index == 0,
           bottomRadius: index == data.length - 1,
-          leading: data[index].icons,
+          leading: data[index].icons.icons,
           // trailing: SleekCounter(
           //   min: data[index].sleeks[data[index].sleeks.length - 2].min,
           //   max: data[index].sleeks[data[index].sleeks.length - 2].max,

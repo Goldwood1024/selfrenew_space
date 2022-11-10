@@ -14,11 +14,16 @@ class HabitProvider extends ChangeNotifier {
     print(data.toString());
 
     for (Map<String, Object?> map in data) {
+      print(map['icons']);
+      IconModel o = IconModel();
+      o.icons = map['icons'].toString();
+      o.color = map['icons'].toString();
+
       list.add(
         HabitUnderway(
           map['id'].toString(),
           map['title'].toString(),
-          map['icons'].toString(),
+          o,
           map['repeat'].toString(),
           [],
           [],
