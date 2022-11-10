@@ -1,4 +1,3 @@
-import 'package:selfrenew_space/model/repeat_day.dart';
 import 'package:selfrenew_space/page-core/month_view_config.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -68,51 +67,27 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
             },
           )
         ],
-        bottom: TabBar(
-          controller: tabController,
-          labelColor: Theme.of(context).textTheme.labelSmall!.color,
-          physics: const NeverScrollableScrollPhysics(),
-          splashFactory: NoSplash.splashFactory,
-          labelPadding: EdgeInsets.fromLTRB(
-            0,
-            0,
-            0,
-            SPHelper.width(SPHelper.gapDp10),
-          ),
-          labelStyle: TextStyle(
-            fontSize: SPHelper.sp(SPHelper.fontSp16),
-            fontWeight: FontWeight.w600,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontSize: SPHelper.sp(SPHelper.fontSp16),
-            fontWeight: FontWeight.w500,
-          ),
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: Theme.of(context).primaryColor,
-          indicatorPadding: EdgeInsets.fromLTRB(
-            SPHelper.width(SPHelper.gapDp24),
-            0,
-            SPHelper.width(SPHelper.gapDp24),
-            0,
-          ),
-          tabs: [
-            ExtendedTab(
-              size: SPHelper.width(100),
-              text: '每日',
-              scrollDirection: Axis.vertical,
+        bottom: CustomSegmentBottom(
+          initialValue: 0,
+          onValueChanged: (int value) {
+            pageController.jumpToPage(value);
+          },
+          children: const {
+            0: Text(
+              '每日',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
             ),
-            ExtendedTab(
-              size: SPHelper.width(100),
-              text: '每月',
-              scrollDirection: Axis.vertical,
+            1: Text(
+              '每月',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
             ),
-            ExtendedTab(
-              size: SPHelper.width(100),
-              text: '间隔',
-              scrollDirection: Axis.vertical,
-            ),
-          ],
+          },
         ),
       ),
       body: Padding(
@@ -126,8 +101,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
                 (index) => SimpleTile(
                   onPressed: () {
                     setState(() {
-                      repeatDays[index].selected =
-                          !repeatDays[index].selected;
+                      repeatDays[index].selected = !repeatDays[index].selected;
                     });
 
                     // 更新值
