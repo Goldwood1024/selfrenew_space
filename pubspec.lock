@@ -754,6 +754,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.2"
+  slowly_moving_widgets_field:
+    dependency: "direct main"
+    description:
+      name: slowly_moving_widgets_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.28"
   smart_grid_view_nls:
     dependency: "direct main"
     description:

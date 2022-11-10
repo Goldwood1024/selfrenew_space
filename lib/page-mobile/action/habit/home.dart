@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/page-core/custom_segmented.dart';
-import 'package:selfrenew_space/page-core/floating_button_custom_location.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:selfrenew_space/state/habit_provider.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
@@ -17,8 +16,6 @@ class HabitHome extends StatefulWidget {
 class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
-  late bool _showFloatBtn = false;
-  late TabController tabController;
   late PageController pageController = PageController();
 
   @override
@@ -35,72 +32,12 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
     );
 
-    // tabController = TabController(
-    //   length: 2,
-    //   vsync: this,
-    // );
-    //
-    // tabController.addListener(() {
-    //   pageController.jumpToPage(tabController.index);
-    // });
-
-    _showFloatBtn = true;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
-      floatingActionButtonLocation: FloatingButtonCustomLocation(
-        FloatingActionButtonLocation.endFloat,
-        offsetY: -80,
-        offsetX: -0,
-      ),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButton: Visibility(
-        visible: _showFloatBtn,
-        maintainState: true,
-        replacement: SPHelper.empty,
-        child: FloatingActionBubble(
-          items: [
-            Bubble(
-              title: "创建好习惯",
-              iconColor: Colors.white,
-              bubbleColor: Theme.of(context).primaryColor,
-              icon: CupertinoIcons.loop,
-              titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-              onPress: () {
-                _animationController.reverse();
-                Routers.pushParams(Routers.habitSelect, {
-                  "good": '1',
-                });
-              },
-            ),
-            Bubble(
-              title: "消灭坏习惯",
-              iconColor: Colors.white,
-              bubbleColor: Theme.of(context).primaryColor,
-              icon: CupertinoIcons.nosign,
-              titleStyle: TextStyleMode.floatBubbleTextStyle(context),
-              onPress: () {
-                _animationController.reverse();
-                Routers.pushParams(Routers.habitSelect, {
-                  "good": '0',
-                });
-              },
-            ),
-          ],
-          onPress: () {
-            _animationController.isCompleted
-                ? _animationController.reverse()
-                : _animationController.forward();
-          },
-          iconColor: Colors.white,
-          iconData: Icons.add,
-          backGroundColor: Theme.of(context).primaryColor,
-          animation: _animation,
-        ),
-      ),
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
         title: const AppBarText(
@@ -165,18 +102,13 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
           topRight: Radius.circular(12.0),
         ),
         onPanelSlide: (_) {
-          if (_ > 0 && _showFloatBtn) {
+          if (_ > 0) {
             setState(() {
-              _showFloatBtn = false;
               _animationController.reverse();
             });
           }
         },
-        onPanelClosed: () {
-          setState(() {
-            _showFloatBtn = true;
-          });
-        },
+        onPanelClosed: () {},
         header: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Row(
@@ -198,14 +130,63 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
             ],
           ),
         ),
-        body: Padding(
-          padding: SPHelper.pagePaddingHorizontal,
-          child: ListView(
-            children: [
-              SPHelper.getDefaultHeightBox(),
-              const Underway(),
-            ],
-          ),
+        body: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Padding(
+              padding: SPHelper.pagePaddingHorizontal,
+              child: ListView(
+                children: [
+                  SPHelper.getDefaultHeightBox(),
+                  const Underway(),
+                ],
+              ),
+            ),
+            Padding(
+              padding: SPHelper.pagePaddingHorizontal,
+              child: Align(
+                child: FloatingActionBubble(
+                  items: [
+                    Bubble(
+                      title: "创建好习惯",
+                      iconColor: Colors.white,
+                      bubbleColor: Theme.of(context).primaryColor,
+                      icon: CupertinoIcons.loop,
+                      titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+                      onPress: () {
+                        _animationController.reverse();
+                        Routers.pushParams(Routers.habitSelect, {
+                          "good": '1',
+                        });
+                      },
+                    ),
+                    Bubble(
+                      title: "消灭坏习惯",
+                      iconColor: Colors.white,
+                      bubbleColor: Theme.of(context).primaryColor,
+                      icon: CupertinoIcons.nosign,
+                      titleStyle: TextStyleMode.floatBubbleTextStyle(context),
+                      onPress: () {
+                        _animationController.reverse();
+                        Routers.pushParams(Routers.habitSelect, {
+                          "good": '0',
+                        });
+                      },
+                    ),
+                  ],
+                  onPress: () {
+                    _animationController.isCompleted
+                        ? _animationController.reverse()
+                        : _animationController.forward();
+                  },
+                  iconColor: Colors.white,
+                  iconData: Icons.add,
+                  backGroundColor: Theme.of(context).primaryColor,
+                  animation: _animation,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
