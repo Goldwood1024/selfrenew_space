@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
+import 'package:selfrenew_space/page-mobile/action/focus/relax.dart';
 import 'package:selfrenew_space/page-mobile/onboarding/boarding_screen.dart';
 import 'package:selfrenew_space/page-mobile/onboarding/update.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -23,6 +24,7 @@ class Routers {
   static const String focusHome = "/focusHome";
   static const String focusForm = "/focusForm";
   static const String habitIcons = "/habitIcons";
+  static const String focusRelax = "/focusRelax";
 
   static GoRouter router = GoRouter(
     observers: [
@@ -91,18 +93,14 @@ class Routers {
         name: removePrefix(habitSelect),
         path: habitSelect,
         builder: (BuildContext context, GoRouterState state) {
-          return HabitLib(
-            params: state.queryParams,
-          );
+          return HabitLib(params: state.queryParams);
         },
       ),
       GoRoute(
         name: removePrefix(habitForm),
         path: habitForm,
         builder: (BuildContext context, GoRouterState state) {
-          return HabitForm(
-            params: state.queryParams,
-          );
+          return HabitForm(params: state.queryParams);
         },
       ),
       GoRoute(
@@ -123,9 +121,21 @@ class Routers {
         name: removePrefix(focusForm),
         path: focusForm,
         builder: (BuildContext context, GoRouterState state) {
-          return FocusForm(
-            params: state.queryParams,
-          );
+          return FocusForm(params: state.queryParams);
+        },
+      ),
+      GoRoute(
+        name: removePrefix(focusTimer),
+        path: focusTimer,
+        builder: (BuildContext context, GoRouterState state) {
+          return FocusTimer(params: state.queryParams);
+        },
+      ),
+      GoRoute(
+        name: removePrefix(focusRelax),
+        path: focusRelax,
+        builder: (BuildContext context, GoRouterState state) {
+          return FocusRelax(params: state.queryParams);
         },
       ),
     ],

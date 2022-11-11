@@ -1,12 +1,16 @@
 import 'package:action_slider/action_slider.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/page-mobile/action/focus/relax.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
 class FocusTimer extends StatefulWidget {
+  final Map<String, dynamic> params;
+
   const FocusTimer({
     super.key,
+    required this.params,
   });
 
   @override
@@ -22,6 +26,11 @@ class _FocusTimerState extends State<FocusTimer>
   void initState() {
     super.initState();
     showText = false;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      FocusTimerProvider update = Provider.of(context, listen: false);
+      update.timer(widget.params);
+    });
   }
 
   @override
@@ -36,6 +45,7 @@ class _FocusTimerState extends State<FocusTimer>
 
   @override
   Widget build(BuildContext context) {
+    FocusTimerProvider focusTimerProvider = Provider.of(context);
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.appBarHeight(),
@@ -45,14 +55,24 @@ class _FocusTimerState extends State<FocusTimer>
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  CupertinoIcons.loop,
-                  size: SPHelper.sp(SPHelper.gapDp24),
-                  color: Theme.of(context).textTheme.labelSmall?.color,
+                IconVisible(
+                  visible:
+                      focusTimerProvider.focusType == FocusType.uptime.name,
+                  icon: CupertinoIcons.loop,
+                ),
+                IconVisible(
+                  visible:
+                      focusTimerProvider.focusType == FocusType.tomato.name,
+                  icon: CupertinoIcons.loop,
+                ),
+                IconVisible(
+                  visible:
+                      focusTimerProvider.focusType == FocusType.downtime.name,
+                  icon: CupertinoIcons.loop,
                 ),
                 SPHelper.getWidthBox(SPHelper.gapDp12),
                 Text(
-                  '同意方法',
+                  focusTimerProvider.title,
                   style: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.fontSp18),
                     fontWeight: FontWeight.w600,
@@ -81,13 +101,12 @@ class _FocusTimerState extends State<FocusTimer>
                     )
                   : SlideCountdown(
                       padding: EdgeInsets.zero,
-                      countUp: false,
-                      infinityCountUp: false,
+                      countUp: focusTimerProvider.countUp,
+                      infinityCountUp: focusTimerProvider.infinityCountUp,
                       curve: Curves.linear,
                       separatorType: SeparatorType.symbol,
-                      slideDirection: SlideDirection.down,
                       decoration: const BoxDecoration(),
-                      duration: const Duration(seconds: 6),
+                      duration: Duration(seconds: focusTimerProvider.timers),
                       slideAnimationDuration: const Duration(milliseconds: 500),
                       textStyle: TextStyle(
                         fontSize: SPHelper.sp(SPHelper.gapDp72),
@@ -106,7 +125,13 @@ class _FocusTimerState extends State<FocusTimer>
                             keepSingle: true,
                             useAnimation: true,
                             builder: (_) {
-                              return const FocusRelax();
+                              return const FocusRelax(
+                                params: {
+                                  "timer": 60,
+                                  "musicId": 1,
+                                  "autoRelax": true,
+                                },
+                              );
                             },
                           );
                         }

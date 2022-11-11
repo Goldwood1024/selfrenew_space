@@ -103,7 +103,9 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
           trailing: GestureDetector(
             onTap: () {
               SmartDialog.show(builder: (_) {
-                return const FocusTimer();
+                return const FocusTimer(
+                  params: {},
+                );
               });
             },
             child: GestureDetector(
@@ -113,7 +115,9 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
                   keepSingle: true,
                   useAnimation: true,
                   builder: (_) {
-                    return const FocusTimer();
+                    return const FocusTimer(
+                      params: {},
+                    );
                   },
                 );
               },

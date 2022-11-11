@@ -4,8 +4,11 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 
 class FocusRelax extends StatefulWidget {
+  final Map<String, dynamic> params;
+
   const FocusRelax({
     super.key,
+    required this.params,
   });
 
   @override
@@ -21,6 +24,8 @@ class _FocusRelaxState extends State<FocusRelax>
   void initState() {
     super.initState();
     showText = false;
+
+    time = Duration(seconds: widget.params['timer']);
   }
 
   @override
@@ -44,14 +49,8 @@ class _FocusRelaxState extends State<FocusRelax>
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  CupertinoIcons.loop,
-                  size: SPHelper.sp(SPHelper.gapDp24),
-                  color: Theme.of(context).textTheme.labelSmall?.color,
-                ),
-                SPHelper.getWidthBox(SPHelper.gapDp12),
                 Text(
-                  '同意方法',
+                  '放松一下',
                   style: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.fontSp18),
                     fontWeight: FontWeight.w600,
@@ -70,82 +69,100 @@ class _FocusRelaxState extends State<FocusRelax>
           children: [
             Positioned(
               top: MediaQuery.of(context).size.height / 5,
-              child: showText
-                  ? Text(
-                      getTime(),
-                      style: TextStyle(
-                        fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.labelSmall?.color,
-                      ),
-                    )
-                  : SlideCountdown(
-                      padding: EdgeInsets.zero,
-                      countUp: false,
-                      infinityCountUp: false,
-                      curve: Curves.linear,
-                      separatorType: SeparatorType.symbol,
-                      slideDirection: SlideDirection.down,
-                      decoration: const BoxDecoration(),
-                      duration: const Duration(seconds: 5),
-                      slideAnimationDuration: const Duration(milliseconds: 500),
-                      textStyle: TextStyle(
-                        fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.labelSmall?.color,
-                      ),
-                      onDone: () {
-                        // SmartDialog.dismiss();
-                      },
-                      onChanged: (_) {
-                        setState(() {
-                          time = _;
-                        });
-                      },
-                    ),
+              child: Visibility(
+                visible: showText,
+                replacement: Text(
+                  getTime(),
+                  style: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.gapDp72),
+                    color: Theme.of(context).textTheme.labelSmall?.color,
+                  ),
+                ),
+                child: SlideCountdown(
+                  padding: EdgeInsets.zero,
+                  countUp: false,
+                  infinityCountUp: false,
+                  curve: Curves.linear,
+                  separatorType: SeparatorType.symbol,
+                  slideDirection: SlideDirection.down,
+                  decoration: const BoxDecoration(),
+                  duration: time,
+                  slideAnimationDuration: const Duration(milliseconds: 500),
+                  textStyle: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.gapDp72),
+                    color: Theme.of(context).textTheme.labelSmall?.color,
+                  ),
+                  onDone: () {
+                    // SmartDialog.dismiss();
+                  },
+                  onChanged: (_) {
+                    setState(() {
+                      time = _;
+                    });
+                  },
+                ),
+              ),
             ),
             Positioned(
               bottom: SPHelper.height(SPHelper.gapDp100),
               child: Align(
-                child: ActionSlider.standard(
-                  width: SPHelper.width(SPHelper.gapDp200),
-                  height: SPHelper.height(SPHelper.gapDp52),
-                  icon: Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    size: SPHelper.sp(SPHelper.gapDp32),
-                    color: Colors.white,
+                child: Visibility(
+                  visible: false,
+                  replacement: Column(
+                    children: [
+                      StartRelax(
+                        onPressed: () {},
+                      ),
+                      SPHelper.getDefaultHeightBox(),
+                      SkipRelax(
+                        onPressed: () {
+                          SmartDialog.dismiss();
+                        },
+                      )
+                    ],
                   ),
-                  successIcon: Icon(
-                    Icons.check_rounded,
-                    size: SPHelper.sp(SPHelper.gapDp32),
-                    color: Colors.white,
-                  ),
-                  boxShadow: [],
-                  backgroundColor: CupertinoColors.systemFill,
-                  loadingIcon: const SizedBox(
-                    width: 24.0,
-                    height: 24.0,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3.0,
+                  child: ActionSlider.standard(
+                    width: SPHelper.width(SPHelper.gapDp200),
+                    height: SPHelper.height(SPHelper.gapDp52),
+                    icon: Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: SPHelper.sp(SPHelper.gapDp32),
                       color: Colors.white,
                     ),
-                  ),
-                  child: Text(
-                    '滑动终止休息',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: CupertinoColors.systemGrey2,
-                      fontSize: SPHelper.sp(SPHelper.gapDp14),
+                    successIcon: Icon(
+                      Icons.check_rounded,
+                      size: SPHelper.sp(SPHelper.gapDp32),
+                      color: Colors.white,
                     ),
+                    boxShadow: [],
+                    backgroundColor: CupertinoColors.systemFill,
+                    loadingIcon: const SizedBox(
+                      width: 24.0,
+                      height: 24.0,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 3.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    child: Text(
+                      '滑动终止休息',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: CupertinoColors.systemGrey2,
+                        fontSize: SPHelper.sp(SPHelper.gapDp14),
+                      ),
+                    ),
+                    action: (controller) async {
+                      controller.loading();
+                      setState(() {
+                        showText = true;
+                      });
+                      await Future.delayed(const Duration(milliseconds: 300));
+                      controller.success();
+                      await Future.delayed(const Duration(milliseconds: 1300));
+                      SmartDialog.dismiss();
+                    },
                   ),
-                  action: (controller) async {
-                    controller.loading();
-                    setState(() {
-                      showText = true;
-                    });
-                    await Future.delayed(const Duration(milliseconds: 300));
-                    controller.success();
-                    await Future.delayed(const Duration(milliseconds: 1300));
-                    SmartDialog.dismiss();
-                  },
                 ),
               ),
             )

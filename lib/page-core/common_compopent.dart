@@ -666,3 +666,98 @@ class _CommonSliderState extends State<CommonSlider> {
     );
   }
 }
+
+class IconVisible extends StatefulWidget {
+  final bool visible;
+  final IconData icon;
+
+  const IconVisible({
+    super.key,
+    required this.visible,
+    required this.icon,
+  });
+
+  @override
+  State<StatefulWidget> createState() => _IconVisibleState();
+}
+
+class _IconVisibleState extends State<IconVisible> {
+  @override
+  Widget build(BuildContext context) {
+    return Visibility(
+      visible: widget.visible,
+      replacement: Container(),
+      child: Icon(
+        widget.icon,
+        size: SPHelper.sp(SPHelper.gapDp24),
+        color: Theme.of(context).textTheme.labelSmall?.color,
+      ),
+    );
+  }
+}
+
+class StartRelax extends StatelessWidget {
+  final Function() onPressed;
+
+  const StartRelax({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed(),
+      child: Container(
+        width: 140,
+        height: 48,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: const Text(
+          '开始',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+    );
+  }
+}
+
+class SkipRelax extends StatelessWidget {
+  final Function() onPressed;
+
+  const SkipRelax({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onPressed();
+      },
+      child: Container(
+        width: 140,
+        height: 48,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            width: 1,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        child: Text(
+          '跳过',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+      ),
+    );
+  }
+}

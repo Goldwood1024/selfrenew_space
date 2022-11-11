@@ -199,7 +199,9 @@ class _FocusUnderwayState extends State<FocusUnderway>
                             keepSingle: true,
                             useAnimation: true,
                             builder: (_) {
-                              return const FocusTimer();
+                              return const FocusTimer(
+                                params: {},
+                              );
                             },
                           );
                         },
