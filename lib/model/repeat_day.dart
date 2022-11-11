@@ -20,10 +20,15 @@ class IconModel {
   late String icon;
   late String color;
 
+  IconModel({
+    required this.color,
+    required this.icon,
+  });
+
   static IconModel toBean(Map<dynamic, dynamic> values) {
-    IconModel iconModel = IconModel();
-    iconModel.color = values['color'].toString();
-    iconModel.icon = values['icon'].toString();
-    return iconModel;
+    return IconModel(
+      color: values['color'].toString(),
+      icon: values['icon'].toString(),
+    );
   }
 }

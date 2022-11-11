@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/model/habit_lib.dart';
 import 'package:selfrenew_space/model/remind_model.dart';
@@ -16,7 +18,7 @@ class HabitFormProvider extends ChangeNotifier {
   // 重复
   late RepeatModel repeatModel = RepeatModel();
   late RemindModel remindModel;
-  late IconModel iconModel = IconModel();
+  late IconModel iconModel;
 
   IconModel getIconModel() {
     return iconModel;
@@ -108,9 +110,7 @@ class HabitFormProvider extends ChangeNotifier {
       remindModel = RemindModel();
       remindModel.list.add(DateTime.now());
 
-      iconModel = IconModel();
-      iconModel.icon = 'assets/icons/绘画.svg';
-      iconModel.color = '#990909';
+      iconModel = IconModel(color: '#990909', icon: 'assets/icons/绘画.svg');
 
       heartenController.text = Global.randomHearten();
     } else {
@@ -133,9 +133,10 @@ class HabitFormProvider extends ChangeNotifier {
           remindModel = RemindModel();
           remindModel.list.add(DateTime.now());
 
-          iconModel = IconModel();
-          iconModel.icon = 'assets/icons/绘画.svg';
-          iconModel.color = '#990909';
+          iconModel = IconModel(
+            color: model.iconModel.color,
+            icon: model.iconModel.icon,
+          );
           heartenController.text = model.hearten;
 
           break;
@@ -155,11 +156,9 @@ class HabitFormProvider extends ChangeNotifier {
     repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
 
     remindModel = RemindModel();
-
-    iconModel = IconModel();
-    iconModel.icon = 'assets/icons/绘画.svg';
-    iconModel.color = '#990909';
-    heartenController.text = Global.randomHearten();
+    
+    iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
+    heartenController.text = mm['hearten'].toString();
     notifyListeners();
   }
 

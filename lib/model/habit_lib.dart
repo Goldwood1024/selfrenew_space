@@ -1,16 +1,16 @@
+import 'package:selfrenew_space/model/repeat_day.dart';
+
 class HabitLibModel {
   final String key;
   final String title;
-  final String image;
-  final String color;
   final String hearten;
   late bool goodHabit = true;
+  late IconModel iconModel;
 
-  HabitLibModel(
-    this.key,
-    this.title,
-    this.image,
-    this.color,
-    this.hearten,
-  );
+  HabitLibModel({
+    required this.key,
+    required this.title,
+    required this.iconModel,
+    required this.hearten,
+  });
 }

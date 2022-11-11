@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lifecycle/lifecycle.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
@@ -197,8 +196,7 @@ class Underway extends StatefulWidget {
   State<StatefulWidget> createState() => _UnderwayState();
 }
 
-class _UnderwayState extends State<Underway>
-    with TickerProviderStateMixin, LifecycleAware, LifecycleMixin {
+class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -208,9 +206,6 @@ class _UnderwayState extends State<Underway>
       Provider.of<HabitProvider>(context, listen: false).reloadHabitUnderway();
     });
   }
-
-  @override
-  void onLifecycleEvent(LifecycleEvent event) {}
 
   @override
   Widget build(BuildContext context) {

@@ -79,7 +79,7 @@ class _HabitLibState extends State<HabitLib> {
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 0, 12, 0),
                                     child: SvgPicture.asset(
-                                      habits[index].image,
+                                      habits[index].iconModel.icon,
                                       width: SPHelper.width(24),
                                       height: SPHelper.height(24),
                                     ),
