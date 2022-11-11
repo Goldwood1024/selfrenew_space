@@ -10,19 +10,19 @@ class Global {
     HabitLibModel(
       key: 'water',
       title: '喝一杯水',
-      iconModel: IconModel(color: '#000000', icon: 'assets/icons/喝水.svg'),
+      iconModel: IconModel(color: '#1e7069', icon: 'assets/icons/喝水.svg'),
       hearten: '我们总会拨云见日',
     ),
     HabitLibModel(
       key: 'fitness',
       title: '健身',
-      iconModel: IconModel(color: '#000000', icon: 'assets/icons/健身.svg'),
+      iconModel: IconModel(color: '#d4896a', icon: 'assets/icons/健身.svg'),
       hearten: '更好的事会一起到来',
     ),
     HabitLibModel(
       key: 'readbook',
       title: '阅读',
-      iconModel: IconModel(color: '#000000', icon: 'assets/icons/读书.svg'),
+      iconModel: IconModel(color: '#730517', icon: 'assets/icons/读书.svg'),
       hearten: '只要养成良好的习惯，就能改变我们的人生',
     ),
   ];
