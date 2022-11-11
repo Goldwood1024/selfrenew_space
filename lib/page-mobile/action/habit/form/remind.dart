@@ -13,18 +13,13 @@ class _RemindState extends State<Remind> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      HabitFormProvider update = Provider.of(context, listen: false);
-      update.query();
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     HabitFormProvider update = Provider.of(context, listen: false);
     HabitFormProvider habitFormProvider = Provider.of(context);
-    List<DateTime> list = habitFormProvider.remindModel.list;
+    List<DateTime> list = habitFormProvider.getRemindDates();
 
     return ScaffoldGradientBackground(
       appBar: AppBar(

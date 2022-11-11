@@ -15,8 +15,6 @@ class HabitForm extends StatefulWidget {
 
 class _HabitFormState extends State<HabitForm> {
   final HabitRepository habitRepository = HabitRepository();
-  TextEditingController textEditingController = TextEditingController();
-  TextEditingController heartenEditingController = TextEditingController();
 
   late bool isEdit;
 
@@ -25,22 +23,24 @@ class _HabitFormState extends State<HabitForm> {
     super.initState();
 
     isEdit = true;
-    if (widget.params.isNotEmpty) {
-      if (ObjectUtil.isNotEmpty(widget.params['key'])) {
-        textEditingController.text = widget.params['title'];
-      } else if (ObjectUtil.isNotEmpty(widget.params['id'])) {
-        textEditingController.text = '22';
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      HabitFormProvider habitFormProvider = Provider.of(context, listen: false);
+      if (widget.params.isNotEmpty) {
+        if (ObjectUtil.isNotEmpty(widget.params['key'])) {
+          habitFormProvider.newHabit(widget.params['key']);
+        } else if (ObjectUtil.isNotEmpty(widget.params['id'])) {
+          habitFormProvider.query(widget.params['id']);
+        }
+      } else {
+        habitFormProvider.newHabit('');
       }
-
-      heartenEditingController.text = Global.randomHearten();
-    } else {
-      heartenEditingController.text = Global.randomHearten();
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     HabitFormProvider habitFormProvider = Provider.of(context);
+    HabitFormProvider update = Provider.of(context, listen: false);
 
     return ScaffoldGradientBackground(
       appBar: AppBar(
@@ -59,7 +59,7 @@ class _HabitFormState extends State<HabitForm> {
             onPressed: () async {
               if (isEdit) {
                 Map<String, Object?> values = {
-                  "title": textEditingController.text,
+                  "title": habitFormProvider.titleController.text,
                   "icons": {
                     "icons": habitFormProvider.getIconModel().icons,
                     "color": habitFormProvider.getIconModel().color,
@@ -68,19 +68,19 @@ class _HabitFormState extends State<HabitForm> {
                   "target": '1',
                   "remind": '1',
                   "startDate": '1',
-                  "hearten": heartenEditingController.text,
+                  "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };
 
                 await habitRepository.insertHabit(values);
               } else {
                 Map<String, Object?> values = {
-                  "title": textEditingController.text,
+                  "title": habitFormProvider.titleController.text,
                   "icons": "assets/icons/绘画.svg",
                   "repeat": "",
                   "target": DateUtil.getNowDateMs(),
                   "remind": DateUtil.getNowDateMs(),
-                  "hearten": heartenEditingController.text,
+                  "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };
                 await habitRepository.insertHabit(values);
@@ -119,7 +119,7 @@ class _HabitFormState extends State<HabitForm> {
                           color: Theme.of(context).textTheme.labelSmall!.color,
                         ),
                         maxLength: 12,
-                        controller: textEditingController,
+                        controller: habitFormProvider.titleController,
                         cursorColor: Theme.of(context).primaryColor,
                         cursorWidth: 3,
                         decoration: InputDecoration(
@@ -174,10 +174,10 @@ class _HabitFormState extends State<HabitForm> {
                 },
                 topRadius: true,
                 title: '重复',
-                trailing: Text(
-                  '每天',
-                  style: TextStyleMode.trailingTextStyle(context),
-                ),
+                // trailing: Text(
+                //   '每天',
+                //   style: TextStyleMode.trailingTextStyle(context),
+                // ),
               ),
               SimpleTile(
                 onPressed: () {
@@ -187,10 +187,10 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '目标',
-                trailing: Text(
-                  '每天',
-                  style: TextStyleMode.trailingTextStyle(context),
-                ),
+                // trailing: Text(
+                //   '每天',
+                //   style: TextStyleMode.trailingTextStyle(context),
+                // ),
               ),
               SimpleTile(
                 onPressed: () {
@@ -200,10 +200,10 @@ class _HabitFormState extends State<HabitForm> {
                   );
                 },
                 title: '提醒',
-                trailing: Text(
-                  '每天',
-                  style: TextStyleMode.trailingTextStyle(context),
-                ),
+                // trailing: Text(
+                //   '每天',
+                //   style: TextStyleMode.trailingTextStyle(context),
+                // ),
               ),
               SimpleTile(
                 bottomRadius: true,
@@ -225,9 +225,7 @@ class _HabitFormState extends State<HabitForm> {
                 titleTrailing: GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    setState(() {
-                      heartenEditingController.text = Global.randomHearten();
-                    });
+                    update.updateHearten();
                   },
                   child: Container(
                     width: 20,
@@ -247,7 +245,7 @@ class _HabitFormState extends State<HabitForm> {
                       maxLength: 80,
                       minLines: 2,
                       maxLines: 5,
-                      controller: heartenEditingController,
+                      controller: habitFormProvider.heartenController,
                       style: TextStyle(
                         fontSize: SPHelper.sp(
                           SPHelper.fontSp17,

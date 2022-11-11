@@ -65,10 +65,6 @@ class _HabitLibState extends State<HabitLib> {
                       onTap: () {
                         Routers.pushParams(Routers.habitForm, {
                           "key": habits[index].key,
-                          "title": habits[index].title,
-                          "image": habits[index].image,
-                          "color": habits[index].color,
-                          "hearten": habits[index].hearten,
                         });
                       },
                       child: GridTile(
@@ -80,12 +76,8 @@ class _HabitLibState extends State<HabitLib> {
                               Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      0,
-                                      0,
-                                      12,
-                                      0,
-                                    ),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 12, 0),
                                     child: SvgPicture.asset(
                                       habits[index].image,
                                       width: SPHelper.width(24),
@@ -137,7 +129,10 @@ class _HabitLibState extends State<HabitLib> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      Routers.push(Routers.habitForm);
+                      Routers.pushParams(
+                        Routers.habitForm,
+                        {},
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(

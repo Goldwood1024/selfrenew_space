@@ -27,13 +27,6 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
     });
 
     selectedDates = [];
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      HabitFormProvider update = Provider.of(context, listen: false);
-      update.query();
-
-      // jump(Provider.of(context).getRepeatType());
-    });
   }
 
   jump(int index) {

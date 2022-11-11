@@ -1,4 +1,5 @@
 import 'package:selfrenew_space/dao/habit/repository.dart';
+import 'package:selfrenew_space/model/habit_lib.dart';
 import 'package:selfrenew_space/model/remind_model.dart';
 import 'package:selfrenew_space/model/repeat_day.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -6,29 +7,25 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 class HabitFormProvider extends ChangeNotifier {
   static final HabitRepository habitRepository = HabitRepository();
 
-  late String title;
-  late String icons;
   late String target;
-  late String remind;
-  late String hearten;
+  TextEditingController titleController = TextEditingController();
+  TextEditingController heartenController = TextEditingController();
+
   late DateTime startDate = DateTime.parse('2022-11-11');
 
   // 重复
   late RepeatModel repeatModel = RepeatModel();
-  late RemindModel remindModel = RemindModel();
+  late RemindModel remindModel;
   late IconModel iconModel = IconModel();
 
   IconModel getIconModel() {
-    iconModel = IconModel();
-    iconModel.icons = 'assets/icons/绘画.svg';
-    iconModel.color = '#000fff';
     return iconModel;
   }
 
   void updateIconModel(String icon, String color) {
     iconModel.icons = icon;
     iconModel.color = color;
-    
+
     notifyListeners();
   }
 
@@ -93,7 +90,64 @@ class HabitFormProvider extends ChangeNotifier {
     return repeatModel.type;
   }
 
-  void query() {
+  void newHabit(String value) {
+    if (ObjectUtil.isEmpty(value)) {
+      titleController.text = '';
+      repeatModel = RepeatModel();
+      repeatModel.type = 0;
+      repeatModel.repeatDays.add(
+        RepeatDay(day: '周一', value: '1', selected: false),
+      );
+      repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
+      repeatModel.repeatDays.add(RepeatDay(day: '周三', value: '3'));
+      repeatModel.repeatDays.add(RepeatDay(day: '周四', value: '4'));
+      repeatModel.repeatDays.add(RepeatDay(day: '周五', value: '5'));
+      repeatModel.repeatDays.add(RepeatDay(day: '周六', value: '6'));
+      repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
+
+      remindModel = RemindModel();
+      remindModel.list.add(DateTime.now());
+
+      iconModel = IconModel();
+      iconModel.icons = 'assets/icons/绘画.svg';
+      iconModel.color = '#990909';
+
+      heartenController.text = Global.randomHearten();
+    } else {
+      List<HabitLibModel> list = Global.getHabit(true);
+      for (HabitLibModel model in list) {
+        if (model.key == value) {
+          titleController.text = model.title;
+          repeatModel = RepeatModel();
+          repeatModel.type = 0;
+          repeatModel.repeatDays.add(
+            RepeatDay(day: '周一', value: '1', selected: false),
+          );
+          repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
+          repeatModel.repeatDays.add(RepeatDay(day: '周三', value: '3'));
+          repeatModel.repeatDays.add(RepeatDay(day: '周四', value: '4'));
+          repeatModel.repeatDays.add(RepeatDay(day: '周五', value: '5'));
+          repeatModel.repeatDays.add(RepeatDay(day: '周六', value: '6'));
+          repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
+
+          remindModel = RemindModel();
+          remindModel.list.add(DateTime.now());
+
+          iconModel = IconModel();
+          iconModel.icons = 'assets/icons/绘画.svg';
+          iconModel.color = '#990909';
+          heartenController.text = model.hearten;
+
+          break;
+        }
+      }
+    }
+
+    notifyListeners();
+  }
+
+  void query(String id) {
+    titleController.text = '11';
     repeatModel = RepeatModel();
     repeatModel.type = 0;
     repeatModel.repeatDays.add(RepeatDay(day: '周一', value: '1'));
@@ -103,8 +157,8 @@ class HabitFormProvider extends ChangeNotifier {
 
     iconModel = IconModel();
     iconModel.icons = 'assets/icons/绘画.svg';
-    iconModel.color = '#000fff';
-
+    iconModel.color = '#990909';
+    heartenController.text = Global.randomHearten();
     notifyListeners();
   }
 
@@ -117,6 +171,11 @@ class HabitFormProvider extends ChangeNotifier {
     repeatModel.type = index;
 
     print(repeatModel.type);
+    notifyListeners();
+  }
+
+  void updateHearten() {
+    heartenController.text = Global.randomHearten();
     notifyListeners();
   }
 }
