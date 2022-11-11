@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:selfrenew_space/page-mobile/onboarding/update.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -12,13 +13,11 @@ class MobileHome extends StatefulWidget {
 
 class _MobileHomeState extends State<MobileHome>
     with SingleTickerProviderStateMixin {
-  late PageController _pageController;
   late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
     _currentIndex = 0;
 
     // 加载数据
@@ -35,7 +34,6 @@ class _MobileHomeState extends State<MobileHome>
 
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
   }
 
@@ -45,9 +43,8 @@ class _MobileHomeState extends State<MobileHome>
         overlays: [SystemUiOverlay.top]);
 
     return ScaffoldGradientBackground(
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: _pageController,
+      body: LazyLoadIndexedStack(
+        index: _currentIndex,
         children: const [
           MobileAction(),
           MobileSetting(),
@@ -87,7 +84,6 @@ class _MobileHomeState extends State<MobileHome>
         onTap: (index) {
           setState(() {
             _currentIndex = index;
-            _pageController.jumpToPage(_currentIndex);
           });
         },
       ),

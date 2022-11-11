@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
@@ -12,7 +13,7 @@ class HabitHome extends StatefulWidget {
 class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
-  late PageController pageController = PageController();
+  late int _tabIndex;
 
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
       ),
     );
 
+    _tabIndex = 0;
     super.initState();
   }
 
@@ -51,8 +53,8 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         maxHeight: MediaQuery.of(context).size.height * 0.86,
         panelBuilder: () {
           return Scaffold(
-            body: PageView(
-              controller: pageController,
+            body: LazyLoadIndexedStack(
+              index: _tabIndex,
               children: const [
                 Completed(),
                 Abandon(),
@@ -64,7 +66,9 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
               bottom: CustomSegmentBottom(
                 initialValue: 0,
                 onValueChanged: (int value) {
-                  pageController.jumpToPage(value);
+                  setState(() {
+                    _tabIndex = value;
+                  });
                 },
                 children: const {
                   0: Text(
