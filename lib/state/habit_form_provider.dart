@@ -23,7 +23,7 @@ class HabitFormProvider extends ChangeNotifier {
   }
 
   void updateIconModel(String icon, String color) {
-    iconModel.icons = icon;
+    iconModel.icon = icon;
     iconModel.color = color;
 
     notifyListeners();
@@ -109,7 +109,7 @@ class HabitFormProvider extends ChangeNotifier {
       remindModel.list.add(DateTime.now());
 
       iconModel = IconModel();
-      iconModel.icons = 'assets/icons/绘画.svg';
+      iconModel.icon = 'assets/icons/绘画.svg';
       iconModel.color = '#990909';
 
       heartenController.text = Global.randomHearten();
@@ -134,7 +134,7 @@ class HabitFormProvider extends ChangeNotifier {
           remindModel.list.add(DateTime.now());
 
           iconModel = IconModel();
-          iconModel.icons = 'assets/icons/绘画.svg';
+          iconModel.icon = 'assets/icons/绘画.svg';
           iconModel.color = '#990909';
           heartenController.text = model.hearten;
 
@@ -156,7 +156,7 @@ class HabitFormProvider extends ChangeNotifier {
     remindModel = RemindModel();
 
     iconModel = IconModel();
-    iconModel.icons = 'assets/icons/绘画.svg';
+    iconModel.icon = 'assets/icons/绘画.svg';
     iconModel.color = '#990909';
     heartenController.text = Global.randomHearten();
     notifyListeners();

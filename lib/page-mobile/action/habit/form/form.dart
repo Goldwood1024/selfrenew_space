@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -60,10 +62,10 @@ class _HabitFormState extends State<HabitForm> {
               if (isEdit) {
                 Map<String, Object?> values = {
                   "title": habitFormProvider.titleController.text,
-                  "icons": {
-                    "icons": habitFormProvider.getIconModel().icons,
+                  "icons": jsonEncode({
+                    "icon": habitFormProvider.getIconModel().icon,
                     "color": habitFormProvider.getIconModel().color,
-                  },
+                  }),
                   "repeat": "1",
                   "target": '1',
                   "remind": '1',
@@ -76,7 +78,10 @@ class _HabitFormState extends State<HabitForm> {
               } else {
                 Map<String, Object?> values = {
                   "title": habitFormProvider.titleController.text,
-                  "icons": "assets/icons/绘画.svg",
+                  "icon": jsonEncode({
+                    "icons": habitFormProvider.getIconModel().icon,
+                    "color": habitFormProvider.getIconModel().color,
+                  }),
                   "repeat": "",
                   "target": DateUtil.getNowDateMs(),
                   "remind": DateUtil.getNowDateMs(),
@@ -155,7 +160,7 @@ class _HabitFormState extends State<HabitForm> {
                             shape: BoxShape.circle,
                           ),
                           child: SvgLoader(
-                            path: habitFormProvider.getIconModel().icons,
+                            path: habitFormProvider.getIconModel().icon,
                             size: SPHelper.sp(SPHelper.fontSp26),
                           ),
                         ),

@@ -40,7 +40,7 @@ class _HabitIconsState extends State<HabitIcons> {
       IconModel iconModel = habitFormProvider.getIconModel();
 
       selectedColor = iconModel.color;
-      selectedImage = iconModel.icons;
+      selectedImage = iconModel.icon;
     });
   }
 

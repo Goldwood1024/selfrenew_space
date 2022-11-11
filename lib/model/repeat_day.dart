@@ -17,8 +17,13 @@ class RepeatModel {
 }
 
 class IconModel {
-  late String icons;
+  late String icon;
   late String color;
 
-
+  static IconModel toBean(Map<dynamic, dynamic> values) {
+    IconModel iconModel = IconModel();
+    iconModel.color = values['color'].toString();
+    iconModel.icon = values['icon'].toString();
+    return iconModel;
+  }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -11,13 +13,8 @@ class HabitProvider extends ChangeNotifier {
 
     List<Map<String, Object?>> data = await habitRepository.query();
 
-    print(data.toString());
-
     for (Map<String, Object?> map in data) {
-      print(map['icons']);
-      IconModel o = IconModel();
-      o.icons = map['icons'].toString();
-      o.color = map['icons'].toString();
+      IconModel o = IconModel.toBean(jsonDecode(map['icons'].toString()));
 
       list.add(
         HabitUnderway(

@@ -283,7 +283,7 @@ class _UnderwayState extends State<Underway>
                   topRadius: true,
                   bottomRadius: true,
                   leading: SvgLoader(
-                    path: data.icons.icons,
+                    path: data.icons.icon,
                     size: SPHelper.sp(SPHelper.gapDp28),
                   ),
                   trailing: Row(

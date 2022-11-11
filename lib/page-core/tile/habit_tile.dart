@@ -8,6 +8,7 @@ class HabitTile extends StatefulWidget {
   final bool topRadius;
   final String leading;
   final String title;
+  final String color;
   final Widget? trailing;
   final VoidCallback? onPressed;
   final bool abandon;
@@ -15,6 +16,7 @@ class HabitTile extends StatefulWidget {
   const HabitTile({
     super.key,
     required this.title,
+    required this.color,
     required this.leading,
     this.height = 52.0,
     this.radius = 12.0,
@@ -68,7 +70,7 @@ class _HabitTileState extends State<HabitTile> {
                   height: SPHelper.height(SPHelper.gapDp36),
                   width: SPHelper.height(SPHelper.gapDp36),
                   decoration: BoxDecoration(
-                    color: Colors.amberAccent,
+                    color: HexColor(widget.color),
                     shape: BoxShape.circle,
                   ),
                   child: SvgLoader(
