@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:selfrenew_space/model/habit_lib.dart';
 import 'package:selfrenew_space/model/repeat_day.dart';
+import 'package:selfrenew_space/model/tip_chip.dart';
 
 class Global {
   static final Random _random = Random();
@@ -33,6 +34,22 @@ class Global {
     '失败只有一种，那就是半途而废',
     '更好的事会一起到来',
   ];
+
+  static List<TipChip> getTipChips() {
+    List<TipChip> chips = [];
+    List<HabitLibModel> list = getHabit(true);
+    for (int i = 0; i < 2; i++) {
+      HabitLibModel model = list[i];
+      chips.add(
+        TipChip(
+          value: model.key,
+          title: model.title,
+          image: model.iconModel.icon,
+        ),
+      );
+    }
+    return chips;
+  }
 
   static String randomHearten() {
     return heartens[_random.nextInt(heartens.length)];

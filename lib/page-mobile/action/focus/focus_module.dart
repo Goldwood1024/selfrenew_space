@@ -42,12 +42,7 @@ class FocusActionEmpty extends StatefulWidget {
 
 class _FocusActionEmptyState extends State<FocusActionEmpty> {
   List<String> tags = [];
-  List<TipChip> options = [
-    TipChip('5', '喝水水喝水', 'assets/icons/算盘.png'),
-    TipChip('4', '喝水喝水', 'assets/icons/算盘.png'),
-    TipChip('1', '吃啥', 'assets/icons/出差.png'),
-    TipChip('3', '喝水水', 'assets/icons/算盘.png'),
-  ];
+  List<TipChip> options = [];
 
   @override
   void initState() {

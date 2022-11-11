@@ -3,5 +3,9 @@ class TipChip {
   final String title;
   final String image;
 
-  TipChip(this.value, this.title, this.image);
+  TipChip({
+    required this.value,
+    required this.title,
+    required this.image,
+  });
 }

@@ -50,13 +50,7 @@ class HabitActionEmpty extends StatefulWidget {
 
 class _HabitActionEmptyState extends State<HabitActionEmpty> {
   List<String> tags = [];
-  List<TipChip> options = [
-    TipChip('1', '吃啥', 'assets/icons/出差.png'),
-    TipChip('3', '喝水水', 'assets/icons/算盘.png'),
-    TipChip('5', '喝水水喝水', 'assets/icons/算盘.png'),
-    TipChip('4', '喝水喝水', 'assets/icons/算盘.png'),
-    TipChip('2', '喝水喝水喝水', 'assets/icons/算盘.png'),
-  ];
+  final List<TipChip> options = Global.getTipChips();
 
   @override
   void initState() {

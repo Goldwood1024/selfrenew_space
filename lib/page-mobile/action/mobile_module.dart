@@ -56,12 +56,8 @@ class _MobileModuleState extends State<MobileModule> {
             ],
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(
-              0,
-              SPHelper.height(SPHelper.gapDp12),
-              0,
-              0,
-            ),
+            margin:
+                EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp12), 0, 0),
             decoration: const BoxDecoration(),
             child: widget.child,
           ),
