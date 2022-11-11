@@ -119,7 +119,7 @@ class _SleekCounterState extends State<SleekCounter> {
                                     : SPHelper.sp(SPHelper.fontSp134),
                                 lineWidth: SPHelper.width(SPHelper.gapDp3),
                                 backgroundWidth:
-                                    SPHelper.width(SPHelper.gapDp3),
+                                    SPHelper.width(SPHelper.gapDp2),
                                 backgroundColor: CupertinoColors.systemGrey4,
                                 percent: value / widget.max,
                                 circularStrokeCap: CircularStrokeCap.round,

@@ -48,7 +48,7 @@ class SPHelper {
   static const double fontSp20 = 20.0;
   static const double fontSp17 = 17.0;
   static const double fontSp15 = 15.0;
-  static const double fontSp134 = 13.4;
+  static const double fontSp134 = 13.6;
 
   static const double gapDp2 = 2;
   static const double gapDp3 = 3;

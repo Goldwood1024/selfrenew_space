@@ -107,18 +107,19 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
+        final HabitUnderway underway = data[index];
         return HabitTile(
           title: data[index].title,
           topRadius: index == 0,
           bottomRadius: index == data.length - 1,
           leading: data[index].icons.icon,
           color: data[index].icons.color,
-          // trailing: SleekCounter(
-          //   min: data[index].sleeks[data[index].sleeks.length - 2].min,
-          //   max: data[index].sleeks[data[index].sleeks.length - 2].max,
-          //   value: data[index].sleeks[data[index].sleeks.length - 2].value,
-          //   fail: data[index].sleeks[data[index].sleeks.length - 2].fail,
-          // ),
+          trailing: SleekCounter(
+            min: underway.getSleekCount().min,
+            max: underway.getSleekCount().max,
+            value: underway.getSleekCount().value,
+            fail: underway.getSleekCount().fail,
+          ),
         );
       },
     );

@@ -53,7 +53,6 @@ export 'package:selfrenew_space/page-core/month_view.dart';
 export 'package:selfrenew_space/page-core/sleek_counter.dart';
 export 'package:selfrenew_space/page-core/tile/focus_home_tile.dart';
 export 'package:selfrenew_space/page-core/tile/focus_tile.dart';
-export 'package:selfrenew_space/page-core/tile/habit_home_tile.dart';
 export 'package:selfrenew_space/page-core/tile/habit_tile.dart';
 export 'package:selfrenew_space/page-core/tile/simple_tile.dart';
 export 'package:selfrenew_space/page-mobile/action/focus/focus_module.dart';

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
+import 'package:selfrenew_space/model/notice.dart';
+import 'package:selfrenew_space/model/sleek_count.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitProvider extends ChangeNotifier {
@@ -21,9 +23,20 @@ class HabitProvider extends ChangeNotifier {
           map['id'].toString(),
           map['title'].toString(),
           o,
-          map['repeat'].toString(),
-          [],
-          [],
+          '每天',
+          [
+            Notice(id: '1', text: '09:00'),
+            Notice(id: '1', text: '09:00'),
+          ],
+          [
+            SleekCount(day: 11, max: 10),
+            SleekCount(day: 12, max: 4),
+            SleekCount(day: 13, max: 3),
+            SleekCount(day: 14),
+            SleekCount(day: 15),
+            SleekCount(day: 16),
+            SleekCount(day: 17),
+          ],
         ),
       );
     }

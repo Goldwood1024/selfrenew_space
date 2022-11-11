@@ -19,4 +19,8 @@ class HabitUnderway {
     this.notices,
     this.sleeks,
   );
+
+  SleekCount getSleekCount() {
+    return sleeks[0];
+  }
 }
