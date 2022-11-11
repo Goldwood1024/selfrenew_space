@@ -72,7 +72,7 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
               style: TextStyleMode.tipTextStyle(context),
             ),
           ),
-          ChipEmpty(
+          ChipEmptyV2(
             options: options,
             onPressed: (_) {
               TipChip chip = options
@@ -82,7 +82,7 @@ class _HabitActionEmptyState extends State<HabitActionEmpty> {
                 "title": chip.title,
               });
             },
-          )
+          ),
         ],
       ),
     );

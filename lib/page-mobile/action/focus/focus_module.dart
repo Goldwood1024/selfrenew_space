@@ -64,7 +64,7 @@ class _FocusActionEmptyState extends State<FocusActionEmpty> {
               style: TextStyleMode.tipTextStyle(context),
             ),
           ),
-          ChipEmpty(
+          ChipEmptyV2(
             options: options,
             onPressed: (_) {
               print(_);

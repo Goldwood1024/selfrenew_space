@@ -4,7 +4,6 @@ export 'dart:io';
 // export 'package:audioplayers/audioplayers.dart';
 export 'package:auto_size_text_field/auto_size_text_field.dart';
 export 'package:auto_size_text_field/auto_size_text_field.dart';
-export 'package:chips_choice/chips_choice.dart';
 export 'package:common_utils/common_utils.dart';
 export 'package:custom_navigation_bar/custom_navigation_bar.dart';
 export 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';

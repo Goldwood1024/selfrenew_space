@@ -1,3 +1,4 @@
+import 'package:flexi_chip/flexi_chip.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:wheel_chooser/wheel_chooser.dart';
@@ -89,69 +90,130 @@ class SvgColorLoader extends StatelessWidget {
   }
 }
 
-class ChipEmpty extends StatefulWidget {
+// class ChipEmpty extends StatefulWidget {
+//   final List<TipChip> options;
+//   final Function(Object) onPressed;
+//
+//   const ChipEmpty({
+//     super.key,
+//     required this.options,
+//     required this.onPressed,
+//   });
+//
+//   @override
+//   State<StatefulWidget> createState() => _ChipEmptyState();
+// }
+//
+// class _ChipEmptyState extends State<ChipEmpty> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         SPHelper.getHeightBox(SPHelper.gapDp20),
+//         ChipsChoice.single(
+//           padding: EdgeInsets.zero,
+//           alignment: WrapAlignment.center,
+//           value: [],
+//           spacing: SPHelper.width(SPHelper.gapDp14),
+//           runSpacing: SPHelper.width(SPHelper.gapDp14),
+//           choiceStyle: C2ChipStyle(
+//             height: SPHelper.height(SPHelper.gapDp48),
+//             backgroundColor: Theme.of(context).backgroundColor,
+//             backgroundOpacity: 1,
+//             overlayColor: Colors.transparent,
+//             shadowColor: Colors.transparent,
+//             padding:
+//                 EdgeInsets.fromLTRB(SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
+//             foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
+//             foregroundStyle: TextStyle(
+//               fontSize: SPHelper.sp(SPHelper.fontSp18),
+//               fontWeight: FontWeight.w500,
+//               color: Theme.of(context).textTheme.labelSmall?.color,
+//             ),
+//           ),
+//           placeholder: '无',
+//           wrapped: true,
+//           onChanged: (_) {
+//             widget.onPressed(_);
+//           },
+//           choiceLeadingBuilder: (item, v) {
+//             return SizedBox(
+//               width: SPHelper.width(SPHelper.gapDp24),
+//               height: SPHelper.height(SPHelper.gapDp24),
+//               child: Image(
+//                 image: item.avatarImage!,
+//               ),
+//             );
+//           },
+//           choiceItems: C2Choice.listFrom<String, TipChip>(
+//             source: widget.options,
+//             value: (i, v) => v.value,
+//             label: (i, v) => v.title,
+//             avatarImage: (i, v) => AssetImage(v.image),
+//           ),
+//         ),
+//         SPHelper.getHeightBox(SPHelper.gapDp20),
+//       ],
+//     );
+//   }
+// }
+
+class ChipEmptyV2 extends StatefulWidget {
   final List<TipChip> options;
   final Function(Object) onPressed;
 
-  const ChipEmpty({
+  const ChipEmptyV2({
     super.key,
     required this.options,
     required this.onPressed,
   });
 
   @override
-  State<StatefulWidget> createState() => _ChipEmptyState();
+  State<StatefulWidget> createState() => _ChipEmptyV2State();
 }
 
-class _ChipEmptyState extends State<ChipEmpty> {
+class _ChipEmptyV2State extends State<ChipEmptyV2> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SPHelper.getHeightBox(SPHelper.gapDp20),
-        ChipsChoice.single(
-          padding: EdgeInsets.zero,
+        Wrap(
+          spacing: 14,
+          runSpacing: 14,
+          runAlignment: WrapAlignment.center,
           alignment: WrapAlignment.center,
-          value: [],
-          spacing: SPHelper.width(SPHelper.gapDp14),
-          runSpacing: SPHelper.width(SPHelper.gapDp14),
-          choiceStyle: C2ChipStyle(
-            height: SPHelper.height(SPHelper.gapDp48),
-            backgroundColor: Theme.of(context).backgroundColor,
-            backgroundOpacity: 1,
-            overlayColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            padding:
-                EdgeInsets.fromLTRB(SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
-            foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
-            foregroundStyle: TextStyle(
-              fontSize: SPHelper.sp(SPHelper.fontSp18),
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).textTheme.labelSmall?.color,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: List.generate(
+            widget.options.length,
+            (index) => FlexiChip(
+              onPressed: () {
+                widget.onPressed(widget.options[index].value);
+              },
+              label: Text(widget.options[index].title),
+              leading: SvgLoader(
+                path: widget.options[index].image,
+              ),
+              style: FlexiChipStyle(
+                height: SPHelper.height(SPHelper.gapDp48),
+                backgroundColor: Theme.of(context).backgroundColor,
+                backgroundOpacity: 1,
+                overlayColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                padding: EdgeInsets.fromLTRB(
+                    SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
+                foregroundSpacing: SPHelper.width(SPHelper.gapDp14),
+                foregroundStyle: TextStyle(
+                  fontSize: SPHelper.sp(SPHelper.fontSp18),
+                  fontWeight: FontWeight.normal,
+                  color: Theme.of(context).textTheme.labelSmall?.color,
+                ),
+              ),
+              disabled: false,
+              autofocus: false,
             ),
           ),
-          placeholder: '无',
-          wrapped: true,
-          onChanged: (_) {
-            widget.onPressed(_);
-          },
-          choiceLeadingBuilder: (item, v) {
-            return SizedBox(
-              width: SPHelper.width(SPHelper.gapDp24),
-              height: SPHelper.height(SPHelper.gapDp24),
-              child: Image(
-                image: item.avatarImage!,
-              ),
-            );
-          },
-          choiceItems: C2Choice.listFrom<String, TipChip>(
-            source: widget.options,
-            value: (i, v) => v.value,
-            label: (i, v) => v.title,
-            avatarImage: (i, v) => AssetImage(v.image),
-          ),
         ),
-        SPHelper.getHeightBox(SPHelper.gapDp20),
       ],
     );
   }
