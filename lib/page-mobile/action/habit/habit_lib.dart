@@ -120,10 +120,9 @@ class _HabitLibState extends State<HabitLib> {
             ),
             Positioned(
               bottom: 0,
-              child: Container(
+              child: SizedBox(
                 height: SPHelper.height(100),
                 width: MediaQuery.of(context).size.width,
-                color: Theme.of(context).backgroundColor,
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(0, 12, 12, 32),
                   alignment: Alignment.centerRight,
