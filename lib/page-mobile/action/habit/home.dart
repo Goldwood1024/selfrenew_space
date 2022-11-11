@@ -35,99 +35,101 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldGradientBackground(
-      appBar: AppBar(
-        toolbarHeight: SPHelper.topBarHeight,
-        title: const AppBarText(
-          title: '习惯',
-        ),
-        leadingWidth: SPHelper.leadingWidth,
-        leading: BackBtn(
-          title: '计划',
-          onPressed: () {
-            Routers.go(Routers.mobileHome);
-          },
-        ),
+    return SlidingUpPanel(
+      backdropEnabled: true,
+      backdropColor: Colors.black12,
+      maxHeight: MediaQuery.of(context).size.height * 0.93,
+      panelBuilder: () {
+        return Scaffold(
+          body: LazyLoadIndexedStack(
+            index: _tabIndex,
+            children: const [
+              Completed(),
+              Abandon(),
+            ],
+          ),
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            toolbarHeight: SPHelper.height(32),
+            bottom: CustomSegmentBottom(
+              initialValue: 0,
+              onValueChanged: (int value) {
+                setState(() {
+                  _tabIndex = value;
+                });
+              },
+              children: const {
+                0: Text(
+                  '已完成',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+                1: Text(
+                  '已放弃',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              },
+            ),
+          ),
+        );
+      },
+      boxShadow: const <BoxShadow>[
+        BoxShadow(
+          blurRadius: 12.0,
+          color: Color.fromRGBO(0, 0, 0, 0.1),
+        )
+      ],
+      disableDraggableOnScrolling: true,
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(12.0),
+        topRight: Radius.circular(12.0),
       ),
-      body: SlidingUpPanel(
-        maxHeight: MediaQuery.of(context).size.height * 0.86,
-        panelBuilder: () {
-          return Scaffold(
-            body: LazyLoadIndexedStack(
-              index: _tabIndex,
-              children: const [
-                Completed(),
-                Abandon(),
-              ],
-            ),
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              toolbarHeight: SPHelper.height(32),
-              bottom: CustomSegmentBottom(
-                initialValue: 0,
-                onValueChanged: (int value) {
-                  setState(() {
-                    _tabIndex = value;
-                  });
-                },
-                children: const {
-                  0: Text(
-                    '已完成',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                  1: Text(
-                    '已放弃',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                },
-              ),
-            ),
-          );
-        },
-        boxShadow: const <BoxShadow>[
-          BoxShadow(
-            blurRadius: 12.0,
-            color: Color.fromRGBO(0, 0, 0, 0.1),
-          )
-        ],
-        disableDraggableOnScrolling: true,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
-        ),
-        onPanelSlide: (_) {
-          if (_ > 0) {
-            setState(() {
-              _animationController.reverse();
-            });
-          }
-        },
-        onPanelClosed: () {},
-        header: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ForceDraggableWidget(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-                  child: Container(
-                    width: 60,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
+      onPanelSlide: (_) {
+        if (_ > 0) {
+          setState(() {
+            _animationController.reverse();
+          });
+        }
+      },
+      onPanelClosed: () {},
+      header: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ForceDraggableWidget(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
+                child: Container(
+                  width: 60,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+      body: ScaffoldGradientBackground(
+        appBar: AppBar(
+          toolbarHeight: SPHelper.topBarHeight,
+          title: const AppBarText(
+            title: '习惯',
+          ),
+          leadingWidth: SPHelper.leadingWidth,
+          leading: BackBtn(
+            title: '计划',
+            onPressed: () {
+              Routers.go(Routers.mobileHome);
+            },
           ),
         ),
         body: Stack(
