@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -13,6 +14,15 @@ class _TargetState extends State<Target> {
   late TargetEnum targetEnum;
 
   late bool expand;
+
+  final List<String> items = [
+    '次',
+    '杯',
+    '公里',
+    '分钟',
+    '小时',
+  ];
+  String? selectedValue;
 
   @override
   void initState() {
@@ -38,129 +48,190 @@ class _TargetState extends State<Target> {
           )
         ],
       ),
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          SPHelper.getDefaultHeightBox(),
-          Padding(
-            padding: SPHelper.pagePaddingHorizontal,
-            child: Column(
-              children: [
-                SimpleTile(
-                  topRadius: true,
-                  title: '当天完成打卡',
-                  showArrow: false,
-                  trailing: RoundCheckBox(
-                    canCancel: true,
-                    isChecked: targetEnum == TargetEnum.day,
-                    uncheckedColor: CupertinoColors.systemFill,
-                    borderColor: Colors.transparent,
-                    size: 26,
-                    checkedColor: Theme.of(context).primaryColor,
-                    onTap: (selected) {
-                      setState(() {
-                        targetEnum = TargetEnum.day;
-                        expand = false;
-                      });
-                    },
-                  ),
+      body: Padding(
+        padding: SPHelper.pagePaddingHorizontal,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              SimpleTile(
+                topRadius: true,
+                title: '当天完成打卡',
+                showArrow: false,
+                trailing: RoundCheckBox(
+                  canCancel: true,
+                  isChecked: targetEnum == TargetEnum.day,
+                  uncheckedColor: CupertinoColors.systemFill,
+                  borderColor: Colors.transparent,
+                  size: 26,
+                  checkedColor: Theme.of(context).primaryColor,
+                  onTap: (selected) {
+                    setState(() {
+                      targetEnum = TargetEnum.day;
+                      expand = false;
+                    });
+                  },
                 ),
-                SimpleTile(
-                  bottomRadius: !expand,
-                  title: '完成一定量',
-                  showArrow: false,
-                  trailing: RoundCheckBox(
-                    isChecked: targetEnum == TargetEnum.count,
-                    uncheckedColor: CupertinoColors.systemFill,
-                    borderColor: Colors.transparent,
-                    size: 26,
-                    checkedColor: Theme.of(context).primaryColor,
-                    onTap: (selected) {
-                      setState(() {
-                        targetEnum = TargetEnum.count;
-                        expand = true;
-                      });
-                    },
-                  ),
+              ),
+              SimpleTile(
+                bottomRadius: !expand,
+                title: '完成一定量',
+                showArrow: false,
+                trailing: RoundCheckBox(
+                  isChecked: targetEnum == TargetEnum.count,
+                  uncheckedColor: CupertinoColors.systemFill,
+                  borderColor: Colors.transparent,
+                  size: 26,
+                  checkedColor: Theme.of(context).primaryColor,
+                  onTap: (selected) {
+                    setState(() {
+                      targetEnum = TargetEnum.count;
+                      expand = true;
+                    });
+                  },
                 ),
-                expand
-                    ? Column(
-                        children: [
-                          SimpleTile(
-                              title: '每天',
-                              showArrow: false,
-                              trailing: Row(
-                                children: [
-                                  Container(
-                                    width: 60,
-                                    margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
-                                    child: TextFormField(),
-                                  ),
-                                  DropdownButtonHideUnderline(
-                                    child: DropdownButton(
-                                      style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontSize: 16,
+              ),
+              expand
+                  ? Column(
+                      children: [
+                        SimpleTile(
+                          title: '每天',
+                          showArrow: false,
+                          trailing: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
+                                child: SizedBox(
+                                  width: 80,
+                                  height: 42,
+                                  child: AutoSizeTextField(
+                                    keyboardType: TextInputType.number,
+                                    style: TextStyle(
+                                      fontSize: SPHelper.sp(
+                                        SPHelper.fontSp17,
                                       ),
-                                      value: 1,
-                                      items: const [
-                                        DropdownMenuItem(
-                                          value: 0,
-                                          child: Text(
-                                            '次',
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 1,
-                                          child: Text(
-                                            '杯',
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 2,
-                                          child: Text(
-                                            '分钟',
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 3,
-                                          child: Text(
-                                            '小时',
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 4,
-                                          child: Text(
-                                            '公里',
-                                          ),
-                                        ),
-                                      ],
-                                      onChanged: (_) {},
-                                      elevation: 0,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .color,
                                     ),
-                                  )
-                                ],
-                              )),
-                          // const SimpleTile(
-                          //   title: '打卡时',
-                          //   showArrow: false,
-                          // ),
-                          SimpleTile(
-                            bottomRadius: true,
-                            title: '每次记录',
-                            showArrow: false,
-                            trailing: SizedBox(
-                              width: 100,
-                              child: TextFormField(),
+                                    controller: TextEditingController(),
+                                    cursorColor: Theme.of(context).primaryColor,
+                                    cursorWidth: 2.4,
+                                    decoration: InputDecoration(
+                                      fillColor: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      filled: true,
+                                      isDense: true,
+                                      border: OutlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              DropdownButtonHideUnderline(
+                                child: DropdownButton2(
+                                  dropdownDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Colors.white,
+                                  ),
+                                  buttonDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                  ),
+                                  buttonPadding:
+                                      const EdgeInsets.fromLTRB(14, 0, 0, 0),
+                                  itemSplashColor: Colors.transparent,
+                                  itemHighlightColor: Colors.transparent,
+                                  dropdownElevation: 1,
+                                  hint: Text(
+                                    '次',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                  items: items
+                                      .map(
+                                        (item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Text(
+                                            item,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  value: selectedValue,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedValue = value as String;
+                                    });
+                                  },
+                                  buttonHeight: 42,
+                                  buttonWidth: 80,
+                                  itemHeight: 42,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        // const SimpleTile(
+                        //   title: '打卡时',
+                        //   showArrow: false,
+                        // ),
+                        SimpleTile(
+                          bottomRadius: true,
+                          title: '每次记录',
+                          showArrow: false,
+                          showDivider: false,
+                          trailing: SizedBox(
+                            width: 80,
+                            height: 42,
+                            child: AutoSizeTextField(
+                              keyboardType: TextInputType.number,
+                              style: TextStyle(
+                                fontSize: SPHelper.sp(
+                                  SPHelper.fontSp17,
+                                ),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall!
+                                    .color,
+                              ),
+                              controller: TextEditingController(),
+                              cursorColor: Theme.of(context).primaryColor,
+                              cursorWidth: 2.4,
+                              decoration: InputDecoration(
+                                fillColor:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                filled: true,
+                                isDense: true,
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
                             ),
                           ),
-                        ],
-                      )
-                    : SPHelper.empty,
-              ],
-            ),
-          )
-        ],
+                        ),
+                      ],
+                    )
+                  : SPHelper.empty,
+            ],
+          ),
+        ),
       ),
     );
   }

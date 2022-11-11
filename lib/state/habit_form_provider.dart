@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-import 'package:selfrenew_space/dao/habit/repository.dart';
-import 'package:selfrenew_space/model/habit_lib.dart';
-import 'package:selfrenew_space/model/remind_model.dart';
-import 'package:selfrenew_space/model/repeat_day.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitFormProvider extends ChangeNotifier {
@@ -156,7 +152,7 @@ class HabitFormProvider extends ChangeNotifier {
     repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
 
     remindModel = RemindModel();
-    
+
     iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
     heartenController.text = mm['hearten'].toString();
     notifyListeners();

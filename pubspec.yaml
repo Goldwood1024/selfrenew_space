@@ -84,6 +84,7 @@ dependencies:
   flutter_onboarding_slider: ^1.0.8
   cupertino_onboarding: ^1.1.1
   pull_down_button: ^0.3.1
+  dropdown_button2: ^1.8.9
   flutter_lazy_listview: ^1.0.1
   lazy_load_indexed_stack: ^0.1.4
   pull_to_refresh: ^2.0.0
