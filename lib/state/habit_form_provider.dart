@@ -25,6 +25,13 @@ class HabitFormProvider extends ChangeNotifier {
     return iconModel;
   }
 
+  void updateIconModel(String icon, String color) {
+    iconModel.icons = icon;
+    iconModel.color = color;
+    
+    notifyListeners();
+  }
+
   DateTime getStartDateTime() {
     return startDate;
   }

@@ -14,31 +14,12 @@ class _HabitIconsState extends State<HabitIcons> {
 
   final List<String> colors = [
     '#35b5ff',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
-    '#ff479c',
+    '#ff470c',
+    '#ff171c',
+    '#f9429c',
     '#001e38',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
-    '#c6cdd7',
+    '#c63dd7',
+    '#11cd07',
   ];
 
   final List<String> image = [
@@ -51,12 +32,23 @@ class _HabitIconsState extends State<HabitIcons> {
   @override
   void initState() {
     super.initState();
-    selectedColor = '#35b5ff';
-    selectedImage = '#35b5ff';
+    selectedColor = '#11cd07';
+    selectedImage = '';
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      HabitFormProvider habitFormProvider = Provider.of(context);
+      IconModel iconModel = habitFormProvider.getIconModel();
+
+      selectedColor = iconModel.color;
+      selectedImage = iconModel.icons;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    HabitFormProvider habitFormProvider = Provider.of(context);
+    HabitFormProvider update = Provider.of(context, listen: false);
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -67,6 +59,8 @@ class _HabitIconsState extends State<HabitIcons> {
         actions: [
           ActionBtn(
             onPressed: () {
+              update.updateIconModel(selectedImage, selectedColor);
+
               Navigator.pop(context);
             },
             title: '确定',
@@ -77,33 +71,33 @@ class _HabitIconsState extends State<HabitIcons> {
         padding: SPHelper.pagePaddingHorizontal,
         child: ListView(
           children: [
-            // FormCard(
-            //   title: '颜色',
-            //   titleTrailing: SPHelper.empty,
-            //   fontWeight: FontWeight.w500,
-            //   child: SizedBox(
-            //     height: SPHelper.height(130),
-            //     child: GridView.count(
-            //       shrinkWrap: true,
-            //       crossAxisCount: 3,
-            //       mainAxisSpacing: SPHelper.listHorizontalPadding(),
-            //       crossAxisSpacing: SPHelper.listHorizontalPadding(),
-            //       scrollDirection: Axis.horizontal,
-            //       children: List.generate(
-            //         colors.length,
-            //         (index) => HabitAccentColor(
-            //           color: colors[index],
-            //           selected: colors[index] == selectedColor,
-            //           onChange: (_) {
-            //             setState(() {
-            //               selectedColor = _;
-            //             });
-            //           },
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            FormCard(
+              title: '颜色',
+              titleTrailing: SPHelper.empty,
+              fontWeight: FontWeight.w500,
+              child: SizedBox(
+                height: SPHelper.height(130),
+                child: GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 3,
+                  mainAxisSpacing: SPHelper.listHorizontalPadding(),
+                  crossAxisSpacing: SPHelper.listHorizontalPadding(),
+                  scrollDirection: Axis.horizontal,
+                  children: List.generate(
+                    colors.length,
+                    (index) => HabitAccentColor(
+                      color: colors[index],
+                      selected: colors[index] == selectedColor,
+                      onChange: (_) {
+                        setState(() {
+                          selectedColor = _;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
             SPHelper.getDefaultHeightBox(),
             FormCard(
               title: '图标',
@@ -121,6 +115,7 @@ class _HabitIconsState extends State<HabitIcons> {
                     image.length,
                     (index) => HabitAccentImage(
                       image: image[index],
+                      selectedColor: selectedColor,
                       selected: image[index] == selectedImage,
                       onChange: (_) {
                         setState(() {

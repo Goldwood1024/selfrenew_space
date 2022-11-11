@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lifecycle/lifecycle.dart';
-import 'package:selfrenew_space/model/habit_underway.dart';
-import 'package:selfrenew_space/page-core/custom_segmented.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/state/habit_provider.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
 class HabitHome extends StatefulWidget {

@@ -256,6 +256,7 @@ class _HabitAccentColorState extends State<HabitAccentColor> {
 
 class HabitAccentImage extends StatefulWidget {
   final String image;
+  final String selectedColor;
   final bool selected;
   final Function(String) onChange;
 
@@ -263,6 +264,7 @@ class HabitAccentImage extends StatefulWidget {
     super.key,
     required this.image,
     required this.selected,
+    required this.selectedColor,
     required this.onChange,
   });
 
@@ -281,8 +283,10 @@ class _HabitAccentImageState extends State<HabitAccentImage> {
         width: SPHelper.width(SPHelper.gapDp32),
         height: SPHelper.height(SPHelper.gapDp32),
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(100),
+          color: widget.selected
+              ? HexColor(widget.selectedColor)
+              : CupertinoColors.extraLightBackgroundGray,
+          shape: BoxShape.circle,
         ),
         child: Stack(
           children: [
