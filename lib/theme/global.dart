@@ -38,7 +38,7 @@ class Global {
   static List<TipChip> getTipChips() {
     List<TipChip> chips = [];
     List<HabitLibModel> list = getHabit(true);
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
       HabitLibModel model = list[i];
       chips.add(
         TipChip(
