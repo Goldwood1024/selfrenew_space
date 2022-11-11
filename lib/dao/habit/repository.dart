@@ -37,6 +37,16 @@ select * from $habitTableName where isDeleted=0
     return await SqliteProxy.database.rawQuery(selectAll);
   }
 
+  Future<Map<String, Object?>> selectById(String id) async {
+    String sql = 'select * from $habitTableName where isDeleted=0 and id= $id';
+    List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
+    if (list.isNotEmpty) {
+      return list[0];
+    }
+
+    return {};
+  }
+
   Future<void> update(String col, String value, String id) async {
     String sql = 'update $habitTableName set $col=\'$value\' where id=$id';
     await SqliteProxy.database.rawUpdate(sql);

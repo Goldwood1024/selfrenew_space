@@ -146,8 +146,9 @@ class HabitFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void query(String id) {
-    titleController.text = '11';
+  Future<void> query(String id) async {
+    Map<String, Object?> mm = await habitRepository.selectById(id);
+    titleController.text = mm['title'].toString();
     repeatModel = RepeatModel();
     repeatModel.type = 0;
     repeatModel.repeatDays.add(RepeatDay(day: '周一', value: '1'));
