@@ -23,8 +23,8 @@ class _HabitFormState extends State<HabitForm> {
   @override
   void initState() {
     super.initState();
+    isEdit = false;
 
-    isEdit = true;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       HabitFormProvider habitFormProvider = Provider.of(context, listen: false);
       if (widget.params.isNotEmpty) {
@@ -32,6 +32,7 @@ class _HabitFormState extends State<HabitForm> {
           habitFormProvider.newHabit(widget.params['key']);
         } else if (ObjectUtil.isNotEmpty(widget.params['id'])) {
           habitFormProvider.query(widget.params['id']);
+          isEdit = true;
         }
       } else {
         habitFormProvider.newHabit('');
@@ -97,19 +98,24 @@ class _HabitFormState extends State<HabitForm> {
                       .getStartDateTime()
                       .millisecondsSinceEpoch,
                   "hearten": habitFormProvider.heartenController.text,
-                  "gmtDate": DateUtil.getNowDateMs(),
                 };
 
-                await habitRepository.insertHabit(values);
+                await habitRepository.updateById(values, widget.params['id']);
               } else {
                 Map<String, Object?> values = {
                   "title": habitFormProvider.titleController.text,
-                  "icon": jsonEncode({
-                    "icons": habitFormProvider.getIconModel().icon,
+                  "icons": jsonEncode({
+                    "icon": habitFormProvider.getIconModel().icon,
                     "color": habitFormProvider.getIconModel().color,
                   }),
-                  "repeat": "",
-                  "target": DateUtil.getNowDateMs(),
+                  "repeat": jsonEncode({
+                    "type": habitFormProvider.getRepeatType(),
+                    "repeatDays": habitFormProvider.getRepeatDays(),
+                    "selectedDates": getSeconds(
+                      habitFormProvider.getSelectedDates(),
+                    ),
+                  }),
+                  "target": '1',
                   "remind": jsonEncode(
                     getSeconds(habitFormProvider.getRemindDates()),
                   ),

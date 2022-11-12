@@ -53,8 +53,18 @@ select * from $habitTableName where isDeleted=0
   }
 
   Future<void> updateById(Map<String, Object?> values, String id) async {
-    // String sql = 'update $habitTableName set $col=\'$value\' where id=$id';
-    await SqliteProxy.database.rawUpdate('sql');
+    String sql = '''
+    update $habitTableName set title='${values['title']}', 
+    icons='${values['icons']}', 
+    repeat='${values['repeat']}', 
+    target='${values['target']}', 
+    remind='${values['remind']}', 
+    startDate='${values['startDate']}',
+    hearten='${values['hearten']}'
+    where id=$id
+    ''';
+
+    await SqliteProxy.database.rawUpdate(sql);
   }
 
   Future<void> insertHabit(Map<String, Object?> values) async {
