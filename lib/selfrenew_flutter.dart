@@ -90,6 +90,7 @@ export 'package:selfrenew_space/page-mobile/setting/mobile_setting.dart';
 export 'package:selfrenew_space/page-mobile/setting/notification.dart';
 export 'package:selfrenew_space/page-mobile/setting/theme.dart';
 export 'package:selfrenew_space/state/app_setting_provider.dart';
+export 'package:selfrenew_space/state/focus_form_provider.dart';
 export 'package:selfrenew_space/state/focus_provider.dart';
 export 'package:selfrenew_space/state/focus_provider.dart';
 export 'package:selfrenew_space/state/focus_timer_provider.dart';

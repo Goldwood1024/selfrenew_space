@@ -34,6 +34,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
     } else if (type == FocusType.downtime.name) {
       appBarTitle = '倒计时';
     }
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      FocusFormProvider focusFormProvider = Provider.of(context, listen: false);
+
+      focusFormProvider.query();
+    });
   }
 
   @override
@@ -43,6 +49,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    FocusFormProvider focusFormProvider = Provider.of(context);
+    FocusFormProvider update = Provider.of(context, listen: false);
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.topBarHeight,
@@ -148,9 +157,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         bottomRadius: true,
                         max: 90,
                         min: 5,
-                        initValue: 25,
+                        initValue: focusFormProvider.getTargetTime(),
+                        onValueChanged: (_) {
+                          update.updateTargetTime(_ * 60);
+                        },
                         trailing: Text(
-                          '25 分钟',
+                          '${focusFormProvider.getTargetTime()} 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
@@ -161,7 +173,10 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         topRadius: true,
                         showArrow: false,
                         trailing: CommonSwitch(
-                          func: (_) {},
+                          value: focusFormProvider.getAutoRelax(),
+                          func: (_) {
+                            update.updateAutoRelax(_);
+                          },
                         ),
                       ),
                       SimpleTileSlider(
@@ -169,9 +184,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         title: '短休息时长',
                         max: 10,
                         min: 1,
-                        initValue: 5,
+                        initValue: focusFormProvider.getShortRelaxTime(),
+                        onValueChanged: (_) {
+                          update.updateShortRelaxTime(_ * 60);
+                        },
                         trailing: Text(
-                          '5 分钟',
+                          '${focusFormProvider.getShortRelaxTime()} 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
@@ -180,9 +198,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         title: '长休息时长',
                         max: 50,
                         min: 1,
-                        initValue: 20,
+                        initValue: focusFormProvider.getLongRelaxTime(),
+                        onValueChanged: (_) {
+                          update.updateLongRelaxTime(_ * 60);
+                        },
                         trailing: Text(
-                          '20 分钟',
+                          '${focusFormProvider.getLongRelaxTime()} 分钟',
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
@@ -192,12 +213,14 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         bottomRadius: true,
                         max: 10,
                         min: 1,
-                        initValue: 4,
+                        initValue: focusFormProvider.getLongRelaxInterval(),
+                        onValueChanged: (_) {
+                          update.updateLongRelaxInterval(_);
+                        },
                         trailing: Text(
-                          '4 个番茄',
+                          '${focusFormProvider.getLongRelaxInterval()} 番茄',
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
-                        onValueChanged: (v) {},
                       ),
                     ],
                   ),

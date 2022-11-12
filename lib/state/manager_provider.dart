@@ -40,6 +40,9 @@ class _ManagerProviderState extends State<ManagerProvider> {
         ChangeNotifierProvider(
           create: (_) => FocusTimerProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => FocusFormProvider(),
+        ),
       ],
       child: widget.child,
     );
