@@ -99,7 +99,14 @@ class HabitActionDataList extends StatefulWidget {
 
 class _HabitActionDataListState extends State<HabitActionDataList> {
   static final HabitRepository habitRepository = HabitRepository();
-  final DateTime now = DateTime.now();
+  late DateTime now;
+
+  @override
+  void initState() {
+    super.initState();
+
+    now = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
