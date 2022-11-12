@@ -42,7 +42,7 @@ class _HabitFormState extends State<HabitForm> {
   List<int> getSeconds(List<DateTime> list) {
     List<int> data = [];
     for (DateTime time in list) {
-      data.add(time.second);
+      data.add(time.millisecondsSinceEpoch);
     }
     return data;
   }
@@ -82,12 +82,20 @@ class _HabitFormState extends State<HabitForm> {
                     "icon": habitFormProvider.getIconModel().icon,
                     "color": habitFormProvider.getIconModel().color,
                   }),
-                  "repeat": "1",
+                  "repeat": jsonEncode({
+                    "type": habitFormProvider.getRepeatType(),
+                    "repeatDays": habitFormProvider.getRepeatDays(),
+                    "selectedDates": getSeconds(
+                      habitFormProvider.getSelectedDates(),
+                    ),
+                  }),
                   "target": '1',
                   "remind": jsonEncode(
                     getSeconds(habitFormProvider.getRemindDates()),
                   ),
-                  "startDate": '1',
+                  "startDate": habitFormProvider
+                      .getStartDateTime()
+                      .millisecondsSinceEpoch,
                   "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };
@@ -105,6 +113,9 @@ class _HabitFormState extends State<HabitForm> {
                   "remind": jsonEncode(
                     getSeconds(habitFormProvider.getRemindDates()),
                   ),
+                  "startDate": habitFormProvider
+                      .getStartDateTime()
+                      .millisecondsSinceEpoch,
                   "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };

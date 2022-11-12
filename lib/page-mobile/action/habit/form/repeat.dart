@@ -12,6 +12,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   late TabController tabController;
   late PageController pageController = PageController();
   late List<DateTime> selectedDates;
+  late List<int> weekends = [1, 2, 3, 4, 5, 6, 7];
 
   @override
   void initState() {
@@ -37,12 +38,30 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
     pageController.jumpToPage(index);
   }
 
+  String getDayText(BuildContext context, int weekday) {
+    if (1 == weekday) {
+      return '周一';
+    } else if (2 == weekday) {
+      return '周二';
+    } else if (3 == weekday) {
+      return '周三';
+    } else if (4 == weekday) {
+      return '周四';
+    } else if (5 == weekday) {
+      return '周五';
+    } else if (6 == weekday) {
+      return '周六';
+    }
+
+    return '周日';
+  }
+
   @override
   Widget build(BuildContext context) {
     HabitFormProvider habitFormProvider = Provider.of(context);
     HabitFormProvider update = Provider.of(context, listen: false);
 
-    List<RepeatDay> repeatDays = habitFormProvider.getRepeatDays();
+    List<int> repeatDays = habitFormProvider.getRepeatDays();
 
     return ScaffoldGradientBackground(
       appBar: AppBar(
@@ -90,23 +109,18 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
           children: [
             Column(
               children: List.generate(
-                repeatDays.length,
+                weekends.length,
                 (index) => SimpleTile(
                   onPressed: () {
-                    setState(() {
-                      repeatDays[index].selected = !repeatDays[index].selected;
-                    });
-
-                    // 更新值
-                    update.updateRepeatDay(index, repeatDays[index].selected);
+                    update.updateRepeatDay(index + 1);
                   },
                   topRadius: index == 0,
-                  bottomRadius: index == repeatDays.length - 1,
-                  title: repeatDays[index].day,
+                  bottomRadius: index == weekends.length - 1,
+                  title: getDayText(context, weekends[index]),
                   showArrow: false,
-                  showDivider: index != repeatDays.length - 1,
+                  showDivider: index != weekends.length - 1,
                   trailing: ThemeModeCheck(
-                    selected: repeatDays[index].selected,
+                    selected: repeatDays.contains(weekends[index]),
                   ),
                 ),
               ),

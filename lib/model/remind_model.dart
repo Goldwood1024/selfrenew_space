@@ -1,11 +1,22 @@
 class RemindModel {
   late List<DateTime> list = [];
 
-  static List<DateTime> toBean() {
-    return [];
+  static RemindModel toBean(List<dynamic> data) {
+    RemindModel remindModel = RemindModel();
+
+    List<DateTime> list = [];
+    for (int a in data) {
+      list.add(DateTime.fromMillisecondsSinceEpoch(a));
+    }
+
+    remindModel.list = list;
+    return remindModel;
   }
 
-  static DateTime defaultDateTime() {
-    return DateTime(2000, 01, 01, 09, 00, 00);
+  static RemindModel defaultDateTime() {
+    RemindModel remindModel = RemindModel();
+    remindModel.list.add(DateTime(2000, 01, 02, 09, 00));
+
+    return remindModel;
   }
 }

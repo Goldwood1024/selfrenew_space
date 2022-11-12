@@ -129,6 +129,7 @@ flutter:
     - 'assets/splash/每日习惯.svg'
     - 'assets/splash/图表.svg'
     - 'assets/icons/timer.svg'
+    - 'assets/icons/question.svg'
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

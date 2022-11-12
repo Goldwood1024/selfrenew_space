@@ -76,7 +76,7 @@ class HabitFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<RepeatDay> getRepeatDays() {
+  List<int> getRepeatDays() {
     if (repeatModel.type == 0) {
       return repeatModel.repeatDays;
     }
@@ -92,23 +92,10 @@ class HabitFormProvider extends ChangeNotifier {
     /// 新的习惯
     if (ObjectUtil.isEmpty(value)) {
       titleController.text = '';
-      iconModel = IconModel(color: '#990909', icon: 'assets/icons/绘画.svg');
-
-      repeatModel = RepeatModel();
-      repeatModel.type = 0;
-      repeatModel.repeatDays.add(
-        RepeatDay(day: '周一', value: '1', selected: false),
-      );
-      repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
-      repeatModel.repeatDays.add(RepeatDay(day: '周三', value: '3'));
-      repeatModel.repeatDays.add(RepeatDay(day: '周四', value: '4'));
-      repeatModel.repeatDays.add(RepeatDay(day: '周五', value: '5'));
-      repeatModel.repeatDays.add(RepeatDay(day: '周六', value: '6'));
-      repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
-
-      remindModel = RemindModel();
-      remindModel.list.add(RemindModel.defaultDateTime());
-
+      // 图标
+      iconModel = IconModel.defaultIconModel();
+      repeatModel = RepeatModel.defaultRepeatModel();
+      remindModel = RemindModel.defaultDateTime();
       startDate = DateTime.now();
       heartenController.text = Global.randomHearten();
     } else {
@@ -122,21 +109,8 @@ class HabitFormProvider extends ChangeNotifier {
             icon: model.iconModel.icon,
           );
 
-          repeatModel = RepeatModel();
-          repeatModel.type = 0;
-          repeatModel.repeatDays.add(
-            RepeatDay(day: '周一', value: '1', selected: false),
-          );
-          repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
-          repeatModel.repeatDays.add(RepeatDay(day: '周三', value: '3'));
-          repeatModel.repeatDays.add(RepeatDay(day: '周四', value: '4'));
-          repeatModel.repeatDays.add(RepeatDay(day: '周五', value: '5'));
-          repeatModel.repeatDays.add(RepeatDay(day: '周六', value: '6'));
-          repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
-
-          remindModel = RemindModel();
-          remindModel.list.add(RemindModel.defaultDateTime());
-
+          repeatModel = RepeatModel.defaultRepeatModel();
+          remindModel = RemindModel.defaultDateTime();
           startDate = DateTime.now();
           heartenController.text = model.hearten;
 
@@ -153,20 +127,23 @@ class HabitFormProvider extends ChangeNotifier {
     print(mm);
 
     titleController.text = mm['title'].toString();
-    repeatModel = RepeatModel();
-    repeatModel.type = 0;
-    repeatModel.repeatDays.add(RepeatDay(day: '周一', value: '1'));
-    repeatModel.repeatDays.add(RepeatDay(day: '周二', value: '2'));
-
-    remindModel = RemindModel();
-
+    repeatModel = RepeatModel.toBean(jsonDecode(mm['repeat'].toString()));
+    remindModel = RemindModel.toBean(jsonDecode(mm['remind'].toString()));
     iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
+
     heartenController.text = mm['hearten'].toString();
+    startDate = DateTime.fromMillisecondsSinceEpoch(
+        int.parse(mm['startDate'].toString()));
+
     notifyListeners();
   }
 
-  void updateRepeatDay(int index, bool selected) {
-    repeatModel.repeatDays[index].selected = selected;
+  void updateRepeatDay(int index) {
+    if (repeatModel.repeatDays.contains(index)) {
+      repeatModel.repeatDays.removeWhere((element) => element == index);
+    } else {
+      repeatModel.repeatDays.add(index);
+    }
     notifyListeners();
   }
 

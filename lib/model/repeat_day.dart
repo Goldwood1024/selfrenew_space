@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class RepeatDay {
   final String day;
   final String value;
@@ -12,8 +14,29 @@ class RepeatDay {
 
 class RepeatModel {
   late int type = 1;
-  late List<RepeatDay> repeatDays = [];
+  late List<int> repeatDays = [];
   late List<DateTime> selectedDates = [];
+
+  static RepeatModel defaultRepeatModel() {
+    RepeatModel repeatModel = RepeatModel();
+    repeatModel.type = 0;
+    repeatModel.repeatDays.addAll([1, 2, 3, 4, 5, 6, 7]);
+    return repeatModel;
+  }
+
+  static RepeatModel toBean(Map<dynamic, dynamic> values) {
+    RepeatModel repeatModel = RepeatModel();
+    repeatModel.type = int.parse(values['type'].toString());
+
+    List<int> list = [];
+    for (int a in jsonDecode(values['repeatDays'].toString())) {
+      list.add(a);
+    }
+
+    repeatModel.repeatDays = list;
+    repeatModel.selectedDates = [];
+    return repeatModel;
+  }
 }
 
 class IconModel {
@@ -24,6 +47,10 @@ class IconModel {
     required this.color,
     required this.icon,
   });
+
+  static IconModel defaultIconModel() {
+    return IconModel(color: '#f3f5f5', icon: 'assets/icons/question.svg');
+  }
 
   static IconModel toBean(Map<dynamic, dynamic> values) {
     return IconModel(
