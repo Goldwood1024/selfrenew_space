@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:selfrenew_space/state/focus_provider.dart';
 
 class FocusHome extends StatefulWidget {
   const FocusHome({super.key});
@@ -16,6 +14,8 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
+
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
@@ -28,7 +28,9 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
       ),
     );
 
-    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<FocusProvider>(context, listen: false).reloadFocus();
+    });
   }
 
   @override
@@ -187,9 +189,9 @@ class _FocusUnderwayState extends State<FocusUnderway>
                   ),
                   topRadius: true,
                   bottomRadius: true,
-                  leading: SvgLoader(
-                    path: data[index].imagePath,
-                  ),
+                  // leading: SvgLoader(
+                  //   path: data[index].imagePath,
+                  // ),
                   trailing: Row(
                     children: [
                       GestureDetector(
@@ -199,8 +201,10 @@ class _FocusUnderwayState extends State<FocusUnderway>
                             keepSingle: true,
                             useAnimation: true,
                             builder: (_) {
-                              return const FocusTimer(
-                                params: {},
+                              return FocusTimer(
+                                params: {
+                                  'id': data[index].id,
+                                },
                               );
                             },
                           );

@@ -82,7 +82,7 @@ select * from $focusTableName where isDeleted=0
     await SqliteProxy.database.rawUpdate(sql);
   }
 
-  Future<void> insertHabit(Map<String, Object?> values) async {
+  Future<void> insert(Map<String, Object?> values) async {
     await SqliteProxy.database.insert(focusTableName, values);
   }
 

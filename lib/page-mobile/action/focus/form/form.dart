@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
+import 'package:selfrenew_space/dao/focus/repository.dart';
 import 'package:selfrenew_space/page-core/tile/simple_tile_slider.dart';
 import 'package:selfrenew_space/page-mobile/action/habit/form/repeat.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
@@ -21,6 +22,7 @@ class FocusForm extends StatefulWidget {
 class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
   late String appBarTitle;
   late String type;
+  final FocusRepository focusRepository = FocusRepository();
 
   @override
   void initState() {
@@ -67,8 +69,23 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         leadingWidth: 80,
         actions: [
           ActionBtn(
-            onPressed: () {
-              Routers.push(Routers.habit);
+            onPressed: () async {
+              Map<String, Object?> values = {
+                'title': focusFormProvider.getTargetTime(),
+                'icons': focusFormProvider.getTargetTime(),
+                'repeat': focusFormProvider.getTargetTime(),
+                'remind': focusFormProvider.getTargetTime(),
+                'targetTime': focusFormProvider.getTargetTime(),
+                'shortRelaxTime': focusFormProvider.getShortRelaxTime(),
+                'longRelaxTime': focusFormProvider.getLongRelaxTime(),
+                'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
+                'autoRelax': focusFormProvider.getAutoRelax(),
+                'gmtDate': DateTime.now().millisecondsSinceEpoch,
+              };
+
+              await focusRepository.insert(values);
+
+              Routers.push(Routers.focusHome);
             },
             title: '保存',
           )

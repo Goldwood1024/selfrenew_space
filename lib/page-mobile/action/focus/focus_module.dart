@@ -99,7 +99,8 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
           topRadius: index == 0,
           bottomRadius: index == data.length - 1,
           title: data[index].title,
-          leading: data[index].imagePath,
+          // leading: data[index].imagePath,
+          leading: '',
           trailing: GestureDetector(
             onTap: () {
               SmartDialog.show(builder: (_) {

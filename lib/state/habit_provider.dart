@@ -14,7 +14,6 @@ class HabitProvider extends ChangeNotifier {
   Future<void> reloadHabitUnderway() async {
     list.clear();
 
-    print(111);
     List<Map<String, Object?>> data = await habitRepository.query();
 
     for (Map<String, Object?> map in data) {

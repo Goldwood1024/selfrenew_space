@@ -1,21 +1,19 @@
-import 'package:selfrenew_space/model/notice.dart';
-import 'package:selfrenew_space/model/sleek_count.dart';
-
 class FocusUnderwayModel {
   final String id;
-  final String title;
-  final String imagePath;
-  final String repeat;
+  late String title;
+  late int targetTime;
+  late int shortRelaxTime;
+  late int longRelaxTime;
+  late int longRelaxInterval;
+  late int autoRelax;
 
-  final List<Notice> notices;
-  final List<SleekCount> sleeks;
-
-  FocusUnderwayModel(
-    this.id,
-    this.title,
-    this.imagePath,
-    this.repeat,
-    this.notices,
-    this.sleeks,
-  );
+  FocusUnderwayModel({
+    required this.id,
+    required this.title,
+    this.targetTime = 0,
+    this.shortRelaxTime = 300,
+    this.longRelaxTime = 1200,
+    this.longRelaxInterval = 4,
+    this.autoRelax = 0,
+  });
 }
