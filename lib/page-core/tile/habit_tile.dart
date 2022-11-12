@@ -12,6 +12,7 @@ class HabitTile extends StatefulWidget {
   final String color;
   final Widget? trailing;
   final VoidCallback? onPressed;
+  final Function() onBackout;
   final bool abandon;
 
   const HabitTile({
@@ -19,6 +20,7 @@ class HabitTile extends StatefulWidget {
     required this.title,
     required this.color,
     required this.leading,
+    required this.onBackout,
     this.height = 52.0,
     this.radius = 12.0,
     this.bottomRadius = false,
@@ -35,72 +37,88 @@ class HabitTile extends StatefulWidget {
 class _HabitTileState extends State<HabitTile> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: widget.onPressed,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: widget.height,
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: widget.topRadius
-                  ? Radius.circular(widget.radius)
-                  : const Radius.circular(0),
-              topRight: widget.topRadius
-                  ? Radius.circular(widget.radius)
-                  : const Radius.circular(0),
-              bottomLeft: widget.bottomRadius
-                  ? Radius.circular(widget.radius)
-                  : const Radius.circular(0),
-              bottomRight: widget.bottomRadius
-                  ? Radius.circular(widget.radius)
-                  : const Radius.circular(0),
-            ),
+    return Slidable(
+      startActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        extentRatio: 0.25,
+        children: [
+          SlidableAction(
+            icon: CupertinoIcons.reply,
+            label: '撤销',
+            backgroundColor: HexColor('#f7dc66'),
+            foregroundColor: Colors.white,
+            borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
+            onPressed: (_) => widget.onBackout(),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    SPHelper.width(SPHelper.gapDp20), 0, 0, 0),
-                child: Container(
-                  padding: const EdgeInsets.all(SPHelper.gapDp6),
-                  height: SPHelper.height(SPHelper.gapDp36),
-                  width: SPHelper.height(SPHelper.gapDp36),
-                  decoration: BoxDecoration(
-                    color: HexColor(widget.color),
-                    shape: BoxShape.circle,
-                  ),
-                  child: SvgLoader(
-                    path: widget.leading,
-                    size: SPHelper.sp(SPHelper.fontSp26),
-                  ),
-                ),
+        ],
+      ),
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: widget.height,
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Theme.of(context).backgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: widget.topRadius
+                    ? Radius.circular(widget.radius)
+                    : const Radius.circular(0),
+                topRight: widget.topRadius
+                    ? Radius.circular(widget.radius)
+                    : const Radius.circular(0),
+                bottomLeft: widget.bottomRadius
+                    ? Radius.circular(widget.radius)
+                    : const Radius.circular(0),
+                bottomRight: widget.bottomRadius
+                    ? Radius.circular(widget.radius)
+                    : const Radius.circular(0),
               ),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(
-                      SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.title,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: SPHelper.sp(SPHelper.fontSp18),
-                      color: Theme.of(context).textTheme.labelSmall!.color,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      SPHelper.width(SPHelper.gapDp20), 0, 0, 0),
+                  child: Container(
+                    padding: const EdgeInsets.all(SPHelper.gapDp6),
+                    height: SPHelper.height(SPHelper.gapDp36),
+                    width: SPHelper.height(SPHelper.gapDp36),
+                    decoration: BoxDecoration(
+                      color: HexColor(widget.color),
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgLoader(
+                      path: widget.leading,
+                      size: SPHelper.sp(SPHelper.fontSp26),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    0, 0, SPHelper.width(SPHelper.gapDp20), 0),
-                child: widget.trailing ?? SPHelper.empty,
-              ),
-            ],
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(
+                        SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      widget.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: SPHelper.sp(SPHelper.fontSp18),
+                        color: Theme.of(context).textTheme.labelSmall!.color,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      0, 0, SPHelper.width(SPHelper.gapDp20), 0),
+                  child: widget.trailing ?? SPHelper.empty,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -205,7 +223,7 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                       'id': widget.id,
                     });
                   },
-                  backgroundColor: Colors.yellow,
+                  backgroundColor: HexColor('#ff9248'),
                   foregroundColor: Colors.white,
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
                   icon: Icons.mode_edit_rounded,

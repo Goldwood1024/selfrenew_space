@@ -85,9 +85,10 @@ select * from $habitTableName where isDeleted=0
   }
 
   Future<void> insertHabitClickAndUpdate(
-      double value, String date, String habitId) async {
+      double value, String date, String habitId, bool backout) async {
     String sql =
-        'select * from $habitClickTableName where habitId= $habitId and date=$date';
+        'select * from $habitClickTableName where habitId=$habitId and date=\'$date\'';
+
     List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
     if (list.isEmpty) {
       await SqliteProxy.database.insert(habitClickTableName, {
@@ -99,9 +100,21 @@ select * from $habitTableName where isDeleted=0
     } else {
       Map<String, Object?> mm = list[0];
 
-      double newValue = double.parse(mm['value'].toString());
-      String sql =
-          'update $habitClickTableName set value=$newValue+$value where id=$mm[\'id\']';
+      double dbValue = double.parse(mm['value'].toString());
+      if (backout) {
+        value = dbValue - value;
+
+        if (value <= 0) {
+          value = 0;
+        }
+      } else {
+        value = value + dbValue;
+      }
+
+      String id = mm['id'].toString();
+      String sql = 'update $habitClickTableName set value=$value where id=$id';
+
+      print(sql);
       await SqliteProxy.database.rawUpdate(sql);
     }
   }

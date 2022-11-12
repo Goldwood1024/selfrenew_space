@@ -111,16 +111,27 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
   @override
   Widget build(BuildContext context) {
     HabitProvider habitProvider = Provider.of(context);
-    final List<HabitUnderway> data = habitProvider.getHabitUnderway();
+    List<HabitUnderway> data = habitProvider.getHabitUnderway();
     return ListView.builder(
       shrinkWrap: true,
       itemCount: data.length,
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        final HabitUnderway underway = data[index];
+        HabitUnderway underway = data[index];
         SleekCount sleekCount = underway.getSleekCount(now);
         return HabitTile(
+          onBackout: () async {
+            await habitRepository.insertHabitClickAndUpdate(
+              data[index].targetModel.clickCount,
+              DatetimeUtil.getDateYMD(now),
+              data[index].id,
+              true,
+            );
+
+            await Provider.of<HabitProvider>(context, listen: false)
+                .reloadHabitUnderway();
+          },
           title: data[index].title,
           topRadius: index == 0,
           bottomRadius: index == data.length - 1,
@@ -132,6 +143,7 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
                 data[index].targetModel.clickCount,
                 DatetimeUtil.getDateYMD(_),
                 data[index].id,
+                false,
               );
             },
             dateTime: now,

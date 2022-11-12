@@ -306,11 +306,11 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                       data.sleeks.length,
                       (idx) => SleekCounter(
                         onPressed: (_) async {
-                          print(33);
                           await habitRepository.insertHabitClickAndUpdate(
                             data.targetModel.clickCount,
                             DatetimeUtil.getDateYMD(_),
                             data.id,
+                            false,
                           );
                         },
                         dateTime: data.sleeks[idx].dateTime,
