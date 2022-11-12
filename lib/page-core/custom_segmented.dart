@@ -6,6 +6,7 @@ class CustomSegmentBottom extends StatefulWidget
     implements PreferredSizeWidget {
   final Map<int, Widget> children;
   final int initialValue;
+  final double height;
   final ValueChanged<int> onValueChanged;
 
   const CustomSegmentBottom({
@@ -13,13 +14,14 @@ class CustomSegmentBottom extends StatefulWidget
     required this.children,
     required this.initialValue,
     required this.onValueChanged,
+    this.height = 14,
   });
 
   @override
   State<StatefulWidget> createState() => _CustomSegmentBottomState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(14);
+  Size get preferredSize => Size.fromHeight(height);
 }
 
 class _CustomSegmentBottomState<T> extends State<CustomSegmentBottom> {

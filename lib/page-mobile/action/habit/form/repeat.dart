@@ -81,6 +81,7 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
         ],
         bottom: CustomSegmentBottom(
           initialValue: 0,
+          height: 48,
           onValueChanged: (int value) {
             pageController.jumpToPage(value);
           },

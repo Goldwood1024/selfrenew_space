@@ -15,6 +15,16 @@ class HabitFormProvider extends ChangeNotifier {
   late RepeatModel repeatModel = RepeatModel();
   late RemindModel remindModel;
   late IconModel iconModel;
+  late TargetModel targetModel;
+
+  TargetModel getTargetModel() {
+    return targetModel;
+  }
+
+  void updateTargetModel(TargetModel model) {
+    targetModel = model;
+    notifyListeners();
+  }
 
   IconModel getIconModel() {
     return iconModel;
@@ -96,6 +106,7 @@ class HabitFormProvider extends ChangeNotifier {
       iconModel = IconModel.defaultIconModel();
       repeatModel = RepeatModel.defaultRepeatModel();
       remindModel = RemindModel.defaultDateTime();
+      targetModel = TargetModel.defaultTargetModel();
       startDate = DateTime.now();
       heartenController.text = Global.randomHearten();
     } else {
@@ -109,6 +120,7 @@ class HabitFormProvider extends ChangeNotifier {
             icon: model.iconModel.icon,
           );
 
+          targetModel = TargetModel.defaultTargetModel();
           repeatModel = RepeatModel.defaultRepeatModel();
           remindModel = RemindModel.defaultDateTime();
           startDate = DateTime.now();
@@ -131,6 +143,7 @@ class HabitFormProvider extends ChangeNotifier {
     remindModel = RemindModel.toBean(jsonDecode(mm['remind'].toString()));
     iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
 
+    targetModel = TargetModel.toBean(jsonDecode(mm['target'].toString()));
     heartenController.text = mm['hearten'].toString();
     startDate = DateTime.fromMillisecondsSinceEpoch(
         int.parse(mm['startDate'].toString()));

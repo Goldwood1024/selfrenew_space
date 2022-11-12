@@ -90,7 +90,12 @@ class _HabitFormState extends State<HabitForm> {
                       habitFormProvider.getSelectedDates(),
                     ),
                   }),
-                  "target": '1',
+                  "target": jsonEncode({
+                    'min': habitFormProvider.getTargetModel().min,
+                    'max': habitFormProvider.getTargetModel().max,
+                    'value': habitFormProvider.getTargetModel().value,
+                    // 'type': habitFormProvider.getTargetModel().type,
+                  }),
                   "remind": jsonEncode(
                     getSeconds(habitFormProvider.getRemindDates()),
                   ),
@@ -115,7 +120,12 @@ class _HabitFormState extends State<HabitForm> {
                       habitFormProvider.getSelectedDates(),
                     ),
                   }),
-                  "target": '1',
+                  "target": jsonEncode({
+                    'min': habitFormProvider.getTargetModel().min,
+                    'max': habitFormProvider.getTargetModel().max,
+                    'value': habitFormProvider.getTargetModel().value,
+                    // 'type': habitFormProvider.getTargetModel().type,
+                  }),
                   "remind": jsonEncode(
                     getSeconds(habitFormProvider.getRemindDates()),
                   ),

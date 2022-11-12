@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:selfrenew_space/common/common_enum.dart';
+
 class RepeatDay {
   final String day;
   final String value;
@@ -56,6 +58,37 @@ class IconModel {
     return IconModel(
       color: values['color'].toString(),
       icon: values['icon'].toString(),
+    );
+  }
+}
+
+class TargetModel {
+  late double min = 0;
+  late double max = 1;
+  late double value;
+  late TargetEnum type;
+
+  TargetModel({
+    required this.min,
+    required this.max,
+    required this.value,
+    this.type = TargetEnum.day,
+  });
+
+  static TargetModel defaultTargetModel() {
+    return TargetModel(
+      min: 0,
+      max: 1,
+      value: 0,
+      type: TargetEnum.day,
+    );
+  }
+
+  static TargetModel toBean(Map<dynamic, dynamic> values) {
+    return TargetModel(
+      min: double.parse(values['min'].toString()),
+      max: double.parse(values['max'].toString()),
+      value: double.parse(values['value'].toString()),
     );
   }
 }

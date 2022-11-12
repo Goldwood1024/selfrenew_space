@@ -38,4 +38,8 @@ class DatetimeUtil {
   static String weekday(BuildContext context) {
     return DateUtil.getWeekday(DateTime.now(), languageCode: 'zh');
   }
+
+  static DateTime addDate(DateTime dateTime, int day) {
+    return dateTime.add(Duration(days: day));
+  }
 }

@@ -33,6 +33,11 @@ class _TargetState extends State<Target> {
 
   @override
   Widget build(BuildContext context) {
+    HabitFormProvider habitFormProvider = Provider.of(context);
+    HabitFormProvider update = Provider.of(context, listen: false);
+
+    TargetModel model = habitFormProvider.getTargetModel();
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -43,6 +48,8 @@ class _TargetState extends State<Target> {
           ActionBtn(
             title: '确定',
             onPressed: () {
+              update.updateTargetModel(model);
+
               Navigator.pop(context);
             },
           )
@@ -64,15 +71,19 @@ class _TargetState extends State<Target> {
                 showArrow: false,
                 trailing: RoundCheckBox(
                   canCancel: true,
-                  isChecked: targetEnum == TargetEnum.day,
+                  isChecked: model.type == TargetEnum.day,
                   uncheckedColor: CupertinoColors.systemFill,
                   borderColor: Colors.transparent,
                   size: 26,
                   checkedColor: Theme.of(context).primaryColor,
                   onTap: (selected) {
                     setState(() {
-                      targetEnum = TargetEnum.day;
                       expand = false;
+
+                      model.type = TargetEnum.day;
+                      model.min = 0;
+                      model.max = 1;
+                      model.value = 0;
                     });
                   },
                 ),
@@ -82,7 +93,7 @@ class _TargetState extends State<Target> {
                 title: '完成一定量',
                 showArrow: false,
                 trailing: RoundCheckBox(
-                  isChecked: targetEnum == TargetEnum.count,
+                  isChecked: model.type == TargetEnum.count,
                   uncheckedColor: CupertinoColors.systemFill,
                   borderColor: Colors.transparent,
                   size: 26,

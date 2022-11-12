@@ -4,6 +4,7 @@ class SleekCount {
   final double value;
   final bool fail;
   final int day;
+  final DateTime dateTime;
 
   SleekCount({
     this.min = 0,
@@ -11,5 +12,6 @@ class SleekCount {
     this.value = 0,
     this.fail = false,
     this.day = 1,
+    required this.dateTime,
   });
 }

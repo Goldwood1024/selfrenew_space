@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:calendar_view/calendar_view.dart';
 import 'package:selfrenew_space/dao/habit/repository.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
 import 'package:selfrenew_space/model/notice.dart';
@@ -26,6 +27,11 @@ class HabitProvider extends ChangeNotifier {
         notice.add(Notice(text: DatetimeUtil.getHorTime(dateTime)));
       }
 
+      TargetModel targetModel =
+          TargetModel.toBean(jsonDecode(map['target'].toString()));
+
+      List<SleekCount> sleek = sleeks(targetModel);
+
       list.add(
         HabitUnderway(
           map['id'].toString(),
@@ -33,20 +39,27 @@ class HabitProvider extends ChangeNotifier {
           o,
           '每天',
           notice,
-          [
-            SleekCount(day: 11, max: 10),
-            SleekCount(day: 12, max: 4),
-            SleekCount(day: 13, max: 3),
-            SleekCount(day: 14),
-            SleekCount(day: 15),
-            SleekCount(day: 16),
-            SleekCount(day: 17),
-          ],
+          sleek,
         ),
       );
     }
 
     notifyListeners();
+  }
+
+  List<SleekCount> sleeks(TargetModel targetModel) {
+    List<SleekCount> counts = [];
+    DateTime dateTime = DateTime.now().firstDayOfWeek();
+    for (int day = 0; day < 7; day++) {
+      counts.add(
+        SleekCount(
+          max: targetModel.max,
+          dateTime: DatetimeUtil.addDate(dateTime, day),
+        ),
+      );
+    }
+
+    return counts;
   }
 
   bool hasUnderway() {

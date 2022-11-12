@@ -307,7 +307,7 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                         max: data.sleeks[idx].max,
                         value: data.sleeks[idx].value,
                         fail: data.sleeks[idx].fail,
-                        day: data.sleeks[idx].day,
+                        day: data.sleeks[idx].dateTime.day,
                         sm: true,
                       ),
                     ),
