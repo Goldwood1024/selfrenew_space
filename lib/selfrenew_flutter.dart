@@ -24,6 +24,7 @@ export 'package:flutter_switch/flutter_switch.dart';
 export 'package:flutter_vibrate/flutter_vibrate.dart';
 export 'package:go_router/go_router.dart';
 export 'package:hexcolor/hexcolor.dart';
+export 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 export 'package:logger/logger.dart';
 export 'package:open_store/open_store.dart';
 export 'package:percent_indicator/percent_indicator.dart';

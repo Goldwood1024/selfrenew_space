@@ -19,7 +19,7 @@ class CustomSegmentBottom extends StatefulWidget
   State<StatefulWidget> createState() => _CustomSegmentBottomState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(56);
+  Size get preferredSize => const Size.fromHeight(14);
 }
 
 class _CustomSegmentBottomState<T> extends State<CustomSegmentBottom> {

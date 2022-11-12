@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 
@@ -36,44 +35,58 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
+      color: Colors.transparent,
       backdropEnabled: true,
       backdropColor: Colors.black12,
-      maxHeight: MediaQuery.of(context).size.height * 0.93,
+      maxHeight: MediaQuery.of(context).size.height -
+          MediaQuery.of(context).padding.top,
       panelBuilder: () {
-        return Scaffold(
-          body: LazyLoadIndexedStack(
-            index: _tabIndex,
-            children: const [
-              Completed(),
-              Abandon(),
-            ],
-          ),
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            toolbarHeight: SPHelper.height(32),
-            bottom: CustomSegmentBottom(
-              initialValue: 0,
-              onValueChanged: (int value) {
-                setState(() {
-                  _tabIndex = value;
-                });
-              },
-              children: const {
-                0: Text(
-                  '已完成',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
+        return ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).scaffoldBackgroundColor,
+            ),
+            width: double.infinity,
+            child: MediaQuery.removePadding(
+              context: context,
+              child: Scaffold(
+                body: LazyLoadIndexedStack(
+                  index: _tabIndex,
+                  children: const [
+                    Completed(),
+                    Abandon(),
+                  ],
+                ),
+                appBar: AppBar(
+                  automaticallyImplyLeading: false,
+                  toolbarHeight: SPHelper.height(32),
+                  bottom: CustomSegmentBottom(
+                    initialValue: 0,
+                    onValueChanged: (int value) {
+                      setState(() {
+                        _tabIndex = value;
+                      });
+                    },
+                    children: const {
+                      0: Text(
+                        '已完成',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                      ),
+                      1: Text(
+                        '已放弃',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                      ),
+                    },
                   ),
                 ),
-                1: Text(
-                  '已放弃',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-              },
+              ),
             ),
           ),
         );
@@ -85,10 +98,6 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         )
       ],
       disableDraggableOnScrolling: true,
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(12.0),
-        topRight: Radius.circular(12.0),
-      ),
       onPanelSlide: (_) {
         if (_ > 0) {
           setState(() {
