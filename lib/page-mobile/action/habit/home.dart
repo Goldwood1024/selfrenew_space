@@ -213,6 +213,8 @@ class Underway extends StatefulWidget {
 }
 
 class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
+  static final HabitRepository habitRepository = HabitRepository();
+
   @override
   void initState() {
     super.initState();
@@ -303,6 +305,15 @@ class _UnderwayState extends State<Underway> with TickerProviderStateMixin {
                     children: List.generate(
                       data.sleeks.length,
                       (idx) => SleekCounter(
+                        onPressed: (_) async {
+                          print(33);
+                          await habitRepository.insertHabitClickAndUpdate(
+                            data.targetModel.clickCount,
+                            DatetimeUtil.getDateYMD(_),
+                            data.id,
+                          );
+                        },
+                        dateTime: data.sleeks[idx].dateTime,
                         min: data.sleeks[idx].min,
                         max: data.sleeks[idx].max,
                         value: data.sleeks[idx].value,
@@ -411,13 +422,15 @@ class _CompletedState extends State<Completed> with TickerProviderStateMixin {
                     trailing: Row(
                       children: List.generate(
                         7,
-                        (index) => const SleekCounter(
+                        (index) => SleekCounter(
+                          onPressed: (DateTime) {},
                           min: 0,
                           max: 10,
                           sm: true,
                           value: 7,
                           fail: false,
                           abandon: true,
+                          dateTime: DateTime.now(),
                         ),
                       ),
                     ),
@@ -520,13 +533,15 @@ class _AbandonState extends State<Abandon> {
                   trailing: Row(
                     children: List.generate(
                       7,
-                      (index) => const SleekCounter(
+                      (index) => SleekCounter(
+                        onPressed: (DateTime) {},
                         min: 0,
                         max: 10,
                         sm: true,
                         value: 7,
                         fail: false,
                         abandon: true,
+                        dateTime: DateTime.now(),
                       ),
                     ),
                   ),

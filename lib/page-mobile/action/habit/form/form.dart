@@ -94,6 +94,7 @@ class _HabitFormState extends State<HabitForm> {
                     'min': habitFormProvider.getTargetModel().min,
                     'max': habitFormProvider.getTargetModel().max,
                     'value': habitFormProvider.getTargetModel().value,
+                    'clickCount': habitFormProvider.getTargetModel().clickCount,
                     // 'type': habitFormProvider.getTargetModel().type,
                   }),
                   "remind": jsonEncode(
@@ -124,6 +125,7 @@ class _HabitFormState extends State<HabitForm> {
                     'min': habitFormProvider.getTargetModel().min,
                     'max': habitFormProvider.getTargetModel().max,
                     'value': habitFormProvider.getTargetModel().value,
+                    'clickCount': habitFormProvider.getTargetModel().clickCount,
                     // 'type': habitFormProvider.getTargetModel().type,
                   }),
                   "remind": jsonEncode(

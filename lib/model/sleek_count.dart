@@ -1,7 +1,7 @@
 class SleekCount {
   final double min;
   final double max;
-  final double value;
+  late double value;
   final bool fail;
   final int day;
   final DateTime dateTime;

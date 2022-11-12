@@ -9,16 +9,20 @@ class SleekCounter extends StatefulWidget {
   final bool sm;
   final bool abandon;
   final int day;
+  final DateTime dateTime;
+  final Function(DateTime) onPressed;
 
   const SleekCounter({
     super.key,
     required this.min,
     required this.max,
+    required this.dateTime,
     this.value = 1,
     this.fail = false,
     this.sm = false,
     this.abandon = false,
     this.day = 1,
+    required this.onPressed,
   });
 
   @override
@@ -48,6 +52,8 @@ class _SleekCounterState extends State<SleekCounter> {
             value = widget.max;
           }
         });
+
+        widget.onPressed(widget.dateTime);
       },
       child: Align(
         child: Padding(

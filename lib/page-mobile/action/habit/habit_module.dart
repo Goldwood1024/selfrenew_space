@@ -115,6 +115,8 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
           leading: data[index].icons.icon,
           color: data[index].icons.color,
           trailing: SleekCounter(
+            onPressed: (DateTime) {},
+            dateTime: DateTime.now(),
             min: underway.getSleekCount().min,
             max: underway.getSleekCount().max,
             value: underway.getSleekCount().value,

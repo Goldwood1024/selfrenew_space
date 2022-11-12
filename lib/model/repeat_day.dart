@@ -66,12 +66,14 @@ class TargetModel {
   late double min = 0;
   late double max = 1;
   late double value;
+  late double clickCount;
   late TargetEnum type;
 
   TargetModel({
     required this.min,
     required this.max,
     required this.value,
+    required this.clickCount,
     this.type = TargetEnum.day,
   });
 
@@ -81,6 +83,7 @@ class TargetModel {
       max: 1,
       value: 0,
       type: TargetEnum.day,
+      clickCount: 1,
     );
   }
 
@@ -89,6 +92,7 @@ class TargetModel {
       min: double.parse(values['min'].toString()),
       max: double.parse(values['max'].toString()),
       value: double.parse(values['value'].toString()),
+      clickCount: double.parse(values['clickCount'].toString()),
     );
   }
 }

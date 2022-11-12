@@ -6,6 +6,7 @@ class HabitUnderway {
   final String id;
   final String title;
   final IconModel icons;
+  final TargetModel targetModel;
   final String repeat;
 
   final List<Notice> notices;
@@ -16,6 +17,7 @@ class HabitUnderway {
     this.title,
     this.icons,
     this.repeat,
+    this.targetModel,
     this.notices,
     this.sleeks,
   );

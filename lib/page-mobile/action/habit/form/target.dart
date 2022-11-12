@@ -84,6 +84,7 @@ class _TargetState extends State<Target> {
                       model.min = 0;
                       model.max = 1;
                       model.value = 0;
+                      model.clickCount = 1;
                     });
                   },
                 ),

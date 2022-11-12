@@ -32,12 +32,22 @@ class HabitProvider extends ChangeNotifier {
 
       List<SleekCount> sleek = sleeks(targetModel);
 
+      for (SleekCount count in sleek) {
+        Map<String, Object?> mm = await habitRepository.selectClickById(
+            DatetimeUtil.getDateYMD(count.dateTime), map['id'].toString());
+        count.value = 0;
+        if (mm.isNotEmpty) {
+          count.value = double.parse(mm['value'].toString());
+        }
+      }
+
       list.add(
         HabitUnderway(
           map['id'].toString(),
           map['title'].toString(),
           o,
           '每天',
+          targetModel,
           notice,
           sleek,
         ),

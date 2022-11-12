@@ -2,6 +2,7 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitRepository {
   static String habitTableName = 'habit';
+  static String habitClickTableName = 'habit_click';
 
   /// 建表语句
   static String ddl = '''
@@ -21,6 +22,17 @@ create table if not exists $habitTableName
 );
   ''';
 
+  static String habitClickTable = '''
+create table if not exists $habitClickTableName
+(
+    id        INTEGER PRIMARY KEY AUTOINCREMENT,        -- 主键
+    habitId  INTEGER,
+    value     INTEGER default 0,
+    date      TEXT,
+    gmtDate   TEXT    NOT NULL            -- 创建日期
+);
+  ''';
+
   static String delete = '''
 delete from $habitTableName;
  ''';
@@ -31,6 +43,7 @@ select * from $habitTableName where isDeleted=0
 
   Future<void> createTableAndDefaultValue(Database database) async {
     await database.execute(ddl);
+    await database.execute(habitClickTable);
   }
 
   Future<List<Map<String, Object?>>> query() async {
@@ -69,5 +82,41 @@ select * from $habitTableName where isDeleted=0
 
   Future<void> insertHabit(Map<String, Object?> values) async {
     await SqliteProxy.database.insert(habitTableName, values);
+  }
+
+  Future<void> insertHabitClickAndUpdate(
+      double value, String date, String habitId) async {
+    String sql =
+        'select * from $habitClickTableName where habitId= $habitId and date=$date';
+    List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
+    if (list.isEmpty) {
+      await SqliteProxy.database.insert(habitClickTableName, {
+        'habitId': habitId,
+        'date': date,
+        'value': value,
+        'gmtDate': DateTime.now().millisecondsSinceEpoch,
+      });
+    } else {
+      Map<String, Object?> mm = list[0];
+
+      double newValue = double.parse(mm['value'].toString());
+      String sql =
+          'update $habitClickTableName set value=$newValue+$value where id=$mm[\'id\']';
+      await SqliteProxy.database.rawUpdate(sql);
+    }
+  }
+
+  Future<Map<String, Object?>> selectClickById(
+      String date, String habitId) async {
+    String sql =
+        'select * from $habitClickTableName where habitId=$habitId and date=\'$date\'';
+
+    List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
+
+    if (list.isNotEmpty) {
+      return list[0];
+    }
+
+    return {};
   }
 }
