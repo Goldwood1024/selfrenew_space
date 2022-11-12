@@ -17,6 +17,14 @@ class HabitProvider extends ChangeNotifier {
 
     for (Map<String, Object?> map in data) {
       IconModel o = IconModel.toBean(jsonDecode(map['icons'].toString()));
+      // repeatModel = RepeatModel.toBean(jsonDecode(map['repeat'].toString()));
+      RemindModel remindModel =
+          RemindModel.toBean(jsonDecode(map['remind'].toString()));
+
+      List<Notice> notice = [];
+      for (DateTime dateTime in remindModel.list) {
+        notice.add(Notice(text: DatetimeUtil.getHorTime(dateTime)));
+      }
 
       list.add(
         HabitUnderway(
@@ -24,10 +32,7 @@ class HabitProvider extends ChangeNotifier {
           map['title'].toString(),
           o,
           '每天',
-          [
-            Notice(id: '1', text: '09:00'),
-            Notice(id: '1', text: '09:00'),
-          ],
+          notice,
           [
             SleekCount(day: 11, max: 10),
             SleekCount(day: 12, max: 4),
