@@ -106,6 +106,7 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
         }
       },
       onPanelClosed: () {},
+      onPanelOpened: () {},
       header: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Row(

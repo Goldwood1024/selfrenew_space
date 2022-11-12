@@ -9,7 +9,7 @@ class HabitFormProvider extends ChangeNotifier {
   TextEditingController titleController = TextEditingController();
   TextEditingController heartenController = TextEditingController();
 
-  late DateTime startDate = DateTime.parse('2022-11-11');
+  late DateTime startDate;
 
   // 重复
   late RepeatModel repeatModel = RepeatModel();
@@ -89,8 +89,11 @@ class HabitFormProvider extends ChangeNotifier {
   }
 
   void newHabit(String value) {
+    /// 新的习惯
     if (ObjectUtil.isEmpty(value)) {
       titleController.text = '';
+      iconModel = IconModel(color: '#990909', icon: 'assets/icons/绘画.svg');
+
       repeatModel = RepeatModel();
       repeatModel.type = 0;
       repeatModel.repeatDays.add(
@@ -104,16 +107,21 @@ class HabitFormProvider extends ChangeNotifier {
       repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
 
       remindModel = RemindModel();
-      remindModel.list.add(DateTime.now());
+      remindModel.list.add(RemindModel.defaultDateTime());
 
-      iconModel = IconModel(color: '#990909', icon: 'assets/icons/绘画.svg');
-
+      startDate = DateTime.now();
       heartenController.text = Global.randomHearten();
     } else {
+      /// 模板创建
       List<HabitLibModel> list = Global.getHabit(true);
       for (HabitLibModel model in list) {
         if (model.key == value) {
           titleController.text = model.title;
+          iconModel = IconModel(
+            color: model.iconModel.color,
+            icon: model.iconModel.icon,
+          );
+
           repeatModel = RepeatModel();
           repeatModel.type = 0;
           repeatModel.repeatDays.add(
@@ -127,12 +135,9 @@ class HabitFormProvider extends ChangeNotifier {
           repeatModel.repeatDays.add(RepeatDay(day: '周日', value: '7'));
 
           remindModel = RemindModel();
-          remindModel.list.add(DateTime.now());
+          remindModel.list.add(RemindModel.defaultDateTime());
 
-          iconModel = IconModel(
-            color: model.iconModel.color,
-            icon: model.iconModel.icon,
-          );
+          startDate = DateTime.now();
           heartenController.text = model.hearten;
 
           break;
@@ -145,6 +150,8 @@ class HabitFormProvider extends ChangeNotifier {
 
   Future<void> query(String id) async {
     Map<String, Object?> mm = await habitRepository.selectById(id);
+    print(mm);
+
     titleController.text = mm['title'].toString();
     repeatModel = RepeatModel();
     repeatModel.type = 0;

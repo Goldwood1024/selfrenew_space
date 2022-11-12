@@ -39,6 +39,22 @@ class _HabitFormState extends State<HabitForm> {
     });
   }
 
+  List<int> getSeconds(List<DateTime> list) {
+    List<int> data = [];
+    for (DateTime time in list) {
+      data.add(time.second);
+    }
+    return data;
+  }
+
+  String startDateFmt(BuildContext context, DateTime dateTime) {
+    if (DatetimeUtil.isSameDay(dateTime, DateTime.now())) {
+      return '今天';
+    }
+
+    return DatetimeUtil.getDateYMD(dateTime);
+  }
+
   @override
   Widget build(BuildContext context) {
     HabitFormProvider habitFormProvider = Provider.of(context);
@@ -68,7 +84,9 @@ class _HabitFormState extends State<HabitForm> {
                   }),
                   "repeat": "1",
                   "target": '1',
-                  "remind": '1',
+                  "remind": jsonEncode(
+                    getSeconds(habitFormProvider.getRemindDates()),
+                  ),
                   "startDate": '1',
                   "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
@@ -84,7 +102,9 @@ class _HabitFormState extends State<HabitForm> {
                   }),
                   "repeat": "",
                   "target": DateUtil.getNowDateMs(),
-                  "remind": DateUtil.getNowDateMs(),
+                  "remind": jsonEncode(
+                    getSeconds(habitFormProvider.getRemindDates()),
+                  ),
                   "hearten": habitFormProvider.heartenController.text,
                   "gmtDate": DateUtil.getNowDateMs(),
                 };
@@ -220,7 +240,7 @@ class _HabitFormState extends State<HabitForm> {
                 },
                 title: '开始日期',
                 trailing: Text(
-                  DatetimeUtil.getDateYMD(habitFormProvider.getStartDateTime()),
+                  startDateFmt(context, habitFormProvider.getStartDateTime()),
                   style: TextStyleMode.trailingTextStyle(context),
                 ),
               ),
