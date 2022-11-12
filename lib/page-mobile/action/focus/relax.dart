@@ -116,7 +116,9 @@ class _FocusRelaxState extends State<FocusRelax>
                       SPHelper.getDefaultHeightBox(),
                       SkipRelax(
                         onPressed: () {
-                          SmartDialog.dismiss();
+                          Future.delayed(const Duration(milliseconds: 600), () {
+                            SmartDialog.dismiss();
+                          });
                         },
                       )
                     ],
