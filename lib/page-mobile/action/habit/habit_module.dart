@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/model/habit_underway.dart';
+import 'package:selfrenew_space/model/sleek_count.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class HabitModule extends StatefulWidget {
@@ -97,6 +98,9 @@ class HabitActionDataList extends StatefulWidget {
 }
 
 class _HabitActionDataListState extends State<HabitActionDataList> {
+  static final HabitRepository habitRepository = HabitRepository();
+  final DateTime now = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     HabitProvider habitProvider = Provider.of(context);
@@ -108,6 +112,7 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         final HabitUnderway underway = data[index];
+        SleekCount sleekCount = underway.getSleekCount(now);
         return HabitTile(
           title: data[index].title,
           topRadius: index == 0,
@@ -115,12 +120,18 @@ class _HabitActionDataListState extends State<HabitActionDataList> {
           leading: data[index].icons.icon,
           color: data[index].icons.color,
           trailing: SleekCounter(
-            onPressed: (DateTime) {},
-            dateTime: DateTime.now(),
-            min: underway.getSleekCount().min,
-            max: underway.getSleekCount().max,
-            value: underway.getSleekCount().value,
-            fail: underway.getSleekCount().fail,
+            onPressed: (_) async {
+              await habitRepository.insertHabitClickAndUpdate(
+                data[index].targetModel.clickCount,
+                DatetimeUtil.getDateYMD(_),
+                data[index].id,
+              );
+            },
+            dateTime: now,
+            min: data[index].targetModel.min,
+            max: data[index].targetModel.max,
+            value: sleekCount.value,
+            fail: sleekCount.fail,
           ),
         );
       },
