@@ -80,19 +80,19 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
               update.updateRepeatType(_currentIndex);
             });
           },
-          children: const {
+          children: {
             0: Text(
               '每日',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
             ),
             1: Text(
               '每月',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.labelSmall!.color,
               ),
             ),
           },
