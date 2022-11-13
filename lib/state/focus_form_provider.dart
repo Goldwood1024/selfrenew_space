@@ -58,7 +58,7 @@ class FocusFormProvider extends ChangeNotifier {
   }
 
   void query() {
-    targetTime = 600;
+    targetTime = 300;
     shortRelaxTime = 300;
     longRelaxTime = 300;
     longRelaxInterval = 4;

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/dao/focus/repository.dart';
 import 'package:selfrenew_space/page-core/tile/simple_tile_slider.dart';
+import 'package:selfrenew_space/page-core/tile/simple_tile_time.dart';
 import 'package:selfrenew_space/page-mobile/action/habit/form/repeat.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -163,10 +164,20 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
-                      SimpleTile(
-                        hide: type == FocusType.tomato.name,
+                      SimpleTileHasTime(
                         title: '目标时长',
                         bottomRadius: type != FocusType.tomato.name,
+                        duration: Duration(
+                          milliseconds:
+                              focusFormProvider.getTargetTime() * 60 * 1000,
+                        ),
+                        onValueChanged: (_) {
+                          update.updateTargetTime(_.inSeconds);
+                        },
+                        trailing: Text(
+                          '${focusFormProvider.getTargetTime()} 分钟',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
                       ),
                       SimpleTileSlider(
                         hide: type != FocusType.tomato.name,

@@ -44,7 +44,7 @@ class _MobileModuleState extends State<MobileModule> {
                 child: GestureDetector(
                   onTap: widget.onPressed,
                   child: Text(
-                    '查看全部',
+                    '全部',
                     style: TextStyle(
                       fontSize: SPHelper.sp(SPHelper.fontSp18),
                       fontWeight: FontWeight.w500,
