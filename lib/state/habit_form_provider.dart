@@ -76,13 +76,8 @@ class HabitFormProvider extends ChangeNotifier {
     return repeatModel.selectedDates;
   }
 
-  void updateSelectedDates(DateTime value) {
-    if (repeatModel.selectedDates.contains(value)) {
-      repeatModel.selectedDates.removeWhere((element) => value == element);
-    } else {
-      repeatModel.selectedDates.add(value);
-    }
-
+  void updateSelectedDates(List<DateTime> values) {
+    repeatModel.selectedDates = values;
     notifyListeners();
   }
 
@@ -151,12 +146,8 @@ class HabitFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateRepeatDay(int index) {
-    if (repeatModel.repeatDays.contains(index)) {
-      repeatModel.repeatDays.removeWhere((element) => element == index);
-    } else {
-      repeatModel.repeatDays.add(index);
-    }
+  void updateRepeatDay(List<int> values) {
+    repeatModel.repeatDays = values;
     notifyListeners();
   }
 

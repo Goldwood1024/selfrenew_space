@@ -9,33 +9,18 @@ class Repeat extends StatefulWidget {
 }
 
 class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
-  late TabController tabController;
-  late PageController pageController = PageController();
   late List<DateTime> selectedDates;
   late List<int> weekends = [1, 2, 3, 4, 5, 6, 7];
+  late List<int> repeatDays = [];
+  late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
 
-    tabController = TabController(
-      length: 3,
-      vsync: this,
-    );
-
-    tabController.addListener(() {
-      pageController.jumpToPage(tabController.index);
-    });
-
+    _currentIndex = 0;
     selectedDates = [];
-  }
-
-  jump(int index) {
-    if (index == tabController.index) {
-      return;
-    }
-
-    pageController.jumpToPage(index);
+    repeatDays = [];
   }
 
   String getDayText(BuildContext context, int weekday) {
@@ -60,8 +45,11 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     HabitFormProvider habitFormProvider = Provider.of(context);
     HabitFormProvider update = Provider.of(context, listen: false);
-
-    List<int> repeatDays = habitFormProvider.getRepeatDays();
+    if (habitFormProvider.getRepeatType() == 0) {
+      repeatDays = habitFormProvider.getRepeatDays();
+    } else {
+      selectedDates = habitFormProvider.getSelectedDates();
+    }
 
     return ScaffoldGradientBackground(
       appBar: AppBar(
@@ -73,17 +61,24 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
           ActionBtn(
             title: '确定',
             onPressed: () {
-              update.updateRepeatType(tabController.index);
+              if (habitFormProvider.getRepeatType() == 0) {
+                update.updateRepeatDay(repeatDays);
+              } else {
+                update.updateSelectedDates(selectedDates);
+              }
 
               Navigator.pop(context);
             },
           )
         ],
         bottom: CustomSegmentBottom(
-          initialValue: 0,
+          initialValue: habitFormProvider.getRepeatType(),
           height: 48,
           onValueChanged: (int value) {
-            pageController.jumpToPage(value);
+            setState(() {
+              _currentIndex = value;
+              update.updateRepeatType(_currentIndex);
+            });
           },
           children: const {
             0: Text(
@@ -105,15 +100,22 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
       ),
       body: Padding(
         padding: SPHelper.pagePadding,
-        child: PageView(
-          controller: pageController,
+        child: LazyLoadIndexedStack(
+          index: habitFormProvider.getRepeatType(),
           children: [
             Column(
               children: List.generate(
                 weekends.length,
                 (index) => SimpleTile(
                   onPressed: () {
-                    update.updateRepeatDay(index + 1);
+                    int value = index + 1;
+                    setState(() {
+                      if (repeatDays.contains(value)) {
+                        repeatDays.removeWhere((element) => element == value);
+                      } else {
+                        repeatDays.add(value);
+                      }
+                    });
                   },
                   topRadius: index == 0,
                   bottomRadius: index == weekends.length - 1,
@@ -145,10 +147,14 @@ class _RepeatState extends State<Repeat> with TickerProviderStateMixin {
                 controlsHeight: 56,
               ),
               displayedMonth: DateTime(202301),
-              selectedDates: habitFormProvider.getSelectedDates(),
+              selectedDates: selectedDates,
               onChanged: (DateTime value) {
                 setState(() {
-                  update.updateSelectedDates(value);
+                  if (selectedDates.contains(value)) {
+                    selectedDates.removeWhere((element) => value == element);
+                  } else {
+                    selectedDates.add(value);
+                  }
                 });
               },
             ),
