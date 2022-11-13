@@ -200,6 +200,7 @@ class _ChipEmptyV2State extends State<ChipEmptyV2> {
                 backgroundOpacity: 1,
                 overlayColor: Colors.transparent,
                 shadowColor: Colors.transparent,
+                borderColor: Colors.transparent,
                 padding: EdgeInsets.fromLTRB(
                     SPHelper.width(SPHelper.gapDp14), 0, 0, 0),
                 foregroundSpacing: SPHelper.width(SPHelper.gapDp14),

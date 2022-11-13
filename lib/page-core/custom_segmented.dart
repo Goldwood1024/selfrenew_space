@@ -63,12 +63,12 @@ class _CustomSegmentState<T> extends State<CustomSegment> {
         height: 30,
         fixedWidth: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
-          color: CupertinoColors.lightBackgroundGray,
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(8),
         ),
         splashColor: Colors.transparent,
         thumbDecoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(6),
         ),
         duration: const Duration(milliseconds: 200),

@@ -68,19 +68,19 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                         _tabIndex = value;
                       });
                     },
-                    children: const {
+                    children: {
                       0: Text(
                         '已完成',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black,
+                          color: Theme.of(context).textTheme.labelSmall!.color,
                         ),
                       ),
                       1: Text(
                         '已放弃',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black,
+                          color: Theme.of(context).textTheme.labelSmall!.color,
                         ),
                       ),
                     },

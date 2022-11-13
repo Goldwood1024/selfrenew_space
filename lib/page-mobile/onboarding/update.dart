@@ -21,16 +21,33 @@ class _UpdateState extends State<Update> {
       bottomButtonChild: const Text('继续'),
       pages: [
         WhatsNewPage(
-          title: const Text("最近更新"),
+          title: Text(
+            "最近更新",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.labelSmall!.color,
+            ),
+          ),
           features: [
             WhatsNewFeature(
               icon: Icon(
                 CupertinoIcons.mail,
                 color: CupertinoColors.systemRed.resolveFrom(context),
               ),
-              title: const Text('Found Events'),
-              description: const Text(
+              title: Text(
+                'Found Events',
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.labelSmall!.color,
+                ),
+              ),
+              description: Text(
                 'Siri suggests events found in Mail, Messages, and Safari, so you can add them easily, such as flight reservations and hotel bookings.',
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .textTheme
+                      .labelSmall!
+                      .color!
+                      .withOpacity(.5),
+                ),
               ),
             ),
             WhatsNewFeature(
@@ -38,9 +55,21 @@ class _UpdateState extends State<Update> {
                 CupertinoIcons.time,
                 color: CupertinoColors.systemRed.resolveFrom(context),
               ),
-              title: const Text('Time to Leave'),
-              description: const Text(
+              title: Text(
+                'Time to Leave',
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.labelSmall!.color,
+                ),
+              ),
+              description: Text(
                 "Calendar uses Apple Maps to look up locations, traffic conditions, and transit options to tell you when it's time to leave.",
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .textTheme
+                      .labelSmall!
+                      .color!
+                      .withOpacity(.5),
+                ),
               ),
             ),
           ],

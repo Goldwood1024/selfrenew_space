@@ -36,7 +36,11 @@ class _BoardingScreenState extends State<BoardingScreen> {
               '跳过',
               style: TextStyle(
                 fontSize: 16,
-                color: kDarkBlueColor,
+                color: Theme.of(context)
+                    .textTheme
+                    .labelSmall!
+                    .color!
+                    .withOpacity(.5),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -102,8 +106,6 @@ class BoardingBodyPage extends StatelessWidget {
     required this.bodyText,
   });
 
-  final Color kDarkBlueColor = const Color(0xFF053149);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -119,7 +121,7 @@ class BoardingBodyPage extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: kDarkBlueColor,
+              color: Theme.of(context).textTheme.labelSmall!.color,
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
             ),
@@ -130,8 +132,12 @@ class BoardingBodyPage extends StatelessWidget {
           Text(
             bodyText,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.black26,
+            style: TextStyle(
+              color: Theme.of(context)
+                  .textTheme
+                  .labelSmall!
+                  .color!
+                  .withOpacity(.5),
               fontSize: 18.0,
               fontWeight: FontWeight.w600,
             ),
