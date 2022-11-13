@@ -117,9 +117,9 @@ class _HabitHomeState extends State<HabitHome> with TickerProviderStateMixin {
                 padding: const EdgeInsets.fromLTRB(0, 14, 0, 0),
                 child: Container(
                   width: 60,
-                  height: 4,
+                  height: 5,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: CupertinoColors.lightBackgroundGray,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),

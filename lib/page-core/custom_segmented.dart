@@ -14,7 +14,7 @@ class CustomSegmentBottom extends StatefulWidget
     required this.children,
     required this.initialValue,
     required this.onValueChanged,
-    this.height = 14,
+    this.height = 16,
   });
 
   @override
@@ -59,9 +59,9 @@ class _CustomSegmentState<T> extends State<CustomSegment> {
       child: CustomSlidingSegmentedControl<int>(
         initialValue: widget.initialValue,
         children: widget.children,
-        padding: 28,
-        height: 28,
-        fixedWidth: 136,
+        padding: 30,
+        height: 30,
+        fixedWidth: MediaQuery.of(context).size.width / 2.2,
         decoration: BoxDecoration(
           color: CupertinoColors.lightBackgroundGray,
           borderRadius: BorderRadius.circular(8),
@@ -69,9 +69,9 @@ class _CustomSegmentState<T> extends State<CustomSegment> {
         splashColor: Colors.transparent,
         thumbDecoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(6),
         ),
-        duration: const Duration(milliseconds: 150),
+        duration: const Duration(milliseconds: 200),
         onValueChanged: (v) {
           widget.onValueChanged(v);
         },
