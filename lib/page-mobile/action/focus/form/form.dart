@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/dao/focus/repository.dart';
@@ -50,6 +52,14 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  List<int> getSeconds(List<DateTime> list) {
+    List<int> data = [];
+    for (DateTime time in list) {
+      data.add(time.millisecondsSinceEpoch);
+    }
+    return data;
+  }
+
   @override
   Widget build(BuildContext context) {
     FocusFormProvider focusFormProvider = Provider.of(context);
@@ -73,9 +83,24 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
             onPressed: () async {
               Map<String, Object?> values = {
                 'title': focusFormProvider.getTargetTime(),
-                'icons': focusFormProvider.getTargetTime(),
-                'repeat': focusFormProvider.getTargetTime(),
-                'remind': focusFormProvider.getTargetTime(),
+                'icons': jsonEncode({
+                  'icon': focusFormProvider.getIconModel().icon,
+                  'color': focusFormProvider.getIconModel().color,
+                }),
+                "repeat": jsonEncode({
+                  "type": focusFormProvider.getRepeatType(),
+                  "repeatDays": focusFormProvider.getRepeatDays(),
+                  "selectedDates": getSeconds(
+                    focusFormProvider.getSelectedDates(),
+                  ),
+                }),
+                "remind": jsonEncode({
+                  'completedMusic':
+                      focusFormProvider.getFocusRemindModel().completedMusic,
+                  'relaxdMusic':
+                      focusFormProvider.getFocusRemindModel().relaxdMusic,
+                  'feedback': focusFormProvider.getFocusRemindModel().feedback,
+                }),
                 'targetTime': focusFormProvider.getTargetTime(),
                 'shortRelaxTime': focusFormProvider.getShortRelaxTime(),
                 'longRelaxTime': focusFormProvider.getLongRelaxTime(),

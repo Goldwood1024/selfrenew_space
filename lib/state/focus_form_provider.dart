@@ -6,6 +6,47 @@ class FocusFormProvider extends ChangeNotifier {
   late int longRelaxTime;
   late int longRelaxInterval;
   late int autoRelax;
+  late IconModel iconModel;
+
+  // 重复
+  late RepeatModel repeatModel = RepeatModel();
+  late FocusRemindModel remindModel;
+
+  FocusRemindModel getFocusRemindModel() {
+    return remindModel;
+  }
+
+  IconModel getIconModel() {
+    return iconModel;
+  }
+
+  List<DateTime> getSelectedDates() {
+    return repeatModel.selectedDates;
+  }
+
+  void updateSelectedDates(List<DateTime> values) {
+    repeatModel.selectedDates = values;
+    notifyListeners();
+  }
+
+  List<int> getRepeatDays() {
+    if (repeatModel.type == 0) {
+      return repeatModel.repeatDays;
+    }
+
+    return repeatModel.repeatDays;
+  }
+
+  int getRepeatType() {
+    return repeatModel.type;
+  }
+
+  void updateIconModel(String icon, String color) {
+    iconModel.icon = icon;
+    iconModel.color = color;
+
+    notifyListeners();
+  }
 
   int getTargetTime() {
     return targetTime ~/ 60;
@@ -63,6 +104,8 @@ class FocusFormProvider extends ChangeNotifier {
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
+    iconModel = IconModel(color: '1', icon: '22');
+
     notifyListeners();
   }
 }

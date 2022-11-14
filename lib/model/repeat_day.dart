@@ -96,3 +96,31 @@ class TargetModel {
     );
   }
 }
+
+class FocusRemindModel {
+  late String completedMusic;
+  late String relaxdMusic;
+  late int feedback;
+
+  FocusRemindModel({
+    required this.completedMusic,
+    required this.relaxdMusic,
+    required this.feedback,
+  });
+
+  static FocusRemindModel defaultFocusRemindModel() {
+    return FocusRemindModel(
+      completedMusic: '',
+      relaxdMusic: '',
+      feedback: 0,
+    );
+  }
+
+  static FocusRemindModel toBean(Map<dynamic, dynamic> values) {
+    return FocusRemindModel(
+      completedMusic: values['completedMusic'].toString(),
+      relaxdMusic: values['relaxdMusic'].toString(),
+      feedback: int.parse(values['feedback'].toString()),
+    );
+  }
+}
