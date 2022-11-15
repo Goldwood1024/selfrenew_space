@@ -72,14 +72,12 @@ select * from $focusTableName where isDeleted=0
     update $focusTableName set title='${values['title']}', 
     icons='${values['icons']}', 
     repeat='${values['repeat']}', 
-    target='${values['target']}', 
     remind='${values['remind']}', 
-    type='${values['type']}', 
     targetTime='${values['targetTime']}', 
     autoRelax='${values['autoRelax']}', 
     shortRelaxTime='${values['shortRelaxTime']}', 
     longRelaxTime='${values['longRelaxTime']}', 
-    longRelaxInterval='${values['longRelaxInterval']}', 
+    longRelaxInterval='${values['longRelaxInterval']}'
     where id=$id
     ''';
 
