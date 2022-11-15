@@ -6,7 +6,7 @@ class FocusProvider extends ChangeNotifier {
   List<FocusUnderwayModel> list = [];
 
   bool hasUnderway() {
-    return true;
+    return list.isNotEmpty;
   }
 
   List<FocusUnderwayModel> getFocusUnderway() {
@@ -29,6 +29,13 @@ class FocusProvider extends ChangeNotifier {
         ),
       );
     }
+
+    notifyListeners();
+  }
+
+  Future<void> remove(FocusUnderwayModel model) async {
+    getFocusUnderway().removeWhere((element) => element.id == model.id);
+    await focusRepository.update('isDeleted', '1', model.id);
 
     notifyListeners();
   }

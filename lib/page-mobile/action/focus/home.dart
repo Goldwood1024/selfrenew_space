@@ -135,6 +135,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
   @override
   Widget build(BuildContext context) {
     FocusProvider focusProvider = Provider.of(context);
+    FocusProvider update = Provider.of(context, listen: false);
     List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
 
     return focusProvider.hasUnderway()
@@ -142,11 +143,15 @@ class _FocusUnderwayState extends State<FocusUnderway>
             shrinkWrap: true,
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
+              FocusUnderwayModel model = data[index];
               return Padding(
                 padding: EdgeInsets.fromLTRB(
                     0, SPHelper.height(SPHelper.gapDp8), 0, 0),
                 child: FocusHomeTile(
-                  title: data[index].title,
+                  onRemove: () {
+                    update.remove(model);
+                  },
+                  title: model.title,
                   subTitle: Column(
                     children: [
                       Row(
@@ -203,7 +208,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
                             builder: (_) {
                               return FocusTimer(
                                 params: {
-                                  'id': data[index].id,
+                                  'id': model.id,
                                 },
                               );
                             },

@@ -12,6 +12,7 @@ class FocusHomeTile extends StatefulWidget {
   final Widget? subTitle;
   final Widget? trailing;
   final VoidCallback? onPressed;
+  final VoidCallback? onRemove;
   final bool abandon;
 
   const FocusHomeTile({
@@ -25,6 +26,7 @@ class FocusHomeTile extends StatefulWidget {
     this.trailing,
     this.subTitle,
     this.onPressed,
+    this.onRemove,
     this.abandon = false,
   });
 
@@ -55,7 +57,9 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
               motion: const ScrollMotion(),
               children: [
                 SlidableAction(
-                  onPressed: (_) {},
+                  onPressed: (_) {
+                    widget.onRemove!();
+                  },
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   icon: Icons.delete_rounded,

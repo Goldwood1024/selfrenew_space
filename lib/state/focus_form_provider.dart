@@ -104,7 +104,7 @@ class FocusFormProvider extends ChangeNotifier {
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
-    iconModel = IconModel(color: '1', icon: '22');
+    iconModel = IconModel.defaultIconModel();
 
     notifyListeners();
   }

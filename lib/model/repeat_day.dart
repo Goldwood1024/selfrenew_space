@@ -51,7 +51,7 @@ class IconModel {
   });
 
   static IconModel defaultIconModel() {
-    return IconModel(color: '#f3f5f5', icon: 'assets/icons/question.svg');
+    return IconModel(color: '#f3f5f5', icon: 'assets/icons/timer.svg');
   }
 
   static IconModel toBean(Map<dynamic, dynamic> values) {
