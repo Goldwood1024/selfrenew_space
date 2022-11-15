@@ -13,7 +13,7 @@ create table if not exists $focusTableName
     icons             TEXT    NOT NULL,                  -- 图标
     repeat            TEXT    NOT NULL,                  -- 重复
     remind            TEXT    NOT NULL,                  -- 提醒
-    type              integer,
+    type              TEXT,
     targetTime        integer,
     autoRelax         integer,
     shortRelaxTime    integer,
@@ -74,8 +74,12 @@ select * from $focusTableName where isDeleted=0
     repeat='${values['repeat']}', 
     target='${values['target']}', 
     remind='${values['remind']}', 
-    startDate='${values['startDate']}',
-    hearten='${values['hearten']}'
+    type='${values['type']}', 
+    targetTime='${values['targetTime']}', 
+    autoRelax='${values['autoRelax']}', 
+    shortRelaxTime='${values['shortRelaxTime']}', 
+    longRelaxTime='${values['longRelaxTime']}', 
+    longRelaxInterval='${values['longRelaxInterval']}', 
     where id=$id
     ''';
 

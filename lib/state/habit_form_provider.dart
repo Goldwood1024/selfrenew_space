@@ -131,7 +131,6 @@ class HabitFormProvider extends ChangeNotifier {
 
   Future<void> query(String id) async {
     Map<String, Object?> mm = await habitRepository.selectById(id);
-    print(mm);
 
     titleController.text = mm['title'].toString();
     repeatModel = RepeatModel.toBean(jsonDecode(mm['repeat'].toString()));

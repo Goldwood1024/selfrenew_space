@@ -46,10 +46,9 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.pushParams(
-                Routers.focusForm,
-                {"type": FocusType.tomato.name},
-              );
+              Routers.pushParams(Routers.focusForm, {
+                "type": FocusType.tomato.name,
+              });
             },
           ),
           Bubble(
@@ -60,10 +59,9 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.pushParams(
-                Routers.focusForm,
-                {"type": FocusType.uptime.name},
-              );
+              Routers.pushParams(Routers.focusForm, {
+                "type": FocusType.uptime.name,
+              });
             },
           ),
           Bubble(
@@ -74,10 +72,9 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
             titleStyle: TextStyleMode.floatBubbleTextStyle(context),
             onPress: () {
               _animationController.reverse();
-              Routers.pushParams(
-                Routers.focusForm,
-                {"type": FocusType.downtime.name},
-              );
+              Routers.pushParams(Routers.focusForm, {
+                "type": FocusType.downtime.name,
+              });
             },
           ),
         ],
@@ -151,6 +148,12 @@ class _FocusUnderwayState extends State<FocusUnderway>
                   onRemove: () {
                     update.remove(model);
                   },
+                  onEdit: () {
+                    Routers.pushParams(Routers.focusForm, {
+                      'id': model.id,
+                      'type': model.type,
+                    });
+                  },
                   title: model.title,
                   subTitle: Column(
                     children: [
@@ -163,7 +166,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
                           ),
                           SPHelper.getWidthBox(SPHelper.gapDp8),
                           Text(
-                            '每天',
+                            '${model.targetTime ~/ 60} 分钟',
                             style: TextStyle(
                               color: CupertinoColors.systemGrey2,
                               fontSize: SPHelper.sp(SPHelper.fontSp15),
@@ -171,32 +174,32 @@ class _FocusUnderwayState extends State<FocusUnderway>
                           ),
                         ],
                       ),
-                      SPHelper.getHeightBox(SPHelper.gapDp4),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            CupertinoIcons.app_badge,
-                            size: SPHelper.sp(SPHelper.fontSp18),
-                            color: CupertinoColors.systemGrey2,
-                          ),
-                          SPHelper.getWidthBox(SPHelper.gapDp8),
-                          Text(
-                            '08:00',
-                            style: TextStyle(
-                              color: CupertinoColors.systemGrey2,
-                              fontSize: SPHelper.sp(SPHelper.fontSp15),
-                            ),
-                          ),
-                        ],
-                      ),
+                      // SPHelper.getHeightBox(SPHelper.gapDp4),
+                      // Row(
+                      //   crossAxisAlignment: CrossAxisAlignment.center,
+                      //   children: [
+                      //     Icon(
+                      //       CupertinoIcons.app_badge,
+                      //       size: SPHelper.sp(SPHelper.fontSp18),
+                      //       color: CupertinoColors.systemGrey2,
+                      //     ),
+                      //     SPHelper.getWidthBox(SPHelper.gapDp8),
+                      //     Text(
+                      //       '08:00',
+                      //       style: TextStyle(
+                      //         color: CupertinoColors.systemGrey2,
+                      //         fontSize: SPHelper.sp(SPHelper.fontSp15),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                   topRadius: true,
                   bottomRadius: true,
-                  // leading: SvgLoader(
-                  //   path: data[index].imagePath,
-                  // ),
+                  leading: SvgLoader(
+                    path: data[index].iconModel.icon,
+                  ),
                   trailing: Row(
                     children: [
                       GestureDetector(

@@ -13,6 +13,7 @@ class FocusHomeTile extends StatefulWidget {
   final Widget? trailing;
   final VoidCallback? onPressed;
   final VoidCallback? onRemove;
+  final VoidCallback? onEdit;
   final bool abandon;
 
   const FocusHomeTile({
@@ -27,6 +28,7 @@ class FocusHomeTile extends StatefulWidget {
     this.subTitle,
     this.onPressed,
     this.onRemove,
+    this.onEdit,
     this.abandon = false,
   });
 
@@ -91,10 +93,7 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
                 )
               : SlidableAction(
                   onPressed: (_) {
-                    Routers.pushParams(
-                      Routers.habitForm,
-                      {'11': '11'},
-                    );
+                    widget.onEdit!();
                   },
                   backgroundColor: Colors.yellow,
                   foregroundColor: Colors.white,

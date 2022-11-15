@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusFormProvider extends ChangeNotifier {
+  static final FocusRepository focusRepository = FocusRepository();
+
   late int targetTime;
   late int shortRelaxTime;
   late int longRelaxTime;
   late int longRelaxInterval;
   late int autoRelax;
+  late String type;
   late IconModel iconModel;
 
   // 重复
@@ -14,6 +19,13 @@ class FocusFormProvider extends ChangeNotifier {
 
   FocusRemindModel getFocusRemindModel() {
     return remindModel;
+  }
+
+  void updateType(String value) {
+    type = value;
+
+    print(value);
+    notifyListeners();
   }
 
   IconModel getIconModel() {
@@ -98,14 +110,30 @@ class FocusFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void query() {
+  void newFocus() {
     targetTime = 300;
     shortRelaxTime = 300;
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
     iconModel = IconModel.defaultIconModel();
+    remindModel = FocusRemindModel.defaultFocusRemindModel();
+    notifyListeners();
+  }
 
+  Future<void> queryById(id) async {
+    Map<String, Object?> mm = await focusRepository.selectById(id);
+    print(mm);
+    targetTime = int.parse(mm['targetTime'].toString());
+    shortRelaxTime = int.parse(mm['shortRelaxTime'].toString());
+    longRelaxTime = int.parse(mm['longRelaxTime'].toString());
+    longRelaxInterval = int.parse(mm['longRelaxInterval'].toString());
+    autoRelax = int.parse(mm['autoRelax'].toString());
+    autoRelax = int.parse(mm['autoRelax'].toString());
+    type = mm['type'].toString();
+
+    iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
+    remindModel = FocusRemindModel.defaultFocusRemindModel();
     notifyListeners();
   }
 }

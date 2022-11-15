@@ -24,14 +24,15 @@ class FocusForm extends StatefulWidget {
 
 class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
   late String appBarTitle;
-  late String type;
   final FocusRepository focusRepository = FocusRepository();
+
+  late bool edit;
 
   @override
   void initState() {
     super.initState();
 
-    type = widget.params['type'];
+    late String type = widget.params['type'];
     if (type == FocusType.tomato.name) {
       appBarTitle = '番茄钟';
     } else if (type == FocusType.uptime.name) {
@@ -40,10 +41,16 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
       appBarTitle = '倒计时';
     }
 
+    edit = false;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       FocusFormProvider focusFormProvider = Provider.of(context, listen: false);
-
-      focusFormProvider.query();
+      focusFormProvider.updateType(type);
+      if (ObjectUtil.isNotEmpty(widget.params['id'])) {
+        edit = true;
+        focusFormProvider.queryById(widget.params['id']);
+      } else {
+        focusFormProvider.newFocus();
+      }
     });
   }
 
@@ -81,35 +88,69 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         actions: [
           ActionBtn(
             onPressed: () async {
-              Map<String, Object?> values = {
-                'title': focusFormProvider.getTargetTime(),
-                'icons': jsonEncode({
-                  'icon': focusFormProvider.getIconModel().icon,
-                  'color': focusFormProvider.getIconModel().color,
-                }),
-                "repeat": jsonEncode({
-                  "type": focusFormProvider.getRepeatType(),
-                  "repeatDays": focusFormProvider.getRepeatDays(),
-                  "selectedDates": getSeconds(
-                    focusFormProvider.getSelectedDates(),
-                  ),
-                }),
-                "remind": jsonEncode({
-                  'completedMusic':
-                      focusFormProvider.getFocusRemindModel().completedMusic,
-                  'relaxdMusic':
-                      focusFormProvider.getFocusRemindModel().relaxdMusic,
-                  'feedback': focusFormProvider.getFocusRemindModel().feedback,
-                }),
-                'targetTime': focusFormProvider.getTargetTime(),
-                'shortRelaxTime': focusFormProvider.getShortRelaxTime(),
-                'longRelaxTime': focusFormProvider.getLongRelaxTime(),
-                'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
-                'autoRelax': focusFormProvider.getAutoRelax(),
-                'gmtDate': DateTime.now().millisecondsSinceEpoch,
-              };
+              if (edit) {
+                Map<String, Object?> values = {
+                  'title': focusFormProvider.getTargetTime(),
+                  'icons': jsonEncode({
+                    'icon': focusFormProvider.getIconModel().icon,
+                    'color': focusFormProvider.getIconModel().color,
+                  }),
+                  "repeat": jsonEncode({
+                    "type": focusFormProvider.getRepeatType(),
+                    "repeatDays": focusFormProvider.getRepeatDays(),
+                    "selectedDates": getSeconds(
+                      focusFormProvider.getSelectedDates(),
+                    ),
+                  }),
+                  "remind": jsonEncode({
+                    'completedMusic':
+                        focusFormProvider.getFocusRemindModel().completedMusic,
+                    'relaxdMusic':
+                        focusFormProvider.getFocusRemindModel().relaxdMusic,
+                    'feedback':
+                        focusFormProvider.getFocusRemindModel().feedback,
+                  }),
+                  'targetTime': focusFormProvider.getTargetTime() * 60,
+                  'shortRelaxTime': focusFormProvider.getShortRelaxTime() * 60,
+                  'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
+                  'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
+                  'autoRelax': focusFormProvider.getAutoRelax(),
+                };
 
-              await focusRepository.insert(values);
+                await focusRepository.updateById(values, widget.params['id']);
+              } else {
+                Map<String, Object?> values = {
+                  'title': focusFormProvider.getTargetTime(),
+                  'icons': jsonEncode({
+                    'icon': focusFormProvider.getIconModel().icon,
+                    'color': focusFormProvider.getIconModel().color,
+                  }),
+                  "repeat": jsonEncode({
+                    "type": focusFormProvider.getRepeatType(),
+                    "repeatDays": focusFormProvider.getRepeatDays(),
+                    "selectedDates": getSeconds(
+                      focusFormProvider.getSelectedDates(),
+                    ),
+                  }),
+                  "remind": jsonEncode({
+                    'completedMusic':
+                        focusFormProvider.getFocusRemindModel().completedMusic,
+                    'relaxdMusic':
+                        focusFormProvider.getFocusRemindModel().relaxdMusic,
+                    'feedback':
+                        focusFormProvider.getFocusRemindModel().feedback,
+                  }),
+                  'type': focusFormProvider.type,
+                  'targetTime': focusFormProvider.getTargetTime() * 60,
+                  'shortRelaxTime': focusFormProvider.getShortRelaxTime() * 60,
+                  'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
+                  'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
+                  'autoRelax': focusFormProvider.getAutoRelax(),
+                  'gmtDate': DateTime.now().millisecondsSinceEpoch,
+                };
+
+                await focusRepository.insert(values);
+              }
 
               Routers.push(Routers.focusHome);
             },
@@ -191,7 +232,8 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SimpleTileHasTime(
                         title: '目标时长',
-                        bottomRadius: type != FocusType.tomato.name,
+                        bottomRadius:
+                            focusFormProvider.type != FocusType.tomato.name,
                         duration: Duration(
                           milliseconds:
                               focusFormProvider.getTargetTime() * 60 * 1000,
@@ -205,7 +247,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: type != FocusType.tomato.name,
+                        hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '番茄时长',
                         bottomRadius: true,
                         max: 90,
@@ -221,7 +263,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SimpleTile(
-                        hide: type != FocusType.tomato.name,
+                        hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '自动休息',
                         topRadius: true,
                         showArrow: false,
@@ -233,7 +275,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: type != FocusType.tomato.name,
+                        hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '短休息时长',
                         max: 10,
                         min: 1,
@@ -247,7 +289,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: type != FocusType.tomato.name,
+                        hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '长休息时长',
                         max: 50,
                         min: 1,
@@ -261,7 +303,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: type != FocusType.tomato.name,
+                        hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '长休息间隔',
                         bottomRadius: true,
                         max: 10,

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusProvider extends ChangeNotifier {
@@ -25,7 +27,10 @@ class FocusProvider extends ChangeNotifier {
           shortRelaxTime: int.parse(map['shortRelaxTime'].toString()),
           longRelaxTime: int.parse(map['longRelaxTime'].toString()),
           longRelaxInterval: int.parse(map['longRelaxInterval'].toString()),
+          targetTime: int.parse(map['targetTime'].toString()),
           autoRelax: int.parse(map['autoRelax'].toString()),
+          type: map['type'].toString(),
+          iconModel: IconModel.toBean(jsonDecode(map['icons'].toString())),
         ),
       );
     }
