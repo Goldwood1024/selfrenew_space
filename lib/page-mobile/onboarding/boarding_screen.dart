@@ -34,8 +34,8 @@ class _BoardingScreenState extends State<BoardingScreen> {
     return installUpdateAppProvider.getShowBoarding()
         ? OnBoardingSlider(
             finishButtonText: '开始专注',
-            onFinish: () {
-              update.updateBoarding(false);
+            onFinish: () async {
+              await update.updateBoarding(false);
               Routers.go(Routers.mobileHome);
             },
             finishButtonColor: Theme.of(context).primaryColor,

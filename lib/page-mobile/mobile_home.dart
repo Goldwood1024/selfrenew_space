@@ -44,6 +44,9 @@ class _MobileHomeState extends State<MobileHome>
   }
 
   @override
+  bool get mounted => super.mounted;
+
+  @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.top]);
