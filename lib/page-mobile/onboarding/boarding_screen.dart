@@ -11,12 +11,16 @@ class BoardingScreen extends StatefulWidget {
 class _BoardingScreenState extends State<BoardingScreen> {
   final double width = 400;
   final Color kDarkBlueColor = const Color(0xFF053149);
-  late bool firstOpenApp;
 
   @override
   void initState() {
     super.initState();
-    firstOpenApp = true;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      InstallUpdateAppProvider installUpdateAppProvider =
+          Provider.of(context, listen: false);
+      installUpdateAppProvider.loadBoarding();
+    });
   }
 
   @override
@@ -24,11 +28,14 @@ class _BoardingScreenState extends State<BoardingScreen> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
 
-    return firstOpenApp
+    InstallUpdateAppProvider installUpdateAppProvider = Provider.of(context);
+    InstallUpdateAppProvider update = Provider.of(context, listen: false);
+
+    return installUpdateAppProvider.getShowBoarding()
         ? OnBoardingSlider(
             finishButtonText: '开始专注',
             onFinish: () {
-              // TODO 写入文件
+              update.updateBoarding(false);
               Routers.go(Routers.mobileHome);
             },
             finishButtonColor: Theme.of(context).primaryColor,

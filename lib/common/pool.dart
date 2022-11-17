@@ -16,4 +16,5 @@ class ConstPool {
   // 数据库
   static int databaseVersion = 1;
   static String databaseName = 'database.sqlite';
+  static String appVersion = '1.0.0';
 }

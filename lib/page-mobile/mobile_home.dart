@@ -21,14 +21,20 @@ class _MobileHomeState extends State<MobileHome>
     _currentIndex = 0;
 
     // 加载数据
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Future.delayed(const Duration(seconds: 3), () {
-        // 更新详情
-        showCupertinoModalBottomSheet(
-          context: context,
-          builder: (_) => const Update(),
-        );
-      });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      InstallUpdateAppProvider installUpdateAppProvider =
+          Provider.of(context, listen: false);
+
+      bool show = await installUpdateAppProvider.loadUpdate();
+      if (show) {
+        Future.delayed(const Duration(seconds: 3), () async {
+          // 更新详情
+          showCupertinoModalBottomSheet(
+            context: context,
+            builder: (_) => const Update(),
+          );
+        });
+      }
     });
   }
 

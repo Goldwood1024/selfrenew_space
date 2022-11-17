@@ -1,6 +1,5 @@
-import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Update extends StatefulWidget {
   const Update({super.key});
@@ -10,6 +9,17 @@ class Update extends StatefulWidget {
 }
 
 class _UpdateState extends State<Update> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      InstallUpdateAppProvider installUpdateAppProvider =
+          Provider.of(context, listen: false);
+      await installUpdateAppProvider.updateUpdate(ConstPool.appVersion);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return CupertinoOnboarding(
