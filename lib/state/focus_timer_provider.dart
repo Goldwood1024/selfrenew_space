@@ -6,7 +6,9 @@ class FocusTimerProvider extends ChangeNotifier {
   late String title;
   late String focusType;
   late int timers;
+  late int relaxTimer;
   late bool countUp;
+  late int autoRelax;
   late bool infinityCountUp;
 
   Future<void> timer(Map<String, dynamic> params) async {
@@ -14,7 +16,9 @@ class FocusTimerProvider extends ChangeNotifier {
         await focusRepository.selectById(params['id'].toString());
     title = mm['title'].toString();
     focusType = FocusType.uptime.name;
-    timers = int.parse(mm['shortRelaxTime'].toString()) * 60;
+    timers = int.parse(mm['targetTime'].toString());
+    relaxTimer = int.parse(mm['targetTime'].toString());
+    autoRelax = int.parse(mm['autoRelax'].toString());
     countUp = false;
     infinityCountUp = false;
 

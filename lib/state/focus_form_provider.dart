@@ -113,6 +113,7 @@ class FocusFormProvider extends ChangeNotifier {
   }
 
   void newFocus() {
+    titleEditingController.text = '';
     targetTime = 300;
     shortRelaxTime = 300;
     longRelaxTime = 300;
@@ -125,7 +126,7 @@ class FocusFormProvider extends ChangeNotifier {
 
   Future<void> queryById(id) async {
     Map<String, Object?> mm = await focusRepository.selectById(id);
-    print(mm);
+    titleEditingController.text = mm['title'].toString();
     targetTime = int.parse(mm['targetTime'].toString());
     shortRelaxTime = int.parse(mm['shortRelaxTime'].toString());
     longRelaxTime = int.parse(mm['longRelaxTime'].toString());

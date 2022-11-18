@@ -125,11 +125,12 @@ class _FocusTimerState extends State<FocusTimer>
                             keepSingle: true,
                             useAnimation: true,
                             builder: (_) {
-                              return const FocusRelax(
+                              return FocusRelax(
                                 params: {
-                                  "timer": 60,
+                                  "timer": focusTimerProvider.relaxTimer,
                                   "musicId": 1,
-                                  "autoRelax": true,
+                                  "autoRelax":
+                                      focusTimerProvider.relaxTimer == 1,
                                 },
                               );
                             },

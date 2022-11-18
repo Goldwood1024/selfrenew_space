@@ -26,6 +26,7 @@ class _FocusRelaxState extends State<FocusRelax>
     showText = false;
 
     time = Duration(seconds: widget.params['timer']);
+    showText = widget.params['autoRelax'];
   }
 
   @override
