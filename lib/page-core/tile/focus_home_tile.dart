@@ -57,6 +57,7 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
             )
           : ActionPane(
               motion: const ScrollMotion(),
+              extentRatio: 0.25,
               children: [
                 SlidableAction(
                   onPressed: (_) {
@@ -68,14 +69,14 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
                   label: '删除',
                 ),
-                SlidableAction(
-                  onPressed: (_) {},
-                  backgroundColor: const Color(0xFF0392CF),
-                  foregroundColor: Colors.white,
-                  borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
-                  icon: Icons.pause_circle_filled_outlined,
-                  label: '放弃',
-                )
+                // SlidableAction(
+                //   onPressed: (_) {},
+                //   backgroundColor: const Color(0xFF0392CF),
+                //   foregroundColor: Colors.white,
+                //   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),
+                //   icon: Icons.pause_circle_filled_outlined,
+                //   label: '放弃',
+                // )
               ],
             ),
       endActionPane: ActionPane(
