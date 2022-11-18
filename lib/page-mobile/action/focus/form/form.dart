@@ -90,7 +90,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
             onPressed: () async {
               if (edit) {
                 Map<String, Object?> values = {
-                  'title': focusFormProvider.getTargetTime(),
+                  'title': focusFormProvider.titleEditingController.text,
                   'icons': jsonEncode({
                     'icon': focusFormProvider.getIconModel().icon,
                     'color': focusFormProvider.getIconModel().color,
@@ -114,13 +114,13 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   'shortRelaxTime': focusFormProvider.getShortRelaxTime() * 60,
                   'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
                   'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
-                  'autoRelax': focusFormProvider.getAutoRelax(),
+                  'autoRelax': focusFormProvider.getAutoRelax() ? 1 : 0,
                 };
 
                 await focusRepository.updateById(values, widget.params['id']);
               } else {
                 Map<String, Object?> values = {
-                  'title': focusFormProvider.getTargetTime(),
+                  'title': focusFormProvider.titleEditingController.text,
                   'icons': jsonEncode({
                     'icon': focusFormProvider.getIconModel().icon,
                     'color': focusFormProvider.getIconModel().color,
@@ -145,14 +145,14 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   'shortRelaxTime': focusFormProvider.getShortRelaxTime() * 60,
                   'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
                   'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
-                  'autoRelax': focusFormProvider.getAutoRelax(),
+                  'autoRelax': focusFormProvider.getAutoRelax() ? 1 : 0,
                   'gmtDate': DateTime.now().millisecondsSinceEpoch,
                 };
 
                 await focusRepository.insert(values);
               }
 
-              Routers.push(Routers.focusHome);
+              Routers.goParams(Routers.focusHome, {});
             },
             title: '保存',
           )
@@ -187,7 +187,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                                 Theme.of(context).textTheme.labelSmall!.color,
                           ),
                           maxLength: 12,
-                          controller: TextEditingController(),
+                          controller: focusFormProvider.titleEditingController,
                           cursorColor: Theme.of(context).primaryColor,
                           cursorWidth: 3,
                           decoration: InputDecoration(

@@ -13,6 +13,8 @@ class FocusFormProvider extends ChangeNotifier {
   late String type;
   late IconModel iconModel;
 
+  TextEditingController titleEditingController = TextEditingController();
+
   // 重复
   late RepeatModel repeatModel = RepeatModel();
   late FocusRemindModel remindModel;
