@@ -105,7 +105,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   "remind": jsonEncode({
                     'completedMusic':
                         focusFormProvider.getFocusRemindModel().completedMusic,
-                    'relaxdMusic':
+                    'relaxMusic':
                         focusFormProvider.getFocusRemindModel().relaxdMusic,
                     'feedback':
                         focusFormProvider.getFocusRemindModel().feedback,

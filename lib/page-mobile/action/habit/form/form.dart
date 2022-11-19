@@ -76,6 +76,12 @@ class _HabitFormState extends State<HabitForm> {
         actions: [
           ActionBtn(
             onPressed: () async {
+              if (ObjectUtil.isEmpty(
+                  habitFormProvider.titleController.text)) {
+                BottomDialog.showToast('名称为空');
+                return;
+              }
+
               if (isEdit) {
                 Map<String, Object?> values = {
                   "title": habitFormProvider.titleController.text,
