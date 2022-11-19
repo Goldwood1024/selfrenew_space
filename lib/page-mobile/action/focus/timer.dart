@@ -20,32 +20,57 @@ class FocusTimer extends StatefulWidget {
 class _FocusTimerState extends State<FocusTimer>
     with SingleTickerProviderStateMixin {
   late Duration time;
-  late bool showText;
+  late bool _hideTimeText;
 
   @override
   void initState() {
     super.initState();
-    showText = false;
+    _hideTimeText = false;
+    time = const Duration(seconds: 0);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       FocusTimerProvider update = Provider.of(context, listen: false);
       update.timer(widget.params);
+
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          _hideTimeText = true;
+        });
+      });
     });
   }
 
   @override
   void dispose() {
-    showText = false;
+    _hideTimeText = false;
     super.dispose();
   }
 
-  String getTime() {
-    return '${time.inMinutes}:${time.inSeconds % 60}';
+  String getTime(FocusTimerProvider provider) {
+    Duration duration = Duration(seconds: provider.timers);
+    if (duration.compareTo(time) >= 0 && time.compareTo(Duration.zero) != 0) {
+      return DatetimeUtil.getTime(time);
+    }
+
+    if (provider.timers > 0) {
+      return DatetimeUtil.getTime(duration);
+    }
+
+    return DatetimeUtil.getTime(time);
+  }
+
+  bool show(FocusTimerProvider provider, FocusType focus) {
+    if (ObjectUtil.isEmpty(provider.focusType)) {
+      return false;
+    }
+    return provider.focusType == focus.name;
   }
 
   @override
   Widget build(BuildContext context) {
     FocusTimerProvider focusTimerProvider = Provider.of(context);
+    FocusTimerProvider update = Provider.of(context, listen: false);
+
     return ScaffoldGradientBackground(
       appBar: AppBar(
         toolbarHeight: SPHelper.appBarHeight(),
@@ -56,18 +81,15 @@ class _FocusTimerState extends State<FocusTimer>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconVisible(
-                  visible:
-                      focusTimerProvider.focusType == FocusType.uptime.name,
+                  visible: show(focusTimerProvider, FocusType.uptime),
                   icon: CupertinoIcons.loop,
                 ),
                 IconVisible(
-                  visible:
-                      focusTimerProvider.focusType == FocusType.tomato.name,
+                  visible: show(focusTimerProvider, FocusType.uptime),
                   icon: CupertinoIcons.loop,
                 ),
                 IconVisible(
-                  visible:
-                      focusTimerProvider.focusType == FocusType.downtime.name,
+                  visible: show(focusTimerProvider, FocusType.uptime),
                   icon: CupertinoIcons.loop,
                 ),
                 SPHelper.getWidthBox(SPHelper.gapDp12),
@@ -91,53 +113,54 @@ class _FocusTimerState extends State<FocusTimer>
           children: [
             Positioned(
               top: MediaQuery.of(context).size.height / 5,
-              child: showText
-                  ? Text(
-                      getTime(),
-                      style: TextStyle(
-                        fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.labelSmall?.color,
-                      ),
-                    )
-                  : SlideCountdown(
-                      padding: EdgeInsets.zero,
-                      countUp: focusTimerProvider.countUp,
-                      infinityCountUp: focusTimerProvider.infinityCountUp,
-                      curve: Curves.linear,
-                      separatorType: SeparatorType.symbol,
-                      decoration: const BoxDecoration(),
-                      duration: Duration(seconds: focusTimerProvider.timers),
-                      slideAnimationDuration: const Duration(milliseconds: 500),
-                      textStyle: TextStyle(
-                        fontSize: SPHelper.sp(SPHelper.gapDp72),
-                        color: Theme.of(context).textTheme.labelSmall?.color,
-                      ),
-                      onChanged: (_) {
-                        setState(() {
-                          time = _;
-                        });
+              child: Visibility(
+                visible: _hideTimeText,
+                replacement: Text(
+                  getTime(focusTimerProvider),
+                  style: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.gapDp72),
+                    color: Theme.of(context).textTheme.labelSmall?.color,
+                  ),
+                ),
+                child: SlideCountdown(
+                  padding: EdgeInsets.zero,
+                  countUp: focusTimerProvider.countUp,
+                  infinityCountUp: focusTimerProvider.infinityCountUp,
+                  curve: Curves.linear,
+                  separatorType: SeparatorType.symbol,
+                  decoration: const BoxDecoration(),
+                  duration: Duration(seconds: focusTimerProvider.timers),
+                  slideAnimationDuration: const Duration(milliseconds: 500),
+                  textStyle: TextStyle(
+                    fontSize: SPHelper.sp(SPHelper.gapDp72),
+                    color: Theme.of(context).textTheme.labelSmall?.color,
+                  ),
+                  onChanged: (_) {
+                    setState(() {
+                      time = _;
+                    });
 
-                        if (_.inMilliseconds <= 500) {
-                          SmartDialog.dismiss();
+                    if (_.inMilliseconds <= 500) {
+                      SmartDialog.dismiss();
 
-                          SmartDialog.show(
-                            alignment: Alignment.bottomCenter,
-                            keepSingle: true,
-                            useAnimation: true,
-                            builder: (_) {
-                              return FocusRelax(
-                                params: {
-                                  "timer": focusTimerProvider.relaxTimer,
-                                  "musicId": 1,
-                                  "autoRelax":
-                                      focusTimerProvider.relaxTimer == 1,
-                                },
-                              );
+                      SmartDialog.show(
+                        alignment: Alignment.bottomCenter,
+                        keepSingle: true,
+                        useAnimation: true,
+                        builder: (_) {
+                          return FocusRelax(
+                            params: {
+                              "timer": focusTimerProvider.relaxTimer,
+                              "musicId": 1,
+                              "autoRelax": focusTimerProvider.relaxTimer == 1,
                             },
                           );
-                        }
-                      },
-                    ),
+                        },
+                      );
+                    }
+                  },
+                ),
+              ),
             ),
             Positioned(
               bottom: SPHelper.height(SPHelper.gapDp100),
@@ -176,8 +199,9 @@ class _FocusTimerState extends State<FocusTimer>
                   action: (controller) async {
                     controller.loading();
                     setState(() {
-                      showText = true;
+                      _hideTimeText = false;
                     });
+
                     await Future.delayed(const Duration(milliseconds: 300));
                     controller.success();
                     await Future.delayed(const Duration(milliseconds: 1300));

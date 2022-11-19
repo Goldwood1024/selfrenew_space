@@ -232,6 +232,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SimpleTileHasTime(
                         title: '目标时长',
+                        hide: focusFormProvider.type == FocusType.tomato.name,
                         bottomRadius:
                             focusFormProvider.type != FocusType.tomato.name,
                         duration: Duration(
@@ -276,11 +277,25 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                           },
                         ),
                       ),
+                      SimpleTile(
+                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        title: '跳过休息',
+                        bottomRadius: true,
+                        showArrow: false,
+                        trailing: CommonSwitch(
+                          value: focusFormProvider.getAutoRelax(),
+                          func: (_) {
+                            update.updateAutoRelax(_);
+                          },
+                        ),
+                      ),
+                      SPHelper.getDefaultHeightBox(),
                       SimpleTileSlider(
                         hide: focusFormProvider.type != FocusType.tomato.name,
                         title: '短休息时长',
                         max: 10,
                         min: 1,
+                        topRadius: true,
                         initValue: focusFormProvider.getShortRelaxTime(),
                         onValueChanged: (_) {
                           update.updateShortRelaxTime(_ * 60);

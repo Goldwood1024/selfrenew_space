@@ -15,12 +15,29 @@ class FocusTimerProvider extends ChangeNotifier {
     Map<String, Object?> mm =
         await focusRepository.selectById(params['id'].toString());
     title = mm['title'].toString();
-    focusType = FocusType.uptime.name;
+    focusType = mm['type'].toString();
     timers = int.parse(mm['targetTime'].toString());
     relaxTimer = int.parse(mm['targetTime'].toString());
     autoRelax = int.parse(mm['autoRelax'].toString());
-    countUp = false;
-    infinityCountUp = false;
+
+    if (focusType == FocusType.tomato.name) {
+      countUp = false;
+      infinityCountUp = false;
+    } else if (focusType == FocusType.uptime.name) {
+      countUp = true;
+      infinityCountUp = false;
+    } else if (focusType == FocusType.downtime.name) {
+      countUp = false;
+      infinityCountUp = false;
+    }
+
+    notifyListeners();
+  }
+
+  void reset() {
+    timers = 0;
+    relaxTimer = 0;
+    autoRelax = 0;
 
     notifyListeners();
   }
