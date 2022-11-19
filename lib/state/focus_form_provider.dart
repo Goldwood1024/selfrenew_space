@@ -25,8 +25,6 @@ class FocusFormProvider extends ChangeNotifier {
 
   void updateType(String value) {
     type = value;
-
-    print(value);
     notifyListeners();
   }
 
