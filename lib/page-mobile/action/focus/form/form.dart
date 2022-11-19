@@ -82,6 +82,12 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         actions: [
           ActionBtn(
             onPressed: () async {
+              if (ObjectUtil.isEmpty(
+                  focusFormProvider.titleEditingController.text)) {
+                BottomDialog.showToast('名称为空');
+                return;
+              }
+
               if (edit) {
                 Map<String, Object?> values = {
                   'title': focusFormProvider.titleEditingController.text,
@@ -241,7 +247,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide:
+                            focusFormProvider.type == FocusType.downtime.name ||
+                                focusFormProvider.type == FocusType.uptime.name,
                         title: '番茄时长',
                         bottomRadius: true,
                         max: 90,

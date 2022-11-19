@@ -67,4 +67,8 @@ class BottomDialog {
       },
     );
   }
+
+  static showToast(String message) {
+    SmartDialog.showToast(message);
+  }
 }
