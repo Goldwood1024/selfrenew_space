@@ -12,6 +12,11 @@ class _FocusModuleState extends State<FocusModule> {
   @override
   void initState() {
     super.initState();
+
+    // 加载数据
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<FocusProvider>(context, listen: false).reloadFocus();
+    });
   }
 
   @override
@@ -103,8 +108,10 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
           trailing: GestureDetector(
             onTap: () {
               SmartDialog.show(builder: (_) {
-                return const FocusTimer(
-                  params: {},
+                return FocusTimer(
+                  params: {
+                    'id': data[index].id,
+                  },
                 );
               });
             },
@@ -115,8 +122,10 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
                   keepSingle: true,
                   useAnimation: true,
                   builder: (_) {
-                    return const FocusTimer(
-                      params: {},
+                    return FocusTimer(
+                      params: {
+                        'id': data[index].id,
+                      },
                     );
                   },
                 );

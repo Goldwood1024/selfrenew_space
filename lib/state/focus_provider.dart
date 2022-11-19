@@ -20,6 +20,10 @@ class FocusProvider extends ChangeNotifier {
 
     List<Map<String, Object?>> data = await focusRepository.query();
     for (Map<String, Object?> map in data) {
+      if (list.any((element) => element == map['id'])) {
+        continue;
+      }
+
       list.add(
         FocusUnderwayModel(
           id: map['id'].toString(),
