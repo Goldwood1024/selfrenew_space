@@ -254,7 +254,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         title: '番茄时长',
                         bottomRadius: true,
                         max: 90,
-                        min: 5,
+                        min: 1,
                         initValue: focusFormProvider.getTargetTime(),
                         onValueChanged: (_) {
                           update.updateTargetTime(_ * 60);

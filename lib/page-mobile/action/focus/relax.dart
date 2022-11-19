@@ -19,11 +19,13 @@ class _FocusRelaxState extends State<FocusRelax>
     with SingleTickerProviderStateMixin {
   late Duration time;
   late bool showText;
+  late bool showStart;
 
   @override
   void initState() {
     super.initState();
     showText = false;
+    showStart = true;
 
     time = Duration(seconds: widget.params['timer']);
     showText = widget.params['autoRelax'];
@@ -36,7 +38,7 @@ class _FocusRelaxState extends State<FocusRelax>
   }
 
   String getTime() {
-    return '${time.inMinutes}:${time.inSeconds % 60}';
+    return DatetimeUtil.getTime(time);
   }
 
   @override
@@ -80,6 +82,13 @@ class _FocusRelaxState extends State<FocusRelax>
                   ),
                 ),
                 child: SlideCountdown(
+                  showZeroValue: true,
+                  shouldShowDays: (_) {
+                    return false;
+                  },
+                  shouldShowHours: (_) {
+                    return false;
+                  },
                   padding: EdgeInsets.zero,
                   countUp: false,
                   infinityCountUp: false,
@@ -108,16 +117,21 @@ class _FocusRelaxState extends State<FocusRelax>
               bottom: SPHelper.height(SPHelper.gapDp100),
               child: Align(
                 child: Visibility(
-                  visible: false,
+                  visible: showStart,
                   replacement: Column(
                     children: [
                       StartRelax(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            showText = true;
+                            showStart = true;
+                          });
+                        },
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SkipRelax(
                         onPressed: () {
-                          Future.delayed(const Duration(milliseconds: 600), () {
+                          Future.delayed(const Duration(milliseconds: 300), () {
                             SmartDialog.dismiss();
                           });
                         },
@@ -158,8 +172,9 @@ class _FocusRelaxState extends State<FocusRelax>
                     action: (controller) async {
                       controller.loading();
                       setState(() {
-                        showText = true;
+                        showText = false;
                       });
+
                       await Future.delayed(const Duration(milliseconds: 300));
                       controller.success();
                       await Future.delayed(const Duration(milliseconds: 1300));

@@ -137,6 +137,7 @@ class _FocusTimerState extends State<FocusTimer>
                   separatorType: SeparatorType.symbol,
                   decoration: const BoxDecoration(),
                   duration: Duration(seconds: focusTimerProvider.timers),
+                  // duration: Duration(seconds: 3),
                   slideAnimationDuration: const Duration(milliseconds: 500),
                   textStyle: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.gapDp72),

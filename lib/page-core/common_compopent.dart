@@ -697,7 +697,7 @@ class _IconVisibleState extends State<IconVisible> {
   }
 }
 
-class StartRelax extends StatelessWidget {
+class StartRelax extends StatefulWidget {
   final Function() onPressed;
 
   const StartRelax({
@@ -706,9 +706,16 @@ class StartRelax extends StatelessWidget {
   });
 
   @override
+  State<StatefulWidget> createState() => _StartRelaxState();
+}
+
+class _StartRelaxState extends State<StartRelax> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed(),
+      onTap: () {
+        widget.onPressed();
+      },
       child: Container(
         width: 140,
         height: 48,
