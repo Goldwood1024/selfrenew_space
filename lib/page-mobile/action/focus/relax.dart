@@ -19,13 +19,13 @@ class _FocusRelaxState extends State<FocusRelax>
     with SingleTickerProviderStateMixin {
   late Duration time;
   late bool showText;
-  late bool showStart;
+  late bool _hideStart;
 
   @override
   void initState() {
     super.initState();
     showText = false;
-    showStart = true;
+    _hideStart = false;
 
     time = Duration(seconds: widget.params['timer']);
     showText = widget.params['autoRelax'];
@@ -34,6 +34,7 @@ class _FocusRelaxState extends State<FocusRelax>
   @override
   void dispose() {
     showText = false;
+    _hideStart = false;
     super.dispose();
   }
 
@@ -117,14 +118,14 @@ class _FocusRelaxState extends State<FocusRelax>
               bottom: SPHelper.height(SPHelper.gapDp100),
               child: Align(
                 child: Visibility(
-                  visible: showStart,
+                  visible: _hideStart,
                   replacement: Column(
                     children: [
                       StartRelax(
                         onPressed: () {
                           setState(() {
                             showText = true;
-                            showStart = true;
+                            _hideStart = true;
                           });
                         },
                       ),
