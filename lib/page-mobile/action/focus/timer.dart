@@ -32,7 +32,7 @@ class _FocusTimerState extends State<FocusTimer>
       FocusTimerProvider update = Provider.of(context, listen: false);
       update.timer(widget.params);
 
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(const Duration(milliseconds: 100), () {
         setState(() {
           _hideTimeText = true;
         });
@@ -123,6 +123,13 @@ class _FocusTimerState extends State<FocusTimer>
                   ),
                 ),
                 child: SlideCountdown(
+                  shouldShowDays: (_) {
+                    return false;
+                  },
+                  shouldShowHours: (_) {
+                    return false;
+                  },
+                  showZeroValue: true,
                   padding: EdgeInsets.zero,
                   countUp: focusTimerProvider.countUp,
                   infinityCountUp: focusTimerProvider.infinityCountUp,
