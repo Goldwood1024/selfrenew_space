@@ -28,4 +28,8 @@ class KeyPool {
   static String autoRest = 'autoRest';
   static String tomatoInterval = 'tomatoInterval';
   static String fileVersion = 'fileVersion';
+
+  // 打开屏
+  static String showBoarding = 'boarding.json';
+  static String showUpdate = 'update.json';
 }

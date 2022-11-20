@@ -96,6 +96,7 @@ dependencies:
   grouped_list: ^5.1.2
   hexcolor: ^3.0.1
   get_storage: ^2.0.3
+  path_provider: ^2.0.11
 
 #  circular_clip_route: ^0.2.0+3
 #  check_app_version: ^1.0.0+1

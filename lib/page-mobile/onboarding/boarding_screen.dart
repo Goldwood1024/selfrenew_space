@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class BoardingScreen extends StatefulWidget {
@@ -9,9 +8,6 @@ class BoardingScreen extends StatefulWidget {
 }
 
 class _BoardingScreenState extends State<BoardingScreen> {
-  final double width = 400;
-  final Color kDarkBlueColor = const Color(0xFF053149);
-
   @override
   void initState() {
     super.initState();
@@ -28,14 +24,16 @@ class _BoardingScreenState extends State<BoardingScreen> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
 
-    InstallUpdateAppProvider installUpdateAppProvider = Provider.of(context);
-    InstallUpdateAppProvider update = Provider.of(context, listen: false);
+    final InstallUpdateAppProvider installUpdateAppProvider =
+        Provider.of(context);
+    final InstallUpdateAppProvider update = Provider.of(context, listen: false);
 
     return installUpdateAppProvider.getShowBoarding()
         ? OnBoardingSlider(
             finishButtonText: '开始专注',
             onFinish: () async {
               await update.updateBoarding(false);
+
               Routers.go(Routers.mobileHome);
             },
             finishButtonColor: Theme.of(context).primaryColor,

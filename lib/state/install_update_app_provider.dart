@@ -4,11 +4,13 @@ class InstallUpdateAppProvider extends ChangeNotifier {
   late bool showBoarding = false;
 
   Future<void> loadBoarding() async {
-    dynamic value = await FileStorage.getKey('showBoarding');
-    if (ObjectUtil.isEmpty(value)) {
-      showBoarding = true;
+    if (await FileStorage.hasFile(
+      KeyPool.showBoarding,
+      StorageType.applicationSupportDirectory,
+    )) {
+      showBoarding = false;
     } else {
-      showBoarding = value;
+      showBoarding = true;
     }
 
     notifyListeners();
@@ -16,9 +18,12 @@ class InstallUpdateAppProvider extends ChangeNotifier {
 
   Future<void> updateBoarding(bool value) async {
     showBoarding = value;
-
-    await FileStorage.setKey('showBoarding', value);
     notifyListeners();
+
+    await FileStorage.create(
+      KeyPool.showBoarding,
+      StorageType.applicationSupportDirectory,
+    );
   }
 
   bool getShowBoarding() {
@@ -26,20 +31,29 @@ class InstallUpdateAppProvider extends ChangeNotifier {
   }
 
   Future<bool> loadUpdate() async {
-    dynamic value = await FileStorage.getKey('showUpdate');
-    if (ObjectUtil.isEmpty(value)) {
-      return true;
-    } else {
+    if (await FileStorage.hasFile(
+      KeyPool.showUpdate,
+      StorageType.applicationSupportDirectory,
+    )) {
+      String value = await FileStorage.readAsData(
+          KeyPool.showUpdate, StorageType.applicationSupportDirectory);
       if (ConstPool.appVersion == value) {
         return false;
       }
 
       return true;
+    } else {
+      return false;
     }
   }
 
   Future<void> updateUpdate(String value) async {
-    await FileStorage.setKey('showUpdate', value);
+    await FileStorage.createAsData(
+      KeyPool.showUpdate,
+      value,
+      StorageType.applicationSupportDirectory,
+    );
+
     notifyListeners();
   }
 }

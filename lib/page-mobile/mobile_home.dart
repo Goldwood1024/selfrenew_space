@@ -1,7 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:selfrenew_space/page-mobile/onboarding/update.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class MobileHome extends StatefulWidget {
