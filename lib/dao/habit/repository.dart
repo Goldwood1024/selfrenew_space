@@ -38,7 +38,7 @@ delete from $habitTableName;
  ''';
 
   static String selectAll = '''
-select * from $habitTableName where isDeleted=0
+select * from $habitTableName where isDeleted=0 and isAbandon=0
  ''';
 
   Future<void> createTableAndDefaultValue(Database database) async {

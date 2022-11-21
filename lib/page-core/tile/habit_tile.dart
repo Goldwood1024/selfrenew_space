@@ -195,7 +195,9 @@ class _HabitHomeTileState extends State<HabitHomeTile> {
                   label: '删除',
                 ),
                 SlidableAction(
-                  onPressed: (_) {},
+                  onPressed: (_) {
+                    habitProviderUpdate.giveUp(widget.id, true);
+                  },
                   backgroundColor: const Color(0xFF0392CF),
                   foregroundColor: Colors.white,
                   borderRadius: BorderRadius.circular(SPHelper.smallRadius()),

@@ -87,4 +87,14 @@ class HabitProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void giveUp(String id, bool abandon) {
+    if (abandon) {
+      SqliteProxy.habitRepository.update('isAbandon', '1', id);
+    } else {
+      SqliteProxy.habitRepository.update('isAbandon', '0', id);
+    }
+
+    reloadHabitUnderway();
+  }
 }
