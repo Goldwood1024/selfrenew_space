@@ -21,12 +21,13 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
   final FocusRepository focusRepository = FocusRepository();
 
   late bool edit;
+  late String type;
 
   @override
   void initState() {
     super.initState();
 
-    late String type = widget.params['type'];
+    type = widget.params['type'];
     if (type == FocusType.tomato.name) {
       appBarTitle = '番茄钟';
     } else if (type == FocusType.uptime.name) {
@@ -38,12 +39,11 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
     edit = false;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       FocusFormProvider focusFormProvider = Provider.of(context, listen: false);
-      focusFormProvider.updateType(type);
       if (ObjectUtil.isNotEmpty(widget.params['id'])) {
         edit = true;
         focusFormProvider.queryById(widget.params['id']);
       } else {
-        focusFormProvider.newFocus();
+        focusFormProvider.newFocus(type);
       }
     });
   }
@@ -140,7 +140,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                     'feedback':
                         focusFormProvider.getFocusRemindModel().feedback,
                   }),
-                  'type': focusFormProvider.type,
+                  'type': type,
                   'targetTime': focusFormProvider.getTargetTime() * 60,
                   'shortRelaxTime': focusFormProvider.getShortRelaxTime() * 60,
                   'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
@@ -232,9 +232,8 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SimpleTileHasTime(
                         title: '目标时长',
-                        hide: focusFormProvider.type == FocusType.tomato.name,
-                        bottomRadius:
-                            focusFormProvider.type != FocusType.tomato.name,
+                        hide: type == FocusType.tomato.name,
+                        bottomRadius: type != FocusType.tomato.name,
                         duration: Duration(
                           milliseconds:
                               focusFormProvider.getTargetTime() * 60 * 1000,
@@ -248,9 +247,8 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide:
-                            focusFormProvider.type == FocusType.downtime.name ||
-                                focusFormProvider.type == FocusType.uptime.name,
+                        hide: type == FocusType.downtime.name ||
+                            type == FocusType.uptime.name,
                         title: '番茄时长',
                         bottomRadius: true,
                         max: 90,
@@ -266,7 +264,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SimpleTile(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide: type != FocusType.tomato.name,
                         title: '自动休息',
                         topRadius: true,
                         showArrow: false,
@@ -278,7 +276,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTile(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide: type != FocusType.tomato.name,
                         title: '跳过休息',
                         bottomRadius: true,
                         showArrow: false,
@@ -291,7 +289,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                       ),
                       SPHelper.getDefaultHeightBox(),
                       SimpleTileSlider(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide: type != FocusType.tomato.name,
                         title: '短休息时长',
                         max: 10,
                         min: 1,
@@ -306,7 +304,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide: type != FocusType.tomato.name,
                         title: '长休息时长',
                         max: 50,
                         min: 1,
@@ -320,7 +318,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SimpleTileSlider(
-                        hide: focusFormProvider.type != FocusType.tomato.name,
+                        hide: type != FocusType.tomato.name,
                         title: '长休息间隔',
                         bottomRadius: true,
                         max: 10,

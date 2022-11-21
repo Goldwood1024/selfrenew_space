@@ -7,6 +7,7 @@ class FocusTile extends StatefulWidget {
   final bool bottomRadius;
   final bool topRadius;
   final String leading;
+  final String color;
   final String title;
   final Widget? subTitle;
   final Widget? trailing;
@@ -21,6 +22,7 @@ class FocusTile extends StatefulWidget {
     this.bottomRadius = false,
     this.topRadius = false,
     this.trailing,
+    this.color = '',
     this.subTitle,
     this.onPressed,
   });
@@ -65,7 +67,7 @@ class _FocusTileState extends State<FocusTile> {
                   height: SPHelper.height(SPHelper.gapDp36),
                   width: SPHelper.height(SPHelper.gapDp36),
                   decoration: BoxDecoration(
-                    color: Colors.deepOrangeAccent,
+                    color: HexColor(widget.color),
                     shape: BoxShape.circle,
                   ),
                   child: SvgLoader(

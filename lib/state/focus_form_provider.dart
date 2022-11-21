@@ -5,12 +5,12 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 class FocusFormProvider extends ChangeNotifier {
   static final FocusRepository focusRepository = FocusRepository();
 
-  late int targetTime;
-  late int shortRelaxTime;
-  late int longRelaxTime;
-  late int longRelaxInterval;
-  late int autoRelax;
-  late String type;
+  late int targetTime = 0;
+  late int shortRelaxTime = 0;
+  late int longRelaxTime = 0;
+  late int longRelaxInterval = 0;
+  late int autoRelax = 0;
+  late String type = FocusType.tomato.name;
   late IconModel iconModel;
 
   TextEditingController titleEditingController = TextEditingController();
@@ -21,11 +21,6 @@ class FocusFormProvider extends ChangeNotifier {
 
   FocusRemindModel getFocusRemindModel() {
     return remindModel;
-  }
-
-  void updateType(String value) {
-    type = value;
-    notifyListeners();
   }
 
   IconModel getIconModel() {
@@ -110,15 +105,30 @@ class FocusFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void newFocus() {
+  void newFocus(String type) {
     titleEditingController.text = '';
     targetTime = 300;
     shortRelaxTime = 300;
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
-    iconModel = IconModel.defaultIconModel();
+
     remindModel = FocusRemindModel.defaultFocusRemindModel();
+
+    if (type == FocusType.tomato.name) {
+      iconModel = IconModel.defaultIconModel();
+    } else if (type == FocusType.uptime.name) {
+      iconModel = IconModel(
+        color: '#dfe1e0',
+        icon: 'assets/icons/uptime.svg',
+      );
+    } else if (type == FocusType.downtime.name) {
+      iconModel = IconModel(
+        color: '#dfe1e0',
+        icon: 'assets/icons/downtime.svg',
+      );
+    }
+
     notifyListeners();
   }
 

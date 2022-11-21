@@ -105,6 +105,7 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
           bottomRadius: index == data.length - 1,
           title: data[index].title,
           leading: data[index].iconModel.icon,
+          color: data[index].iconModel.color,
           trailing: GestureDetector(
             onTap: () {
               SmartDialog.show(builder: (_) {
