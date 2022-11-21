@@ -20,6 +20,7 @@ class FocusTimerProvider extends ChangeNotifier {
     relaxTimer = int.parse(mm['targetTime'].toString());
     autoRelax = int.parse(mm['autoRelax'].toString());
 
+    print(mm);
     if (focusType == FocusType.tomato.name) {
       countUp = false;
       infinityCountUp = false;
@@ -32,6 +33,10 @@ class FocusTimerProvider extends ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  int getTimers() {
+    return timers;
   }
 
   void reset() {
