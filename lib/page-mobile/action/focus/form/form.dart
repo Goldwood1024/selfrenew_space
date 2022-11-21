@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:selfrenew_space/page-mobile/action/focus/form/notification.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusForm extends StatefulWidget {
@@ -201,38 +202,37 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         ),
                       ),
                       SPHelper.getDefaultHeightBox(),
-                      // SimpleTile(
-                      //   onPressed: () {
-                      //     BottomDialog.showModalBottomSheet(
-                      //       context,
-                      //       const Repeat(),
-                      //     );
-                      //   },
-                      //   topRadius: true,
-                      //   title: '重复',
-                      //   trailing: Text(
-                      //     '每天',
-                      //     style: TextStyleMode.trailingTextStyle(context),
-                      //   ),
-                      // ),
-                      // SimpleTile(
-                      //   onPressed: () {
-                      //     BottomDialog.showModalBottomSheet(
-                      //       context,
-                      //       const NotificationPage(),
-                      //     );
-                      //   },
-                      //   title: '提醒',
-                      //   trailing: Text(
-                      //     '完成',
-                      //     style: TextStyleMode.trailingTextStyle(context),
-                      //   ),
-                      // ),
+                      SimpleTile(
+                        onPressed: () {
+                          BottomDialog.showModalBottomSheet(
+                            context,
+                            const Repeat(),
+                          );
+                        },
+                        topRadius: true,
+                        title: '重复',
+                        trailing: Text(
+                          '每天',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
+                      ),
+                      SimpleTile(
+                        onPressed: () {
+                          BottomDialog.showModalBottomSheet(
+                            context,
+                            const NotificationPage(),
+                          );
+                        },
+                        title: '提醒',
+                        trailing: Text(
+                          '完成',
+                          style: TextStyleMode.trailingTextStyle(context),
+                        ),
+                      ),
                       SimpleTileHasTime(
                         title: '目标时长',
                         hide: type == FocusType.tomato.name,
                         bottomRadius: type != FocusType.tomato.name,
-                        topRadius: true,
                         duration: Duration(
                           milliseconds:
                               focusFormProvider.getTargetTime() * 60 * 1000,
