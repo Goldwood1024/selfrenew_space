@@ -141,6 +141,16 @@ class _FocusUnderwayState extends State<FocusUnderway>
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
               FocusUnderwayModel model = data[index];
+              IconData icon;
+
+              if (model.type == FocusType.tomato.name) {
+                icon = Icons.timer;
+              } else if (model.type == FocusType.uptime.name) {
+                icon = CupertinoIcons.loop;
+              } else {
+                icon = CupertinoIcons.timer;
+              }
+
               return Padding(
                 padding: EdgeInsets.fromLTRB(
                     0, SPHelper.height(SPHelper.gapDp8), 0, 0),
@@ -160,7 +170,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
                       Row(
                         children: [
                           Icon(
-                            CupertinoIcons.timer,
+                            icon,
                             size: SPHelper.sp(SPHelper.fontSp18),
                             color: CupertinoColors.systemGrey2,
                           ),

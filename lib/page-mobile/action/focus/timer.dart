@@ -81,16 +81,16 @@ class _FocusTimerState extends State<FocusTimer>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconVisible(
-                  visible: show(focusTimerProvider, FocusType.uptime),
-                  icon: CupertinoIcons.loop,
+                  visible: show(focusTimerProvider, FocusType.tomato),
+                  icon: Icons.timer,
                 ),
                 IconVisible(
                   visible: show(focusTimerProvider, FocusType.uptime),
                   icon: CupertinoIcons.loop,
                 ),
                 IconVisible(
-                  visible: show(focusTimerProvider, FocusType.uptime),
-                  icon: CupertinoIcons.loop,
+                  visible: show(focusTimerProvider, FocusType.downtime),
+                  icon: CupertinoIcons.timer,
                 ),
                 SPHelper.getWidthBox(SPHelper.gapDp12),
                 Text(
