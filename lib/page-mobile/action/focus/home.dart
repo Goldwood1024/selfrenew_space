@@ -129,6 +129,23 @@ class _FocusUnderwayState extends State<FocusUnderway>
     super.initState();
   }
 
+  static String getTargetTimeText(int targetTime) {
+    int minutes = targetTime ~/ 60;
+
+    String text = '';
+    int hours = minutes ~/ 60;
+    if (hours > 0) {
+      text += ('$hours小时');
+    }
+
+    int minute = minutes % 60;
+    if (minute > 0) {
+      text += ('$minute分');
+    }
+
+    return text;
+  }
+
   @override
   Widget build(BuildContext context) {
     FocusProvider focusProvider = Provider.of(context);
@@ -176,7 +193,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
                           ),
                           SPHelper.getWidthBox(SPHelper.gapDp8),
                           Text(
-                            '${model.targetTime ~/ 60} 分钟',
+                            getTargetTimeText(model.targetTime),
                             style: TextStyle(
                               color: CupertinoColors.systemGrey2,
                               fontSize: SPHelper.sp(SPHelper.fontSp15),

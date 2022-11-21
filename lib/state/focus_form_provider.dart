@@ -59,6 +59,23 @@ class FocusFormProvider extends ChangeNotifier {
     return targetTime ~/ 60;
   }
 
+  String getTargetTimeText() {
+    int minutes = getTargetTime();
+
+    String text = '';
+    int hours = minutes ~/ 60;
+    if (hours > 0) {
+      text += ('$hours小时');
+    }
+
+    int minute = getTargetTime() % 60;
+    if (minute > 0) {
+      text += ('$minute分');
+    }
+
+    return text;
+  }
+
   void updateTargetTime(int value) {
     targetTime = value;
     notifyListeners();
