@@ -32,4 +32,7 @@ class KeyPool {
   // 打开屏
   static String showBoarding = 'boarding.json';
   static String showUpdate = 'update.json';
+  static String habitSound = 'habitSound.txt';
+  static String focusSound = 'focusSound.txt';
+  static String feedback = 'focusSound.txt';
 }

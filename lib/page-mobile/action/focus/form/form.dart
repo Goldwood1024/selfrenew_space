@@ -221,19 +221,19 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                           style: TextStyleMode.trailingTextStyle(context),
                         ),
                       ),
-                      SimpleTile(
-                        onPressed: () {
-                          BottomDialog.showModalBottomSheet(
-                            context,
-                            const NotificationPage(),
-                          );
-                        },
-                        title: '提醒',
-                        trailing: Text(
-                          '完成',
-                          style: TextStyleMode.trailingTextStyle(context),
-                        ),
-                      ),
+                      // SimpleTile(
+                      //   onPressed: () {
+                      //     BottomDialog.showModalBottomSheet(
+                      //       context,
+                      //       const NotificationPage(),
+                      //     );
+                      //   },
+                      //   title: '提醒',
+                      //   trailing: Text(
+                      //     '完成',
+                      //     style: TextStyleMode.trailingTextStyle(context),
+                      //   ),
+                      // ),
                       SimpleTileHasTime(
                         title: '目标时长',
                         hide: type == FocusType.tomato.name,
