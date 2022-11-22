@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:selfrenew_space/page-mobile/action/focus/form/focus_repeat.dart';
 import 'package:selfrenew_space/page-mobile/action/focus/form/notification.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
@@ -206,7 +207,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         onPressed: () {
                           BottomDialog.showModalBottomSheet(
                             context,
-                            const Repeat(),
+                            const FocusRepeat(),
                           );
                         },
                         topRadius: true,

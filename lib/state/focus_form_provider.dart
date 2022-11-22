@@ -16,7 +16,7 @@ class FocusFormProvider extends ChangeNotifier {
   TextEditingController titleEditingController = TextEditingController();
 
   // 重复
-  late RepeatModel repeatModel = RepeatModel();
+  late RepeatModel repeatModel;
   late FocusRemindModel remindModel;
 
   FocusRemindModel getFocusRemindModel() {
@@ -129,7 +129,7 @@ class FocusFormProvider extends ChangeNotifier {
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
-
+    repeatModel = RepeatModel.defaultRepeatModel();
     remindModel = FocusRemindModel.defaultFocusRemindModel();
 
     if (type == FocusType.tomato.name) {
@@ -164,4 +164,15 @@ class FocusFormProvider extends ChangeNotifier {
     remindModel = FocusRemindModel.defaultFocusRemindModel();
     notifyListeners();
   }
+
+  void updateRepeatDay(List<int> values) {
+    repeatModel.repeatDays = values;
+    notifyListeners();
+  }
+
+  void updateRepeatType(int index) {
+    repeatModel.type = index;
+    notifyListeners();
+  }
+
 }
