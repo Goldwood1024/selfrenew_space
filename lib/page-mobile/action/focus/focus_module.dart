@@ -46,7 +46,7 @@ class FocusActionEmpty extends StatefulWidget {
 
 class _FocusActionEmptyState extends State<FocusActionEmpty> {
   List<String> tags = [];
-  List<TipChip> options = [];
+  List<TipChip> options = Global.getFocusChips();
 
   @override
   void initState() {
@@ -71,7 +71,15 @@ class _FocusActionEmptyState extends State<FocusActionEmpty> {
           ChipEmptyV2(
             options: options,
             onPressed: (_) {
-              print(_);
+              TipChip chip = options.firstWhere(
+                (element) => element.value == _.toString(),
+              );
+
+              Routers.pushParams(Routers.focusForm, {
+                "key": chip.value,
+                "title": chip.title,
+                "type": chip.type,
+              });
             },
           )
         ],

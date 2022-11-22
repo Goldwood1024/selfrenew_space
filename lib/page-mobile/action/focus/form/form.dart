@@ -43,7 +43,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
         edit = true;
         focusFormProvider.queryById(widget.params['id']);
       } else {
-        focusFormProvider.newFocus(type);
+        focusFormProvider.newFocus(type, widget.params['key']);
       }
     });
   }

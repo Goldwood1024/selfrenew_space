@@ -122,8 +122,17 @@ class FocusFormProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void newFocus(String type) {
-    titleEditingController.text = '';
+  void newFocus(String type, String key) {
+    if (ObjectUtil.isEmpty(key)) {
+      titleEditingController.text = '';
+    } else {
+      for (TipChip tipChip in Global.getFocusChips()) {
+        if (tipChip.value == key) {
+          titleEditingController.text = tipChip.title;
+        }
+      }
+    }
+
     targetTime = 300;
     shortRelaxTime = 300;
     longRelaxTime = 300;
@@ -174,5 +183,4 @@ class FocusFormProvider extends ChangeNotifier {
     repeatModel.type = index;
     notifyListeners();
   }
-
 }

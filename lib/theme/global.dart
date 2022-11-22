@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:selfrenew_space/common/common_enum.dart';
 import 'package:selfrenew_space/model/habit_lib.dart';
 import 'package:selfrenew_space/model/repeat_day.dart';
 import 'package:selfrenew_space/model/tip_chip.dart';
@@ -35,6 +36,21 @@ class Global {
     '更好的事会一起到来',
   ];
 
+  static final List<TipChip> chips = [
+    TipChip(
+      value: 'working',
+      title: '工作',
+      image: 'assets/icons/工作.svg',
+      type: FocusType.tomato.name,
+    ),
+    TipChip(
+      value: 'read',
+      title: '阅读',
+      image: 'assets/icons/读书.svg',
+      type: FocusType.tomato.name,
+    ),
+  ];
+
   static List<TipChip> getTipChips() {
     List<TipChip> chips = [];
     List<HabitLibModel> list = getHabit(true);
@@ -48,6 +64,10 @@ class Global {
         ),
       );
     }
+    return chips;
+  }
+
+  static List<TipChip> getFocusChips() {
     return chips;
   }
 

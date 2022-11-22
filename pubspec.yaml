@@ -134,6 +134,7 @@ flutter:
     - 'assets/icons/uptime.svg'
     - 'assets/icons/downtime.svg'
     - 'assets/icons/question.svg'
+    - 'assets/icons/工作.svg'
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
