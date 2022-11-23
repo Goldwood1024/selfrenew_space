@@ -104,7 +104,6 @@ select * from $focusTableName where isDeleted=0
       'time': time,
       'gmtDate': DateTime.now().millisecondsSinceEpoch,
     });
-
   }
 
   Future<int> selectClickById(String date, String focusId) async {

@@ -102,13 +102,16 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         ),
         actions: [],
       ),
-      body: Padding(
-        padding: SPHelper.pagePaddingHorizontal,
-        child: ListView(
-          children: [
-            SPHelper.getDefaultHeightBox(),
-            const FocusUnderway(),
-          ],
+      body: SafeArea(
+        bottom: true,
+        child: Padding(
+          padding: SPHelper.pagePaddingHorizontal,
+          child: ListView(
+            children: [
+              SPHelper.getDefaultHeightBox(),
+              const FocusUnderway(),
+            ],
+          ),
         ),
       ),
     );
