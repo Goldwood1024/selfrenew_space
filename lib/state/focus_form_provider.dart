@@ -148,9 +148,9 @@ class FocusFormProvider extends ChangeNotifier {
       }
     }
 
-    targetTime = 300;
+    targetTime = 1500;
     shortRelaxTime = 300;
-    longRelaxTime = 300;
+    longRelaxTime = 1200;
     longRelaxInterval = 4;
     autoRelax = 0;
     skipRelax = 0;
