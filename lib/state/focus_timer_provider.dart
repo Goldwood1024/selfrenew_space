@@ -9,6 +9,7 @@ class FocusTimerProvider extends ChangeNotifier {
   late int relaxTimer;
   late bool countUp;
   late int autoRelax;
+  late int skipRelax;
   late bool infinityCountUp;
 
   Future<void> timer(Map<String, dynamic> params) async {
@@ -19,8 +20,8 @@ class FocusTimerProvider extends ChangeNotifier {
     timers = int.parse(mm['targetTime'].toString());
     relaxTimer = int.parse(mm['targetTime'].toString());
     autoRelax = int.parse(mm['autoRelax'].toString());
+    skipRelax = int.parse(mm['skipRelax'].toString());
 
-    print(mm);
     if (focusType == FocusType.tomato.name) {
       countUp = false;
       infinityCountUp = false;
@@ -43,6 +44,7 @@ class FocusTimerProvider extends ChangeNotifier {
     timers = 0;
     relaxTimer = 0;
     autoRelax = 0;
+    skipRelax = 0;
 
     notifyListeners();
   }

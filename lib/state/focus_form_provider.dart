@@ -10,6 +10,7 @@ class FocusFormProvider extends ChangeNotifier {
   late int longRelaxTime = 0;
   late int longRelaxInterval = 0;
   late int autoRelax = 0;
+  late int skipRelax = 0;
   late String type = FocusType.tomato.name;
   late IconModel iconModel;
 
@@ -112,11 +113,25 @@ class FocusFormProvider extends ChangeNotifier {
     return autoRelax == 1;
   }
 
+  bool getSkipRelax() {
+    return skipRelax == 1;
+  }
+
   void updateAutoRelax(bool value) {
     if (value) {
       autoRelax = 1;
     } else {
       autoRelax = 0;
+    }
+
+    notifyListeners();
+  }
+
+  void updateSkipRelax(bool value) {
+    if (value) {
+      skipRelax = 1;
+    } else {
+      skipRelax = 0;
     }
 
     notifyListeners();
@@ -138,6 +153,7 @@ class FocusFormProvider extends ChangeNotifier {
     longRelaxTime = 300;
     longRelaxInterval = 4;
     autoRelax = 0;
+    skipRelax = 0;
     repeatModel = RepeatModel.defaultRepeatModel();
     remindModel = FocusRemindModel.defaultFocusRemindModel();
 
@@ -166,7 +182,7 @@ class FocusFormProvider extends ChangeNotifier {
     longRelaxTime = int.parse(mm['longRelaxTime'].toString());
     longRelaxInterval = int.parse(mm['longRelaxInterval'].toString());
     autoRelax = int.parse(mm['autoRelax'].toString());
-    autoRelax = int.parse(mm['autoRelax'].toString());
+    skipRelax = int.parse(mm['skipRelax'].toString());
     type = mm['type'].toString();
 
     iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));

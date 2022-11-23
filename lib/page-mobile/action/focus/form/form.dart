@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:selfrenew_space/page-mobile/action/focus/form/focus_repeat.dart';
-import 'package:selfrenew_space/page-mobile/action/focus/form/notification.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusForm extends StatefulWidget {
@@ -119,6 +118,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
                   'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
                   'autoRelax': focusFormProvider.getAutoRelax() ? 1 : 0,
+                  'skipRelax': focusFormProvider.getSkipRelax() ? 1 : 0,
                 };
 
                 await focusRepository.updateById(values, widget.params['id']);
@@ -150,6 +150,7 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                   'longRelaxTime': focusFormProvider.getLongRelaxTime() * 60,
                   'longRelaxInterval': focusFormProvider.getLongRelaxInterval(),
                   'autoRelax': focusFormProvider.getAutoRelax() ? 1 : 0,
+                  'skipRelax': focusFormProvider.getSkipRelax() ? 1 : 0,
                   'gmtDate': DateTime.now().millisecondsSinceEpoch,
                 };
 
@@ -285,9 +286,9 @@ class _FocusFormState extends State<FocusForm> with TickerProviderStateMixin {
                         bottomRadius: true,
                         showArrow: false,
                         trailing: CommonSwitch(
-                          value: focusFormProvider.getAutoRelax(),
+                          value: focusFormProvider.getSkipRelax(),
                           func: (_) {
-                            update.updateAutoRelax(_);
+                            update.updateSkipRelax(_);
                           },
                         ),
                       ),

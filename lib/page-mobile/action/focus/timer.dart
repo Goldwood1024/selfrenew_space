@@ -136,8 +136,8 @@ class _FocusTimerState extends State<FocusTimer>
                   curve: Curves.linear,
                   separatorType: SeparatorType.symbol,
                   decoration: const BoxDecoration(),
-                  duration: Duration(seconds: focusTimerProvider.getTimers()),
-                  // duration: Duration(seconds: 3),
+                  // duration: Duration(seconds: focusTimerProvider.getTimers()),
+                  duration: Duration(seconds: 3),
                   slideAnimationDuration: const Duration(milliseconds: 500),
                   textStyle: TextStyle(
                     fontSize: SPHelper.sp(SPHelper.gapDp72),
@@ -151,6 +151,10 @@ class _FocusTimerState extends State<FocusTimer>
                     if (_.inMilliseconds <= 500) {
                       SmartDialog.dismiss();
 
+                      if (focusTimerProvider.skipRelax == 1) {
+                        return;
+                      }
+
                       SmartDialog.show(
                         alignment: Alignment.bottomCenter,
                         keepSingle: true,
@@ -160,7 +164,7 @@ class _FocusTimerState extends State<FocusTimer>
                             params: {
                               "timer": focusTimerProvider.relaxTimer,
                               "musicId": 1,
-                              "autoRelax": focusTimerProvider.relaxTimer == 1,
+                              "autoRelax": focusTimerProvider.autoRelax == 1,
                             },
                           );
                         },

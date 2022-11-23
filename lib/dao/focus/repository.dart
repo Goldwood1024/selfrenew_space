@@ -15,7 +15,8 @@ create table if not exists $focusTableName
     remind            TEXT    NOT NULL,                  -- 提醒
     type              TEXT,
     targetTime        integer,
-    autoRelax         integer,
+    autoRelax         integer default 0, -- 0:否
+    skipRelax         integer default 0,
     shortRelaxTime    integer,
     longRelaxTime     integer,
     longRelaxInterval integer          default 4,
@@ -75,6 +76,7 @@ select * from $focusTableName where isDeleted=0
     remind='${values['remind']}', 
     targetTime='${values['targetTime']}', 
     autoRelax='${values['autoRelax']}', 
+    skipRelax='${values['skipRelax']}', 
     shortRelaxTime='${values['shortRelaxTime']}', 
     longRelaxTime='${values['longRelaxTime']}', 
     longRelaxInterval='${values['longRelaxInterval']}'
