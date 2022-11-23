@@ -151,24 +151,28 @@ class _FocusTimerState extends State<FocusTimer>
                     if (_.inMilliseconds <= 500) {
                       SmartDialog.dismiss();
 
-                      if (focusTimerProvider.skipRelax == 1) {
-                        return;
-                      }
+                      // 番茄钟弹出
+                      if (focusTimerProvider.focusType ==
+                          FocusType.tomato.name) {
+                        if (focusTimerProvider.skipRelax == 1) {
+                          return;
+                        }
 
-                      SmartDialog.show(
-                        alignment: Alignment.bottomCenter,
-                        keepSingle: true,
-                        useAnimation: true,
-                        builder: (_) {
-                          return FocusRelax(
-                            params: {
-                              "timer": focusTimerProvider.relaxTimer,
-                              "musicId": 1,
-                              "autoRelax": focusTimerProvider.autoRelax == 1,
-                            },
-                          );
-                        },
-                      );
+                        SmartDialog.show(
+                          alignment: Alignment.bottomCenter,
+                          keepSingle: true,
+                          useAnimation: true,
+                          builder: (_) {
+                            return FocusRelax(
+                              params: {
+                                "timer": focusTimerProvider.relaxTimer,
+                                "musicId": 1,
+                                "autoRelax": focusTimerProvider.autoRelax == 1,
+                              },
+                            );
+                          },
+                        );
+                      }
                     }
                   },
                 ),
