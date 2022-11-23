@@ -149,6 +149,7 @@ class _FocusRepeatState extends State<FocusRepeat> with TickerProviderStateMixin
               displayedMonth: DateTime(202301),
               selectedDates: selectedDates,
               onChanged: (DateTime value) {
+                print(value);
                 setState(() {
                   if (selectedDates.contains(value)) {
                     selectedDates.removeWhere((element) => value == element);

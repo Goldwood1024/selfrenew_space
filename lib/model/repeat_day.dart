@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:selfrenew_space/common/common_enum.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class RepeatDay {
   final String day;
@@ -19,6 +20,16 @@ class RepeatModel {
   late List<int> repeatDays = [];
   late List<DateTime> selectedDates = [];
 
+  static bool hasToday(List<DateTime> selectedDates) {
+    DateTime today = DateTime.now();
+    for (DateTime date in selectedDates) {
+      if (DatetimeUtil.isSameDayOnlyDay(date, today)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   static RepeatModel defaultRepeatModel() {
     RepeatModel repeatModel = RepeatModel();
     repeatModel.type = 0;
@@ -36,8 +47,13 @@ class RepeatModel {
       list.add(a);
     }
 
+    List<DateTime> selectDays = [];
+    for (int a in jsonDecode(values['selectedDates'].toString())) {
+      selectDays.add(DateTime.fromMillisecondsSinceEpoch(a));
+    }
+
     repeatModel.repeatDays = list;
-    repeatModel.selectedDates = [];
+    repeatModel.selectedDates = selectDays;
     return repeatModel;
   }
 }

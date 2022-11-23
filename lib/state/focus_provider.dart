@@ -16,13 +16,14 @@ class FocusProvider extends ChangeNotifier {
       RepeatModel repeatModel = RepeatModel.toBean(
         jsonDecode(map['repeat'].toString()),
       );
-      
+
       if (repeatModel.type == 0) {
         if (!repeatModel.repeatDays.contains(DatetimeUtil.weekday())) {
           continue;
         }
       } else {
-        if (!repeatModel.selectedDates.contains(DatetimeUtil.now())) {
+        // 日期
+        if (!RepeatModel.hasToday(repeatModel.selectedDates)) {
           continue;
         }
       }

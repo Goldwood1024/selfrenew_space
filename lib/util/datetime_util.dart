@@ -33,6 +33,22 @@ class DatetimeUtil {
     return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
+  static bool isSameDayWithoutYear(DateTime? a, DateTime? b) {
+    if (a == null || b == null) {
+      return false;
+    }
+
+    return a.month == b.month && a.day == b.day;
+  }
+
+  static bool isSameDayOnlyDay(DateTime? a, DateTime? b) {
+    if (a == null || b == null) {
+      return false;
+    }
+
+    return a.day == b.day;
+  }
+
   static int between(TimeOfDay start, TimeOfDay end) {
     int hour = end.hour - start.hour;
     int minute = end.minute - start.minute;
