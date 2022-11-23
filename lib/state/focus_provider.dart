@@ -54,7 +54,7 @@ class FocusProvider extends ChangeNotifier {
     return list;
   }
 
-  Future<void> reloadFocus() async {
+  Future<List<FocusUnderwayModel>> reloadFocus() async {
     list.clear();
 
     List<Map<String, Object?>> data = await focusRepository.query();
@@ -78,7 +78,7 @@ class FocusProvider extends ChangeNotifier {
       );
     }
 
-    notifyListeners();
+    return list;
   }
 
   Future<void> remove(FocusUnderwayModel model) async {

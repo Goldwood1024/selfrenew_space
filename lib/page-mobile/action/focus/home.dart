@@ -27,10 +27,6 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         parent: _animationController,
       ),
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<FocusProvider>(context, listen: false).reloadFocus();
-    });
   }
 
   @override
@@ -149,117 +145,132 @@ class _FocusUnderwayState extends State<FocusUnderway>
     return text;
   }
 
+  //异步加载方法
+  Future<List<FocusUnderwayModel>> _loadFuture() async {
+    return Provider.of<FocusProvider>(context, listen: false).reloadFocus();
+  }
+
   @override
   Widget build(BuildContext context) {
-    FocusProvider focusProvider = Provider.of(context);
     FocusProvider update = Provider.of(context, listen: false);
-    List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
-    return Visibility(
-      visible: focusProvider.hasUnderway(),
-        replacement: const ImageDefaultEmpty(
-          title: '没有专注，快添加任务吧',
-          imagePath: 'assets/icons/focus.svg',
-        ),
-        child: Column(
-          children: List.generate(data.length, (index) {
-            FocusUnderwayModel model = data[index];
-            IconData icon;
 
-            if (model.type == FocusType.tomato.name) {
-              icon = Icons.timer;
-            } else if (model.type == FocusType.uptime.name) {
-              icon = CupertinoIcons.loop;
-            } else {
-              icon = CupertinoIcons.timer;
-            }
+    return FutureBuilder<List<FocusUnderwayModel>>(
+      future: _loadFuture(),
+      initialData: [],
+      builder: (BuildContext context,
+          AsyncSnapshot<List<FocusUnderwayModel>> snapshot) {
+        List<FocusUnderwayModel> data =
+            snapshot.data as List<FocusUnderwayModel>;
 
-            return Padding(
-              padding: EdgeInsets.fromLTRB(
-                  0, SPHelper.height(SPHelper.gapDp8), 0, 0),
-              child: FocusHomeTile(
-                onRemove: () {
-                  update.remove(model);
-                },
-                onEdit: () {
-                  Routers.pushParams(Routers.focusForm, {
-                    'id': model.id,
-                    'type': model.type,
-                  });
-                },
-                title: model.title,
-                subTitle: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          icon,
-                          size: SPHelper.sp(SPHelper.fontSp18),
-                          color: CupertinoColors.systemGrey2,
-                        ),
-                        SPHelper.getWidthBox(SPHelper.gapDp8),
-                        Text(
-                          getTargetTimeText(model.targetTime),
-                          style: TextStyle(
+        if (data.isNotEmpty) {
+          return Column(
+            children: List.generate(data.length, (index) {
+              FocusUnderwayModel model = data[index];
+              IconData icon;
+
+              if (model.type == FocusType.tomato.name) {
+                icon = Icons.timer;
+              } else if (model.type == FocusType.uptime.name) {
+                icon = CupertinoIcons.loop;
+              } else {
+                icon = CupertinoIcons.timer;
+              }
+
+              return Padding(
+                padding: EdgeInsets.fromLTRB(
+                    0, SPHelper.height(SPHelper.gapDp8), 0, 0),
+                child: FocusHomeTile(
+                  onRemove: () {
+                    update.remove(model);
+                  },
+                  onEdit: () {
+                    Routers.pushParams(Routers.focusForm, {
+                      'id': model.id,
+                      'type': model.type,
+                    });
+                  },
+                  title: model.title,
+                  subTitle: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            icon,
+                            size: SPHelper.sp(SPHelper.fontSp18),
                             color: CupertinoColors.systemGrey2,
-                            fontSize: SPHelper.sp(SPHelper.fontSp15),
                           ),
-                        ),
-                      ],
-                    ),
-                    // SPHelper.getHeightBox(SPHelper.gapDp4),
-                    // Row(
-                    //   crossAxisAlignment: CrossAxisAlignment.center,
-                    //   children: [
-                    //     Icon(
-                    //       CupertinoIcons.app_badge,
-                    //       size: SPHelper.sp(SPHelper.fontSp18),
-                    //       color: CupertinoColors.systemGrey2,
-                    //     ),
-                    //     SPHelper.getWidthBox(SPHelper.gapDp8),
-                    //     Text(
-                    //       '08:00',
-                    //       style: TextStyle(
-                    //         color: CupertinoColors.systemGrey2,
-                    //         fontSize: SPHelper.sp(SPHelper.fontSp15),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
-                topRadius: true,
-                bottomRadius: true,
-                leading: SvgLoader(
-                  path: data[index].iconModel.icon,
-                ),
-                trailing: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        SmartDialog.show(
-                          alignment: Alignment.bottomCenter,
-                          keepSingle: true,
-                          useAnimation: true,
-                          builder: (_) {
-                            return FocusTimer(
-                              params: {
-                                'id': model.id,
-                              },
-                            );
-                          },
-                        );
-                      },
-                      behavior: HitTestBehavior.translucent,
-                      child: SvgColorLoader(
-                        path: 'assets/icons/start.svg',
-                        size: SPHelper.sp(SPHelper.gapDp28),
+                          SPHelper.getWidthBox(SPHelper.gapDp8),
+                          Text(
+                            getTargetTimeText(model.targetTime),
+                            style: TextStyle(
+                              color: CupertinoColors.systemGrey2,
+                              fontSize: SPHelper.sp(SPHelper.fontSp15),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      // SPHelper.getHeightBox(SPHelper.gapDp4),
+                      // Row(
+                      //   crossAxisAlignment: CrossAxisAlignment.center,
+                      //   children: [
+                      //     Icon(
+                      //       CupertinoIcons.app_badge,
+                      //       size: SPHelper.sp(SPHelper.fontSp18),
+                      //       color: CupertinoColors.systemGrey2,
+                      //     ),
+                      //     SPHelper.getWidthBox(SPHelper.gapDp8),
+                      //     Text(
+                      //       '08:00',
+                      //       style: TextStyle(
+                      //         color: CupertinoColors.systemGrey2,
+                      //         fontSize: SPHelper.sp(SPHelper.fontSp15),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                    ],
+                  ),
+                  topRadius: true,
+                  bottomRadius: true,
+                  leading: SvgLoader(
+                    path: data[index].iconModel.icon,
+                  ),
+                  trailing: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          SmartDialog.show(
+                            alignment: Alignment.bottomCenter,
+                            keepSingle: true,
+                            useAnimation: true,
+                            builder: (_) {
+                              return FocusTimer(
+                                params: {
+                                  'id': model.id,
+                                },
+                              );
+                            },
+                          );
+                        },
+                        behavior: HitTestBehavior.translucent,
+                        child: SvgColorLoader(
+                          path: 'assets/icons/start.svg',
+                          size: SPHelper.sp(SPHelper.gapDp28),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
-        ));
+              );
+            }),
+          );
+        } else {
+          return const ImageDefaultEmpty(
+            title: '没有专注，快添加任务吧',
+            imagePath: 'assets/icons/focus.svg',
+          );
+        }
+      },
+    );
   }
 }
