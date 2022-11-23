@@ -5,9 +5,11 @@ class FocusTimerProvider extends ChangeNotifier {
 
   late String id;
   late String title;
-  late String focusType;
+  late String focusType = '';
   late int timers;
-  late int relaxTimer;
+  late int shortRelaxTime;
+  late int longRelaxTime;
+  late int longRelaxInterval;
   late bool countUp;
   late int autoRelax;
   late int skipRelax;
@@ -20,7 +22,9 @@ class FocusTimerProvider extends ChangeNotifier {
     title = mm['title'].toString();
     focusType = mm['type'].toString();
     timers = int.parse(mm['targetTime'].toString());
-    relaxTimer = int.parse(mm['targetTime'].toString());
+    shortRelaxTime = int.parse(mm['shortRelaxTime'].toString());
+    longRelaxTime = int.parse(mm['longRelaxTime'].toString());
+    longRelaxInterval = int.parse(mm['longRelaxInterval'].toString());
     autoRelax = int.parse(mm['autoRelax'].toString());
     skipRelax = int.parse(mm['skipRelax'].toString());
 
@@ -45,7 +49,6 @@ class FocusTimerProvider extends ChangeNotifier {
   void reset() {
     id = '';
     timers = 0;
-    relaxTimer = 0;
     autoRelax = 0;
     skipRelax = 0;
 

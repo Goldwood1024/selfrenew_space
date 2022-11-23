@@ -2,10 +2,10 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class FocusRepository {
   static String focusTableName = 'focus';
-  static String habitClickTableName = 'habit_click';
+  static String focusClickTableName = 'focus_click';
 
   /// 建表语句
-  static String ddl = '''
+  static String focus = '''
 create table if not exists $focusTableName
 (
     id                INTEGER PRIMARY KEY AUTOINCREMENT, -- 主键
@@ -25,12 +25,13 @@ create table if not exists $focusTableName
 );
   ''';
 
-  static String habitClickTable = '''
-create table if not exists $habitClickTableName
+  static String focusClickTable = '''
+create table if not exists $focusClickTableName
 (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,        -- 主键
-    habitId  INTEGER,
-    value     INTEGER default 0,
+    focusId   INTEGER,
+    count     INTEGER default 1,
+    time      INTEGER default 0,
     date      TEXT,
     gmtDate   TEXT    NOT NULL            -- 创建日期
 );
@@ -45,8 +46,8 @@ select * from $focusTableName where isDeleted=0
  ''';
 
   Future<void> createTableAndDefaultValue(Database database) async {
-    await database.execute(ddl);
-    await database.execute(habitClickTable);
+    await database.execute(focus);
+    await database.execute(focusClickTable);
   }
 
   Future<List<Map<String, Object?>>> query() async {
@@ -90,52 +91,32 @@ select * from $focusTableName where isDeleted=0
     await SqliteProxy.database.insert(focusTableName, values);
   }
 
-  Future<void> insertHabitClickAndUpdate(
-      double value, String date, String habitId, bool backout) async {
-    String sql =
-        'select * from $habitClickTableName where habitId=$habitId and date=\'$date\'';
+  Future<void> insertFocusClick(
+    int count,
+    int time,
+    String date,
+    String focusId,
+  ) async {
+    await SqliteProxy.database.insert(focusClickTableName, {
+      'focusId': focusId,
+      'date': date,
+      'count': count,
+      'time': time,
+      'gmtDate': DateTime.now().millisecondsSinceEpoch,
+    });
 
-    List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
-    if (list.isEmpty) {
-      await SqliteProxy.database.insert(habitClickTableName, {
-        'habitId': habitId,
-        'date': date,
-        'value': value,
-        'gmtDate': DateTime.now().millisecondsSinceEpoch,
-      });
-    } else {
-      Map<String, Object?> mm = list[0];
-
-      double dbValue = double.parse(mm['value'].toString());
-      if (backout) {
-        value = dbValue - value;
-
-        if (value <= 0) {
-          value = 0;
-        }
-      } else {
-        value = value + dbValue;
-      }
-
-      String id = mm['id'].toString();
-      String sql = 'update $habitClickTableName set value=$value where id=$id';
-
-      print(sql);
-      await SqliteProxy.database.rawUpdate(sql);
-    }
   }
 
-  Future<Map<String, Object?>> selectClickById(
-      String date, String habitId) async {
+  Future<int> selectClickById(String date, String focusId) async {
     String sql =
-        'select * from $habitClickTableName where habitId=$habitId and date=\'$date\'';
+        'select * from $focusClickTableName where focusId=$focusId and date=\'$date\'';
 
     List<Map<String, Object?>> list = await SqliteProxy.database.rawQuery(sql);
 
     if (list.isNotEmpty) {
-      return list[0];
+      return list.length;
     }
 
-    return {};
+    return 0;
   }
 }

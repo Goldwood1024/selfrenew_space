@@ -140,7 +140,7 @@ class _FocusTimerState extends State<FocusTimer>
                     fontSize: SPHelper.sp(SPHelper.gapDp72),
                     color: Theme.of(context).textTheme.labelSmall?.color,
                   ),
-                  onChanged: (_) {
+                  onChanged: (_) async {
                     setState(() {
                       time = _;
                     });
@@ -148,11 +148,37 @@ class _FocusTimerState extends State<FocusTimer>
                     if (_.inMilliseconds <= 500) {
                       SmartDialog.dismiss();
 
+                      await SqliteProxy.focusRepository
+                          .insertFocusClick(
+                        1,
+                        focusTimerProvider.timers,
+                        DatetimeUtil.nowDateYMD(),
+                        focusTimerProvider.id,
+                      );
+
                       // 番茄钟弹出
                       if (focusTimerProvider.focusType ==
                           FocusType.tomato.name) {
                         if (focusTimerProvider.skipRelax == 1) {
                           return;
+                        }
+
+                        int count =
+                            await SqliteProxy.focusRepository.selectClickById(
+                          DatetimeUtil.nowDateYMD(),
+                          focusTimerProvider.id,
+                        );
+
+                        int times = 0;
+                        if (count == 0) {
+                          times = focusTimerProvider.shortRelaxTime;
+                        } else {
+                          if (count % focusTimerProvider.longRelaxInterval ==
+                              0) {
+                            times = focusTimerProvider.longRelaxTime;
+                          } else {
+                            times = focusTimerProvider.shortRelaxTime;
+                          }
                         }
 
                         SmartDialog.show(
@@ -162,7 +188,7 @@ class _FocusTimerState extends State<FocusTimer>
                           builder: (_) {
                             return FocusRelax(
                               params: {
-                                "timer": focusTimerProvider.relaxTimer,
+                                "timer": times,
                                 "musicId": 1,
                                 "autoRelax": focusTimerProvider.autoRelax == 1,
                               },

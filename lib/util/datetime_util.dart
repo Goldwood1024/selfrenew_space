@@ -5,6 +5,10 @@ class DatetimeUtil {
     return DateUtil.getNowDateStr();
   }
 
+  static String nowDateYMD() {
+    return getDateYMD(DateTime.now());
+  }
+
   static String nowMS() {
     return now();
   }
