@@ -1,9 +1,18 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
+import 'package:selfrenew_space/util/cache.dart';
 
 class InstallUpdateAppProvider extends ChangeNotifier {
   late bool showBoarding = false;
 
   Future<void> loadBoarding() async {
+    dynamic showBoarding = await CacheUtil.get('showBoarding');
+    if (ObjectUtil.isNotEmpty(showBoarding)) {
+      showBoarding = false;
+      return;
+    }
+
+    await CacheUtil.put('showBoarding', 'showBoarding');
+
     if (await FileStorage.hasFile(
       KeyPool.showBoarding,
       StorageType.applicationSupportDirectory,
@@ -31,6 +40,13 @@ class InstallUpdateAppProvider extends ChangeNotifier {
   }
 
   Future<bool> loadUpdate() async {
+    dynamic updatePage = await CacheUtil.get('updatePage');
+    if (ObjectUtil.isNotEmpty(updatePage)) {
+      return false;
+    }
+
+    await CacheUtil.put('updatePage', 'updatePage');
+
     if (await FileStorage.hasFile(
       KeyPool.showUpdate,
       StorageType.applicationSupportDirectory,

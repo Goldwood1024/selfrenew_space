@@ -1,6 +1,6 @@
 import 'package:selfrenew_space/selfrenew_flutter.dart';
 
-class Cache {
+class CacheUtil {
   static put(String key, String value) async {
     await (await SharedPreferences.getInstance()).setString(key, value);
   }
