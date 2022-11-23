@@ -186,7 +186,7 @@ class _FocusHomeTileState extends State<FocusHomeTile> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Routers.push(Routers.habitStatistics);
+                          // Routers.push(Routers.habitStatistics);
                         },
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(

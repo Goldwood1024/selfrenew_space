@@ -71,7 +71,7 @@ class FocusFormProvider extends ChangeNotifier {
 
     int minute = getTargetTime() % 60;
     if (minute > 0) {
-      text += ('$minute分');
+      text += ('$minute分钟');
     }
 
     return text;

@@ -36,7 +36,7 @@ class _MobileActionBottomState extends State<MobileActionBottom> {
           children: [
             SPHelper.getDefaultHeightBox(),
             SimpleTile(
-              title: '日常习惯',
+              title: '习惯',
               topRadius: true,
               onPressed: () {},
               showArrow: false,
