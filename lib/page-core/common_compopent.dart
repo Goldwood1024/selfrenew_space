@@ -769,3 +769,41 @@ class SkipRelax extends StatelessWidget {
     );
   }
 }
+
+
+class ExitRelax extends StatelessWidget {
+  final Function() onPressed;
+
+  const ExitRelax({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onPressed();
+      },
+      child: Container(
+        width: 140,
+        height: 48,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            width: 1,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        child: Text(
+          '退出',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+      ),
+    );
+  }
+}

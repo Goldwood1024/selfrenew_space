@@ -3,6 +3,7 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 class FocusTimerProvider extends ChangeNotifier {
   static final FocusRepository focusRepository = FocusRepository();
 
+  late String id;
   late String title;
   late String focusType;
   late int timers;
@@ -15,6 +16,7 @@ class FocusTimerProvider extends ChangeNotifier {
   Future<void> timer(Map<String, dynamic> params) async {
     Map<String, Object?> mm =
         await focusRepository.selectById(params['id'].toString());
+    id = mm['id'].toString();
     title = mm['title'].toString();
     focusType = mm['type'].toString();
     timers = int.parse(mm['targetTime'].toString());
@@ -41,6 +43,7 @@ class FocusTimerProvider extends ChangeNotifier {
   }
 
   void reset() {
+    id = '';
     timers = 0;
     relaxTimer = 0;
     autoRelax = 0;

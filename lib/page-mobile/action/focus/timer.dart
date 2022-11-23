@@ -1,9 +1,6 @@
 import 'package:action_slider/action_slider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:selfrenew_space/common/common_enum.dart';
-import 'package:selfrenew_space/page-mobile/action/focus/relax.dart';
 import 'package:selfrenew_space/selfrenew_flutter.dart';
-import 'package:slide_countdown/slide_countdown.dart';
 
 class FocusTimer extends StatefulWidget {
   final Map<String, dynamic> params;
@@ -171,6 +168,11 @@ class _FocusTimerState extends State<FocusTimer>
                               },
                             );
                           },
+                        );
+                      } else {
+                        BottomDialog.show(
+                          context,
+                          const FocusCompleted(),
                         );
                       }
                     }

@@ -71,4 +71,18 @@ class BottomDialog {
   static showToast(String message) {
     SmartDialog.showToast(message);
   }
+
+  static show(
+    BuildContext context,
+    Widget child,
+  ) {
+    SmartDialog.show(
+      alignment: Alignment.bottomCenter,
+      keepSingle: true,
+      useAnimation: true,
+      builder: (_) {
+        return child;
+      },
+    );
+  }
 }
