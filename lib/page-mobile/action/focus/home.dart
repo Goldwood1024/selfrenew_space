@@ -156,10 +156,8 @@ class _FocusUnderwayState extends State<FocusUnderway>
     List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
 
     return focusProvider.hasUnderway()
-        ? ListView.builder(
-            shrinkWrap: true,
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) {
+        ? Column(
+            children: List.generate(data.length, (index) {
               FocusUnderwayModel model = data[index];
               IconData icon;
 
@@ -257,7 +255,8 @@ class _FocusUnderwayState extends State<FocusUnderway>
                   ),
                 ),
               );
-            })
+            }),
+          )
         : const ImageDefaultEmpty(
             title: '没有专注，快添加任务吧',
             imagePath: 'assets/icons/focus.svg',
