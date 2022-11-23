@@ -15,7 +15,7 @@ class RepeatDay {
 }
 
 class RepeatModel {
-  late int type = 1;
+  late int type = 0;
   late List<int> repeatDays = [];
   late List<DateTime> selectedDates = [];
 
@@ -23,6 +23,7 @@ class RepeatModel {
     RepeatModel repeatModel = RepeatModel();
     repeatModel.type = 0;
     repeatModel.repeatDays.addAll([1, 2, 3, 4, 5, 6, 7]);
+    repeatModel.selectedDates = [];
     return repeatModel;
   }
 

@@ -39,8 +39,12 @@ class DatetimeUtil {
     return hour * 60 + minute.abs();
   }
 
-  static String weekday(BuildContext context) {
+  static String weekdayStr(BuildContext context) {
     return DateUtil.getWeekday(DateTime.now(), languageCode: 'zh');
+  }
+
+  static int weekday() {
+    return DateTime.now().weekday;
   }
 
   static DateTime addDate(DateTime dateTime, int day) {

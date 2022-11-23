@@ -184,7 +184,7 @@ class FocusFormProvider extends ChangeNotifier {
     autoRelax = int.parse(mm['autoRelax'].toString());
     skipRelax = int.parse(mm['skipRelax'].toString());
     type = mm['type'].toString();
-
+    repeatModel = RepeatModel.toBean(jsonDecode(mm['repeat'].toString()));
     iconModel = IconModel.toBean(jsonDecode(mm['icons'].toString()));
     remindModel = FocusRemindModel.defaultFocusRemindModel();
     notifyListeners();

@@ -12,28 +12,32 @@ class _FocusModuleState extends State<FocusModule> {
   void initState() {
     super.initState();
 
-    // 加载数据
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<FocusProvider>(context, listen: false).reloadFocus();
+      // 加载数据
+      Provider.of<FocusProvider>(context, listen: false).reloadFocusModule();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    AppSettingProvider appSettingProvider = Provider.of(context);
-    FocusProvider focusProvider = Provider.of(context);
+    final AppSettingProvider appSettingProvider = Provider.of(context);
+    final FocusProvider focusProvider = Provider.of(context);
 
-    return appSettingProvider.hasModule('focus')
-        ? MobileModule(
-            title: '专注',
-            onPressed: () {
-              Routers.push(Routers.focusHome);
-            },
-            child: focusProvider.hasUnderway()
-                ? const FocusActionDataList()
-                : const FocusActionEmpty(),
-          )
-        : SPHelper.empty;
+    return Visibility(
+      visible: appSettingProvider.hasModule('focus'),
+      replacement: SPHelper.empty,
+      child: MobileModule(
+        title: '专注',
+        onPressed: () {
+          Routers.push(Routers.focusHome);
+        },
+        child: Visibility(
+          visible: focusProvider.hasModuleUnderway(),
+          replacement: const FocusActionEmpty(),
+          child: const FocusActionDataList(),
+        ),
+      ),
+    );
   }
 }
 
@@ -99,7 +103,7 @@ class _FocusActionDataListState extends State<FocusActionDataList> {
   @override
   Widget build(BuildContext context) {
     FocusProvider focusProvider = Provider.of(context);
-    List<FocusUnderwayModel> data = focusProvider.getFocusUnderway();
+    List<FocusUnderwayModel> data = focusProvider.getFocusModuleUnderway();
 
     return ListView.builder(
       shrinkWrap: true,

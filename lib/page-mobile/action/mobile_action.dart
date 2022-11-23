@@ -65,7 +65,7 @@ class _MobileActionState extends State<MobileAction> {
                         SPHelper.zero(),
                       ),
                       child: Text(
-                        DatetimeUtil.weekday(context),
+                        DatetimeUtil.weekdayStr(context),
                         style: TextStyleMode.leadingTextStyle(context),
                       ),
                     )

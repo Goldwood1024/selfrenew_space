@@ -12,14 +12,14 @@ class FocusUnderwayModel {
   late IconModel iconModel;
 
   FocusUnderwayModel({
-    required this.id,
-    required this.title,
+    this.id = '',
+    this.title = '',
     required this.iconModel,
-    required this.targetTime,
-    required this.shortRelaxTime,
-    required this.longRelaxTime,
-    required this.longRelaxInterval,
-    required this.autoRelax,
-    required this.type,
+    this.targetTime = 0,
+    this.shortRelaxTime = 0,
+    this.longRelaxTime = 0,
+    this.longRelaxInterval = 0,
+    this.autoRelax = 0,
+    this.type = '',
   });
 }

@@ -6,6 +6,44 @@ class FocusProvider extends ChangeNotifier {
   static final FocusRepository focusRepository = FocusRepository();
 
   List<FocusUnderwayModel> list = [];
+  List<FocusUnderwayModel> focusModuleList = [];
+
+  Future<void> reloadFocusModule() async {
+    focusModuleList.clear();
+
+    List<Map<String, Object?>> data = await focusRepository.query();
+    for (Map<String, Object?> map in data) {
+      RepeatModel repeatModel = RepeatModel.toBean(
+        jsonDecode(map['repeat'].toString()),
+      );
+      
+      if (repeatModel.type == 0) {
+        if (!repeatModel.repeatDays.contains(DatetimeUtil.weekday())) {
+          continue;
+        }
+      } else {
+        if (!repeatModel.selectedDates.contains(DatetimeUtil.now())) {
+          continue;
+        }
+      }
+
+      focusModuleList.add(
+        FocusUnderwayModel(
+          id: map['id'].toString(),
+          title: map['title'].toString(),
+          iconModel: IconModel.toBean(jsonDecode(map['icons'].toString())),
+        ),
+      );
+    }
+  }
+
+  bool hasModuleUnderway() {
+    return focusModuleList.isNotEmpty;
+  }
+
+  List<FocusUnderwayModel> getFocusModuleUnderway() {
+    return focusModuleList;
+  }
 
   bool hasUnderway() {
     return list.isNotEmpty;
