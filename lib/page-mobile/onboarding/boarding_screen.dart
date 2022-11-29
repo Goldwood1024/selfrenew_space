@@ -83,17 +83,15 @@ class _BoardingScreenState extends State<BoardingScreen> {
             pageBodies: const [
               BoardingBodyPage(
                 title: '习惯养成',
-                bodyText: 'Sliding with animation',
+                bodyText: '不忘初心、砥砺前行，愿我们都能成为更好的自己',
               ),
               BoardingBodyPage(
                 title: '每日专注',
-                bodyText:
-                    'to find the perfect looking Onboarding for your app?',
+                bodyText: '认真做是只是把事情做对,用心做事才能把事情做好',
               ),
               BoardingBodyPage(
                 title: '丰富图表',
-                bodyText:
-                    'Where everything is possible and customize your onboarding.',
+                bodyText: '多维度的查看任务概览',
               ),
             ],
           )
