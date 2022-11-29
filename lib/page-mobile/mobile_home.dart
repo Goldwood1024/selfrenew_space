@@ -23,7 +23,7 @@ class _MobileHomeState extends State<MobileHome>
           Provider.of(context, listen: false);
 
       bool show = await installUpdateAppProvider.loadUpdate();
-      if (show && mounted) {
+      if (show) {
         Future.delayed(const Duration(seconds: 3), () async {
           // 更新详情
           showCupertinoModalBottomSheet(

@@ -97,6 +97,7 @@ dependencies:
   path_provider: ^2.0.11
   cached: ^1.4.0
   timeline_tile: ^2.0.0
+  flutter_animated_icons: ^1.0.1
 
 #  circular_clip_route: ^0.2.0+3
 #  check_app_version: ^1.0.0+1

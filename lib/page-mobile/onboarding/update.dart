@@ -40,17 +40,17 @@ class _UpdateState extends State<Update> {
           features: [
             WhatsNewFeature(
               icon: Icon(
-                CupertinoIcons.mail,
+                CupertinoIcons.timelapse,
                 color: CupertinoColors.systemRed.resolveFrom(context),
               ),
               title: Text(
-                'Found Events',
+                '专注模式',
                 style: TextStyle(
                   color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
               ),
               description: Text(
-                'Siri suggests events found in Mail, Messages, and Safari, so you can add them easily, such as flight reservations and hotel bookings.',
+                '专注模式有番茄钟、正计时、倒计时',
                 style: TextStyle(
                   color: Theme.of(context)
                       .textTheme
@@ -62,17 +62,39 @@ class _UpdateState extends State<Update> {
             ),
             WhatsNewFeature(
               icon: Icon(
-                CupertinoIcons.time,
+                CupertinoIcons.shield_lefthalf_fill,
                 color: CupertinoColors.systemRed.resolveFrom(context),
               ),
               title: Text(
-                'Time to Leave',
+                '多主题',
                 style: TextStyle(
                   color: Theme.of(context).textTheme.labelSmall!.color,
                 ),
               ),
               description: Text(
-                "Calendar uses Apple Maps to look up locations, traffic conditions, and transit options to tell you when it's time to leave.",
+                "浅色、深色主题模式，支持主题色切换",
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .textTheme
+                      .labelSmall!
+                      .color!
+                      .withOpacity(.5),
+                ),
+              ),
+            ),
+            WhatsNewFeature(
+              icon: Icon(
+                CupertinoIcons.ellipsis,
+                color: CupertinoColors.systemRed.resolveFrom(context),
+              ),
+              title: Text(
+                '更多特性',
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.labelSmall!.color,
+                ),
+              ),
+              description: Text(
+                "新的功能正在开发中，敬请期待",
                 style: TextStyle(
                   color: Theme.of(context)
                       .textTheme

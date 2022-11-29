@@ -356,6 +356,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animated_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_animated_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   flutter_launcher_icons_maker:
     dependency: "direct main"
     description:
@@ -630,6 +637,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  lottie:
+    dependency: transitive
+    description:
+      name: lottie
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.3"
   mailto:
     dependency: "direct main"
     description:

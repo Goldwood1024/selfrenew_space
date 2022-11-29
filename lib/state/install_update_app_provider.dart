@@ -42,7 +42,7 @@ class InstallUpdateAppProvider extends ChangeNotifier {
   Future<bool> loadUpdate() async {
     dynamic updatePage = await CacheUtil.get('updatePage');
     if (ObjectUtil.isNotEmpty(updatePage)) {
-      return false;
+      return true;
     }
 
     await CacheUtil.put('updatePage', 'updatePage');
