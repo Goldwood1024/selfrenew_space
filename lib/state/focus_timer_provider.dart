@@ -4,7 +4,7 @@ class FocusTimerProvider extends ChangeNotifier {
   static final FocusRepository focusRepository = FocusRepository();
 
   late String id;
-  late String title;
+  late String title = '';
   late String focusType = '';
   late int timers;
   late int shortRelaxTime;

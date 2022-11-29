@@ -5,7 +5,7 @@ import 'package:selfrenew_space/selfrenew_flutter.dart';
 class FocusProvider extends ChangeNotifier {
   static final FocusRepository focusRepository = FocusRepository();
 
-  List<FocusUnderwayModel> list = [];
+  List<FocusUnderwayModel> focusHomeList = [];
   List<FocusUnderwayModel> focusModuleList = [];
 
   Future<void> reloadFocusModule() async {
@@ -36,6 +36,8 @@ class FocusProvider extends ChangeNotifier {
         ),
       );
     }
+
+    notifyListeners();
   }
 
   bool hasModuleUnderway() {
@@ -47,23 +49,23 @@ class FocusProvider extends ChangeNotifier {
   }
 
   bool hasUnderway() {
-    return list.isNotEmpty;
+    return focusHomeList.isNotEmpty;
   }
 
   List<FocusUnderwayModel> getFocusUnderway() {
-    return list;
+    return focusHomeList;
   }
 
-  Future<List<FocusUnderwayModel>> reloadFocus() async {
-    list.clear();
+  Future<void> reloadFocusHome() async {
+    focusHomeList.clear();
 
     List<Map<String, Object?>> data = await focusRepository.query();
     for (Map<String, Object?> map in data) {
-      if (list.any((element) => element == map['id'])) {
+      if (focusHomeList.any((element) => element == map['id'])) {
         continue;
       }
 
-      list.add(
+      focusHomeList.add(
         FocusUnderwayModel(
           id: map['id'].toString(),
           title: map['title'].toString(),
@@ -78,11 +80,12 @@ class FocusProvider extends ChangeNotifier {
       );
     }
 
-    return list;
+    notifyListeners();
   }
 
   Future<void> remove(FocusUnderwayModel model) async {
     getFocusUnderway().removeWhere((element) => element.id == model.id);
+    focusModuleList.removeWhere((element) => element.id == model.id);
     await focusRepository.update('isDeleted', '1', model.id);
 
     notifyListeners();

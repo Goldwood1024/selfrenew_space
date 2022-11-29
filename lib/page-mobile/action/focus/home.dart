@@ -29,7 +29,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
     );
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<FocusProvider>(context, listen: false).reloadFocus();
+      Provider.of<FocusProvider>(context, listen: false).reloadFocusHome();
     });
   }
 
@@ -97,7 +97,7 @@ class _FocusHomeState extends State<FocusHome> with TickerProviderStateMixin {
         leading: BackBtn(
           title: '计划',
           onPressed: () {
-            Routers.go(Routers.mobileHome);
+            Routers.goParams(Routers.mobileHome, {});
           },
         ),
         actions: [],
@@ -157,7 +157,7 @@ class _FocusUnderwayState extends State<FocusUnderway>
     return Visibility(
       visible: focusProvider.hasUnderway(),
       replacement: const ImageDefaultEmpty(
-        title: '没有专注，快添加任务吧',
+        title: '没有专注，快添加任务吧！',
         imagePath: 'assets/icons/focus.svg',
       ),
       child: Column(
@@ -177,8 +177,8 @@ class _FocusUnderwayState extends State<FocusUnderway>
             padding:
                 EdgeInsets.fromLTRB(0, SPHelper.height(SPHelper.gapDp8), 0, 0),
             child: FocusHomeTile(
-              onRemove: () {
-                update.remove(model);
+              onRemove: () async {
+                await update.remove(model);
               },
               onEdit: () {
                 Routers.pushParams(Routers.focusForm, {
