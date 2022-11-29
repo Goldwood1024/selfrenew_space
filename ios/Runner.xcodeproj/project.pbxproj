@@ -367,7 +367,9 @@
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_MODE = profile;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_CFBundleDisplayName = "专注任务";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +504,9 @@
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_MODE = debug;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_CFBundleDisplayName = "专注任务";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,7 +531,9 @@
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_MODE = release;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_CFBundleDisplayName = "专注任务";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
