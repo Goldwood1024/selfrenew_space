@@ -136,6 +136,18 @@ flutter:
     - 'assets/icons/question.svg'
     - 'assets/icons/工作.svg'
     - 'assets/icons/兴奋庆祝.svg'
+    - 'assets/voice/13277.mp3'
+    - 'assets/voice/8356.mp3'
+    - 'assets/voice/15275.mp3'
+    - 'assets/voice/20181214141346.mp3'
+    - 'assets/voice/20190108114811.mp3'
+    - 'assets/voice/20181219134834.mp3'
+    - 'assets/voice/20190107141854.wav'
+    - 'assets/voice/20190108150302.wav'
+    - 'assets/voice/blister.mp3'
+    - 'assets/voice/bells.mp3'
+    - 'assets/voice/copper.mp3'
+    - 'assets/voice/chirp.mp3'
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

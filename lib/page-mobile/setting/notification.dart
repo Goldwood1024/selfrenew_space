@@ -137,12 +137,8 @@ class SoundPage extends StatefulWidget {
 class _SoundPageState extends State<SoundPage> {
   List<NoticeSound> list = [];
 
-  List<NoticeSound> habit = [
-    NoticeSound(value: '1', title: '11', voice: 'assets/voice/bells.mp3'),
-    NoticeSound(value: '2', title: '11', voice: 'assets/voice/bells1.mp3'),
-  ];
-
-  List<NoticeSound> focus = [];
+  List<NoticeSound> habit = Global.getAudioLibraries();
+  List<NoticeSound> focus = Global.getAudioLibraries();
 
   @override
   void initState() {
@@ -174,7 +170,7 @@ class _SoundPageState extends State<SoundPage> {
 
       for (NoticeSound n in list) {
         n.selected = false;
-        if (n.voice == value) {
+        if (n.source == value) {
           setState(() {
             n.selected = true;
           });
@@ -198,10 +194,10 @@ class _SoundPageState extends State<SoundPage> {
               for (NoticeSound n in list) {
                 if (n.selected) {
                   if (widget.type == 1) {
-                    FileStorage.createAsData(KeyPool.habitSound, n.voice,
+                    FileStorage.createAsData(KeyPool.habitSound, n.source,
                         StorageType.applicationSupportDirectory);
                   } else {
-                    FileStorage.createAsData(KeyPool.focusSound, n.voice,
+                    FileStorage.createAsData(KeyPool.focusSound, n.source,
                         StorageType.applicationSupportDirectory);
                   }
                 }

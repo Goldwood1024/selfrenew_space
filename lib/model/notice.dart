@@ -9,15 +9,17 @@ class Notice {
 }
 
 class NoticeSound {
-  final String value;
+  final String id;
   final String title;
-  final String voice;
   late bool selected;
+  bool canSelect;
+  final String source;
 
   NoticeSound({
-    this.value = '',
-    this.title = '',
-    this.voice = '',
-    this.selected = false,
+    required this.id,
+    required this.title,
+    required this.selected,
+    required this.canSelect,
+    required this.source,
   });
 }

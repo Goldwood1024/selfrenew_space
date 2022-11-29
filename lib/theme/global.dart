@@ -1,9 +1,7 @@
 import 'dart:math';
 
-import 'package:selfrenew_space/common/common_enum.dart';
-import 'package:selfrenew_space/model/habit_lib.dart';
-import 'package:selfrenew_space/model/repeat_day.dart';
-import 'package:selfrenew_space/model/tip_chip.dart';
+import 'package:selfrenew_space/model/notice.dart';
+import 'package:selfrenew_space/selfrenew_flutter.dart';
 
 class Global {
   static final Random _random = Random();
@@ -50,6 +48,111 @@ class Global {
       type: FocusType.tomato.name,
     ),
   ];
+
+  static List<NoticeSound> audioLibrary = [
+    NoticeSound(
+      id: '0',
+      title: '无',
+      selected: false,
+      canSelect: true,
+      source: '',
+    ),
+    NoticeSound(
+      id: '8356',
+      title: '水滴',
+      selected: false,
+      canSelect: true,
+      source: 'voice/8356.mp3',
+    ),
+    NoticeSound(
+      id: '15275',
+      title: '叮',
+      selected: false,
+      canSelect: true,
+      source: 'voice/15275.mp3',
+    ),
+    NoticeSound(
+      id: 'blister',
+      title: '水泡',
+      selected: false,
+      canSelect: true,
+      source: 'voice/blister.mp3',
+    ),
+    NoticeSound(
+      id: 'bells',
+      title: '贝壳风铃',
+      selected: false,
+      canSelect: true,
+      source: 'voice/bells.mp3',
+    ),
+    NoticeSound(
+      id: 'copper',
+      title: '铜铃',
+      selected: false,
+      canSelect: true,
+      source: 'voice/copper.mp3',
+    ),
+    NoticeSound(
+      id: 'chirp',
+      title: '鸟叫',
+      selected: false,
+      canSelect: true,
+      source: 'voice/chirp.mp3',
+    ),
+    NoticeSound(
+      id: '20181214141346',
+      title: '快门',
+      selected: false,
+      canSelect: true,
+      source: 'voice/20181214141346.mp3',
+    ),
+    NoticeSound(
+      id: '20190108114811',
+      title: '烟花',
+      selected: false,
+      canSelect: true,
+      source: 'voice/20190108114811.mp3',
+    ),
+    NoticeSound(
+      id: '20181219134834',
+      title: '惊喜',
+      selected: false,
+      canSelect: true,
+      source: 'voice/20181219134834.mp3',
+    ),
+    NoticeSound(
+      id: '20190107141854',
+      title: '滴滴滴',
+      selected: false,
+      canSelect: true,
+      source: 'voice/20190107141854.wav',
+    ),
+    NoticeSound(
+      id: '20190108150302',
+      title: '弹一下',
+      selected: false,
+      canSelect: true,
+      source: 'voice/20190108150302.wav',
+    ),
+    NoticeSound(
+      id: '13277',
+      title: '背景音',
+      selected: false,
+      canSelect: false,
+      source: 'voice/13277.mp3',
+    ),
+  ];
+
+  static List<NoticeSound> getAudioLibraries() {
+    List<NoticeSound> list = [];
+    for (NoticeSound sound in audioLibrary) {
+      if (sound.canSelect) {
+        list.add(sound);
+      }
+    }
+
+    return list;
+  }
 
   static List<TipChip> getTipChips() {
     List<TipChip> chips = [];
