@@ -97,7 +97,7 @@ class _MobileActionState extends State<MobileAction> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: const [
-              HabitModule(),
+              // HabitModule(),
               FocusModule(),
             ],
           ),

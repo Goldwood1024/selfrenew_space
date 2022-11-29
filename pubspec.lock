@@ -98,14 +98,14 @@ packages:
       name: calendar_date_picker2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.1"
+    version: "0.3.3"
   calendar_view:
     dependency: "direct main"
     description:
       name: calendar_view
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   characters:
     dependency: transitive
     description:
@@ -238,7 +238,7 @@ packages:
       name: easy_refresh
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.4+4"
+    version: "3.0.5"
   equatable:
     dependency: transitive
     description:
@@ -360,7 +360,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.15"
+    version: "2.2.16"
   flutter_onboarding_slider:
     dependency: "direct main"
     description:
@@ -1076,6 +1076,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  timeline_tile:
+    dependency: "direct main"
+    description:
+      name: timeline_tile
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   timelines:
     dependency: "direct main"
     description:

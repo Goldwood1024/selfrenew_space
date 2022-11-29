@@ -69,7 +69,7 @@ class _MobileHomeState extends State<MobileHome>
             icon: const Icon(Icons.water_drop),
             selectedIcon: const Icon(Icons.water_drop),
             title: Text(
-              '计划',
+              '任务',
               style: TextStyle(
                 color: Theme.of(context).textTheme.labelSmall!.color,
               ),

@@ -35,20 +35,21 @@ class _MobileActionBottomState extends State<MobileActionBottom> {
         child: ListView(
           children: [
             SPHelper.getDefaultHeightBox(),
-            SimpleTile(
-              title: '习惯',
-              topRadius: true,
-              onPressed: () {},
-              showArrow: false,
-              trailing: CommonSwitch(
-                value: appSettingProvider.hasModule('habit'),
-                func: (value) {
-                  appSettingProviderUpdate.updateModule('habit', !value);
-                },
-              ),
-            ),
+            // SimpleTile(
+            //   title: '习惯',
+            //   topRadius: true,
+            //   onPressed: () {},
+            //   showArrow: false,
+            //   trailing: CommonSwitch(
+            //     value: appSettingProvider.hasModule('habit'),
+            //     func: (value) {
+            //       appSettingProviderUpdate.updateModule('habit', !value);
+            //     },
+            //   ),
+            // ),
             SimpleTile(
               title: '专注',
+              topRadius: true,
               bottomRadius: true,
               onPressed: () {},
               showArrow: false,
